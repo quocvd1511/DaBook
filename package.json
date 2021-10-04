@@ -1,0 +1,18 @@
+{
+  "name": "dabook_web_application",
+  "version": "1.0.0",
+  "description": "BookStore DaBook",
+  "main": "main.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "nodemon": "^2.0.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "npx nodemon main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nhom3_Trang_Hong_Y_Quoc",
+  "license": "ISC"
+}
