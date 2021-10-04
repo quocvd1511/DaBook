@@ -7,7 +7,7 @@ const path = require('path')
 
 app.engine('handlebars',handlebars())
 app.set('view engine','handlebars')
-app.set('views',[__dirname + '\\src\\views\\views_admin',__dirname + '\\src\\views\\views_client',__dirname + '\\src\\views\\views_shiper'])
+app.set('views',[__dirname + '\\src\\views\\views_admin',__dirname + '\\src\\views\\views_client',__dirname + '\\src\\views\\views_delivery'])
 
 app.use(express.static(path.join(__dirname,'src\\public')))
 
@@ -21,8 +21,8 @@ app.get('/admin', (req, res) => {
 })
 
 
-app.get('/shiper', (req, res) => {
-  res.render('temp_shiper', {layout: 'shiper.handlebars'})
+app.get('/delivery', (req, res) => {
+  res.render('temp_delivery', {layout: 'delivery.handlebars'})
 })
 
 
