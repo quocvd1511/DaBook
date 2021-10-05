@@ -5,6 +5,9 @@ const port = 3000
 const handlebars = require('express-handlebars')
 const path = require('path')
 const route = require('./routes/main_route')
+const connect_db = require('./src/config/db/db_connect')
+
+connect_db.connect()
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
