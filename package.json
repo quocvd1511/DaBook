@@ -4,8 +4,10 @@
   "description": "BookStore DaBook",
   "main": "main.js",
   "dependencies": {
+    "connect-mongodb-session": "^3.1.1",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
+    "express-session": "^1.17.2",
     "mongoose": "^6.0.9",
     "nodemon": "^2.0.13",
     "sass": "^1.42.1"
