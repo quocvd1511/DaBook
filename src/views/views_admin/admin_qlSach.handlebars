@@ -1,31 +1,105 @@
-</html>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-    </tbody>
-</table>
+<div class="col-sm">
+    <div class="container-fluid mt-5 mb-3 rounded"
+        style="width: 25%; float:left; background-color:dodgerblue; margin-left:4px; padding-top:15px; padding-bottom:15px">
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nhập Mã Sách</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Nhập tên sách</label>
+                <input type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Nhập họ và tên tác giả</label>
+                <input type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary">Tìm Kiếm</button>
+        </form>
+    </div>
+    <form class="container-fluid row mt-5 mb-3 rounded"
+        style="width: 24%; float:left; background-color:dodgerblue; margin-left:15px; padding-top:15px; padding-bottom:15px">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Chọn thể loại</label>
+            <select class="form-control form-control-sm select-all-options" style="width: 200px;">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+            </select>
+        </div>
+        <div class="mb-3" style="margin-left:20px">
+            <label for="exampleInputEmail1" class="form-label">Chọn mức giá</label>
+            <select class="form-control form-control-sm select-all-options" style="width: 200px; ">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Lọc</button>
+    </form>
+</div>
+
+
+<div class="container-fluid rounded">
+    <table class=" table table-bordered table-dark mt-5" style="overflow: auto;">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">
+                    <div>
+                        <input type="checkbox" id="scales" name="scales">
+                    </div>
+                </th>
+                <th scope="col" class="text-center">Mã Sách</th>
+                <th scope="col" class="text-center">Tên Sách</th>
+                <th scope="col" class="text-center">Mã Thể Loại</th>
+                <th scope="col" class="text-center">Giá Tiền</th>
+                <th scope="col" class="text-center">MaTG</th>
+                <th scope="col" class="text-center">Mã NXB</th>
+                <th scope="col" class="text-center">Số Lượng Tồn</th>
+                <th scope="col" class="text-center">Năm Xuất Bản</th>
+                <th scope="col" class="text-center">Mã HD</th>
+                <th scope="col" class="text-center">SL Đã Bán</th>
+                <th scope="col" class="text-center">Khu Vực</th>
+                <th scope="col" class="text-center">Ngôn Ngữ</th>
+                <th scope="col" class="text-center">PT Giảm</th>
+                <th scope="col" class="text-center">Thao Tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each sach}}
+            <tr>
+                <td>
+                    <div>
+                        <input type="checkbox" id="scales" name="scales">
+                    </div>
+                </td>
+                <td>{{this.MaSach}}</td>
+                <td>{{this.TenSach}}</td>
+                <td>{{this.MaTL}}</td>
+                <td>{{this.GiaTien}}</td>
+                <td>{{this.MaTG}}</td>
+                <td>{{this.MaNXB}}</td>
+                <td>{{this.SLTon}}</td>
+                <td>{{this.NamXB}}</td>
+                <td>{{this.MaHD}}</td>
+                <td>{{this.SLDBan}}</td>
+                <td>{{this.KhuVuc}}</td>
+                <td>{{this.NgonNgu}}</td>
+                <td>{{this.PTGiam}}</td>
+                <td>
+                    <button type="button" class="btn btn-link">Sửa</button>
+                    <button type="button" class="btn btn-link">Xóa</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

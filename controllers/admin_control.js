@@ -1,4 +1,5 @@
 const admin_login = require('../models/admin/admin_login')
+const admin_qlSach=require('../models/admin/admin_qlSach')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
 
@@ -26,6 +27,7 @@ class Admin_Control{
                     else 
                     {
                         req.session.username=req.body.username
+                        req.session.isAuth=true;
                         res.render('admin_home',{layout: 'admin.handlebars',admin_account: req.session.username})
                     }
                 } else {
@@ -52,7 +54,14 @@ class Admin_Control{
     {
        // console.log(req.session.username)
        if(!req.session.isAuth) res.redirect('/admin')
-       else res.render('admin_qlSach',{layout: 'admin.handlebars', admin_account: req.session.username})
+       else 
+       {
+           admin_qlSach.find({},
+            function (err,sach)
+            {
+                res.render('admin_qlSach',{layout: 'admin.handlebars', admin_account: req.session.username, sach: multipleMongooseToObject(sach)})
+            })
+        }
     }
 
     Ql_TaiKhoan(req,res,next)
