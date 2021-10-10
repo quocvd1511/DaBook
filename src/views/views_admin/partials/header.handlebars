@@ -1,36 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a href="/"><button class="btn btn-outline-success my-2 my-sm-0 navbar-brand ">DaBook</button></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="doanh-thu">Doanh Thu</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="doanh-thu">Thống Kê</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Quản Lý
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="thong-tin-database">Thông tin Database</a>
-                    <a class="dropdown-item" href="them-du-lieu-datbase">Thêm dữ liệu Database</a>
-                    <a class="dropdown-item" href="quan-ly-sach">Quản lý Sách</a>
-                    <a class="dropdown-item" href="quan-ly-tai-khoan">Quản lý Tài khoản</a>
-                    <a class="dropdown-item" href="quan-ly-hoa-don">Quản lý Hóa đơn</a>
-                    <a class="dropdown-item" href="quan-ly-khuyen-mai">Quản lý Khuyến mãi</a>
-                </div>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <div class="nav-link" style="color:white;">{{admin_account}}</div>
-            <a href="/admin/logout">Đăng xuất</a>
-        </form>
+<div class="sidebar-container">
+    <div class="sidebar-logo">
+        Dabook Admin
     </div>
-</nav>
+    <ul class="sidebar-navigation">
+        <li class="header">Thống Kê</li>
+        <li>
+            <a href="#">
+                <i class="fa fa-home" aria-hidden="true"></i> Số lượng bán ra
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-tachometer" aria-hidden="true"></i> Doanh Thu
+            </a>
+        </li>
+        <li class="header">Quản Lý</li>
+        <li>
+            <a href="quan-ly-sach">
+                <i class="fa fa-users" aria-hidden="true"></i> Sách
+            </a>
+        </li>
+        <li>
+            <a href="quan-ly-tai-khoan">
+                <i class="fa fa-cog" aria-hidden="true"></i> Tài Khoản
+            </a>
+        </li>
+        <li>
+            <a href="quan-ly-hoa-don">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> Hóa Đơn
+            </a>
+        </li>
+        <li>
+            <a href="quan-ly-khuyen-mai">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> Khuyến Mãi
+            </a>
+        </li>
+    </ul>
+</div>

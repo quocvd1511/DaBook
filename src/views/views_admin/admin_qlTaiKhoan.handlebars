@@ -1,31 +1,50 @@
-</html>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-    </tbody>
-</table>
+<div class="content-container">
+
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Quản Lý Tài Khoản</a>
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+
+                        <button type="button" class="btn btn-link">Tra thông tin chi tiết</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="jumbotron mt-2">
+            <div class="row">
+                <table class="table table-striped custab">
+                    <thead>
+                        <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Thêm tài khoản</a>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên tài khoản</th>
+                            <th>Ngày tạo</th>
+                            <th>Điểm tích lũy</th>
+                            <th>Tình trạng tài khoản</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>1</td>
+                        <td>News</td>
+                        <td>News Cate</td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span
+                                    class="glyphicon glyphicon-edit"></span> Chỉnh sửa</a> <a href="#"
+                                class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span>
+                                Khóa</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

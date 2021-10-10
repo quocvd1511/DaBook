@@ -1,5 +1,5 @@
-const admin_login = require('../models/admin/admin_login')
-const admin_qlSach=require('../models/admin/admin_qlSach')
+const admin_login = require('../models/admin_account')
+const admin_qlSach=require('../models/books')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
 
@@ -49,7 +49,7 @@ class Admin_Control{
             .catch(next)*/
         
     }
-
+    //--------------------------------------------QUAN LY SACH-------------------------------------------------------------------------------------
     Ql_Sach(req,res,next)
     {
        // console.log(req.session.username)
@@ -63,6 +63,14 @@ class Admin_Control{
             })
         }
     }
+
+    Them_Sach(req,res,next)
+    {
+        res.render('admin_ThemSach',{layout: 'admin.handlebars'})
+    }
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+
 
     Ql_TaiKhoan(req,res,next)
     {

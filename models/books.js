@@ -1,7 +1,7 @@
 const mogoose = require('mongoose');
 const Schema = mogoose.Schema;
 
-const Sach = new Schema({
+const Book = new Schema({
     MaSach: String,
     TenSach: String,
     MaTL: String,
@@ -17,4 +17,4 @@ const Sach = new Schema({
     PTGiam: String,
   });
   
-module.exports = mogoose.model('Sach',Sach)
+module.exports = mogoose.model('Book',Book)
