@@ -14,7 +14,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "watch": "sass -w src/scss/admin_scss/admin_styles.scss src/public/css/admin_styles/admin_styles.css",
+    "watch_admin": "sass -w src/scss/admin_scss/admin_styles.scss src/public/css/admin_styles/admin_styles.css",
+    "watch_client": "sass -w src/public/client_styles/assets/scss/client_styles.scss src/public/client_styles/assets/css/client_styles.css",
     "start": "npx nodemon main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
