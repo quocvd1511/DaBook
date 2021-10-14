@@ -18,32 +18,54 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <button type="button" class="btn btn-link">Tra thông tin chi tiết</button>
+            <button type="button" class="btn btn-link">Thêm sách</button>
           </div>
         </div>
       </div>
     </nav>
 
     <div class="jumbotron mt-2">
+      <button type="button" class="btn btn-primary">Xóa</button>
       <div class="row">
         {{#each books}}
-          <a href="quan-ly-sach/{{this._id}}" style="color: black;">
+          <a>
             <div class="col">
               <div
                 class="card"
                 style="height:auto; width:18rem; margin-top:20px"
               >
-                <img
-                  class="card-img-top"
-                  src="{{this.hinhanh_src}}"
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">{{this.tensach}}</h5>
-                  <p class="card-text">Tác giả: {{this.tacgia}}</p>
-                  <p class="card-text">NXB: {{this.nxb}}</p>
-                  <p class="card-text">Thể loại: {{this.mini2_subhome}}</p>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-label="Checkbox for following text input"
+                      />
+                    </div>
+                  </div>
                 </div>
+                <a
+                  href="/admin/quan-ly-sach/{{this.masach}}"
+                  style="color: black;"
+                >
+                  <img
+                    class="card-img-top"
+                    src="{{this.hinhanh}}"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">{{this.tensach}}</h5>
+                    <p class="card-text">Tác giả: {{this.tacgia}}</p>
+                    <p class="card-text">NXB: {{this.nxb}}</p>
+                    <p class="card-text">Thể loại: {{this.theloai}}</p>
+                    </a>
+                    <div class="mt-4">
+                      <a href="/admin/quan-ly-sach/{{this.masach}}"><button type="button" class="btn btn-success">Chi tiết</button></a>
+                    <button type="button" class="btn btn-success">Xóa</button>
+                    </div>
+                  </div>
+
               </div>
             </div>
           </a>

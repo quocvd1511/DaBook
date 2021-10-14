@@ -72,7 +72,7 @@ class Admin_Control{
 
     chitietSach(req,res,next)
     {
-        books.findOne({_id: req.params.slug})
+        books.findOne({masach: req.params.slug})
             .then(books =>
                 {
                     books=mongooseToObject(books)
@@ -80,6 +80,26 @@ class Admin_Control{
                     res.render('admin_chitietSach',{layout:'admin.handlebars',books})
                 })
         
+    }
+    chitietSach_update(req,res,next)
+    {
+        books.updateOne({masach:req.body.masach}, {
+            tensach: req.body.tensach,
+            tacgia: req.body.tacgia,
+            theloai: req.body.theloai,
+            nxb: req.body.nxb,
+            namxb: req.body.namxb,
+            khuvuc: req.body.khuvuc,
+            ngonngu: req.body.ngonngu,
+            hinhanh: req.body.hinhanh,
+            hinhthuc: req.body.hinhthuc,
+            giaban: req.body.giaban,
+            soluongton: req.body.soluongton,
+            mota: req.body.mota})
+            .then(() => 
+            {
+                res.redirect('/admin/quan-ly-sach/'+req.body.masach)
+            })
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------

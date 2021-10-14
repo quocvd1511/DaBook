@@ -4,6 +4,7 @@ const route = express.Router()
 const admin_Control = require('../controllers/admin_control')
 
 
+route.post('/quan-ly-sach/:slug/update', admin_Control.chitietSach_update)
 route.get('/quan-ly-sach/:slug', admin_Control.chitietSach)
 
 route.get('/them-sach',admin_control.Them_Sach)

@@ -4,19 +4,19 @@ const ObjectId=Schema.ObjectId
 
 const Book = new Schema({
   _id:ObjectId,
-  subhome:String,
-  mini_subhome:String,
-  mini2_subhome: String,
-  book_list:String,
-  hinhanh_src:String,
+  masach:String,
   tensach:String,
-  tacgia:String,
+  tacgia: String,
+  theloai:String,
   nxb:String,
   namxb:String,
+  khuvuc:String,
   ngonngu:String,
+  hinhanh:String,
   hinhthuc:String,
   giaban:String,
   mota:String,
+  soluongton:String,
   });
   
 module.exports = mogoose.model('Book',Book)
