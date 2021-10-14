@@ -2,19 +2,19 @@ const mogoose = require('mongoose');
 const Schema = mogoose.Schema;
 
 const Book = new Schema({
-    MaSach: String,
-    TenSach: String,
-    MaTL: String,
-    GiaTien: String,
-    MaTG: String,
-    MaNXB: String,
-    SLTon: String,
-    NamXB: String,
-    MaHD: String,
-    SLDBan: String,
-    KhuVuc: String,
-    NgonNgu: String,
-    PTGiam: String,
+  subhome:String,
+  mini_subhome:String,
+  mini2_subhome: String,
+  book_list:String,
+  hinhanh_src:String,
+  tensach:String,
+  tacgia:String,
+  nxb:String,
+  namxb:String,
+  ngonngu:String,
+  hinhthuc:String,
+  giaban:String,
+  mota:String,
   });
   
 module.exports = mogoose.model('Book',Book)
