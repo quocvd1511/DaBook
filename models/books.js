@@ -1,7 +1,9 @@
-const mogoose = require('mongoose');
+const mogoose = require('mongoose')
 const Schema = mogoose.Schema;
+const ObjectId=Schema.ObjectId
 
 const Book = new Schema({
+  _id:ObjectId,
   subhome:String,
   mini_subhome:String,
   mini2_subhome: String,

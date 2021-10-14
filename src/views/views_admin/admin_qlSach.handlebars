@@ -1,58 +1,54 @@
 <div class="content-container">
 
-    <div class="container-fluid">
+  <div class="container-fluid">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Quản Lý Sách</a>
-                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-                    data-mdb-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <div class="jumbotron mt-2">
-
-            <div class="row">
-                <table class="table table-striped custab">
-                    <thead>
-                        <a href="them-sach" class="btn btn-primary btn-xs pull-right"><b>+</b> Thêm Sách</a>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tên sách</th>
-                            <th>Tác giả</th>
-                            <th>Thể loại</th>
-                            <th>Nhà xuất bản</th>
-                            <th>Ngôn ngữ</th>
-                            <th>Khu vực</th>
-                            <th>Giá</th>
-                            <th>Số lượng tồn</th>
-
-                            <th class="text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td>1</td>
-                        <td>News</td>
-                        <td>News Cate</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span
-                                    class="glyphicon glyphicon-edit"></span> Chỉnh sửa</a> <a href="#"
-                                class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span>
-                                Xóa</a></td>
-                    </tr>
-                </table>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Quản Lý Tài Khoản</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-mdb-toggle="collapse"
+          data-mdb-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <button type="button" class="btn btn-link">Tra thông tin chi tiết</button>
+          </div>
         </div>
+      </div>
+    </nav>
+
+    <div class="jumbotron mt-2">
+      <div class="row">
+        {{#each books}}
+          <a href="quan-ly-sach/{{this._id}}" style="color: black;">
+            <div class="col">
+              <div
+                class="card"
+                style="height:auto; width:18rem; margin-top:20px"
+              >
+                <img
+                  class="card-img-top"
+                  src="{{this.hinhanh_src}}"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">{{this.tensach}}</h5>
+                  <p class="card-text">Tác giả: {{this.tacgia}}</p>
+                  <p class="card-text">NXB: {{this.nxb}}</p>
+                  <p class="card-text">Thể loại: {{this.mini2_subhome}}</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        {{/each}}
+      </div>
     </div>
+  </div>
 </div>

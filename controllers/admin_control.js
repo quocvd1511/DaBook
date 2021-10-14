@@ -1,5 +1,5 @@
 const admin_login = require('../models/admin_account')
-const admin_qlSach=require('../models/books')
+const books=require('../models/books')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
 
@@ -56,17 +56,30 @@ class Admin_Control{
        if(!req.session.isAuth) res.redirect('/admin')
        else 
        {
-           admin_qlSach.find({},
-            function (err,sach)
-            {
-                res.render('admin_qlSach',{layout: 'admin.handlebars', admin_account: req.session.username, sach: multipleMongooseToObject(sach)})
-            })
+           books.find({})
+                .then(books => 
+                    {
+                        books=books.map(course => course.toObject())
+                        res.render('admin_qlSach',{layout: 'admin.handlebars', books})
+                    })
         }
     }
 
     Them_Sach(req,res,next)
     {
         res.render('admin_ThemSach',{layout: 'admin.handlebars'})
+    }
+
+    chitietSach(req,res,next)
+    {
+        books.findOne({_id: req.params.slug})
+            .then(books =>
+                {
+                    books=mongooseToObject(books)
+                    //res.json(books)
+                    res.render('admin_chitietSach',{layout:'admin.handlebars',books})
+                })
+        
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -93,6 +106,7 @@ class Admin_Control{
        else res.render('admin_qlHoaDon',{layout: 'admin.handlebars', admin_account: req.session.username})
     }
 
+    //---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
