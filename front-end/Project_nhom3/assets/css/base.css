@@ -18,7 +18,8 @@
 html {
     font-size: 62.5%;
     line-height: 1.6rem;
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
 }
 
@@ -125,12 +126,13 @@ html {
 .btn:hover{
     background-color: rgba(0,0,0,0.2);
 }
-.btn.btn--primary{
+.btn .btn--primary{
     color: var(--white-color);
     background-color: var(--blue-color);
+    cursor: pointer;
 }
 
-.btn.btn--disable{
+.btn .btn--disable{
     cursor: default;
     background-color: rgba(0,0,0,0.2);
 }
