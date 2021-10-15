@@ -18,7 +18,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <button type="button" class="btn btn-link">Thêm sách</button>
+            <a href="/admin/them-sach"><button type="button" class="btn btn-link">Thêm sách</button></a>
           </div>
         </div>
       </div>
@@ -29,6 +29,7 @@
       <div class="row">
         {{#each books}}
           <a>
+            <form method="post" action="/admin/quan-ly-sach/{{this.masach}}/delete">
             <div class="col">
               <div
                 class="card"
@@ -61,8 +62,11 @@
                     <p class="card-text">Thể loại: {{this.theloai}}</p>
                     </a>
                     <div class="mt-4">
+                       
                       <a href="/admin/quan-ly-sach/{{this.masach}}"><button type="button" class="btn btn-success">Chi tiết</button></a>
-                    <button type="button" class="btn btn-success">Xóa</button>
+                        <input value="{{this.masach}}" name="masach" hidden>
+                        <button type="submit" class="btn btn-success">Xóa</button>
+                      </form>
                     </div>
                   </div>
 

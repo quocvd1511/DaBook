@@ -102,6 +102,19 @@ class Admin_Control{
             })
     }
 
+    chitietSach_save(req,res,next)
+    {
+        const book=new books(req.body)
+        book.save()
+        res.redirect('/admin/quan-ly-sach')
+    }
+    
+    chitietSach_delete(req,res,next)
+    {
+        books.deleteOne({masach: req.body.masach})
+            .then(() => res.redirect('/admin/quan-ly-sach'))
+    }
+
     //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
