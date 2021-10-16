@@ -130,7 +130,7 @@ html {
 .btn:hover{
     background-color: rgba(0,0,0,0.2);
 }
-.btn .btn--primary{
+.btn--primary{
     color: var(--white-color);
     background-color: var(--blue-color);
     cursor: pointer;
