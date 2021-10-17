@@ -3,7 +3,6 @@ const Schema = mogoose.Schema;
 const ObjectId=Schema.ObjectId
 
 const Book = new Schema({
-
   masach:String,
   tensach:String,
   tacgia: String,
