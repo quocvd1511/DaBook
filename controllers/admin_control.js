@@ -7,13 +7,9 @@ const {mongooseToObject} = require('../util/mongoose.js')
 class Admin_Control{
     login(req,res,next)
     {
-<<<<<<< HEAD
         console.log(req.session)
-       res.render('admin_login', {layout: 'adminlogin.handlebars'})  
-=======
-        //console.log(req.session)
        res.render('admin_login', {layout: 'admin_login.handlebars'})  
->>>>>>> a14c155c619c36104f2e3163fbdebb7a358d9e09
+        //console.log(req.session)
     }
 
     logout(req,res,next)
