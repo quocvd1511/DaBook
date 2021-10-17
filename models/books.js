@@ -19,5 +19,5 @@ const Book = new Schema({
   sodanhgia:String,
   sobinhchon:String,
   });
-  
+
 module.exports = mogoose.model('Book',Book)

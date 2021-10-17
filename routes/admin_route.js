@@ -11,7 +11,7 @@ route.post('/quan-ly-sach/them-sach/save', admin_Control.chitietSach)
 route.get('/them-sach',admin_control.Them_Sach)
 
 route.get('/quan-ly-khuyen-mai',admin_Control.Ql_KhuyenMai)
-route.get('/quan-ly-hoa-don',admin_Control.Ql_HoaDon)
+route.get('/quan-ly-don-hang',admin_Control.Ql_HoaDon)
 route.get('/quan-ly-tai-khoan',admin_Control.Ql_TaiKhoan)
 route.get('/quan-ly-sach',admin_Control.Ql_Sach)
 route.get('/logout',admin_Control.logout)

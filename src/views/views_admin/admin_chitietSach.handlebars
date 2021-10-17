@@ -1,196 +1,100 @@
-<div class="content-container">
 
-  <div class="container-fluid">
-    <div class="jumbotron mt-2">
-      <div class="row">
-        <div class="jumbotron mt-2">
-          <img src="{{books.hinhanh}}" width="500px" />
-        </div>
-        <div class="jumbotron mt-2">
-          <div class="container">
-            <p><b>Tên sách: </b>{{books.tensach}}</p>
-            <p><b>Tác giả: </b>{{books.tacgia}}</p>
-            <p><b>Thể loại: </b>{{books.theloai}}</p>
-            <p><b>Nhà Xuất bản: </b>{{books.nxb}}</p>
-            <p><b>Năm Xuất Bản: </b>{{books.namxb}}</p>
-            <p><b>Ngôn ngữ: </b>{{books.ngonngu}}</p>
-            <p><b>Hình thức: </b>{{books.hinhthuc}}</p>
-            <p><b>Giá bán: </b>{{books.giaban}}</p>
-            <p style="width: 500px;"><b>Mô tả: </b><br />{{books.mota}}</p>
+    <!-----------------------------------------------------------------------------BIẾN TẤU------------------------------------------------>
+    <div class="home-content">
+      <div class="overview-boxes">
+        <div class="container-fluid rounded" style= "background-color:white; padding-top:20px; padding-bottom:20px">
+          <div class="col">
+            <div class="row">
+               <div>
+                    <img src="{{books.hinhanh}}" style="padding-left: 10px; width: 500px"/>
+                </div>
+
+                <div style="width: 1000px;">
+                  <form method="post" action="/admin/quan-ly-sach/{{books.masach}}/update">
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Mã sách</b></label>
+                        <input type="text" class="form-control" name="masach" value="{{books.masach}}" readonly>
+                        </div>
+
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Tên sách</b></label>
+                        <input type="text" class="form-control" name="tensach" value="{{books.tensach}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Tác giả</b></label>
+                        <input type="text" class="form-control" name="tacgia" value="{{books.tacgia}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Thể loại</b></label>
+                        <input type="text" class="form-control" name="theloai" value="{{books.theloai}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Nhà xuất bản</b></label>
+                        <input type="text" class="form-control" name="nxb" value="{{books.nxb}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Năm xuất bản</b></label>
+                        <input type="text" class="form-control" name="namxb" value="{{books.namxb}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Khu vực</b></label>
+                        <input type="text" class="form-control" name="khuvuc" value="{{books.khuvuc}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Ngôn ngữ</b></label>
+                        <input type="text" class="form-control" name="ngonngu" value="{{books.ngonngu}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Link hình ảnh</b></label>
+                        <input type="text" class="form-control" name="hinhanh" value="{{books.hinhanh}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Hình thức</b></label>
+                        <input type="text" class="form-control" name="hinhthuc" value={{books.hinhthuc}}>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Giá bán</b></label>
+                        <input type="text" class="form-control" name="giaban" value="{{books.giaban}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Số lượng tồn</b></label>
+                        <input type="number" class="form-control" name="soluongton" value="{{books.soluongton}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleFormControlTextarea1"><b>Mô tả</b></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="mota">{{books.mota}}</textarea>
+                        </div>
+                      
+                      <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
+                  </form>
+                </div>
+            </div>
+              
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+        
+              
+                
 
-<div class="content-container">
+                 
+    <!-----------------------------------------------------------------------------BIẾN TẤU------------------------------------------------>
+    
+  </section>
 
-  <div class="container-fluid">
-    <div class="jumbotron mt-2">
-      <form method="post" action="/admin/quan-ly-sach/{{books._id}}/update">
-      <div class="form-group">
-          <label for="exampleInputEmail1">_id</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            value="{{books._id}}"
-            name="_id"
-          />
-        <div class="form-group">
-          <label for="exampleInputEmail1">Mã Sách</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            value="{{books.masach}}"
-            name="masach"
-          />
-        <div class="form-group">
-          <label for="exampleInputEmail1">Tên Sách</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            value="{{books.tensach}}"
-            name="tensach"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Tác Giả</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Tác Giả"
-            value="{{books.tacgia}}"
-            name="tacgia"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Thể Loại</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Thể Loại"
-            value="{{books.theloai}}"
-            name="theloai"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Nhà Sản Xuất</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Nhà Sản Xuất"
-            value="{{books.nxb}}"
-            name="nxb"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Năm Xuất Bản</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Năm Xuất Bản"
-            value="{{books.namxb}}"
-            name="namxb"
-          />
-          </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Khu Vực</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Khu Vực"
-            name="khuvuc"
-            value="{{books.khuvuc}}"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Ngôn Ngữ</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Ngôn Ngữ"
-            value="{{books.ngonngu}}"
-            name="ngonngu"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Link hình ảnh</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Mô Tả"
-            value="{{books.hinhanh}}"
-            name="hinhanh"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Hình Thức</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Mô Tả"
-            value="{{books.hinhthuc}}"
-            name="hinhthuc"
-          />
-        </div>
-        <div class="row mb-4">
-          <div class="col">
-            <div class="form-group">
-              <label for="exampleInputPassword1">Giá</label>
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Giá"
-                value="{{books.giaban}}"
-                name="giaban"
-              />
-            </div>
-          </div>
+</body>
+</html>
 
-          <div class="col">
-            <div class="form-group">
-              <label for="exampleInputPassword1">Số Lượng Tồn</label>
-              <input
-                type="number"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Số lượng tồn"
-                value="{{books.soluongton}}"
-                name="soluongton"
-              />
-            </div>
-          </div>
-
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Mô Tả</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Mô Tả"
-            value="{{books.mota}}"
-            name="mota"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Cập nhật</button>
-      </form>
-    </div>
-  </div>
-</div>
