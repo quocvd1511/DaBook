@@ -8,7 +8,7 @@ class Admin_Control{
     login(req,res,next)
     {
         //console.log(req.session)
-       res.render('admin_login', {layout: 'adminlogin.handlebars'})  
+       res.render('admin_login', {layout: 'admin_login.handlebars'})  
     }
 
     logout(req,res,next)

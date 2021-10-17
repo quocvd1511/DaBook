@@ -1,35 +1,122 @@
-<div class="wrapper">
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Custom styles-->
-        <link rel="stylesheet" type="text/css" href="/admin_styles/assets/css/admin_styles.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <title>DaBook</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="/admin_styles/assets/css/admin_styles.css">
+    <meta charset="UTF-8">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaBook</title>
+</head>
 
     <body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx'><img src="/admin_styles/assets/icon/admin.png"></i>
+      <span class="logo_name">DaBook Management</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="/admin/quan-ly-sach">
+            <i class='bx' ><img src="/admin_styles/assets/icon/books.png"></i>
+            <span class="links_name">Sách</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/quan-ly-tai-khoan">
+            <i class='bx'><img src="/admin_styles/assets/icon/useraccount.png"></i>
+            <span class="links_name">Tài khoản người dùng</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/quan-ly-don-hang">
+            <i class='bx' ><img src="/admin_styles/assets/icon/receipt.png"></i>
+            <span class="links_name">Đơn hàng</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/quan-ly-khuyen-mai">
+            <i class='bx' > <img src="/admin_styles/assets/icon/khuyenmai.png"></i>
+            <span class="links_name">Khuyến mãi</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/quan-ly-van-chuyen">
+            <i class='bx' ><img src="/admin_styles/assets/icon/deli.png"></i>
+            <span class="links_name">Vận chuyển</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx' ><img src="/admin_styles/assets/icon/thongke.png"></i>
+            <span class="links_name">Thống kê</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard"></span>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <i class='bx bx-search' ></i>
+      </div>
+      <div class="profile-details">
+        <!--<img src="images/profile.jpg" alt="">-->
+        <span class="admin_name">Prem Shahi</span>
+        <i class='bx bx-chevron-down' ></i>
+      </div>
+    </nav>
+    <!-----------------------------------------------------------------------------BIẾN TẤU------------------------------------------------>
+    <div class="home-content">
+        <div class="overview-boxes">
+        {{{body}}}              
+        </div>
+    </div>
+    <!-----------------------------------------------------------------------------BIẾN TẤU------------------------------------------------>
+    
+  </section>
 
-        {{>header}}
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".sidebarBtn");
+  sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+  }else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+  }
+ </script>
 
-        {{{body}}}
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
-
-    </body>
-
-    </html>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-</div>
+</html>
