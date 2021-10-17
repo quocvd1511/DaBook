@@ -7,7 +7,7 @@ const {mongooseToObject} = require('../util/mongoose.js')
 class Admin_Control{
     login(req,res,next)
     {
-        //console.log(req.session)
+        console.log(req.session)
        res.render('admin_login', {layout: 'adminlogin.handlebars'})  
     }
 
@@ -84,7 +84,7 @@ class Admin_Control{
        // console.log(req.session.username)
        if(!req.session.isAuth) res.redirect('/admin')
        else res.render('admin_qlKhuyenMai',{layout: 'admin.handlebars', admin_account: req.session.username})
-    }
+    }   
 
     Ql_HoaDon(req,res,next)
     {
