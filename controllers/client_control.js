@@ -11,10 +11,12 @@ class Client_Control
             .then(books => 
                 {
                     books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client.handlebars', books})
+                    res.render('home_client.handlebars',{layout:'client.handlebars',books
+                    });
                 })
             .catch(next)
     }
 }
+//layout:'client.handlebars', 
 
 module.exports = new Client_Control

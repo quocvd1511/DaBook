@@ -3,13 +3,11 @@
   --white-color: #fff;
   --black-color: #000;
   --text-color: #333;
-  --blue-color: #1a94ff;
+  --blue-color: #1A94FF;
   --header-height: 120px;
-  --navbar-height: 34px;
-  --header-with-search-height: calc(
-    var(--header-height) - var(--navbar-height)
-  );
-  --boder-color: #afadad;
+  --navbar-height:34px;
+  --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
+  --boder-color: #AFADAD;
 }
 
 * {
@@ -84,7 +82,7 @@ html {
   right: 0;
   bottom: 0;
   left: 0;
-  display: flex;
+  display: none;
   animation: fadeIn linear 0.1s;
 }
 
@@ -106,9 +104,13 @@ html {
   animation: growth linear 0.1s;
 }
 
+.open {
+  display: flex;
+}
+
 /*Button style*/
 .btn {
-  min-width: 230px;
+  min-width: 180px;
   max-width: 230px;
   height: 40px;
   text-decoration: none;
@@ -126,7 +128,7 @@ html {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.btn .btn--primary {
+.btn--primary {
   color: var(--white-color);
   background-color: var(--blue-color);
   cursor: pointer;
