@@ -1,8 +1,44 @@
-<div class="content-container" style="width: 1000px;">
+<div class="content-container">
 
-    <div class="container-fluid">
+  <div class="container-fluid">
     <div class="jumbotron mt-2">
-      <form method="post" action="/admin/quan-ly-sach/them-sach/save">
+      <div class="row">
+        <div class="jumbotron mt-2">
+          <img src="{{books.hinhanh}}" width="500px" />
+        </div>
+        <div class="jumbotron mt-2">
+          <div class="container">
+            <p><b>Tên sách: </b>{{books.tensach}}</p>
+            <p><b>Tác giả: </b>{{books.tacgia}}</p>
+            <p><b>Thể loại: </b>{{books.theloai}}</p>
+            <p><b>Nhà Xuất bản: </b>{{books.nxb}}</p>
+            <p><b>Năm Xuất Bản: </b>{{books.namxb}}</p>
+            <p><b>Ngôn ngữ: </b>{{books.ngonngu}}</p>
+            <p><b>Hình thức: </b>{{books.hinhthuc}}</p>
+            <p><b>Giá bán: </b>{{books.giaban}}</p>
+            <p style="width: 500px;"><b>Mô tả: </b><br />{{books.mota}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-container">
+
+  <div class="container-fluid">
+    <div class="jumbotron mt-2">
+      <form method="post" action="/admin/quan-ly-sach/{{books._id}}/update">
+      <div class="form-group">
+          <label for="exampleInputEmail1">_id</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            value="{{books._id}}"
+            name="_id"
+          />
         <div class="form-group">
           <label for="exampleInputEmail1">Mã Sách</label>
           <input
@@ -153,7 +189,7 @@
             name="mota"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Thêm Sách</button>
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
       </form>
     </div>
   </div>

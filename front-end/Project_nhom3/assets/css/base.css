@@ -18,7 +18,8 @@
 html {
     font-size: 62.5%;
     line-height: 1.6rem;
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
 }
 
@@ -84,7 +85,7 @@ html {
     right: 0;
     bottom: 0;
     left: 0;
-    display: flex;
+    display: none;
     animation: fadeIn linear 0.1s;
 }
 
@@ -106,9 +107,13 @@ html {
     animation: growth linear 0.1s;
 }
 
+.open {
+    display: flex;
+}
+
 /*Button style*/
 .btn{
-    min-width: 230px;
+    min-width: 180px;
     max-width: 230px;
     height: 40px;
     text-decoration: none;
@@ -125,13 +130,16 @@ html {
 .btn:hover{
     background-color: rgba(0,0,0,0.2);
 }
-.btn.btn--primary{
+.btn--primary{
     color: var(--white-color);
     background-color: var(--blue-color);
+    cursor: pointer;
 }
 
-.btn.btn--disable{
+.btn .btn--disable{
     cursor: default;
     background-color: rgba(0,0,0,0.2);
 }
+
+
 
