@@ -85,18 +85,21 @@ class Admin_Control{
     chitietSach_update(req,res,next)
     {
         books.updateOne({masach:req.body.masach}, {
+            khuvuc: req.body.khuvuc,
+            nhom: req.boy.nhom,
+            theloai: req.body.theloai,
+            danhsach: req.body.danhsach,
+            hinhanh: req.body.hinhanh,
             tensach: req.body.tensach,
             tacgia: req.body.tacgia,
-            theloai: req.body.theloai,
             nxb: req.body.nxb,
             namxb: req.body.namxb,
-            khuvuc: req.body.khuvuc,
-            ngonngu: req.body.ngonngu,
-            hinhanh: req.body.hinhanh,
             hinhthuc: req.body.hinhthuc,
+            mota: req.body.mota,
             giaban: req.body.giaban,
-            soluongton: req.body.soluongton,
-            mota: req.body.mota})
+            giamgia:req.body.giamgia,
+            sodanhgia: req.body.sodanhgia,
+            sobinhchon: req.body.sobinhchon })
             .then(() => 
             {
                 res.redirect('/admin/quan-ly-sach/'+req.body.masach)

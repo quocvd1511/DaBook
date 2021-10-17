@@ -3,14 +3,9 @@ const Schema = mogoose.Schema;
 const ObjectId=Schema.ObjectId
 
 const Book = new Schema({
-<<<<<<< HEAD
   masach:String,
-  tensach:String,
-  tacgia: String,
-=======
-  sachtrongnuoc:String,
+  khuvuc:String,
   nhom:String,
->>>>>>> 5f5896b7cd4a7c526a8d230ce59c560bf905a40d
   theloai:String,
   danhsach:String,  
   hinhanh:String,
@@ -24,6 +19,8 @@ const Book = new Schema({
   giamgia:String,
   sodanhgia:String,
   sobinhchon:String,
+  soluongton:String,
+  ngonngu: String,
   });
 
 module.exports = mogoose.model('Book',Book)

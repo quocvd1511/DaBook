@@ -41,11 +41,6 @@
                         </div>
 
                         <div class="form-group">
-                        <label for="exampleInputEmail1"><b>Khu vực</b></label>
-                        <input type="text" class="form-control" name="khuvuc" value="{{books.khuvuc}}">
-                        </div>
-
-                        <div class="form-group">
                         <label for="exampleInputEmail1"><b>Ngôn ngữ</b></label>
                         <input type="text" class="form-control" name="ngonngu" value="{{books.ngonngu}}">
                         </div>
@@ -53,6 +48,11 @@
                         <div class="form-group">
                         <label for="exampleInputEmail1"><b>Link hình ảnh</b></label>
                         <input type="text" class="form-control" name="hinhanh" value="{{books.hinhanh}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleFormControlTextarea1"><b>Mô tả</b></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" name="mota">{{books.mota}}</textarea>
                         </div>
 
                         <div class="form-group">
@@ -66,15 +66,36 @@
                         </div>
 
                         <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Giảm giá</b></label>
+                        <input type="text" class="form-control" name="giamgia" value="{{books.giamgia}}">
+                        </div>
+
+                        <div class="form-group">
                         <label for="exampleInputEmail1"><b>Số lượng tồn</b></label>
                         <input type="number" class="form-control" name="soluongton" value="{{books.soluongton}}">
                         </div>
 
-                        <div class="form-group">
-                        <label for="exampleFormControlTextarea1"><b>Mô tả</b></label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="mota">{{books.mota}}</textarea>
-                        </div>
                       
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Nhóm</b></label>
+                        <input type="text" class="form-control" name="nhom" value="{{books.nhom}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Khu Vực</b></label>
+                        <input type="text" class="form-control" name="khuvuc" value="{{books.khuvuc}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Số Đánh Giá</b></label>
+                        <input type="text" class="form-control" name="sodanhgia" value="{{books.sodanhgia}}">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="exampleInputEmail1"><b>Số Bình Chọn</b></label>
+                        <input type="text" class="form-control" name="sobinhchon" value="{{books.binhchon}}">
+                        </div>
+
                       <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
                   </form>
                 </div>
