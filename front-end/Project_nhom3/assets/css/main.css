@@ -798,6 +798,7 @@ footer p {
     font-size: 2rem;
     font-weight: 500 ; 
     color: var(--blue-color);
+    margin-top: 24px;
     margin-bottom: 12px;
 }
 
