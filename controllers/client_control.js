@@ -16,6 +16,21 @@ class Client_Control
                 })
             .catch(next)
     }
+
+    search(req,res,next)
+    {   
+         // lấy giá trị của key name trong query parameters gửi lên
+            books.find({ $or:[
+                {'tacgia':{$in: [req.query.name]}},
+                {'tensach':{$in: [req.query.name]}}
+            ]})
+            .then(books => 
+                {
+                    books=books.map(course => course.toObject())
+                    res.render('search_client.handlebars',{layout:'search.handlebars',books});
+                })
+            .catch(next)
+    }
 }
 //layout:'client.handlebars', 
 

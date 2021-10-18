@@ -21,9 +21,6 @@ app.set('view engine','handlebars')
 app.set('views',[__dirname + '\\src\\views\\views_admin',__dirname + '\\src\\views\\views_client',__dirname + '\\src\\views\\views_delivery'])
 
 
-
-
-
 app.use(express.static(path.join(__dirname,'src\\public')))
 
 
