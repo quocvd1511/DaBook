@@ -119,6 +119,18 @@ html {
     opacity: 0.8;
 }
 
+.modals-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #ccc;
+    padding: 12px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
 .open {
     display: flex;
 }

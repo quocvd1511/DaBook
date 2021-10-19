@@ -84,6 +84,11 @@
     margin-top: 8px;
 }
 
+.header__cart-icon:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .header__search-input {
     flex: 1;
     height: 100%;
@@ -863,6 +868,12 @@ footer p {
 
 .btn__login {
     width: 215px;
+    background-color: var(--blue-color);
+    color: #fff;
+}
+
+.btn__signin {
+    width: 190px;
     background-color: var(--blue-color);
     color: #fff;
 }
