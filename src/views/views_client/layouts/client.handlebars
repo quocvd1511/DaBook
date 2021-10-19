@@ -1,22 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/client_styles/assets/css/client_styles.css">
-    <link rel="stylesheet" href="/client_styles/assets/fonts/themify-icons.css">
-    <link rel="stylesheet"
-        href="/client_styles/assets/fonts/fontawesome-free-5.15.4/fontawesome-free-5.15.4-web/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-    <title>Client Dabook</title>
-</head>
-
-<body>
-    {{{body}}}
-        
-    {{>footer}}
-</body>
-</html>
+{{{body}}}
+<script>
+  const login = document.querySelector('.open-login') const sign_up
+  =document.querySelector('.open-signup') const cart
+  =document.querySelector('.header__cart-icon') const notify
+  =document.querySelector('.open-login-noti') const modal
+  =document.querySelector('.modal') const modals
+  =document.querySelector('.modal-logup') const modalClose
+  =document.querySelector('.modal-close') const modalsClose
+  =document.querySelector('.modals-close') function show() {
+  modal.classList.add('open') } function shows() { modals.classList.add('open')
+  } login.addEventListener('click', show) sign_up.addEventListener('click',
+  shows) cart.addEventListener('click',show) notify.addEventListener('click',
+  show) function hideshow() { modal.classList.remove('open') }
+  modalClose.addEventListener('click', hideshow) function hideshows() {
+  modals.classList.remove('open') } modalsClose.addEventListener('click',
+  hideshows) var
+  li=document.getElementsByClassName('header__search-option-item')
+  li[0].addEventListener('click',l0_click)
+  li[1].addEventListener('click',l1_click) function l0_click(){
+  li[0].classList.add('header__search-option-item--active')
+  li[1].classList.remove('header__search-option-item--active') } function
+  l1_click(){ li[1].classList.add('header__search-option-item--active')
+  li[0].classList.remove('header__search-option-item--active') }
+</script>

@@ -3,11 +3,13 @@
   --white-color: #fff;
   --black-color: #000;
   --text-color: #333;
-  --blue-color: #1A94FF;
+  --blue-color: #1a94ff;
   --header-height: 120px;
-  --navbar-height:34px;
-  --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
-  --boder-color: #AFADAD;
+  --navbar-height: 34px;
+  --header-with-search-height: calc(
+    var(--header-height) - var(--navbar-height)
+  );
+  --boder-color: #afadad;
 }
 
 * {
@@ -102,6 +104,30 @@ html {
   z-index: 1;
   border-radius: 5px;
   animation: growth linear 0.1s;
+}
+
+.modal-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #ccc;
+  padding: 12px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.modals-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #ccc;
+  padding: 12px;
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .open {
