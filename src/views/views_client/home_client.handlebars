@@ -88,10 +88,10 @@
           </nav>
 
           <!-- header-with-search -->
-          <form> 
+          <form method="GET" action="/search"> 
           <div class="header-with-search">
             <div class="header__logo">
-              <a href="#" class="header__logo-link">
+              <a href="/" class="header__logo-link">
                 <img
                   class="header__logo-img"
                   src="client_styles/assets/img/logo.png"
@@ -147,16 +147,16 @@
 
                 <ul class="category-list">
                   <li class="category-item category-item--active">
-                    <a href="" class="category-item__link">Viễn tưởng</a>
+                    <a href="" class="category-item__link">Giả tưởng</a>
                   </li>
                   <li class="category-item">
                     <a href="" class="category-item__link">Phiêu lưu</a>
                   </li>
                   <li class="category-item">
-                    <a href="" class="category-item__link">Lãng mạn</a>
+                    <a href="" class="category-item__link">Ngôn tình</a>
                   </li>
                   <li class="category-item">
-                    <a href="" class="category-item__link">Bí ẩn</a>
+                    <a href="" class="category-item__link">Huyền bí</a>
                   </li>
                   <li class="category-item">
                     <a href="" class="category-item__link">Kinh dị</a>
@@ -165,7 +165,7 @@
                     <a href="" class="category-item__link">Trinh thám</a>
                   </li>
                   <li class="category-item">
-                    <a href="" class="category-item__link">Tâm linh</a>
+                    <a href="" class="category-item__link">Du ký</a>
                   </li>
                   <li class="category-item">
                     <a href="" class="category-item__link">Lịch sử viễn tưởng</a>
@@ -174,13 +174,13 @@
                     <a href="" class="category-item__link">Khoa học viễn tưởng</a>
                   </li>
                   <li class="category-item">
-                    <a href="" class="category-item__link">Hồi ký</a>
+                    <a href="" class="category-item__link">Tiểu thuyết</a>
                   </li>
                   <li class="category-item">
                     <a href="" class="category-item__link">Nấu ăn</a>
                   </li>
                   <li class="category-item">
-                    <a href="" class="category-item__link">Lãng mạn</a>
+                    <a href="" class="category-item__link">12 cung hoàng đạo</a>
                   </li>
                   <li class="category-item">
                     <a href="" class="category-item__link">Nghệ thuật</a>
@@ -212,10 +212,22 @@
                   <li class="category-item">
                     <a href="" class="category-item__link">Sách cho trẻ em</a>
                   </li>
+                   <li class="category-item">
+                    <a href="" class="category-item__link">Tuổi teen</a>
+                  </li>
 
                 </ul>
               </nav>
 
+                {{!-- Tìm kiếm theo thể loại --}}
+                <script>
+                  var list = document.querySelectorAll('.category-item__link');
+                  Array.prototype.forEach.call(list, function (element,index) {
+                    var value = element.innerHTML;
+                    element.href = "/" + value;
+                  });
+
+                </script>
               <div class="card">
                 <article class="card-group-item">
                   <header class="card-header">
