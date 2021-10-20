@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/client_styles/assets/css/client_styles.css">
-    <link rel="stylesheet" href="/client_styles/assets/fonts/themify-icons.css">
-    <link rel="stylesheet"
-        href="/client_styles/assets/fonts/fontawesome-free-5.15.4/fontawesome-free-5.15.4-web/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>DaBook Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-5.15.4/fontawesome-free-5.15.4-web/css/all.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./Dangky.html">
+    <!-- <link rel="stylesheet" href=".//Dangnhap.html"> -->
+    <script src="./home.js">
+    </script>
 
 </head>
-
 <body>
+    
     <div class="app">
         <header class="header">
             <div class="grid">
@@ -27,12 +30,28 @@
                             Vào cửa hàng trên ứng dụng DaBook
                         </li>
                     </ul>
+                   
                     <ul class="header__navbar-list">
+                        <div class="header__language-select">
+                            <span class="header__language-select-label">Ngôn ngữ</span>
+                            <i class="header__language-select-icon ti-angle-down"></i>
+                            <ul class="header__language-option">
+                                <li class="header__language-option-item header__language-option-item--active">
+                                    
+                                    <span>Việt Nam</span>
+                                    <i class=" ti-check"></i>
+                                </li>
+                                <li class="header__language-option-item">
+                                    <span>English</span>
+                                    <i class=" ti-check"></i>
+                                </li>
+                            </ul>
+                        </div>
                         <li class="header__navbar-item">
-                            <a href="" class="header__navbar-item--link">
-                                <i class="header__navbar-icon ti-bell"></i>
+                            <div href="" class="header__navbar-item--link open-login-noti">
+                                <i class="header__navbar-icon ti-bell "></i>
                                 Thông báo
-                            </a>
+                            </div>
                         </li>
                         <li class="header__navbar-item">
                             <a href="" class="header__navbar-item--link">
@@ -41,23 +60,120 @@
                             </a>
                         </li>
                         <li class="header__navbar-item header__navbar-item--separate">
-                            <a href="" class="header__navbar-item--link">
+                            <div href="" class="header__navbar-item--link open-login">
                                 Đăng nhập
-                            </a>
+                            </div>
                         </li>
                         <li class="header__navbar-item">
-                            <a href="" class="header__navbar-item--link">
+                            <div href="" class="header__navbar-item--link open-signup">
                                 Đăng ký
-                            </a>
+                            </div>
                         </li>
-                    </ul>
+                       </ul>
                 </nav>
+
+                <!-- log in -->
+                <div class="modal modal__login">
+                    <div class="modal__overlay"></div>
+                    <div class="modal__body">              
+                        <!--login form-->
+                        <div class="auth-form">
+                            <div class="auth-form__container">
+                                <div class="auth-form__header">
+                                    <h3 class="auth-form__heading">ĐĂNG NHẬP</h3>                    
+                                </div>
+                                <div class="modal-close">
+                                    <i class="ti-close"></i>
+                                </div>
+            
+                                <div class="auth-form__form">
+                                    <div class="auth-form__group">
+                                        <label class="auth-form__label">Tên tài khoản/Email</label>
+                                        <input type="text" class="auth-form__input" placeholder="Nhập tên tài khoản hoặc Email">
+                                    </div>
+                                    <div class="auth-form__group">
+                                        <label class="auth-form__label">Mật khẩu</label>
+                                        <input type="text" class="auth-form__input" placeholder="Nhập mật khẩu">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customControlInline" style="margin-top: 2px;">
+                                        <label class="custom-control-label" for="customControlInline">Remember me</label>
+                                    </div>
+                                </div>
+            
+                                <div class="auth-form__controls">
+                                    <button class="btn btn--primary btn__login">Đăng nhập</button>
+                                </div>
+            
+                                <div class="auth-form__socials">
+                                    <a href="" class="auth-form__socials--fb btn btn--with-icon">
+                                        <i class="auth-form__socials-icon fab fa-facebook-square"></i>
+                                        <span>Đăng nhập với Facebook</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                
+                <!-- Sign up -->
+                <div class="modal modal-logup">
+                    <div class="modal__overlay"></div>
+            
+                    <div class="modal__body">              
+                        <!--register form-->
+                        <div class="auth-form">
+                            <div class="auth-form__container">
+                                <div class="auth-form__header">
+                                    <h3 class="auth-form__heading">ĐĂNG KÝ</h3>
+                                </div>
+                                <div class="modals-close">
+                                    <i class="ti-close"></i>
+                                </div>
+            
+                                <div class="auth-form__form">
+                                    <div class="auth-form__group">
+                                        <label class="auth-form__label">Tên tài khoản</label>
+                                        <input type="text" class="auth-form__input" placeholder="Nhập tên tài khoản">
+                                    </div>
+                                    <div class="auth-form__group">
+                                        <label class="auth-form__label">Email</label>
+                                        <input type="text" class="auth-form__input" placeholder="Nhập Email">
+                                    </div>
+                                    <div class="auth-form__group">
+                                        <label class="auth-form__label">Mật khẩu</label>
+                                        <input type="text" class="auth-form__input" placeholder="Nhập mật khẩu">
+                                    </div>
+                                    <div class="auth-form__group">
+                                        <label class="auth-form__label">Xác nhận mật khẩu</label>
+                                        <input type="text" class="auth-form__input" placeholder="Nhập lại mật khẩu">
+                                    </div>
+                                </div>
+            
+                                <div class="auth-form__controls">
+                                    <button class="btn btn--primary btn__signin">Đăng ký</button>
+                                </div>
+            
+                                <div class="auth-form__socials">
+                                    <a href="" class="auth-form__socials--fb btn btn--with-icon">
+                                        <i class="auth-form__socials-icon fab fa-facebook-square"></i>
+                                        <span class="auth-form__socials-title">
+                                            Kết nối với Facebook
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
 
                 <!-- header-with-search -->
                 <div class="header-with-search">
                     <div class="header__logo">
                         <a href="#" class="header__logo-link">
-                            <img class="header__logo-img" src="/client_styles/assets/img/logo.png" alt="">
+                            <img class="header__logo-img" src="./assets/img/logo.png" alt="">
                         </a>
                     </div>
 
@@ -65,16 +181,16 @@
                         <input type="text" class="header__search-input" placeholder="Nhập sản phẩm muốn tìm kiếm">
                         <!-- Select -->
                         <div class="header__search-select">
-                            <span class="header__search-select-label">Tên sách</span>
+                            <span class="header__search-select-label">Tìm kiếm theo</span>
                             <i class="header__search-select-icon ti-angle-down"></i>
                             <ul class="header__search-option">
-                                <li class="header__search-option-item header__search-option-item--active">
-                                    <span>Tên sách</span>
-                                    <i class=" ti-check"></i>
+                                <li class="header__search-option-item">
+                                        <span>Tên sách</span>
+                                        <i class=" ti-check"></i>
                                 </li>
                                 <li class="header__search-option-item">
-                                    <span>Tên tác giả</span>
-                                    <i class=" ti-check"></i>
+                                        <span>Tên tác giả</span>
+                                        <i class=" ti-check"></i>
                                 </li>
                             </ul>
                         </div>
@@ -91,7 +207,6 @@
                 </div>
             </div>
         </header>
-
         <div class="container">
 
         </div>
@@ -100,6 +215,63 @@
 
         </footer>
     </div>
+
+      <!-- Js đăng nhập, đăng  ký -->
+    <script>
+        const login = document.querySelector('.open-login')
+        const sign_up = document.querySelector('.open-signup')
+        const cart = document.querySelector('.header__cart-icon')
+        const notify = document.querySelector('.open-login-noti')
+        const modal = document.querySelector('.modal')
+        const modals = document.querySelector('.modal-logup')
+        const modalClose = document.querySelector('.modal-close')
+        const modalsClose = document.querySelector('.modals-close')
+        
+        function show() {
+            modal.classList.add('open')
+        }
+
+        function shows() {
+            modals.classList.add('open')
+        }
+
+        login.addEventListener('click', show)
+        sign_up.addEventListener('click', shows)
+        cart.addEventListener('click', show)
+        notify.addEventListener('click', show)
+
+        function hideshow() {
+            modal.classList.remove('open')
+        }
+        modalClose.addEventListener('click', hideshow)
+
+        function hideshows() {
+            modals.classList.remove('open')
+        }
+        modalsClose.addEventListener('click', hideshows)
+
+    </script>
+
+    <!-- Js tm kiếm  theo -->
+    <script>
+
+        var li=document.getElementsByClassName('header__search-option-item')
+
+        li[0].addEventListener('click',l0_click)
+
+        li[1].addEventListener('click',l1_click)
+
+        function l0_click(){
+                li[0].classList.add('header__search-option-item--active')
+                li[1].classList.remove('header__search-option-item--active')
+        }      
+
+        function l1_click(){
+                li[1].classList.add('header__search-option-item--active')
+                li[0].classList.remove('header__search-option-item--active')
+        }    
+
+    </script>
 </body>
 
 </html>
