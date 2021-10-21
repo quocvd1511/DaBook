@@ -47,23 +47,147 @@ class Client_Control
             .catch(next)
     }
     
-    // Tìm kiếm theo bộ lọc
-    search(req,res,next)
+    // Tìm kiếm theo bộ lọc {$lt: req.query.giaban}
+    searchBL(req,res,next)
     {   
-         // lấy giá trị của key name trong query parameters gửi lên
-            books.find({ $or :[
-                { 'giaban' : {'$regex' : req.query.name , '$options' : 'i'}},
-                { 'nxb' :  {'$regex' : req.query.name , '$options' : 'i'}}
-               // { 'ngonngu' :  {'$regex' : req.query.name , '$options' : 'i'}}
+       
+       if(req.query.giaban === "50000") {
+        books.find({$and :[
+            { giaban : {
+                $lt: "50.000"
+            }},
+           { nxb :  { $in: req.query.nxb}}
             ]})
+         .then(books => 
+        {
+            books=books.map(course => course.toObject())
+            res.render('home_client.handlebars',{layout:'client.handlebars',books});
+        })
+        .catch(next)
+        } else if(req.query.giaban === "100000") {
+                books.find({$and :[
+                     { giaban : {
+                         $gte:"50.000",
+                         $lt: "100.000"
+                     }},
+                    { nxb :  { $in: req.query.nxb}}
+                ]})
+        .then(books => 
+        {
+            books=books.map(course => course.toObject())
+            res.render('home_client.handlebars',{layout:'client.handlebars',books});
+        })
+            .catch(next)
+        } else if (req.query.giaban === "150000") {
+            books.find({$and :[
+             { giaban : {
+                 $gte:"100.000",
+                 $lt: "150.000"
+             }},
+              { nxb :  { $in: req.query.nxb}}
+         ]})
             .then(books => 
-                {
+             {
                     books=books.map(course => course.toObject())
-                    res.render('search_client.handlebars',{layout:'search.handlebars',books});
+                    res.render('home_client.handlebars',{layout:'client.handlebars',books});
                 })
             .catch(next)
+        } else if (req.query.giaban === "200000") {
+            books.find({$and :[
+            { giaban : {
+                 $gte:"150.000",
+                 $lt: "200.000"
+             }},
+        { nxb :  { $in: req.query.nxb}}
+         ]})
+         .then(books => 
+             {
+                 books=books.map(course => course.toObject())
+                 res.render('home_client.handlebars',{layout:'client.handlebars',books});
+              })
+            .catch(next)
+        } else {
+            books.find({$and :[
+             { giaban : {
+                   $gte: "200.000"
+                 }},
+                 { nxb :  { $in: req.query.nxb}}
+             ]})
+             .then(books => 
+                {
+                   books=books.map(course => course.toObject())
+                   res.render('home_client.handlebars',{layout:'client.handlebars',books});
+                 })
+            .catch(next)
+            }
     }
+
 }
 //layout:'client.handlebars', 
+// if(req.query.giaban === "50000") {
+//     books.find({giaban : "59220"})
+//     .then(books => 
+//         {
+//             books=books.map(course => course.toObject())
+//             res.render('home_client.handlebars',{layout:'client.handlebars',books});
+//         })
+//     .catch(next)
+// } else if(req.query.giaban == 100000) {
+//     books.find({$and :[
+//        { giaban : {
+//             $gte:"50.000",
+//             $lt: "100.000"
+//         }},
+//         { nxb :  { $in: req.query.nxb}}
+//     ]})
+//     .then(books => 
+//         {
+//             books=books.map(course => course.toObject())
+//             res.render('home_client.handlebars',{layout:'client.handlebars',books});
+//         })
+//     .catch(next)
+//   } else if (req.query.giaban == "150000") {
+//     books.find({$and :[
+//        { giaban : {
+//             $gte:"100.000",
+//             $lt: "150.000"
+//         }},
+//         { nxb :  { $in: req.query.nxb}}
+//     ]})
+//     .then(books => 
+//         {
+//             books=books.map(course => course.toObject())
+//             res.render('home_client.handlebars',{layout:'client.handlebars',books});
+//         })
+//     .catch(next)
+//   } else if (req.query.giaban == 200000) {
+//     books.find({$and :[
+//        { giaban : {
+//             $gte:"150.000",
+//             $lt: "200.000"
+//         }},
+//         { nxb :  { $in: req.query.nxb}}
+//     ]})
+//     .then(books => 
+//         {
+//             books=books.map(course => course.toObject())
+//             res.render('home_client.handlebars',{layout:'client.handlebars',books});
+//         })
+//     .catch(next)
+//   } else {
+//     books.find({$and :[
+//         { giaban : {
+//              $gte: "200.000"
+//          }},
+//          { nxb :  { $in: req.query.nxb}}
+//      ]})
+//      .then(books => 
+//          {
+//              books=books.map(course => course.toObject())
+//              res.render('home_client.handlebars',{layout:'client.handlebars',books});
+//          })
+//      .catch(next)
+//   }
+// }
 
 module.exports = new Client_Control

@@ -86,7 +86,7 @@ class Admin_Control{
     {
         books.updateOne({masach:req.body.masach}, {
             khuvuc: req.body.khuvuc,
-            nhom: req.boy.nhom,
+            nhom: req.body.nhom,
             theloai: req.body.theloai,
             danhsach: req.body.danhsach,
             hinhanh: req.body.hinhanh,

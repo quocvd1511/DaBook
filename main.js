@@ -22,6 +22,7 @@ app.set('views',[__dirname + '\\src\\views\\views_admin',__dirname + '\\src\\vie
 
 
 app.use(express.static(path.join(__dirname,'src\\public')))
+// src\\public
 
 
 

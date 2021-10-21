@@ -2,13 +2,15 @@
   --white-color: #fff;
   --black-color: #000;
   --text-color: #333;
-  --blue-color: #1A94FF;
+  --blue-color: #1a94ff;
 
   --header-height: 120px;
-  --navbar-height:34px;
-  --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
+  --navbar-height: 34px;
+  --header-with-search-height: calc(
+    var(--header-height) - var(--navbar-height)
+  );
 
-  --boder-color: #AFADAD;
+  --boder-color: #afadad;
 }
 
 * {
@@ -19,7 +21,7 @@ html {
   font-size: 62.5%;
   line-height: 1.6rem;
   /* font-family: 'Roboto', sans-serif; */
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
 }
 
@@ -61,25 +63,25 @@ html {
 /* Animation */
 @keyframes fadeIn {
   from {
-      opacity: 0;
+    opacity: 0;
   }
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
-@keyframes growth{
+@keyframes growth {
   from {
-      transform: scale(var(--growth-form));
+    transform: scale(var(--growth-form));
   }
   to {
-      transform: scale(var(--growth-to));
+    transform: scale(var(--growth-to));
   }
 }
 
 /* Ý CODE KHÚC NÀY NHA */
 /*Modal*/
-.modal{
+.modal {
   position: fixed;
   top: 0;
   right: 0;
@@ -89,14 +91,14 @@ html {
   animation: fadeIn linear 0.1s;
 }
 
-.modal__overlay{
+.modal__overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
-.modal__body{
+.modal__body {
   --growth-from: 0.7;
   --growth-to: 1;
   background-color: var(--white-color);
@@ -107,12 +109,36 @@ html {
   animation: growth linear 0.1s;
 }
 
+.modal-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #ccc;
+  padding: 12px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.modals-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #ccc;
+  padding: 12px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .open {
   display: flex;
 }
 
 /*Button style*/
-.btn{
+.btn {
   min-width: 180px;
   max-width: 230px;
   height: 40px;
@@ -127,19 +153,16 @@ html {
   justify-content: center;
 }
 
-.btn:hover{
-  background-color: rgba(0,0,0,0.2);
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
-.btn--primary{
+.btn--primary {
   color: var(--white-color);
   background-color: var(--blue-color);
   cursor: pointer;
 }
 
-.btn .btn--disable{
+.btn .btn--disable {
   cursor: default;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
-
-
-
