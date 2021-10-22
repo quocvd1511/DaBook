@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DaBook Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-5.15.4/fontawesome-free-5.15.4-web/css/all.min.css">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./Dangky.html">
     <!-- <link rel="stylesheet" href=".//Dangnhap.html"> -->
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 
 </head>
+
 <body>
-    
+
     <div class="app">
         <header class="header">
             <div class="grid">
@@ -31,14 +39,14 @@
                             Vào cửa hàng trên ứng dụng DaBook
                         </li>
                     </ul>
-                   
+
                     <ul class="header__navbar-list">
                         <div class="header__language-select">
                             <span class="header__language-select-label">Ngôn ngữ</span>
                             <i class="header__language-select-icon ti-angle-down"></i>
                             <ul class="header__language-option">
                                 <li class="header__language-option-item header__language-option-item--active">
-                                    
+
                                     <span>Việt Nam</span>
                                     <i class=" ti-check"></i>
                                 </li>
@@ -70,27 +78,28 @@
                                 Đăng ký
                             </div>
                         </li>
-                       </ul>
+                    </ul>
                 </nav>
 
                 <!-- log in -->
                 <div class="modal modal__login">
                     <div class="modal__overlay"></div>
-                    <div class="modal__body">              
+                    <div class="modal__body">
                         <!--login form-->
                         <div class="auth-form">
                             <div class="auth-form__container">
                                 <div class="auth-form__header">
-                                    <h3 class="auth-form__heading">ĐĂNG NHẬP</h3>                    
+                                    <h3 class="auth-form__heading">ĐĂNG NHẬP</h3>
                                 </div>
                                 <div class="modal-close">
                                     <i class="ti-close"></i>
                                 </div>
-            
+
                                 <div class="auth-form__form">
                                     <div class="auth-form__group">
                                         <label class="auth-form__label">Tên tài khoản/Email</label>
-                                        <input type="text" class="auth-form__input" placeholder="Nhập tên tài khoản hoặc Email">
+                                        <input type="text" class="auth-form__input"
+                                            placeholder="Nhập tên tài khoản hoặc Email">
                                     </div>
                                     <div class="auth-form__group">
                                         <label class="auth-form__label">Mật khẩu</label>
@@ -99,15 +108,17 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkswiper-slide box">
-                                        <input type="checkswiper-slide box" class="custom-control-input" id="customControlInline" style="margin-top: 2px;">
-                                        <label class="custom-control-label" for="customControlInline">Remember me</label>
+                                        <input type="checkswiper-slide box" class="custom-control-input"
+                                            id="customControlInline" style="margin-top: 2px;">
+                                        <label class="custom-control-label" for="customControlInline">Remember
+                                            me</label>
                                     </div>
                                 </div>
-            
+
                                 <div class="auth-form__controls">
                                     <button class="btn btn--primary btn__login">Đăng nhập</button>
                                 </div>
-            
+
                                 <div class="auth-form__socials">
                                     <a href="" class="auth-form__socials--fb btn btn--with-icon">
                                         <i class="auth-form__socials-icon fab fa-facebook-square"></i>
@@ -117,13 +128,13 @@
                             </div>
                         </div>
                     </div>
-                </div> 
-                
+                </div>
+
                 <!-- Sign up -->
                 <div class="modal modal-logup">
                     <div class="modal__overlay"></div>
-            
-                    <div class="modal__body">              
+
+                    <div class="modal__body">
                         <!--register form-->
                         <div class="auth-form">
                             <div class="auth-form__container">
@@ -133,7 +144,7 @@
                                 <div class="modals-close">
                                     <i class="ti-close"></i>
                                 </div>
-            
+
                                 <div class="auth-form__form">
                                     <div class="auth-form__group">
                                         <label class="auth-form__label">Tên tài khoản</label>
@@ -152,11 +163,11 @@
                                         <input type="text" class="auth-form__input" placeholder="Nhập lại mật khẩu">
                                     </div>
                                 </div>
-            
+
                                 <div class="auth-form__controls">
                                     <button class="btn btn--primary btn__signin">Đăng ký</button>
                                 </div>
-            
+
                                 <div class="auth-form__socials">
                                     <a href="" class="auth-form__socials--fb btn btn--with-icon">
                                         <i class="auth-form__socials-icon fab fa-facebook-square"></i>
@@ -168,7 +179,7 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
 
                 <!-- header-with-search -->
                 <div class="header-with-search">
@@ -186,12 +197,12 @@
                             <i class="header__search-select-icon ti-angle-down"></i>
                             <ul class="header__search-option">
                                 <li class="header__search-option-item">
-                                        <span>Tên sách</span>
-                                        <i class=" ti-check"></i>
+                                    <span>Tên sách</span>
+                                    <i class=" ti-check"></i>
                                 </li>
                                 <li class="header__search-option-item">
-                                        <span>Tên tác giả</span>
-                                        <i class=" ti-check"></i>
+                                    <span>Tên tác giả</span>
+                                    <i class=" ti-check"></i>
                                 </li>
                             </ul>
                         </div>
@@ -216,7 +227,7 @@
                     <div class="grid__column-2">
                         <nav class="category">
                             <h3 class="category__heading"> Danh mục</h3>
-             
+
                             <ul class="category-list">
                                 <li class="category-item category-item--active">
                                     <a href="" class="category-item__link">Viễn tưởng</a>
@@ -229,9 +240,9 @@
                                 </li>
                                 <li class="category-item">
                                     <a href="" class="category-item__link">Bí ẩn</a>
-                                 </li>
-                                 <li class="category-item">
-                                     <a href="" class="category-item__link">Kinh dị</a>
+                                </li>
+                                <li class="category-item">
+                                    <a href="" class="category-item__link">Kinh dị</a>
                                 </li>
                                 <li class="category-item">
                                     <a href="" class="category-item__link">Trinh thám</a>
@@ -284,8 +295,8 @@
                                 <li class="category-item">
                                     <a href="" class="category-item__link">Sách cho trẻ em</a>
                                 </li>
-                                
-                             </ul>
+
+                            </ul>
                         </nav>
 
                         <div class="card">
@@ -295,42 +306,42 @@
                                 </header>
                                 <div class="filter-content">
                                     <div class="card-body">
-                                    <form>
-                                        <label class="form-check">
-                                          <input class="form-check-input" type="checkswiper-slide box" value="">
-                                          <span class="form-check-label">
-                                            Dưới 50.000
-                                          </span>
-                                        </label> <!-- form-check.// -->
-                                        <label class="form-check">
-                                          <input class="form-check-input" type="checkswiper-slide box" value="">
-                                          <span class="form-check-label">
-                                            50.000 - 100.000
-                                          </span>
-                                        </label>  <!-- form-check.// -->
-                                        <label class="form-check">
-                                          <input class="form-check-input" type="checkswiper-slide box" value="">
-                                          <span class="form-check-label">
-                                            100.000 - 150.000
-                                          </span>
-                                        </label>  <!-- form-check.// -->
-                                        <label class="form-check">
-                                            <input class="form-check-input" type="checkswiper-slide box" value="">
-                                            <span class="form-check-label">
-                                              150.000 - 200.000
-                                            </span>
-                                          </label>  <!-- form-check.// -->
-                                          <label class="form-check">
-                                            <input class="form-check-input" type="checkswiper-slide box" value="">
-                                            <span class="form-check-label">
-                                              Trên 200.000
-                                            </span>
-                                          </label>  <!-- form-check.// -->
-                                    </form>
-                        
+                                        <form>
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkswiper-slide box" value="">
+                                                <span class="form-check-label">
+                                                    Dưới 50.000
+                                                </span>
+                                            </label> <!-- form-check.// -->
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkswiper-slide box" value="">
+                                                <span class="form-check-label">
+                                                    50.000 - 100.000
+                                                </span>
+                                            </label> <!-- form-check.// -->
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkswiper-slide box" value="">
+                                                <span class="form-check-label">
+                                                    100.000 - 150.000
+                                                </span>
+                                            </label> <!-- form-check.// -->
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkswiper-slide box" value="">
+                                                <span class="form-check-label">
+                                                    150.000 - 200.000
+                                                </span>
+                                            </label> <!-- form-check.// -->
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkswiper-slide box" value="">
+                                                <span class="form-check-label">
+                                                    Trên 200.000
+                                                </span>
+                                            </label> <!-- form-check.// -->
+                                        </form>
+
                                     </div> <!-- card-body.// -->
                                 </div>
-                            </article> 
+                            </article>
 
                             <article class="card-group-item">
                                 <header class="card-header">
@@ -338,27 +349,27 @@
                                 </header>
                                 <div class="filter-content">
                                     <div class="card-body">
-                                    <form>
-                                        <label class="form-check">
-                                          <input class="form-check-input" type="checkswiper-slide box" value="">
-                                          <span class="form-check-label">
-                                            Tiếng Anh
-                                          </span>
-                                        </label> <!-- form-check.// -->
-                                        <label class="form-check">
-                                          <input class="form-check-input" type="checkswiper-slide box" value="">
-                                          <span class="form-check-label">
-                                            Tiếng Việt
-                                          </span>
-                                        </label>  <!-- form-check.// -->
-                                        <label class="form-check">
-                                          <input class="form-check-input" type="checkswiper-slide box" value="">
-                                          <span class="form-check-label">
-                                            Khác
-                                          </span>
-                                        </label>  <!-- form-check.// -->
-                                    </form>
-                        
+                                        <form>
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkswiper-slide box" value="">
+                                                <span class="form-check-label">
+                                                    Tiếng Anh
+                                                </span>
+                                            </label> <!-- form-check.// -->
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkswiper-slide box" value="">
+                                                <span class="form-check-label">
+                                                    Tiếng Việt
+                                                </span>
+                                            </label> <!-- form-check.// -->
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkswiper-slide box" value="">
+                                                <span class="form-check-label">
+                                                    Khác
+                                                </span>
+                                            </label> <!-- form-check.// -->
+                                        </form>
+
                                     </div> <!-- card-body.// -->
                                 </div>
                             </article>
@@ -369,48 +380,49 @@
                                 </header>
                                 <div class="filter-content">
                                     <div class="card-body">
-                                    <form>
-                                        <label class="form-check">
-                                            <input class="form-check-input" type="checkswiper-slide box" value="">
-                                            <span class="form-check-label">
-                                                NXB Trẻ
-                                            </span>
-                                            </label> 
-                                            <label class="form-check">
-                                            <input class="form-check-input" type="checkswiper-slide box" value="">
-                                            <span class="form-check-label">
-                                                NXB Kim Đồng
-                                            </span>
-                                            </label>  
-                                            <label class="form-check">
-                                            <input class="form-check-input" type="checkswiper-slide box" value="">
-                                            <span class="form-check-label">
-                                                NXB Giáo dục
-                                            </span>
-                                            </label>
+                                        <form>
                                             <label class="form-check">
                                                 <input class="form-check-input" type="checkswiper-slide box" value="">
                                                 <span class="form-check-label">
-                                                NXB Tổng hợp TPHCM
+                                                    NXB Trẻ
                                                 </span>
                                             </label>
                                             <label class="form-check">
                                                 <input class="form-check-input" type="checkswiper-slide box" value="">
                                                 <span class="form-check-label">
-                                                NXB Chính trị quốc gia
+                                                    NXB Kim Đồng
                                                 </span>
-                                            </label>  
-                                    </form>                       
-                                    </div> 
+                                            </label>
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkswiper-slide box" value="">
+                                                <span class="form-check-label">
+                                                    NXB Giáo dục
+                                                </span>
+                                            </label>
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkswiper-slide box" value="">
+                                                <span class="form-check-label">
+                                                    NXB Tổng hợp TPHCM
+                                                </span>
+                                            </label>
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkswiper-slide box" value="">
+                                                <span class="form-check-label">
+                                                    NXB Chính trị quốc gia
+                                                </span>
+                                            </label>
+                                        </form>
+                                    </div>
                                 </div>
                             </article>
-                            
+
                         </div> <!-- card.// -->
-                        <button type="button" class="btn btn-primary" style="width: 188px; margin-top: 10px;">Tìm kiếm</button>
+                        <button type="button" class="btn btn-primary" style="width: 188px; margin-top: 10px;">Tìm
+                            kiếm</button>
                     </div>
- 
+
                     <div class="grid__column-10">
-                         <!-- carousel  -->
+                        <!-- carousel  -->
                         <div id="carousel__banner" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active" data-interval="10000">
@@ -495,8 +507,10 @@
                               <span class="sr-only">Next</span>
                             </a>
                           </div> -->
-                         
-                        <!-- featured section starts  -->
+
+                        <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/css/swiper.min.css">
 
                         <div class="featured" id="featured">
 
@@ -513,7 +527,8 @@
                                             <a href="#" class="fas fa-eye"></a>
                                         </div>
                                         <div class="image">
-                                            <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="">
+                                            <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"
+                                                alt="">
                                         </div>
                                         <div class="content">
                                             <h3>Harry Potter và bảo bối tử thần</h3>
@@ -529,7 +544,8 @@
                                             <a href="#" class="fas fa-eye"></a>
                                         </div>
                                         <div class="image">
-                                            <img src="https://img1.baza.vn/upload/products-var-kM4IVRmd/sM92R7iE.jpg?v=635682249547939310" alt="">
+                                            <img src="https://img1.baza.vn/upload/products-var-kM4IVRmd/sM92R7iE.jpg?v=635682249547939310"
+                                                alt="">
                                         </div>
                                         <div class="content">
                                             <h3>Harry Potter và bảo bối tử thần</h3>
@@ -545,7 +561,8 @@
                                             <a href="#" class="fas fa-eye"></a>
                                         </div>
                                         <div class="image">
-                                            <img src="https://salt.tikicdn.com/ts/product/73/b7/d5/2b696492251d3444c11f782d46d604c0.jpg" alt="">
+                                            <img src="https://salt.tikicdn.com/ts/product/73/b7/d5/2b696492251d3444c11f782d46d604c0.jpg"
+                                                alt="">
                                         </div>
                                         <div class="content">
                                             <h3>Harry Potter và bảo bối tử thần</h3>
@@ -561,7 +578,8 @@
                                             <a href="#" class="fas fa-eye"></a>
                                         </div>
                                         <div class="image">
-                                            <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="">
+                                            <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"
+                                                alt="">
                                         </div>
                                         <div class="content">
                                             <h3>Harry Potter và bảo bối tử thần</h3>
@@ -577,7 +595,8 @@
                                             <a href="#" class="fas fa-eye"></a>
                                         </div>
                                         <div class="image">
-                                            <img src="https://sachnoi.com.vn/wp-content/uploads/2021/01/sach-noi-Harry-Potter-va-chiec-coc-lua.jpg" alt="">
+                                            <img src="https://sachnoi.com.vn/wp-content/uploads/2021/01/sach-noi-Harry-Potter-va-chiec-coc-lua.jpg"
+                                                alt="">
                                         </div>
                                         <div class="content">
                                             <h3>Harry Potter và bảo bối tử thần</h3>
@@ -593,7 +612,8 @@
                                             <a href="#" class="fas fa-eye"></a>
                                         </div>
                                         <div class="image">
-                                            <img src="https://salt.tikicdn.com/ts/product/73/b7/d5/2b696492251d3444c11f782d46d604c0.jpg" alt="">
+                                            <img src="https://salt.tikicdn.com/ts/product/73/b7/d5/2b696492251d3444c11f782d46d604c0.jpg"
+                                                alt="">
                                         </div>
                                         <div class="content">
                                             <h3>Harry Potter và bảo bối tử thần</h3>
@@ -609,7 +629,8 @@
                                             <a href="#" class="fas fa-eye"></a>
                                         </div>
                                         <div class="image">
-                                            <img src="https://upload.wikimedia.org/wikipedia/vi/6/62/Harry_Potter_v%C3%A0_Ph%C3%B2ng_ch%E1%BB%A9a_b%C3%AD_m%E1%BA%ADt.jpg" alt="">
+                                            <img src="https://upload.wikimedia.org/wikipedia/vi/6/62/Harry_Potter_v%C3%A0_Ph%C3%B2ng_ch%E1%BB%A9a_b%C3%AD_m%E1%BA%ADt.jpg"
+                                                alt="">
                                         </div>
                                         <div class="content">
                                             <h3>Harry Potter và bảo bối tử thần</h3>
@@ -625,7 +646,8 @@
                                             <a href="#" class="fas fa-eye"></a>
                                         </div>
                                         <div class="image">
-                                            <img src="https://upload.wikimedia.org/wikipedia/vi/9/9f/Harry_Potter_v%C3%A0_t%C3%AAn_t%C3%B9_nh%C3%A2n_ng%E1%BB%A5c_Azkaban_b%C3%ACa.jpg" alt="">
+                                            <img src="https://upload.wikimedia.org/wikipedia/vi/9/9f/Harry_Potter_v%C3%A0_t%C3%AAn_t%C3%B9_nh%C3%A2n_ng%E1%BB%A5c_Azkaban_b%C3%ACa.jpg"
+                                                alt="">
                                         </div>
                                         <div class="content">
                                             <h3>Harry Potter và bảo bối tử thần</h3>
@@ -641,7 +663,8 @@
                                             <a href="#" class="fas fa-eye"></a>
                                         </div>
                                         <div class="image">
-                                            <img src="https://img.websosanh.vn/v2/users/root_product/images/harry-potter-va-ten-tu-nhan/pYlw4I2xENSS.jpg?compress=85" alt="">
+                                            <img src="https://img.websosanh.vn/v2/users/root_product/images/harry-potter-va-ten-tu-nhan/pYlw4I2xENSS.jpg?compress=85"
+                                                alt="">
                                         </div>
                                         <div class="content">
                                             <h3>Harry Potter và bảo bối tử thần</h3>
@@ -657,7 +680,8 @@
                                             <a href="#" class="fas fa-eye"></a>
                                         </div>
                                         <div class="image">
-                                            <img src="https://salt.tikicdn.com/cache/400x400/media/catalog/product/i/m/img414.jpg" alt="">
+                                            <img src="https://salt.tikicdn.com/cache/400x400/media/catalog/product/i/m/img414.jpg"
+                                                alt="">
                                         </div>
                                         <div class="content">
                                             <h3>Harry Potter và bảo bối tử thần</h3>
@@ -675,22 +699,63 @@
 
                         </div>
 
-<!-- featured section ends -->  
-                         
+                        ============================================
 
-                          <!-- Home-filter -->
+                        <script>
+                            var swiper = new Swiper(".featured-slider", {
+                                spaceBetween: 10,
+                                loop: true,
+                                centeredSlides: true,
+                                autoplay: {
+                                    delay: 9500,
+                                    disableOnInteraction: false,
+                                },
+                                navigation: {
+                                    nextEl: ".swiper-button-next",
+                                    prevEl: ".swiper-button-prev",
+                                },
+                                breakpoints: {
+                                    0: {
+                                        slidesPerView: 1,
+                                    },
+                                    450: {
+                                        slidesPerView: 2,
+                                    },
+                                    768: {
+                                        slidesPerView: 3,
+                                    },
+                                    1024: {
+                                        slidesPerView: 4,
+                                    },
+                                },
+                            });
+                            swiper.updateContainerSize();
+                            swiper.update();
+                        </script>
+
+
+                        <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/js/swiper.min.js"></script>
+
+
+
+
+                        <!-- featured section ends -->
+
+
+                        <!-- Home-filter -->
                         <div class="home-filter">
                             <span class="home-filter__label">Sắp xếp theo</span>
                             <button class="home-filter__btn btn">Xu hướng</button>
                             <button class="home-filter__btn btn btn--primary">Mới nhất</button>
-                            <button class="home-filter__btn btn">Bán chạy</button> 
-                            <button class="home-filter__btn btn">Bảng xếp hạng</button> 
-                             
+                            <button class="home-filter__btn btn">Bán chạy</button>
+                            <button class="home-filter__btn btn">Bảng xếp hạng</button>
+
                             <!-- <div class="select-input">
                                 <span class="select-input__label">Giá</span>
                                 <i class="select-input__icon fas fa-angle-down"></i> -->
-                                <!-- List option -->
-                                <!-- <ul class="select-input__list">
+                            <!-- List option -->
+                            <!-- <ul class="select-input__list">
                                     <li class="select-input__item">
                                         <a href="" class="select-input__link">Giá: Thấp đến cao</a>
                                     </li>
@@ -699,15 +764,15 @@
                                     </li>
                                 </ul>
                             </div> -->
- 
+
                             <div class="home-filter__page">
                                 <span class="home-filter__page-num">
                                     <span class="home-filter__page-current">1</span>/14
                                 </span>
- 
+
                                 <div class="home-filter__page-control">
                                     <a href="" class="home-filter__page-btn home-filter__page-btn--disable">
-                                         <i class="home-filter__page-icon fas fa-angle-left"></i>
+                                        <i class="home-filter__page-icon fas fa-angle-left"></i>
                                     </a>
                                     <a href="" class="home-filter__page-btn">
                                         <i class="home-filter__page-icon fas fa-angle-right"></i>
@@ -715,14 +780,16 @@
                                 </div>
                             </div>
                         </div>
- 
+
                         <div class="home-product">
                             <!-- Grid -> row -> column -->
                             <div class="grid__row">
                                 <!-- Product item -->
                                 <div class="grid__column-2-4">
                                     <a class="home-product-item" href="#">
-                                        <div class="home-product-item__img" style="background-image: url(https://revelogue.com/wp-content/uploads/2020/04/harry-potter-and-the-cursed-child-bia-sach-e1587147350573.jpg);"></div>
+                                        <div class="home-product-item__img"
+                                            style="background-image: url(https://revelogue.com/wp-content/uploads/2020/04/harry-potter-and-the-cursed-child-bia-sach-e1587147350573.jpg);">
+                                        </div>
                                         <h4 class="home-product-item__name">Harry Potter và đứa trẻ bị nguyền rủa</h4>
                                         <div class="home-product-item__price">
                                             <span class="home-product-item__price-old">410.000đ</span>
@@ -742,7 +809,7 @@
                                             </div>
                                             <span class="home-product-item__sold">57 đã bán</span>
                                         </div>
-                                         
+
                                         <div class="home-product-item__favourite">
                                             <i class="fas fa-check"></i>
                                             <span>Yêu thích</span>
@@ -752,12 +819,12 @@
                                             <span class="home-product-item__sale-off-label">GIẢM</span>
                                         </div>
                                     </a>
-                                </div>   
+                                </div>
                             </div>
-                         </div>
+                        </div>
 
-                     </div>
-                 </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -765,7 +832,7 @@
             <div class="container bottom_border">
                 <div class="row">
                     <div class=" col-sm-4 col-md col-sm-4  col-12 col">
-                         <h5 class="headin5_amrc col_white_amrc pt2">CHĂM SÓC KHÁCH HÀNG</h5>
+                        <h5 class="headin5_amrc col_white_amrc pt2">CHĂM SÓC KHÁCH HÀNG</h5>
                         <!--headin5_amrc-->
                         <ul class="footer_ul_amrc">
                             <li><a href="http://webenlance.com">Các câu hỏi thường gặp</a></li>
@@ -774,13 +841,13 @@
                             <li><a href="http://webenlance.com">Phương thức vận chuyển</a></li>
                             <li><a href="http://webenlance.com">Chính sách đổi trả</a></li>
                         </ul>
-                        <p><i class="fa fa-phone"></i>  +1900 1529  </p>
-                        <p><i class="fa fa fa-envelope"></i> dabook@book.com  </p>
+                        <p><i class="fa fa-phone"></i> +1900 1529 </p>
+                        <p><i class="fa fa fa-envelope"></i> dabook@book.com </p>
                     </div>
-            
-            
+
+
                     <div class=" col-sm-4 col-md  col-6 col">
-                         <h5 class="headin5_amrc col_white_amrc pt2">GIỚI THIỆU</h5>
+                        <h5 class="headin5_amrc col_white_amrc pt2">GIỚI THIỆU</h5>
                         <!--headin5_amrc-->
                         <ul class="footer_ul_amrc">
                             <li><a href="http://webenlance.com">Điều khoản sử dụng</a></li>
@@ -791,9 +858,9 @@
                             <li><a href="http://webenlance.com">Chính sách bán hàng</a></li>
                         </ul>
                         <!--footer_ul_amrc ends here-->
-                     </div>
-            
-            
+                    </div>
+
+
                     <div class=" col-sm-4 col-md  col-6 col">
                         <h5 class="headin5_amrc col_white_amrc pt2">TÀI KHOẢN CỦA TÔI</h5>
                         <!--headin5_amrc-->
@@ -806,38 +873,46 @@
                             <li><a href="http://webenlance.com">Điểm tích lũy</a></li>
                         </ul>
                         <!--footer_ul_amrc ends here-->
-                     </div>
-                
-            
+                    </div>
+
+
                     <div class=" col-sm-4 col-md  col-12 col">
-                         <h5 class="headin5_amrc col_white_amrc pt2">THEO DÕI CHÚNG TÔI</h5>
+                        <h5 class="headin5_amrc col_white_amrc pt2">THEO DÕI CHÚNG TÔI</h5>
                         <!--headin5_amrc ends here-->
-            
-                        <ul class="footer_ul2_amrc"> 
-                            <li><a href="#"><i class="fab fa-facebook fleft padding-right"></i></a><p>Theo dõi chúng tôi tại địa chỉ: <a href="#">https://www.facebook.com/</a></p></li>
-                            <li><a href="#"><i class="fab fa-linkedin fleft padding-right"></i></a><p>Theo dõi chúng tôi tại địa chỉ: <a href="#">https://www.linkedin.com/</a></p></li>
-                            <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i></a><p>Theo dõi chúng tôi tại địa chỉ: <a href="#">https://www.twitter.com/</a></p></li>
-                            <li><a href="#"><i class="fab fa-instagram fleft padding-right"></i></a><p>Theo dõi chúng tôi tại địa chỉ: <a href="#">https://www.instagram.com/</a></p></li>
+
+                        <ul class="footer_ul2_amrc">
+                            <li><a href="#"><i class="fab fa-facebook fleft padding-right"></i></a>
+                                <p>Theo dõi chúng tôi tại địa chỉ: <a href="#">https://www.facebook.com/</a></p>
+                            </li>
+                            <li><a href="#"><i class="fab fa-linkedin fleft padding-right"></i></a>
+                                <p>Theo dõi chúng tôi tại địa chỉ: <a href="#">https://www.linkedin.com/</a></p>
+                            </li>
+                            <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i></a>
+                                <p>Theo dõi chúng tôi tại địa chỉ: <a href="#">https://www.twitter.com/</a></p>
+                            </li>
+                            <li><a href="#"><i class="fab fa-instagram fleft padding-right"></i></a>
+                                <p>Theo dõi chúng tôi tại địa chỉ: <a href="#">https://www.instagram.com/</a></p>
+                            </li>
                         </ul>
                         <!--footer_ul2_amrc ends here-->
                     </div>
                 </div>
             </div>
-            
-            
+
+
             <div class="container">
-              <!--foote_bottom_ul_amrc ends here-->
-                 <p class="text-center">2021 | Bản quyền thuộc về công ty <a href="#">DaBook - DaBook.com</a></p>
-            
+                <!--foote_bottom_ul_amrc ends here-->
+                <p class="text-center">2021 | Bản quyền thuộc về công ty <a href="#">DaBook - DaBook.com</a></p>
+
                 <ul class="social_footer_ul">
                     <li><a href="http://webenlance.com"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="http://webenlance.com"><i class="fab fa-twitter"></i></a></li>
                     <li><a href="http://webenlance.com"><i class="fab fa-linkedin"></i></a></li>
                     <li><a href="http://webenlance.com"><i class="fab fa-instagram"></i></a></li>
                 </ul>
-              <!--social_footer_ul ends here-->
+                <!--social_footer_ul ends here-->
             </div>
-            
+
         </footer>
     </div>
 
@@ -851,7 +926,7 @@
         const modals = document.querySelector('.modal-logup')
         const modalClose = document.querySelector('.modal-close')
         const modalsClose = document.querySelector('.modals-close')
-        
+
         function show() {
             modal.classList.add('open')
         }
@@ -880,60 +955,68 @@
     <!-- Js tm kiếm  theo -->
     <script>
 
-        var li=document.getElementsByClassName('header__search-option-item')
+        var li = document.getElementsByClassName('header__search-option-item')
 
-        li[0].addEventListener('click',l0_click)
+        li[0].addEventListener('click', l0_click)
 
-        li[1].addEventListener('click',l1_click)
+        li[1].addEventListener('click', l1_click)
 
-        function l0_click(){
-                li[0].classList.add('header__search-option-item--active')
-                li[1].classList.remove('header__search-option-item--active')
-        }      
+        function l0_click() {
+            li[0].classList.add('header__search-option-item--active')
+            li[1].classList.remove('header__search-option-item--active')
+        }
 
-        function l1_click(){
-                li[1].classList.add('header__search-option-item--active')
-                li[0].classList.remove('header__search-option-item--active')
-        }    
+        function l1_click() {
+            li[1].classList.add('header__search-option-item--active')
+            li[0].classList.remove('header__search-option-item--active')
+        }
 
     </script>
 
     <script>
         var swiper = new Swiper(".featured-slider", {
-        spaceBetween: 10,
-        loop:true,
-        centeredSlides: true,
-        autoplay: {
-            delay: 9500,
-            disableOnInteraction: false,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-            0: {
-            slidesPerView: 1,
+            spaceBetween: 10,
+            loop: true,
+            centeredSlides: true,
+            autoplay: {
+                delay: 9500,
+                disableOnInteraction: false,
             },
-            450: {
-            slidesPerView: 2,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
             },
-            768: {
-            slidesPerView: 3,
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                },
+                450: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+                1024: {
+                    slidesPerView: 4,
+                },
             },
-            1024: {
-            slidesPerView: 4,
-            },
-        },
         });
     </script>
-    
 
 
-    // <!-- Bootstrap js -->
+
+    //
+    <!-- Bootstrap js -->
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
