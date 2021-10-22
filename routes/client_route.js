@@ -14,4 +14,5 @@ route.get('/search', client_Control.search)
 route.get('/theloai/:value', client_Control.searchTL)
 route.get('/', client_Control.main)
 
+
 module.exports = route
