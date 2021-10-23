@@ -1089,11 +1089,11 @@ img {width:100%;}
       width: 100%;
       height: 100%;
     }
-    .swiper-slide {
+    /* .swiper-slide {
       text-align: center;
       font-size: 18px;
       background: #fff;
-      /* Center slide text vertically */
+      /* Center slide text vertically 
       display: -webkit-box;
       display: -ms-flexbox;
       display: -webkit-flex;
@@ -1106,4 +1106,4 @@ img {width:100%;}
       -ms-flex-align: center;
       -webkit-align-items: center;
       align-items: center;
-    }
+    } */
