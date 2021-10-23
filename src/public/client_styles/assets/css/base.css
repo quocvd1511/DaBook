@@ -3,17 +3,20 @@
   --white-color: #fff;
   --black-color: #000;
   --text-color: #333;
-  --blue-color: #1a94ff;
+  --blue-color: #1A94FF;
+  --light-color:#666;
+  --border:0.1rem solid rgba(0,0,0,0.1);
+  --border-hover: 1px solid #ccc;
+  --box-shadow:0 1px 10px rgba(0,0,0,0.1);
   --header-height: 120px;
-  --navbar-height: 34px;
-  --header-with-search-height: calc(
-    var(--header-height) - var(--navbar-height)
-  );
-  --boder-color: #afadad;
+  --navbar-height:34px;
+  --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
+  --boder-color: #AFADAD;
 }
 
 * {
   box-sizing: inherit;
+  transition: all 0.2s linear;
 }
 
 html {
