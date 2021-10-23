@@ -1,4 +1,4 @@
-const admin_login = require('../models/admin_account')
+const client_login = require('../models/client_account')
 const books=require('../models/books')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
@@ -7,7 +7,9 @@ class Client_Control
 {
     main(req,res,next)
     {
-        books.find({})
+        if(!req.session.isAuth) 
+        {
+            books.find({})
             .then(books => 
                 {
                     books=books.map(course => course.toObject())
@@ -15,6 +17,67 @@ class Client_Control
                     });
                 })
             .catch(next)
+        } else {
+            
+            books.find({})
+            .then(books => 
+                {
+                    books=books.map(course => course.toObject())
+                    res.render('home_client.handlebars',{layout:'client_login.handlebars',books
+                    });
+                })
+            .catch(next)
+        }
+       
+    }
+
+    login(req,res,next)
+    {
+       console.log(req.session)
+       res.render('home_client.handlebars', {layout: 'home.handlebars'})  
+        //console.log(req.session)
+    }
+
+    post_client(req,res,next)
+    {
+        client_login.findOne({ MaTK: req.body.username, Matkhau: req.body.password}, 
+            function (err,client_account){
+                if(!err)
+                {
+                    if(Boolean(client_account)==false) res.redirect('/')
+                    else 
+                    {
+                        req.session.username=req.body.username
+                        req.session.isAuth=true; 
+                        res.setHeader('home_client.handlebars',{layout:'client_login.handlebars',client_accounts: req.session.username
+                    });                     
+                    }
+                } else {
+                    next(err)
+                }
+            })
+
+        /*
+            .then (admin_account => res.render('admin_home',{layout: 'admin.handlebars',admin_account: mongooseToObject(admin_account)}))
+            .catch(next)*/
+    }
+
+    get_client(req,res,next)
+    {
+        if(!req.session.isAuth) res.redirect('/')
+        else {
+            books.find({})
+            .then(books => 
+                {
+                    books=books.map(course => course.toObject())
+                    res.setHeader('home_client.handlebars',{layout: 'client_login.handlebars', client_accounts: req.session.username})
+                })
+            .catch(next)
+            }
+            
+        /*
+            .then (admin_account => res.render('admin_home',{layout: 'admin.handlebars',admin_account: mongooseToObject(admin_account)}))
+            .catch(next)*/
     }
 
     // Tìm kiếm theo tên sách, tác giả
@@ -42,7 +105,7 @@ class Client_Control
             .then(books => 
                 {
                     books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client.handlebars',books});
+                    res.render('search_client.handlebars',{layout:'client_login.handlebars',books});
                 })
             .catch(next)
     }

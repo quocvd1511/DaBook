@@ -38,7 +38,6 @@ class Admin_Control{
         /*
             .then (admin_account => res.render('admin_home',{layout: 'admin.handlebars',admin_account: mongooseToObject(admin_account)}))
             .catch(next)*/
-        
     }
 
     get_home(req,res,next)
@@ -48,7 +47,6 @@ class Admin_Control{
         /*
             .then (admin_account => res.render('admin_home',{layout: 'admin.handlebars',admin_account: mongooseToObject(admin_account)}))
             .catch(next)*/
-        
     }
     //--------------------------------------------QUAN LY SACH-------------------------------------------------------------------------------------
     Ql_Sach(req,res,next)

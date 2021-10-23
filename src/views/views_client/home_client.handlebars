@@ -1,4 +1,4 @@
-<html lang="en">
+{{!-- <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -105,10 +105,12 @@
                     <i class="ti-close"></i>
                   </div>
 
+                  <form  method="POST" action="/login">
                   <div class="auth-form__form">
                     <div class="auth-form__group">
                       <label class="auth-form__label">Tên tài khoản/Email</label>
                       <input
+                        name="username"
                         type="text"
                         class="auth-form__input"
                         placeholder="Nhập tên tài khoản hoặc Email"
@@ -117,6 +119,7 @@
                     <div class="auth-form__group">
                       <label class="auth-form__label">Mật khẩu</label>
                       <input
+                        name="password"
                         type="text"
                         class="auth-form__input"
                         placeholder="Nhập mật khẩu"
@@ -139,8 +142,9 @@
                   </div>
 
                   <div class="auth-form__controls">
-                    <button class="btn btn--primary btn__login">Đăng nhập</button>
+                    <button class="btn btn--primary btn__login" type="submit">Đăng nhập</button>
                   </div>
+                </form>
 
                   <div class="auth-form__socials">
                     <a
@@ -278,7 +282,7 @@
           </div>
         </form>
         </div>
-      </header>
+      </header> --}}
 
       <!-- container -->
       <div class="app__container">
@@ -1197,4 +1201,3 @@
       crossorigin="anonymous"
     ></script>
   </body>
-</html>

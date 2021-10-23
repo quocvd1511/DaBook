@@ -10,9 +10,12 @@ const client_Control = require('../controllers/client_control')
 // //route.get('/:value',client_Control.searchTL)
 
 route.get('/boloc',client_Control.searchBL)
-route.get('/search', client_Control.search)
+//route.get('/search', client_Control.search)
 route.get('/theloai/:value', client_Control.searchTL)
 route.get('/', client_Control.main)
+
+route.post('/login',client_Control.post_client)
+route.get('/login',client_Control.get_client)
 
 
 module.exports = route
