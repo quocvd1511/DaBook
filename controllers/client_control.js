@@ -31,12 +31,12 @@ class Client_Control
        
     }
 
-    login(req,res,next)
+    logout(req,res,next)
     {
-       console.log(req.session)
-       res.render('home_client.handlebars', {layout: 'home.handlebars'})  
-        //console.log(req.session)
+        req.session.destroy()
+        res.redirect('/')
     }
+
 
     post_client(req,res,next)
     {
@@ -49,7 +49,7 @@ class Client_Control
                     {
                         req.session.username=req.body.username
                         req.session.isAuth=true; 
-                        res.setHeader('home_client.handlebars',{layout:'client_login.handlebars',client_accounts: req.session.username
+                        res.render('home_client.handlebars',{layout:'client_login.handlebars',client_accounts: req.session.username
                     });                     
                     }
                 } else {
@@ -66,13 +66,7 @@ class Client_Control
     {
         if(!req.session.isAuth) res.redirect('/')
         else {
-            books.find({})
-            .then(books => 
-                {
-                    books=books.map(course => course.toObject())
-                    res.setHeader('home_client.handlebars',{layout: 'client_login.handlebars', client_accounts: req.session.username})
-                })
-            .catch(next)
+                    res.render('home_client.handlebars',{layout: 'client_login.handlebars', client_accounts: req.session.username})
             }
             
         /*
