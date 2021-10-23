@@ -1046,3 +1046,79 @@ footer p {
     color:#fff;
 } */
 
+
+.media-carousel 
+{
+  margin-bottom: 0;
+  padding: 0 40px 30px 40px;
+  margin-top: 30px;
+}
+/* Previous button  */
+.media-carousel .carousel-control.left 
+{
+  left: -12px;
+  background-image: none;
+  background: none repeat scroll 0 0 #222222;
+  border: 4px solid #FFFFFF;
+  border-radius: 23px 23px 23px 23px;
+  height: 40px;
+  width : 40px;
+  margin-top: 30px
+}
+
+/* ============ */
+.row_discount {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -4px;
+    margin-right: -4px;
+    margin-bottom: 10px;
+}
+  
+.mt-64 {
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.col_discount {
+padding-left: 4px;
+padding-right: 4px;
+}
+
+.l-4 {
+    display: inline-flex;
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+}
+
+.discount-title {
+display: flex;
+justify-content: space-between;
+}
+
+.discount-more {
+text-decoration: none;
+font-size: 1.6rem;
+color: #f65e39;
+cursor: pointer;
+display: flex;
+align-items: end;
+margin-bottom: 16px;
+line-height: 24px;
+}
+
+.discount-img {
+width: 100%;
+border-radius: 10px;
+}
+
+.discount-more-mobile {
+text-decoration: none;
+font-size: 1.6rem;
+color: #f65e39;
+cursor: pointer;
+display: none;
+align-items: end;
+margin-bottom: 16px;
+line-height: 24px;
+}
