@@ -1,7 +1,41 @@
 
-    <!-----------------------------------------------------------------------------BIẾN TẤU------------------------------------------------>
+<nav class="justify-content-end">
+
+    <div class="container">
+
+    </div>
+
+
+
+    <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown link
+       </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">Mã sách</a>
+              <a class="dropdown-item" href="#">Thể loại</a>
+              <a class="dropdown-item" href="#">Tên tác Giả</a>
+              <a class="dropdown-item" href="#">Nhà Xuất Bản</a>
+          </div>
+    </div>
+
+    <form class="form-inline my-2 my-lg-0 ">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+
+
+    </nav>
+
+
+    <div class="home-content">
+        <div class="overview-boxes">
+        <!-----------------------------------------------------------------------------BIẾN TẤU------------------------------------------------>
+          
           {{#each books}}
-            <div class="box mt-4">
+            <div class="box mt-4" style="width: 250px;">
               <div class="col">
                 <img
                     class="card-img-top"
@@ -19,4 +53,7 @@
               </div>
             </div>
           {{/each}}
-    <!-----------------------------------------------------------------------------BIẾN TẤU------------------------------------------------>
+    <!-----------------------------------------------------------------------------BIẾN TẤU------------------------------------------------>            
+        </div>
+    </div>
+    

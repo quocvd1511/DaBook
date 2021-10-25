@@ -3,6 +3,9 @@ const admin_control = require('../controllers/admin_control')
 const route = express.Router()
 const admin_Control = require('../controllers/admin_control')
 
+route.get('/quan-ly-tai-khoan/:slug',admin_Control.chitietTaiKhoan)
+
+
 route.post('/quan-ly-sach/them-sach/save', admin_Control.chitietSach_save)
 route.post('/quan-ly-sach/:slug/update', admin_Control.chitietSach_update)
 route.post('/quan-ly-sach/:slug/delete', admin_Control.chitietSach_delete)

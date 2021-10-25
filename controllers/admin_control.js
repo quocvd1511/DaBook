@@ -1,5 +1,6 @@
 const admin_login = require('../models/admin_account')
 const books=require('../models/books')
+const client_account=require('../models/client_account')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
 
@@ -42,8 +43,7 @@ class Admin_Control{
 
     get_home(req,res,next)
     {
-        if(!req.session.isAuth) res.redirect('/admin')
-        else res.render('admin_home',{layout: 'admin.handlebars',admin_account: req.session.username})
+        res.render('admin_home',{layout: 'admin.handlebars',admin_account: req.session.username})
         /*
             .then (admin_account => res.render('admin_home',{layout: 'admin.handlebars',admin_account: mongooseToObject(admin_account)}))
             .catch(next)*/
@@ -52,8 +52,6 @@ class Admin_Control{
     Ql_Sach(req,res,next)
     {
        // console.log(req.session.username)
-       if(!req.session.isAuth) res.redirect('/admin')
-       else 
        {
            books.find({})
                 .then(books => 
@@ -119,26 +117,42 @@ class Admin_Control{
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+    //------------QUAN LY TAI KHOAN---------------------------------
     Ql_TaiKhoan(req,res,next)
     {
        // console.log(req.session.username)
-       if(!req.session.isAuth) res.redirect('/admin')
-        else res.render('admin_qlTaiKhoan',{layout: 'admin.handlebars', admin_account: req.session.username})
+            client_account.find({})
+            .then(client_account => 
+                {
+                    client_account=client_account.map(course => course.toObject())
+                    //console.log(client_account)
+                    res.render('admin_qlTaiKhoan',{layout: 'admin.handlebars', admin_account: req.session.username, client_account})
+                })
     }
+
+    chitietTaiKhoan(req,res,next)
+    {
+        client_account.find({MaTK: req.params.slug})
+        .then(client_account => 
+            {
+                client_account=client_account.map(course => course.toObject())
+                //console.log(client_account)
+                res.render('admin_chitietTaiKhoan',{layout: 'admin.handlebars', admin_account: req.session.username, client_account})
+            })
+    }
+
+    //--------------------------------------------------------------
 
     Ql_KhuyenMai(req,res,next)
     {
        // console.log(req.session.username)
-       if(!req.session.isAuth) res.redirect('/admin')
-       else res.render('admin_qlKhuyenMai',{layout: 'admin.handlebars', admin_account: req.session.username})
+       res.render('admin_qlKhuyenMai',{layout: 'admin.handlebars', admin_account: req.session.username})
     }   
 
     Ql_HoaDon(req,res,next)
     {
        // console.log(req.session.username)
-       if(!req.session.isAuth) res.redirect('/admin')
-       else res.render('admin_qlHoaDon',{layout: 'admin.handlebars', admin_account: req.session.username})
+        res.render('admin_qlHoaDon',{layout: 'admin.handlebars', admin_account: req.session.username})
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------
