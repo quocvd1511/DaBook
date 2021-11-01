@@ -390,8 +390,9 @@
 }
 
 .home-filter__label {
-  font-size: 1.4rem;
-  color: #555;
+  font-size: 1.6rem;
+  color: #313131;
+  font-weight: 500;
   margin-right: 16px;
 }
 
@@ -400,6 +401,7 @@
   font-size: 1.4rem;
   margin-right: 12px;
   background-color: var(--white-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .home-filter__page {
@@ -471,9 +473,9 @@
 }
 
 .home-product-item:hover {
-  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
   /* Chạy ngược lên 1px */
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   text-decoration: none;
 }
 
@@ -948,11 +950,11 @@ footer p {
 }
 
 .swiper-slide {
-  width: 240px !important;
+  width: 230px !important;
 }
 
 .featured .featured-slider .box {
-  width: 24rem;
+  width: 20rem;
   position: relative;
   overflow: hidden;
   border: var(--border);
@@ -1030,6 +1032,12 @@ footer p {
   text-decoration: line-through;
 }
 
+.discount__banner {
+  background-color: var(--white-color);
+  padding: 5px;
+  border-radius: 3px;
+}
+
 .row_discount {
   display: flex;
   flex-wrap: wrap;
@@ -1057,6 +1065,14 @@ footer p {
 .discount-title {
   display: flex;
   justify-content: space-between;
+}
+
+.discount-title .title h2 {
+  color: #f30c0c;
+}
+
+.discount-title .title h2 i {
+  color: #FF8C00;
 }
 
 .discount-more {

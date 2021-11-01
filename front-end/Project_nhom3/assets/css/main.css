@@ -947,6 +947,10 @@ footer p {
     height: 100%;
 }
 
+.swiper-slide {
+    width: 230px !important;
+}
+
 .featured .featured-slider .box {
     width: 24rem;
     position: relative;
@@ -1024,46 +1028,6 @@ footer p {
     color:var(--light-color);
     padding-bottom: 0.5rem;
     text-decoration: line-through;
-}
-
-/* .swiper-button-next,
-.swiper-button-prev{
-    border:var(--border-hover);
-    height:4rem;
-    width:4rem;
-    color:var(--black-color);
-    background: #fff;
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after{
-    font-size: 2rem;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover{
-    background: #eee;
-    color:#fff;
-} */
-
-
-.media-carousel 
-{
-  margin-bottom: 0;
-  padding: 0 40px 30px 40px;
-  margin-top: 30px;
-}
-/* Previous button  */
-.media-carousel .carousel-control.left 
-{
-  left: -12px;
-  background-image: none;
-  background: none repeat scroll 0 0 #222222;
-  border: 4px solid #FFFFFF;
-  border-radius: 23px 23px 23px 23px;
-  height: 40px;
-  width : 40px;
-  margin-top: 30px
 }
 
 /* ============ */
