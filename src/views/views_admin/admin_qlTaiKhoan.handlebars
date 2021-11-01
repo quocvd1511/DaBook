@@ -1,39 +1,57 @@
-<div class="container-fluid">
-  <div class="row">
-    <table class="table table-striped custab">
-      <thead>
-        <a
-          href="#"
-          class="btn btn-primary btn-xs pull-right"
-          style="margin-bottom: 20px;"
-        ><b>+</b>
-          Thêm hóa đơn</a>
-        <tr>
-          <th>ID</th>
-          <th>Username</th>
-          <th>Ngày tạo</th>
-          <th>Điểm</th>
-          <th>Tình Trang</th>
-          <th>Trạng thái</th>
-          <th class="text-center">Action</th>
-        </tr>
-      </thead>
-      <tr>
-        <td>1</td>
-        <td>News</td>
-        <td>News Cate</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="text-center"><a class="btn btn-info btn-xs" href="#"><span
-              class="glyphicon glyphicon-edit"
-            ></span>
-            Chỉnh sửa</a>
-          <a href="#" class="btn btn-danger btn-xs"><span
-              class="glyphicon glyphicon-remove"
-            ></span>
-            Khóa</a></td>
-      </tr>
-    </table>
-  </div>
-</div>
+<nav class="justify-content-end">
+    <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown link
+       </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">Mã Tài Khoản</a>
+              <a class="dropdown-item" href="#">Tên Đăng Nhập</a>
+          </div>
+    </div>
+    <form class="form-inline my-2 my-lg-0 ">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+
+
+    </nav>
+
+
+    <div class="home-content">
+        <div class="overview-boxes">
+    <!-----------------------------------------------------------------------------BIẾN TẤU------------------------------------------------>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Mã TK</th>
+      <th scope="col">Tên Đăng Nhập</th>
+      <th scope="col">Điểm</th>
+      <th scope="col">Ngày Tạo</th>
+      <th scope="col">Tình Trạng</th>
+      <th scope="col">Thao Tác</th>
+    </tr>
+  </thead>
+  
+  <tbody> 
+    {{#each client_account}}
+    <tr>
+      <th scope="row">{{this.MaTK}}</th>
+      <td>{{this.TenTK}}</td>
+      <td>{{this.Diem}}</td>
+      <td>{{this.NgayTao}}</td>
+      <td>{{this.TinhTrang}}</td>
+      <td>
+        <a href="/admin/quan-ly-tai-khoan/{{this.MaTK}}"><button type="button" class="btn btn-link">Chi Tiết</button></a>
+        <button type="button" class="btn btn-link">Khóa</button>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+
+
+</table>
+    <!-----------------------------------------------------------------------------BIẾN TẤU------------------------------------------------>            
+        </div>
+    </div>
