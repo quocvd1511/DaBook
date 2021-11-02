@@ -18,7 +18,6 @@ class Client_Control
                 })
             .catch(next)
         } else {
-            
             books.find({})
             .then(books => 
                 {
@@ -85,7 +84,7 @@ class Client_Control
             .then(books => 
                 {
                     books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client.handlebars',books});
+                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
                 })
             .catch(next)
     }
@@ -99,21 +98,21 @@ class Client_Control
             .then(books => 
                 {
                     books=books.map(course => course.toObject())
-                    res.render('search_client.handlebars',{layout:'client_login.handlebars',books});
+                    res.render('home_client.handlebars',{layout:'client_login.handlebars',books});
                 })
             .catch(next)
     }
     
-    // Tìm kiếm theo bộ lọc {$lt: req.query.giaban}
+    // Tìm kiếm theo bộ lọc
     searchBL(req,res,next)
     {   
-       
        if(req.query.giaban === "50000") {
-        books.find({$and :[
+        books.find({$or :[
             { giaban : {
                 $lt: "50.000"
             }},
-           { nxb :  { $in: req.query.nxb}}
+           { nxb :  { $in: req.query.nxb}},
+           { ngonngu :  { $in: req.query.ngonngu}}
             ]})
          .then(books => 
         {
@@ -122,12 +121,13 @@ class Client_Control
         })
         .catch(next)
         } else if(req.query.giaban === "100000") {
-                books.find({$and :[
+                books.find({$or :[
                      { giaban : {
                          $gte:"50.000",
                          $lt: "100.000"
                      }},
-                    { nxb :  { $in: req.query.nxb}}
+                    { nxb :  { $in: req.query.nxb}},
+                    { ngonngu :  { $in: req.query.ngonngu}}
                 ]})
         .then(books => 
         {
@@ -136,12 +136,13 @@ class Client_Control
         })
             .catch(next)
         } else if (req.query.giaban === "150000") {
-            books.find({$and :[
+            books.find({$or :[
              { giaban : {
                  $gte:"100.000",
                  $lt: "150.000"
              }},
-              { nxb :  { $in: req.query.nxb}}
+              { nxb :  { $in: req.query.nxb}},
+              { ngonngu :  { $in: req.query.ngonngu}}
          ]})
             .then(books => 
              {
@@ -150,12 +151,13 @@ class Client_Control
                 })
             .catch(next)
         } else if (req.query.giaban === "200000") {
-            books.find({$and :[
+            books.find({$or :[
             { giaban : {
                  $gte:"150.000",
                  $lt: "200.000"
              }},
-        { nxb :  { $in: req.query.nxb}}
+        { nxb :  { $in: req.query.nxb}},
+        { ngonngu :  { $in: req.query.ngonngu}}
          ]})
          .then(books => 
              {
@@ -164,11 +166,12 @@ class Client_Control
               })
             .catch(next)
         } else {
-            books.find({$and :[
+            books.find({$or :[
              { giaban : {
                    $gte: "200.000"
                  }},
-                 { nxb :  { $in: req.query.nxb}}
+                 { nxb :  { $in: req.query.nxb}},
+                 { ngonngu :  { $in: req.query.ngonngu}}
              ]})
              .then(books => 
                 {

@@ -534,10 +534,10 @@
                             name="nxb[]"
                             class="form-check-input"
                             type="checkbox"
-                            value="NXB Tổng hợp TPHCM"
+                            value="NXB Hà Nội"
                           />
                           <span class="form-check-label">
-                            NXB Tổng hợp TPHCM
+                            NXB Hà Nội
                           </span>
                         </label>
                         <label class="form-check">
@@ -634,10 +634,10 @@
 
                   <h1 class="heading"> <span>FLASH SALE</span> </h1>
 
-                  <div class="swiper featured-slider">
-
+                  <div class="swiper featured-slider">             
                       <div class="swiper-wrapper" style="height: auto; width: 100%">
-
+                        {{#each books}}
+                        {{#if this.giamgia}}
                           <div class="swiper-slide box">
                               <div class="icons">
                                   <a href="#" class="fas fa-search"></a>
@@ -645,176 +645,21 @@
                                   <a href="#" class="fas fa-eye"></a>
                               </div>
                               <div class="image">
-                                  <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"
+                                  <img src="{{this.hinhanh}}"
                                       alt="">
                               </div>
                               <div class="content">
-                                  <h3>Harry Potter và bảo bối tử thần</h3>
-                                  <div class="price">175.000<span>235.000</span></div>
+                                  <h3>{{this.tensach}}</h3>
+                                  <div class="price">{{this.giaban}} đ<span>{{this.giagoc}}</span></div>
                                   <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
                               </div>
                           </div>
-
-                          <div class="swiper-slide box">
-                              <div class="icons">
-                                  <a href="#" class="fas fa-search"></a>
-                                  <a href="#" class="fas fa-heart"></a>
-                                  <a href="#" class="fas fa-eye"></a>
-                              </div>
-                              <div class="image">
-                                  <img src="https://img1.baza.vn/upload/products-var-kM4IVRmd/sM92R7iE.jpg?v=635682249547939310"
-                                      alt="">
-                              </div>
-                              <div class="content">
-                                  <h3>Harry Potter và bảo bối tử thần</h3>
-                                  <div class="price">175.000<span>235.000</span></div>
-                                  <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
-                              </div>
-                          </div>
-
-                          <div class="swiper-slide box">
-                              <div class="icons">
-                                  <a href="#" class="fas fa-search"></a>
-                                  <a href="#" class="fas fa-heart"></a>
-                                  <a href="#" class="fas fa-eye"></a>
-                              </div>
-                              <div class="image">
-                                  <img src="https://salt.tikicdn.com/ts/product/73/b7/d5/2b696492251d3444c11f782d46d604c0.jpg"
-                                      alt="">
-                              </div>
-                              <div class="content">
-                                  <h3>Harry Potter và bảo bối tử thần</h3>
-                                  <div class="price">175.000<span>235.000</span></div>
-                                  <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
-                              </div>
-                          </div>
-
-                          <div class="swiper-slide box">
-                              <div class="icons">
-                                  <a href="#" class="fas fa-search"></a>
-                                  <a href="#" class="fas fa-heart"></a>
-                                  <a href="#" class="fas fa-eye"></a>
-                              </div>
-                              <div class="image">
-                                  <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"
-                                      alt="">
-                              </div>
-                              <div class="content">
-                                  <h3>Harry Potter và bảo bối tử thần</h3>
-                                  <div class="price">175.000<span>235.000</span></div>
-                                  <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
-                              </div>
-                          </div>
-
-                          <div class="swiper-slide box">
-                              <div class="icons">
-                                  <a href="#" class="fas fa-search"></a>
-                                  <a href="#" class="fas fa-heart"></a>
-                                  <a href="#" class="fas fa-eye"></a>
-                              </div>
-                              <div class="image">
-                                  <img src="https://sachnoi.com.vn/wp-content/uploads/2021/01/sach-noi-Harry-Potter-va-chiec-coc-lua.jpg"
-                                      alt="">
-                              </div>
-                              <div class="content">
-                                  <h3>Harry Potter và bảo bối tử thần</h3>
-                                  <div class="price">175.000<span>235.000</span></div>
-                                  <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
-                              </div>
-                          </div>
-
-                          <div class="swiper-slide box">
-                              <div class="icons">
-                                  <a href="#" class="fas fa-search"></a>
-                                  <a href="#" class="fas fa-heart"></a>
-                                  <a href="#" class="fas fa-eye"></a>
-                              </div>
-                              <div class="image">
-                                  <img src="https://salt.tikicdn.com/ts/product/73/b7/d5/2b696492251d3444c11f782d46d604c0.jpg"
-                                      alt="">
-                              </div>
-                              <div class="content">
-                                  <h3>Harry Potter và bảo bối tử thần</h3>
-                                  <div class="price">175.000<span>235.000</span></div>
-                                  <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
-                              </div>
-                          </div>
-
-                          <div class="swiper-slide box">
-                              <div class="icons">
-                                  <a href="#" class="fas fa-search"></a>
-                                  <a href="#" class="fas fa-heart"></a>
-                                  <a href="#" class="fas fa-eye"></a>
-                              </div>
-                              <div class="image">
-                                  <img src="https://upload.wikimedia.org/wikipedia/vi/6/62/Harry_Potter_v%C3%A0_Ph%C3%B2ng_ch%E1%BB%A9a_b%C3%AD_m%E1%BA%ADt.jpg"
-                                      alt="">
-                              </div>
-                              <div class="content">
-                                  <h3>Harry Potter và bảo bối tử thần</h3>
-                                  <div class="price">175.000<span>235.000</span></div>
-                                  <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
-                              </div>
-                          </div>
-
-                          <div class="swiper-slide box">
-                              <div class="icons">
-                                  <a href="#" class="fas fa-search"></a>
-                                  <a href="#" class="fas fa-heart"></a>
-                                  <a href="#" class="fas fa-eye"></a>
-                              </div>
-                              <div class="image">
-                                  <img src="https://upload.wikimedia.org/wikipedia/vi/9/9f/Harry_Potter_v%C3%A0_t%C3%AAn_t%C3%B9_nh%C3%A2n_ng%E1%BB%A5c_Azkaban_b%C3%ACa.jpg"
-                                      alt="">
-                              </div>
-                              <div class="content">
-                                  <h3>Harry Potter và bảo bối tử thần</h3>
-                                  <div class="price">175.000<span>235.000</span></div>
-                                  <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
-                              </div>
-                          </div>
-
-                          <div class="swiper-slide box">
-                              <div class="icons">
-                                  <a href="#" class="fas fa-search"></a>
-                                  <a href="#" class="fas fa-heart"></a>
-                                  <a href="#" class="fas fa-eye"></a>
-                              </div>
-                              <div class="image">
-                                  <img src="https://img.websosanh.vn/v2/users/root_product/images/harry-potter-va-ten-tu-nhan/pYlw4I2xENSS.jpg?compress=85"
-                                      alt="">
-                              </div>
-                              <div class="content">
-                                  <h3>Harry Potter và bảo bối tử thần</h3>
-                                  <div class="price">175.000<span>235.000</span></div>
-                                  <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
-                              </div>
-                          </div>
-
-                          <div class="swiper-slide box">
-                              <div class="icons">
-                                  <a href="#" class="fas fa-search"></a>
-                                  <a href="#" class="fas fa-heart"></a>
-                                  <a href="#" class="fas fa-eye"></a>
-                              </div>
-                              <div class="image">
-                                  <img src="https://salt.tikicdn.com/cache/400x400/media/catalog/product/i/m/img414.jpg"
-                                      alt="">
-                              </div>
-                              <div class="content">
-                                  <h3>Harry Potter và bảo bối tử thần</h3>
-                                  <div class="price">175.000<span>235.000</span></div>
-                                  <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
-                              </div>
-                          </div>
-
-                      </div>
-
+                     {{/if}}
+                     {{/each}}
+                      </div>                   
                       <div class="swiper-button-next"></div>
                       <div class="swiper-button-prev"></div>
-
                   </div>
-
               </div>
 
                 <div class="discount__banner">
@@ -897,10 +742,10 @@
                         <div class="home-product-item__price">
                           <span
                             class="home-product-item__price-old"
-                          >410.000đ</span>
+                          >{{this.giagoc}}</span>
                           <span
                             class="home-product-item__price-current"
-                          >{{this.giaban}}</span>
+                          >{{this.giaban}} đ</span>
                         </div>
                         <div class="home-product-item__action">
                           <span
@@ -938,7 +783,7 @@
                         <div class="home-product-item__sale-off">
                           <span
                             class="home-product-item__sale-off-percent"
-                          >{{this.giamgia}}</span>
+                          >{{this.giamgia}}%</span>
                           <span
                             class="home-product-item__sale-off-label"
                           >GIẢM</span>

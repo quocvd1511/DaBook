@@ -13,23 +13,23 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 
-
 route(app)
 
-app.engine('handlebars', handlebars())
+app.engine('handlebars',
+        handlebars({
+          extname: '.handlebars',
+          helpers:{
+            "if": function(conditional, options) {
+              if (conditional > 40) {
+                return options.fn(this);
+              }
+            }
+          }
+}));
 app.set('view engine', 'handlebars')
 app.set('views', [__dirname + '\\src\\views\\views_admin', __dirname + '\\src\\views\\views_client', __dirname + '\\src\\views\\views_delivery'])
 
-
-
-// app.use(express.static(path.join(__dirname,'src\\public')))
-// src\\public
-
-
 app.use(express.static(path.join(__dirname, 'src/public')))
-
-
-
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

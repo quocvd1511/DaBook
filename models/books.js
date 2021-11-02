@@ -20,7 +20,8 @@ const Book = new Schema({
   sodanhgia:String,
   sobinhchon:String,
   soluongton:String,
-  ngonngu: String,
+  ngonngu:String,
+  giagoc:String,
   });
 
 module.exports = mogoose.model('Book',Book)
