@@ -182,6 +182,11 @@ class Client_Control
             }
     }
 
+    khuyenmai(req,res,next)
+    {
+        res.render('khuyenmai_client.handlebars',{layout: 'client.handlebars'})
+    }
+
 }
 //layout:'client.handlebars', 
 // if(req.query.giaban === "50000") {
