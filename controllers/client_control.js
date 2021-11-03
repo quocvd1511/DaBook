@@ -105,81 +105,325 @@ class Client_Control
     
     // Tìm kiếm theo bộ lọc
     searchBL(req,res,next)
-    {   
-       if(req.query.giaban === "50000") {
-        books.find({$and :[
-            { giaban : {
-                $lt: "50.000"
-            }},
-           { nxb :  { $in: req.query.nxb}},
-           { ngonngu :  { $in: req.query.ngonngu}}
-            ]})
-         .then(books => 
-        {
-            books=books.map(course => course.toObject())
-            res.render('search_client.handlebars',{layout:'client.handlebars',books});
-        })
-        .catch(next)
-        } else if(req.query.giaban === "100000") {
-                books.find({$and :[
-                     { giaban : {
-                         $gte:"50.000",
-                         $lt: "100.000"
-                     }},
-                    { nxb :  { $in: req.query.nxb}},
-                    { ngonngu :  { $in: req.query.ngonngu}}
-                ]})
-        .then(books => 
-        {
-            books=books.map(course => course.toObject())
-            res.render('search_client.handlebars',{layout:'client.handlebars',books});
-        })
-            .catch(next)
-        } else if (req.query.giaban === "150000") {
-            books.find({$and :[
-             { giaban : {
-                 $gte:"100.000",
-                 $lt: "150.000"
-             }},
-              { nxb :  { $in: req.query.nxb}},
-              { ngonngu :  { $in: req.query.ngonngu}}
-         ]})
-            .then(books => 
-             {
-                    books=books.map(course => course.toObject())
-                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
-                })
-            .catch(next)
-        } else if (req.query.giaban === "200000") {
-            books.find({$and :[
-            { giaban : {
-                 $gte:"150.000",
-                 $lt: "200.000"
-             }},
-        { nxb :  { $in: req.query.nxb}},
-        { ngonngu :  { $in: req.query.ngonngu}}
-         ]})
-         .then(books => 
+    {
+        if(req.query.giaban && req.query.nxb && req.query.ngonngu){
+            if(req.query.giaban === "50000") {
+             books.find({$and :[
+                 { giaban : {
+                     $lt: "50.000"
+                 }},
+                { nxb :  { $in: req.query.nxb}},
+                { ngonngu :  { $in: req.query.ngonngu}}
+                 ]})
+              .then(books => 
              {
                  books=books.map(course => course.toObject())
                  res.render('search_client.handlebars',{layout:'client.handlebars',books});
-              })
-            .catch(next)
-        } else {
-            books.find({$and :[
-             { giaban : {
-                   $gte: "200.000"
-                 }},
-                 { nxb :  { $in: req.query.nxb}},
-                 { ngonngu :  { $in: req.query.ngonngu}}
-             ]})
+             })
+             .catch(next)
+             } else if(req.query.giaban === "100000") {
+                     books.find({$and :[
+                          { giaban : {
+                              $gte:"50.000",
+                              $lt: "100.000"
+                          }},
+                         { nxb :  { $in: req.query.nxb}},
+                         { ngonngu :  { $in: req.query.ngonngu}}
+                     ]})
              .then(books => 
-                {
-                   books=books.map(course => course.toObject())
-                   res.render('search_client.handlebars',{layout:'client.handlebars',books});
-                 })
-            .catch(next)
+             {
+                 books=books.map(course => course.toObject())
+                 res.render('search_client.handlebars',{layout:'client.handlebars',books});
+             })
+                 .catch(next)
+             } else if (req.query.giaban === "150000") {
+                 books.find({$and :[
+                  { giaban : {
+                      $gte:"100.000",
+                      $lt: "150.000"
+                  }},
+                   { nxb :  { $in: req.query.nxb}},
+                   { ngonngu :  { $in: req.query.ngonngu}}
+              ]})
+                 .then(books => 
+                  {
+                         books=books.map(course => course.toObject())
+                         res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                     })
+                 .catch(next)
+             } else if (req.query.giaban === "200000") {
+                 books.find({$and :[
+                 { giaban : {
+                      $gte:"150.000",
+                      $lt: "200.000"
+                  }},
+             { nxb :  { $in: req.query.nxb}},
+             { ngonngu :  { $in: req.query.ngonngu}}
+              ]})
+              .then(books => 
+                  {
+                      books=books.map(course => course.toObject())
+                      res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                   })
+                 .catch(next)
+             } else {
+                 books.find({$and :[
+                  { giaban : {
+                        $gte: "200.000"
+                      }},
+                      { nxb :  { $in: req.query.nxb}},
+                      { ngonngu :  { $in: req.query.ngonngu}}
+                  ]})
+                  .then(books => 
+                     {
+                        books=books.map(course => course.toObject())
+                        res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                      })
+                 .catch(next)
+                 }
+        } else if(!req.query.giaban && req.query.nxb && req.query.ngonngu){
+            books.find({$and :[
+                    { nxb :  { $in: req.query.nxb}},
+                    { ngonngu :  { $in: req.query.ngonngu}}
+                ]})
+                .then(books => 
+                   {
+                      books=books.map(course => course.toObject())
+                      res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                    })
+               .catch(next)
             }
+            else if(!req.query.giaban && !req.query.nxb && req.query.ngonngu){
+                books.find(
+                        { ngonngu :  { $in: req.query.ngonngu}}
+                    )
+                    .then(books => 
+                       {
+                          books=books.map(course => course.toObject())
+                          res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                        })
+                   .catch(next)
+                }
+                else if(!req.query.giaban && req.query.nxb && !req.query.ngonngu){
+                    books.find(
+                            { nxb :  { $in: req.query.nxb}}
+                        )
+                        .then(books => 
+                           {
+                              books=books.map(course => course.toObject())
+                              res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                            })
+                       .catch(next)
+                    }
+                    else if(req.query.giaban && req.query.nxb && !req.query.ngonngu){
+                        if(req.query.giaban === "50000") {
+                            books.find({$and :[
+                                { giaban : {
+                                    $lt: "50.000"
+                                }},
+                               { nxb :  { $in: req.query.nxb}},
+                                ]})
+                             .then(books => 
+                            {
+                                books=books.map(course => course.toObject())
+                                res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                            })
+                            .catch(next)
+                            } else if(req.query.giaban === "100000") {
+                                    books.find({$and :[
+                                         { giaban : {
+                                             $gte:"50.000",
+                                             $lt: "100.000"
+                                         }},
+                                        { nxb :  { $in: req.query.nxb}}
+                                    ]})
+                            .then(books => 
+                            {
+                                books=books.map(course => course.toObject())
+                                res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                            })
+                                .catch(next)
+                            } else if (req.query.giaban === "150000") {
+                                books.find({$and :[
+                                 { giaban : {
+                                     $gte:"100.000",
+                                     $lt: "150.000"
+                                 }},
+                                  { nxb :  { $in: req.query.nxb}}
+                             ]})
+                                .then(books => 
+                                 {
+                                        books=books.map(course => course.toObject())
+                                        res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                    })
+                                .catch(next)
+                            } else if (req.query.giaban === "200000") {
+                                books.find({$and :[
+                                { giaban : {
+                                     $gte:"150.000",
+                                     $lt: "200.000"
+                                 }},
+                            { nxb :  { $in: req.query.nxb}}
+                             ]})
+                             .then(books => 
+                                 {
+                                     books=books.map(course => course.toObject())
+                                     res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                  })
+                                .catch(next)
+                            } else {
+                                books.find({$and :[
+                                 { giaban : {
+                                       $gte: "200.000"
+                                     }},
+                                     { nxb :  { $in: req.query.nxb}}
+                                 ]})
+                                 .then(books => 
+                                    {
+                                       books=books.map(course => course.toObject())
+                                       res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                     })
+                                .catch(next)
+                                }
+                        }
+                        else if(req.query.giaban && !req.query.nxb && req.query.ngonngu){
+                            if(req.query.giaban === "50000") {
+                                books.find({$and :[
+                                    { giaban : {
+                                        $lt: "50.000"
+                                    }},
+                                   { ngonngu :  { $in: req.query.ngonngu}}
+                                    ]})
+                                 .then(books => 
+                                {
+                                    books=books.map(course => course.toObject())
+                                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                })
+                                .catch(next)
+                                } else if(req.query.giaban === "100000") {
+                                        books.find({$and :[
+                                             { giaban : {
+                                                 $gte:"50.000",
+                                                 $lt: "100.000"
+                                             }},
+                                            { ngonngu :  { $in: req.query.ngonngu}}
+                                        ]})
+                                .then(books => 
+                                {
+                                    books=books.map(course => course.toObject())
+                                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                })
+                                    .catch(next)
+                                } else if (req.query.giaban === "150000") {
+                                    books.find({$and :[
+                                     { giaban : {
+                                         $gte:"100.000",
+                                         $lt: "150.000"
+                                     }},
+                                      { ngonngu :  { $in: req.query.ngonngu}}
+                                 ]})
+                                    .then(books => 
+                                     {
+                                            books=books.map(course => course.toObject())
+                                            res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                        })
+                                    .catch(next)
+                                } else if (req.query.giaban === "200000") {
+                                    books.find({$and :[
+                                    { giaban : {
+                                         $gte:"150.000",
+                                         $lt: "200.000"
+                                     }},
+                                { ngonngu :  { $in: req.query.ngonngu}}
+                                 ]})
+                                 .then(books => 
+                                     {
+                                         books=books.map(course => course.toObject())
+                                         res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                      })
+                                    .catch(next)
+                                } else {
+                                    books.find({$and :[
+                                     { giaban : {
+                                           $gte: "200.000"
+                                         }},
+                                         { ngonngu :  { $in: req.query.ngonngu}}
+                                     ]})
+                                     .then(books => 
+                                        {
+                                           books=books.map(course => course.toObject())
+                                           res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                         })
+                                    .catch(next)
+                                    }
+                        }
+                        else if(req.query.giaban && !req.query.nxb && !req.query.ngonngu){
+                            if(req.query.giaban === "50000") {
+                                books.find({$and :[
+                                    { giaban : {
+                                        $lt: "50.000"
+                                    }},
+                                   { ngonngu :  { $in: req.query.ngonngu}}
+                                    ]})
+                                 .then(books => 
+                                {
+                                    books=books.map(course => course.toObject())
+                                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                })
+                                .catch(next)
+                                } else if(req.query.giaban === "100000") {
+                                        books.find({$and :[
+                                             { giaban : {
+                                                 $gte:"50.000",
+                                                 $lt: "100.000"
+                                             }},
+                                            { ngonngu :  { $in: req.query.ngonngu}}
+                                        ]})
+                                .then(books => 
+                                {
+                                    books=books.map(course => course.toObject())
+                                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                })
+                                    .catch(next)
+                                } else if (req.query.giaban === "150000") {
+                                    books.find({giaban : {
+                                         $gte:"100.000",
+                                         $lt: "150.000"
+                                     }}    
+                                 )
+                                    .then(books => 
+                                     {
+                                            books=books.map(course => course.toObject())
+                                            res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                        })
+                                    .catch(next)
+                                } else if (req.query.giaban === "200000") {
+                                    books.find(
+                                    { giaban : {
+                                         $gte:"150.000",
+                                         $lt: "200.000"
+                                     }
+                               })
+                                 .then(books => 
+                                     {
+                                         books=books.map(course => course.toObject())
+                                         res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                      })
+                                    .catch(next)
+                                } else {
+                                    books.find(
+                                     { giaban : {
+                                           $gte: "200.000"
+                                         }
+                                     })
+                                     .then(books => 
+                                        {
+                                           books=books.map(course => course.toObject())
+                                           res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                         })
+                                    .catch(next)
+                                    }
+                        }
     }
 
     khuyenmai(req,res,next)
@@ -188,71 +432,5 @@ class Client_Control
     }
 
 }
-//layout:'client.handlebars', 
-// if(req.query.giaban === "50000") {
-//     books.find({giaban : "59220"})
-//     .then(books => 
-//         {
-//             books=books.map(course => course.toObject())
-//             res.render('home_client.handlebars',{layout:'client.handlebars',books});
-//         })
-//     .catch(next)
-// } else if(req.query.giaban == 100000) {
-//     books.find({$and :[
-//        { giaban : {
-//             $gte:"50.000",
-//             $lt: "100.000"
-//         }},
-//         { nxb :  { $in: req.query.nxb}}
-//     ]})
-//     .then(books => 
-//         {
-//             books=books.map(course => course.toObject())
-//             res.render('home_client.handlebars',{layout:'client.handlebars',books});
-//         })
-//     .catch(next)
-//   } else if (req.query.giaban == "150000") {
-//     books.find({$and :[
-//        { giaban : {
-//             $gte:"100.000",
-//             $lt: "150.000"
-//         }},
-//         { nxb :  { $in: req.query.nxb}}
-//     ]})
-//     .then(books => 
-//         {
-//             books=books.map(course => course.toObject())
-//             res.render('home_client.handlebars',{layout:'client.handlebars',books});
-//         })
-//     .catch(next)
-//   } else if (req.query.giaban == 200000) {
-//     books.find({$and :[
-//        { giaban : {
-//             $gte:"150.000",
-//             $lt: "200.000"
-//         }},
-//         { nxb :  { $in: req.query.nxb}}
-//     ]})
-//     .then(books => 
-//         {
-//             books=books.map(course => course.toObject())
-//             res.render('home_client.handlebars',{layout:'client.handlebars',books});
-//         })
-//     .catch(next)
-//   } else {
-//     books.find({$and :[
-//         { giaban : {
-//              $gte: "200.000"
-//          }},
-//          { nxb :  { $in: req.query.nxb}}
-//      ]})
-//      .then(books => 
-//          {
-//              books=books.map(course => course.toObject())
-//              res.render('home_client.handlebars',{layout:'client.handlebars',books});
-//          })
-//      .catch(next)
-//   }
-// }
 
 module.exports = new Client_Control
