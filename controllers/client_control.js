@@ -98,7 +98,7 @@ class Client_Control
             .then(books => 
                 {
                     books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client_login.handlebars',books});
+                    res.render('search_client.handlebars',{layout:'client_login.handlebars',books});
                 })
             .catch(next)
     }
@@ -107,7 +107,7 @@ class Client_Control
     searchBL(req,res,next)
     {   
        if(req.query.giaban === "50000") {
-        books.find({$or :[
+        books.find({$and :[
             { giaban : {
                 $lt: "50.000"
             }},
@@ -117,11 +117,11 @@ class Client_Control
          .then(books => 
         {
             books=books.map(course => course.toObject())
-            res.render('home_client.handlebars',{layout:'client.handlebars',books});
+            res.render('search_client.handlebars',{layout:'client.handlebars',books});
         })
         .catch(next)
         } else if(req.query.giaban === "100000") {
-                books.find({$or :[
+                books.find({$and :[
                      { giaban : {
                          $gte:"50.000",
                          $lt: "100.000"
@@ -132,11 +132,11 @@ class Client_Control
         .then(books => 
         {
             books=books.map(course => course.toObject())
-            res.render('home_client.handlebars',{layout:'client.handlebars',books});
+            res.render('search_client.handlebars',{layout:'client.handlebars',books});
         })
             .catch(next)
         } else if (req.query.giaban === "150000") {
-            books.find({$or :[
+            books.find({$and :[
              { giaban : {
                  $gte:"100.000",
                  $lt: "150.000"
@@ -147,11 +147,11 @@ class Client_Control
             .then(books => 
              {
                     books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client.handlebars',books});
+                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
                 })
             .catch(next)
         } else if (req.query.giaban === "200000") {
-            books.find({$or :[
+            books.find({$and :[
             { giaban : {
                  $gte:"150.000",
                  $lt: "200.000"
@@ -162,11 +162,11 @@ class Client_Control
          .then(books => 
              {
                  books=books.map(course => course.toObject())
-                 res.render('home_client.handlebars',{layout:'client.handlebars',books});
+                 res.render('search_client.handlebars',{layout:'client.handlebars',books});
               })
             .catch(next)
         } else {
-            books.find({$or :[
+            books.find({$and :[
              { giaban : {
                    $gte: "200.000"
                  }},
@@ -176,7 +176,7 @@ class Client_Control
              .then(books => 
                 {
                    books=books.map(course => course.toObject())
-                   res.render('home_client.handlebars',{layout:'client.handlebars',books});
+                   res.render('search_client.handlebars',{layout:'client.handlebars',books});
                  })
             .catch(next)
             }
