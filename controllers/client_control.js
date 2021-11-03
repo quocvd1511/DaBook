@@ -359,32 +359,28 @@ class Client_Control
                         }
                         else if(req.query.giaban && !req.query.nxb && !req.query.ngonngu){
                             if(req.query.giaban === "50000") {
-                                books.find({$and :[
-                                    { giaban : {
-                                        $lt: "50.000"
-                                    }},
-                                   { ngonngu :  { $in: req.query.ngonngu}}
-                                    ]})
-                                 .then(books => 
+                                books.find({giaban : {
+                                   $lt: "50.000"
+                                }}    
+                            )
+                               .then(books => 
                                 {
-                                    books=books.map(course => course.toObject())
-                                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
-                                })
-                                .catch(next)
+                                       books=books.map(course => course.toObject())
+                                       res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                   })
+                               .catch(next)
                                 } else if(req.query.giaban === "100000") {
-                                        books.find({$and :[
-                                             { giaban : {
-                                                 $gte:"50.000",
-                                                 $lt: "100.000"
-                                             }},
-                                            { ngonngu :  { $in: req.query.ngonngu}}
-                                        ]})
-                                .then(books => 
-                                {
-                                    books=books.map(course => course.toObject())
-                                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
-                                })
-                                    .catch(next)
+                                    books.find({giaban : {
+                                        $gte:"50.000",
+                                        $lt: "100.000"
+                                    }}    
+                                )
+                                   .then(books => 
+                                    {
+                                           books=books.map(course => course.toObject())
+                                           res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                       })
+                                   .catch(next)
                                 } else if (req.query.giaban === "150000") {
                                     books.find({giaban : {
                                          $gte:"100.000",
@@ -398,8 +394,7 @@ class Client_Control
                                         })
                                     .catch(next)
                                 } else if (req.query.giaban === "200000") {
-                                    books.find(
-                                    { giaban : {
+                                    books.find({ giaban : {
                                          $gte:"150.000",
                                          $lt: "200.000"
                                      }
@@ -411,8 +406,7 @@ class Client_Control
                                       })
                                     .catch(next)
                                 } else {
-                                    books.find(
-                                     { giaban : {
+                                    books.find({ giaban : {
                                            $gte: "200.000"
                                          }
                                      })
