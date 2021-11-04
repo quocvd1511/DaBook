@@ -1,0 +1,92 @@
+/*sale container */
+.sale {
+  background-color: #efefef;
+}
+
+.sale__myvoucher {
+  padding-top: 16px;
+}
+
+.sale__list {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.sale__myvoucher, .sale__list {
+  background-color: var(--white-color);
+}
+
+.sale__list-container {
+  padding: 12px;
+  opacity: 0.7;
+}
+
+.sale__list-item {
+  box-sizing: border-box;
+}
+
+.sale__list-text {
+  padding: 12px 12px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: black;
+}
+
+.sale__list-container:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+/* voucher */
+.sale__voucher-title {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.sale__voucher-container {
+  border-radius: 3px;
+  justify-content: center;
+  margin: 12px 0;
+}
+
+.sale__voucher-logo {
+  background-color: var(--blue-color);
+  padding: 8px;
+  width: 100px;
+  border-radius: 2px;
+}
+
+.sale__card {
+  margin: 8px;
+}
+
+.btn__save {
+  float: right;
+  margin: 0 8px;
+  width: 50px;
+  height: 30px;
+  text-decoration: none;
+  border: none;
+  border-radius: 3px;
+  font-size: 1.5rem;
+  padding: 0 8px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-color);
+  background-color: var(--blue-color);
+  cursor: pointer;
+}
+
+.btn__save:hover {
+  text-decoration: none;
+}
+
+.sale__card-text {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+

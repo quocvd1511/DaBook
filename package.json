@@ -17,6 +17,8 @@
     "watch_admin": "sass -w src/public/admin_styles/assets/scss/admin_styles.scss src/public/admin_styles/assets/css/admin_styles.css",
     "watch_cli_main": "sass -w src/public/client_styles/assets/scss/main.scss src/public/client_styles/assets/css/main.css",
     "watch_cli_base": "sass -w src/public/client_styles/assets/scss/base.scss src/public/client_styles/assets/css/base.css",
+    "watch_cli_sale": "sass -w src/public/client_styles/assets/scss/book_sale.scss src/public/client_styles/assets/css/book_sale.css",
+
     "start": "npx nodemon main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
