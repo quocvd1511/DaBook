@@ -48,8 +48,14 @@ class Client_Control
                     {    
                         req.session.username=req.body.username
                         req.session.isAuth=true; 
-                        res.render(partials('header.handlebars'),{layout:'client.handlebars',client_accounts: req.session.username
-                    });                       
+                        books.find({})
+                        .then(books => 
+                            {
+                                books=books.map(course => course.toObject())
+                                res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books
+                            });     
+                            })
+                        .catch(next)                  
                     }
                 } else {
                     next(err)
@@ -61,8 +67,14 @@ class Client_Control
     {
         if(!req.session.isAuth) res.redirect('/')
         else {
-                    res.render(partials('header.handlebars'),{layout: 'client.handlebars', client_accounts: req.session.username})
-            }
+            books.find({})
+            .then(books => 
+                {
+                    books=books.map(course => course.toObject())
+                    res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books});     
+                })
+            .catch(next)   
+                }
     }
 
 
