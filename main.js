@@ -20,7 +20,7 @@ app.engine('handlebars',
           extname: '.handlebars',
           helpers:{
             "if": function(conditional, options) {
-              if (conditional > 40) {
+              if (conditional > 22) {
                 return options.fn(this);
               }
             }
