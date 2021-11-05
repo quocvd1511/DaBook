@@ -3,31 +3,29 @@ const books=require('../models/books')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
 
+module.exports = {
+    // Render Index View
+    index: function(req, res) {
+      res.view({
+        partials: {
+          header: 'partials/header'
+        },
+      });
+    }
+  };
+
 class Client_Control
 {
     main(req,res,next)
     {
-        if(!req.session.isAuth) 
-        {
-            books.find({})
-            .then(books => 
-                {
-                    books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client.handlebars',books
-                    });
-                })
-            .catch(next)
-        } else {
-            books.find({})
-            .then(books => 
-                {
-                    books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client_login.handlebars',books
-                    });
-                })
-            .catch(next)
-        }
-       
+        books.find({})
+        .then(books => 
+            {
+                books=books.map(course => course.toObject())
+                res.render('home_client.handlebars',{layout:'client.handlebars',books
+                });
+            })
+        .catch(next)
     }
 
     logout(req,res,next)
@@ -43,35 +41,30 @@ class Client_Control
             function (err,client_account){
                 if(!err)
                 {
-                    if(Boolean(client_account)==false) res.redirect('/')
+                    if(Boolean(client_account)==false) {
+                        res.redirect('/')
+                    }
                     else 
-                    {
+                    {    
                         req.session.username=req.body.username
                         req.session.isAuth=true; 
-                        res.render('home_client.handlebars',{layout:'client_login.handlebars',client_accounts: req.session.username
-                    });                     
+                        res.render(partials('header.handlebars'),{layout:'client.handlebars',client_accounts: req.session.username
+                    });                       
                     }
                 } else {
                     next(err)
                 }
             })
-
-        /*
-            .then (admin_account => res.render('admin_home',{layout: 'admin.handlebars',admin_account: mongooseToObject(admin_account)}))
-            .catch(next)*/
     }
 
     get_client(req,res,next)
     {
         if(!req.session.isAuth) res.redirect('/')
         else {
-                    res.render('home_client.handlebars',{layout: 'client_login.handlebars', client_accounts: req.session.username})
+                    res.render(partials('header.handlebars'),{layout: 'client.handlebars', client_accounts: req.session.username})
             }
-            
-        /*
-            .then (admin_account => res.render('admin_home',{layout: 'admin.handlebars',admin_account: mongooseToObject(admin_account)}))
-            .catch(next)*/
     }
+
 
     // Tìm kiếm theo tên sách, tác giả
     search(req,res,next)
@@ -98,7 +91,7 @@ class Client_Control
             .then(books => 
                 {
                     books=books.map(course => course.toObject())
-                    res.render('search_client.handlebars',{layout:'client_login.handlebars',books});
+                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
                 })
             .catch(next)
     }
