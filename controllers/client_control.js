@@ -3,29 +3,30 @@ const books=require('../models/books')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
 
-module.exports = {
-    // Render Index View
-    index: function(req, res) {
-      res.view({
-        partials: {
-          header: 'partials/header'
-        },
-      });
-    }
-  };
 
 class Client_Control
 {
     main(req,res,next)
     {
-        books.find({})
-        .then(books => 
-            {
-                books=books.map(course => course.toObject())
-                res.render('home_client.handlebars',{layout:'client.handlebars',books
-                });
-            })
-        .catch(next)
+        if(req.session.isAuth) {
+            books.find({})
+            .then(books => 
+                {
+                    books=books.map(course => course.toObject())
+                    res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books
+                });     
+                })
+            .catch(next)   
+        }else{
+            books.find({})
+            .then(books => 
+                {
+                    books=books.map(course => course.toObject())
+                    res.render('home_client.handlebars',{layout:'client.handlebars',books
+                    });
+                })
+            .catch(next)
+        }
     }
 
     logout(req,res,next)
@@ -33,7 +34,6 @@ class Client_Control
         req.session.destroy()
         res.redirect('/')
     }
-
 
     post_client(req,res,next)
     {
