@@ -1013,14 +1013,21 @@
 
     <script>
         var swiper = new Swiper(".featured-slider", {
+            //slidesPerView: '1',
             spaceBetween: 10,
+            autoplay: true,
+            //effect: 'coverflow',
+            //grabCursor: true,
+            //centeredSlides: true,
+            slidesPerView: 'auto',
+            //spaceBetween: 10,
             loop: true,
             centeredSlides: true,
             autoplay: {
                 delay: 9000,
                 disableOnInteraction: false,
                 preloadImages: true,
-                speed: 200
+                speed: 600
             },
             navigation: {
                 nextEl: ".swiper-button-next",

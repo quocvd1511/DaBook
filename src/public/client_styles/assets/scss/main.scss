@@ -1123,48 +1123,6 @@ padding-right: 4px;
     margin: 48px 0 32px 0;
 }
 
-.pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
-}
-
-.pagination-item {
-    margin: 0 10px;
-}
-
-.pagination-item--active .pagination-item__link {
-    color: var(--white-color);
-    background-color: var(--blue-color);
-}
-
-.pagination-item--active:hover {
-    background-color: #0d88da;
-    text-decoration: none;
-    border-radius: 3px;
-}
-
-.pagination-item__link:hover {
-    text-decoration: none;
-}
-
-.pagination-item__link {
-    display: block;
-    font-size: 1.8rem;
-    color: #807f7f;
-    min-width: 40px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 3px;
-    font-weight: 400;
-}
-
-.pagination-item__icon {
-    padding-top: 7px;
-}
-
 
 
 
