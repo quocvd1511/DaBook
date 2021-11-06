@@ -94,7 +94,6 @@ class Client_Control
                 }
     }
 
-
     // Tìm kiếm theo tên sách, tác giả
     search(req,res,next)
     {   
@@ -443,10 +442,17 @@ class Client_Control
                         }
     }
 
+    // Khuyến mãi
     khuyenmai(req,res,next)
     {
         res.render('khuyenmai_client.handlebars',{layout: 'client.handlebars'})
     }
+
+     //Chi tiết sách
+     chitietsach(req,res,next){
+        res.render('chitietsach_client.handlebars',{layout: 'client.handlebars'})
+    }
+
 }
 
 module.exports = new Client_Control
