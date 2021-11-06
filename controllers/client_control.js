@@ -447,7 +447,6 @@ class Client_Control
     {
         res.render('khuyenmai_client.handlebars',{layout: 'client.handlebars'})
     }
-
 }
 
 module.exports = new Client_Control
