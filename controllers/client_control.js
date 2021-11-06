@@ -2,6 +2,7 @@ const client_login = require('../models/client_account')
 const books=require('../models/books')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
+const client_account = require('../models/client_account')
 
 
 class Client_Control
@@ -29,12 +30,26 @@ class Client_Control
         }
     }
 
+    // POST signup
+    signup(req, res, next){
+        const formData = req.body;
+        formData.diem = 0;
+        formData.tinhtrang = 'đang sử dụng';
+        const Client_account = new client_account(formData);
+        Client_account.save()
+            .then(() => res.redirect('/'))
+            .catch(error => {});
+        
+    }
+
+    // Logout account
     logout(req,res,next)
     {
         req.session.destroy()
         res.redirect('/')
     }
 
+    // Login account
     post_client(req,res,next)
     {
         client_login.findOne({ MaTK: req.body.username, Matkhau: req.body.password}, 

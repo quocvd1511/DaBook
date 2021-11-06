@@ -264,8 +264,9 @@
           </div>
 
           <!-- Sign up -->
+       <form method="POST" action="/signup">
           <div class="modal modal-logup">
-            <div class="modal__overlay"></div>
+          <div class="modal__overlay"></div>
 
             <div class="modal__body">
               <!--register form-->
@@ -282,6 +283,7 @@
                     <div class="auth-form__group">
                       <label class="auth-form__label">Tên tài khoản</label>
                       <input
+                        name="matk"
                         type="text"
                         class="auth-form__input"
                         placeholder="Nhập tên tài khoản"
@@ -290,6 +292,7 @@
                     <div class="auth-form__group">
                       <label class="auth-form__label">Email</label>
                       <input
+                        name="email"
                         type="text"
                         class="auth-form__input"
                         placeholder="Nhập Email"
@@ -298,6 +301,7 @@
                     <div class="auth-form__group">
                       <label class="auth-form__label">Mật khẩu</label>
                       <input
+                        name="matkhau"
                         type="text"
                         class="auth-form__input"
                         placeholder="Nhập mật khẩu"
@@ -314,7 +318,7 @@
                   </div>
 
                   <div class="auth-form__controls">
-                    <button class="btn btn--primary btn__signin">Đăng ký</button>
+                    <button class="btn btn--primary btn__signin" type="submit">Đăng ký</button>
                   </div>
 
                   <div class="auth-form__socials">
@@ -334,6 +338,7 @@
               </div>
             </div>
           </div>
+        </form>
           <!-- header-with-search -->
           <form method="GET" action="/search">
           <div class="header-with-search">

@@ -4,6 +4,7 @@ const route = express.Router()
 const client_Control = require('../controllers/client_control')
 
 
+route.post('/signup', client_Control.signup)
 route.get('/khuyenmai', client_Control.khuyenmai)
 route.get('/boloc',client_Control.searchBL)
 route.get('/search', client_Control.search)
