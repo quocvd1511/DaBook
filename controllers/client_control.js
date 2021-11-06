@@ -35,6 +35,7 @@ class Client_Control
         const formData = req.body;
         formData.diem = 0;
         formData.tinhtrang = 'đang sử dụng';
+
         const Client_account = new client_account(formData);
         Client_account.save()
             .then(() => res.redirect('/'))
@@ -52,7 +53,7 @@ class Client_Control
     // Login account
     post_client(req,res,next)
     {
-        client_login.findOne({ MaTK: req.body.username, Matkhau: req.body.password}, 
+        client_login.findOne({$or: [{matk: req.body.username},{email: req.body.username}], matkhau: req.body.password}, 
             function (err,client_account){
                 if(!err)
                 {
@@ -60,8 +61,9 @@ class Client_Control
                         res.redirect('/')
                     }
                     else 
-                    {    
-                        req.session.username=req.body.username
+                    {
+                               
+                        req.session.username=client_account.matk;
                         req.session.isAuth=true; 
                         books.find({})
                         .then(books => 
