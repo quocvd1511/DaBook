@@ -40,251 +40,6 @@
   <body>
 
     <div class="app">
-      {{!-- <header class="header">
-        <div class="grid">
-          <nav class="header__navbar">
-            <ul class="header__navbar-list">
-              <li class="header__navbar-item">
-                Vào cửa hàng trên ứng dụng DaBook
-              </li>
-            </ul>
-
-            <ul class="header__navbar-list">
-              <div class="header__language-select">
-                <span class="header__language-select-label">Ngôn ngữ</span>
-                <i class="header__language-select-icon ti-angle-down"></i>
-                <ul class="header__language-option">
-                  <li
-                    class="header__language-option-item header__language-option-item--active"
-                  >
-
-                    <span>Việt Nam</span>
-                    <i class="ti-check"></i>
-                  </li>
-                  <li class="header__language-option-item">
-                    <span>English</span>
-                    <i class="ti-check"></i>
-                  </li>
-                </ul>
-              </div>
-              <li class="header__navbar-item">
-                <div href="" class="header__navbar-item--link open-login-noti">
-                  <i class="header__navbar-icon ti-bell"></i>
-                  Thông báo
-                </div>
-              </li>
-              <li class="header__navbar-item">
-                <a href="" class="header__navbar-item--link">
-                  <i class="header__navbar-icon far fa-question-circle"></i>
-                  Trợ giúp
-                </a>
-              </li>
-              <li class="header__navbar-item header__navbar-item--separate">
-                <div href="" class="header__navbar-item--link open-login">
-                  Đăng nhập
-                </div>
-              </li>
-              <li class="header__navbar-item">
-                <div href="" class="header__navbar-item--link open-signup">
-                  Đăng ký
-                </div>
-              </li>
-            </ul>
-          </nav>
-
-          <!-- log in -->
-          <div class="modal modal__login">
-            <div class="modal__overlay"></div>
-            <div class="modal__body">
-              <!--login form-->
-              <div class="auth-form">
-                <div class="auth-form__container">
-                  <div class="auth-form__header">
-                    <h3 class="auth-form__heading">ĐĂNG NHẬP</h3>
-                  </div>
-                  <div class="modal-close">
-                    <i class="ti-close"></i>
-                  </div>
-
-                  <form  method="POST" action="/login">
-                  <div class="auth-form__form">
-                    <div class="auth-form__group">
-                      <label class="auth-form__label">Tên tài khoản/Email</label>
-                      <input
-                        name="username"
-                        type="text"
-                        class="auth-form__input"
-                        placeholder="Nhập tên tài khoản hoặc Email"
-                      />
-                    </div>
-                    <div class="auth-form__group">
-                      <label class="auth-form__label">Mật khẩu</label>
-                      <input
-                        name="password"
-                        type="text"
-                        class="auth-form__input"
-                        placeholder="Nhập mật khẩu"
-                      />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customControlInline"
-                        style="margin-top: 2px;"
-                      />
-                      <label
-                        class="custom-control-label"
-                        for="customControlInline"
-                      >Remember me</label>
-                    </div>
-                  </div>
-
-                  <div class="auth-form__controls">
-                    <button class="btn btn--primary btn__login" type="submit">Đăng nhập</button>
-                  </div>
-                </form>
-
-                  <div class="auth-form__socials">
-                    <a
-                      href=""
-                      class="auth-form__socials--fb btn btn--with-icon"
-                    >
-                      <i
-                        class="auth-form__socials-icon fab fa-facebook-square"
-                      ></i>
-                      <span>Đăng nhập với Facebook</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sign up -->
-          <div class="modal modal-logup">
-            <div class="modal__overlay"></div>
-
-            <div class="modal__body">
-              <!--register form-->
-              <div class="auth-form">
-                <div class="auth-form__container">
-                  <div class="auth-form__header">
-                    <h3 class="auth-form__heading">ĐĂNG KÝ</h3>
-                  </div>
-                  <div class="modals-close">
-                    <i class="ti-close"></i>
-                  </div>
-
-                  <div class="auth-form__form">
-                    <div class="auth-form__group">
-                      <label class="auth-form__label">Tên tài khoản</label>
-                      <input
-                        type="text"
-                        class="auth-form__input"
-                        placeholder="Nhập tên tài khoản"
-                      />
-                    </div>
-                    <div class="auth-form__group">
-                      <label class="auth-form__label">Email</label>
-                      <input
-                        type="text"
-                        class="auth-form__input"
-                        placeholder="Nhập Email"
-                      />
-                    </div>
-                    <div class="auth-form__group">
-                      <label class="auth-form__label">Mật khẩu</label>
-                      <input
-                        type="text"
-                        class="auth-form__input"
-                        placeholder="Nhập mật khẩu"
-                      />
-                    </div>
-                    <div class="auth-form__group">
-                      <label class="auth-form__label">Xác nhận mật khẩu</label>
-                      <input
-                        type="text"
-                        class="auth-form__input"
-                        placeholder="Nhập lại mật khẩu"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="auth-form__controls">
-                    <button class="btn btn--primary btn__signin">Đăng ký</button>
-                  </div>
-
-                  <div class="auth-form__socials">
-                    <a
-                      href=""
-                      class="auth-form__socials--fb btn btn--with-icon"
-                    >
-                      <i
-                        class="auth-form__socials-icon fab fa-facebook-square"
-                      ></i>
-                      <span class="auth-form__socials-title">
-                        Kết nối với Facebook
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- header-with-search -->
-          <form method="GET" action="/search">
-          <div class="header-with-search">
-            <div class="header__logo">
-              <a href="/" class="header__logo-link">
-                <img
-                  class="header__logo-img"
-                  src="/client_styles/assets/img/logo.png"
-                  alt=""
-                />
-              </a>
-            </div>
-
-            <div class="header__search">
-              <input
-               name="name"
-                type="text"
-                class="header__search-input"
-                placeholder="Nhập sản phẩm muốn tìm kiếm"
-              />
-              <!-- Select -->
-              <div class="header__search-select">
-                <span class="header__search-select-label">Tìm kiếm theo</span>
-                <i class="header__search-select-icon ti-angle-down"></i>
-                <ul class="header__search-option">
-                  <li class="header__search-option-item">
-                    <span>Tên sách</span>
-                    <i class="ti-check"></i>
-                  </li>
-                  <li class="header__search-option-item">
-                    <span>Tên tác giả</span>
-                    <i class="ti-check"></i>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Search button -->
-              <button type = "submit" class="header__search-btn">
-                <i class="header__search-btn-icon fas fa-search"></i>
-              </button>
-            </div>
-
-            <div class="header__cart">
-              <i class="header__cart-icon ti-shopping-cart"></i>
-            </div>
-          </div>
-        </form>
-        </div>
-      </header> --}}
-
       <!-- container -->
       <div class="app__container">
         <div class="grid">
@@ -637,7 +392,7 @@
                   <div class="swiper featured-slider">             
                       <div class="swiper-wrapper" style="height: auto; width: 100%">
                         {{#each books}}
-                        {{#if this.giamgia}}
+                        {{#when this.giamgia}}
                           <div class="swiper-slide box">
                               <div class="icons">
                                   <a href="#" class="fas fa-search"></a>
@@ -650,11 +405,11 @@
                               </div>
                               <div class="content">
                                   <h3>{{this.tensach}}</h3>
-                                  <div class="price">{{this.giaban}} đ<span>{{this.giagoc}}</span></div>
+                                  <div class="price">{{this.giaban}}.000 đ<span>{{this.giagoc}}</span></div>
                                   <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
                               </div>
                           </div>
-                     {{/if}}
+                     {{/when}}
                      {{/each}}
                       </div>                   
                       <div class="swiper-button-next"></div>
@@ -745,7 +500,7 @@
                           >{{this.giagoc}}</span>
                           <span
                             class="home-product-item__price-current"
-                          >{{this.giaban}} đ</span>
+                          >{{this.giaban}}.000 đ</span>
                         </div>
                         <div class="home-product-item__action">
                           <span
@@ -794,109 +549,43 @@
                   {{/each}}
                 </div>
               </div>
-
+               <ul class="pagination home-product__pagination">
+                  <li class="pagination-item">
+                      <a href="" class="pagination-item__link">
+                          <i class="pagination-item__icon fas fa-angle-left"></i>
+                      </a>
+                  </li>
+                  <li class="pagination-item pagination-item--active">
+                      <a href="" class="pagination-item__link">1</a>
+                  </li>
+                  <li class="pagination-item">
+                      <a href="" class="pagination-item__link">2</a>
+                  </li>
+                  <li class="pagination-item">
+                      <a href="" class="pagination-item__link">3</a>
+                  </li>
+                  <li class="pagination-item">
+                      <a href="" class="pagination-item__link">4</a>
+                  </li>
+                  <li class="pagination-item">
+                      <a href="" class="pagination-item__link">5</a>
+                  </li>
+                  <li class="pagination-item">
+                      <a href="" class="pagination-item__link">...</a>
+                  </li>
+                  <li class="pagination-item">
+                      <a href="" class="pagination-item__link">14</a>
+                  </li>
+                  <li class="pagination-item">
+                      <a href="" class="pagination-item__link">
+                          <i class="pagination-item__icon fas fa-angle-right"></i>
+                      </a>
+                  </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-
-      <footer class="footer">
-        <div class="container bottom_border">
-          <div class="row">
-            <div class="col-sm-4 col-md col-sm-4 col-12 col">
-              <h5 class="headin5_amrc col_white_amrc pt2">CHĂM SÓC KHÁCH HÀNG</h5>
-              <!--headin5_amrc-->
-              <ul class="footer_ul_amrc">
-                <li><a href="http://webenlance.com">Các câu hỏi thường gặp</a></li>
-                <li><a href="http://webenlance.com">Gửi yêu cầu hỗ trợ</a></li>
-                <li><a href="http://webenlance.com">Hướng dẫn đặt hàng</a></li>
-                <li><a href="http://webenlance.com">Phương thức vận chuyển</a></li>
-                <li><a href="http://webenlance.com">Chính sách đổi trả</a></li>
-              </ul>
-              <p><i class="fa fa-phone"></i> +1900 1529 </p>
-              <p><i class="fa fa fa-envelope"></i> dabook@book.com </p>
-            </div>
-
-            <div class="col-sm-4 col-md col-6 col">
-              <h5 class="headin5_amrc col_white_amrc pt2">GIỚI THIỆU</h5>
-              <!--headin5_amrc-->
-              <ul class="footer_ul_amrc">
-                <li><a href="http://webenlance.com">Điều khoản sử dụng</a></li>
-                <li><a href="http://webenlance.com">Chính sách bảo mật thanh
-                    toán</a></li>
-                <li><a href="http://webenlance.com">Chính sách bảo mật thông tin</a></li>
-                <li><a href="http://webenlance.com">Chính sách giải quyết khiếu
-                    nại</a></li>
-                <li><a href="http://webenlance.com">Giới thiệu xu</a></li>
-                <li><a href="http://webenlance.com">Chính sách bán hàng</a></li>
-              </ul>
-              <!--footer_ul_amrc ends here-->
-            </div>
-
-            <div class="col-sm-4 col-md col-6 col">
-              <h5 class="headin5_amrc col_white_amrc pt2">TÀI KHOẢN CỦA TÔI</h5>
-              <!--headin5_amrc-->
-              <ul class="footer_ul_amrc">
-                <li><a href="http://webenlance.com">Đăng nhập</a></li>
-                <li><a href="http://webenlance.com">Đăng ký</a></li>
-                <li><a href="http://webenlance.com">Thay đổi địa chỉ giao hàng</a></li>
-                <li><a href="http://webenlance.com">Chi tiết tài khoản</a></li>
-                <li><a href="http://webenlance.com">Lịch sử mua hàng</a></li>
-                <li><a href="http://webenlance.com">Điểm tích lũy</a></li>
-              </ul>
-              <!--footer_ul_amrc ends here-->
-            </div>
-
-            <div class="col-sm-4 col-md col-12 col">
-              <h5 class="headin5_amrc col_white_amrc pt2">THEO DÕI CHÚNG TÔI</h5>
-              <!--headin5_amrc ends here-->
-
-              <ul class="footer_ul2_amrc">
-                <li><a href="#"><i
-                      class="fab fa-facebook fleft padding-right"
-                    ></i></a><p>Theo dõi chúng tôi tại địa chỉ:
-                    <a href="#">https://www.facebook.com/</a></p></li>
-                <li><a href="#"><i
-                      class="fab fa-linkedin fleft padding-right"
-                    ></i></a><p>Theo dõi chúng tôi tại địa chỉ:
-                    <a href="#">https://www.linkedin.com/</a></p></li>
-                <li><a href="#"><i
-                      class="fab fa-twitter fleft padding-right"
-                    ></i></a><p>Theo dõi chúng tôi tại địa chỉ:
-                    <a href="#">https://www.twitter.com/</a></p></li>
-                <li><a href="#"><i
-                      class="fab fa-instagram fleft padding-right"
-                    ></i></a><p>Theo dõi chúng tôi tại địa chỉ:
-                    <a href="#">https://www.instagram.com/</a></p></li>
-              </ul>
-              <!--footer_ul2_amrc ends here-->
-            </div>
-          </div>
-        </div>
-
-        <div class="container">
-          <!--foote_bottom_ul_amrc ends here-->
-          <p class="text-center">2021 | Bản quyền thuộc về công ty
-            <a href="#">DaBook - DaBook.com</a></p>
-
-          <ul class="social_footer_ul">
-            <li><a href="http://webenlance.com"><i
-                  class="fab fa-facebook-f"
-                ></i></a></li>
-            <li><a href="http://webenlance.com"><i
-                  class="fab fa-twitter"
-                ></i></a></li>
-            <li><a href="http://webenlance.com"><i
-                  class="fab fa-linkedin"
-                ></i></a></li>
-            <li><a href="http://webenlance.com"><i
-                  class="fab fa-instagram"
-                ></i></a></li>
-          </ul>
-          <!--social_footer_ul ends here-->
-        </div>
-
-      </footer>
     </div>
     <!-- Js đăng nhập, đăng  ký -->
     
@@ -979,14 +668,21 @@
 
     <script>
         var swiper = new Swiper(".featured-slider", {
+            //slidesPerView: '1',
             spaceBetween: 10,
+            autoplay: true,
+            //effect: 'coverflow',
+            //grabCursor: true,
+            //centeredSlides: true,
+            slidesPerView: 'auto',
+            //spaceBetween: 10,
             loop: true,
             centeredSlides: true,
             autoplay: {
                 delay: 9000,
                 disableOnInteraction: false,
                 preloadImages: true,
-                speed: 200
+                speed: 600
             },
             navigation: {
                 nextEl: ".swiper-button-next",
@@ -1010,44 +706,15 @@
         swiper.update();
     </script>
 
-              {{!-- Tìm kiếm theo thể loại --}}
-                <script>
-                  var list = document.querySelectorAll('.category-item__link');
-                  Array.prototype.forEach.call(list, function (element,index) {
-                    var value = element.innerHTML;
-                    element.href = "/theloai/" + value;
-                  });
-                </script>
-              
-               {{!-- Tìm kiếm theo bộ lọc
-                <script>
-                    var btnTimKiemBL = document.getElementById('btn-timkiem-boloc');
-                    var TimkiemBoloc = document.forms['boloc-form'];
-                </script>
-           
-            btnTimKiemBL.onclick = function(){
-                        var priceChecked = $('input[name="giaban[]"]');
-                    };
-           var checkbox = document.getElementsByClassName('form-check-input');
-                     for (var i = 0; i < checkbox.length; i++){
-                      if (checkbox[i].checked === true){
-                        boloc += checkbox[i].value;
-                       }
-                      }
-                      function getPrice()
-                      {
-                          var form_price = new FormData(document.querySelector("#giaban-form"));
-                          console.log("form data: ");
-                          for(var pair of form_price.entries()) 
-                          {
-                             console.log(pair[0]+ ' : '+ pair[1]);
-                          }
-                          return true;
-                      }
-                      setTimeout(function(){ document.getElementById("giaban-form").submit();}, 3000);   
-                      setTimeout(function(){ document.getElementById("nxb-form").submit();}, 6000);  
-                      //TimkiemBoloc.action = '/' + boloc; --}}
-         
+  {{!-- Tìm kiếm theo thể loại --}}
+    <script>
+        var list = document.querySelectorAll('.category-item__link');
+        Array.prototype.forEach.call(list, function (element,index) {
+          var value = element.innerHTML;
+          element.href = "/theloai/" + value;
+        });
+    </script>
+
     <!-- Bootstrap js -->
     {{!-- <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> --}}
     {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/js/swiper.min.js"></script> --}}

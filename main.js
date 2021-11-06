@@ -19,12 +19,22 @@ app.engine('handlebars',
         handlebars({
           extname: '.handlebars',
           helpers:{
-            "if": function(conditional, options) {
-              if (conditional > 40) {
+            "when": function(conditional, options) {
+              if (conditional > 22) {
                 return options.fn(this);
-              }
+              }else {
+                return options.inverse(this);
+            }
+            },
+            "if": function(conditional, options) {
+              if (conditional) {
+                return options.fn(this);
+              }else {
+                return options.inverse(this);
+            }
             }
           }
+          
 }));
 app.set('view engine', 'handlebars')
 app.set('views', [__dirname + '\\src\\views\\views_admin', __dirname + '\\src\\views\\views_client', __dirname + '\\src\\views\\views_delivery'])

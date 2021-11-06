@@ -1023,6 +1023,11 @@ footer p {
 .featured .featured-slider .box .content h3{
     font-size: 1.8rem;
     color:var(--black-color);
+    overflow: hidden;
+    height: 4.4rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .featured .featured-slider .box .content .price {
@@ -1111,5 +1116,14 @@ padding-right: 4px;
     margin-bottom: 16px;
     line-height: 24px;
 }
+
+// Pagination
+
+.home-product__pagination {
+    margin: 48px 0 32px 0;
+}
+
+
+
 
   

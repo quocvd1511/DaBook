@@ -1015,6 +1015,11 @@ footer p {
 .featured .featured-slider .box .content h3 {
   font-size: 1.8rem;
   color: var(--black-color);
+  overflow: hidden;
+  height: 4.4rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .featured .featured-slider .box .content .price {
@@ -1102,5 +1107,8 @@ footer p {
   line-height: 24px;
 }
 
-/*# sourceMappingURL=main.css.map */
+.home-product__pagination {
+  margin: 48px 0 32px 0;
+}
 
+/*# sourceMappingURL=main.css.map */

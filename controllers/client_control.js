@@ -2,13 +2,23 @@ const client_login = require('../models/client_account')
 const books=require('../models/books')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
+const client_account = require('../models/client_account')
+
 
 class Client_Control
 {
     main(req,res,next)
     {
-        if(!req.session.isAuth) 
-        {
+        if(req.session.isAuth) {
+            books.find({})
+            .then(books => 
+                {
+                    books=books.map(course => course.toObject())
+                    res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books
+                });     
+                })
+            .catch(next)   
+        }else{
             books.find({})
             .then(books => 
                 {
@@ -17,61 +27,73 @@ class Client_Control
                     });
                 })
             .catch(next)
-        } else {
-            books.find({})
-            .then(books => 
-                {
-                    books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client_login.handlebars',books
-                    });
-                })
-            .catch(next)
         }
-       
     }
 
+    // POST signup
+    signup(req, res, next){
+        const formData = req.body;
+        formData.diem = 0;
+        formData.tinhtrang = 'đang sử dụng';
+
+        const Client_account = new client_account(formData);
+        Client_account.save()
+            .then(() => res.redirect('/'))
+            .catch(error => {});
+        
+    }
+
+    // Logout account
     logout(req,res,next)
     {
         req.session.destroy()
         res.redirect('/')
     }
 
-
+    // Login account
     post_client(req,res,next)
     {
-        client_login.findOne({ MaTK: req.body.username, Matkhau: req.body.password}, 
+        client_login.findOne({$or: [{matk: req.body.username},{email: req.body.username}], matkhau: req.body.password}, 
             function (err,client_account){
                 if(!err)
                 {
-                    if(Boolean(client_account)==false) res.redirect('/')
+                    if(Boolean(client_account)==false) {
+                        res.redirect('/')
+                    }
                     else 
                     {
-                        req.session.username=req.body.username
+                               
+                        req.session.username=client_account.matk;
                         req.session.isAuth=true; 
-                        res.render('home_client.handlebars',{layout:'client_login.handlebars',client_accounts: req.session.username
-                    });                     
+                        books.find({})
+                        .then(books => 
+                            {
+                                books=books.map(course => course.toObject())
+                                res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books
+                            });     
+                            })
+                        .catch(next)                  
                     }
                 } else {
                     next(err)
                 }
             })
-
-        /*
-            .then (admin_account => res.render('admin_home',{layout: 'admin.handlebars',admin_account: mongooseToObject(admin_account)}))
-            .catch(next)*/
     }
 
     get_client(req,res,next)
     {
         if(!req.session.isAuth) res.redirect('/')
         else {
-                    res.render('home_client.handlebars',{layout: 'client_login.handlebars', client_accounts: req.session.username})
-            }
-            
-        /*
-            .then (admin_account => res.render('admin_home',{layout: 'admin.handlebars',admin_account: mongooseToObject(admin_account)}))
-            .catch(next)*/
+            books.find({})
+            .then(books => 
+                {
+                    books=books.map(course => course.toObject())
+                    res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books});     
+                })
+            .catch(next)   
+                }
     }
+
 
     // Tìm kiếm theo tên sách, tác giả
     search(req,res,next)
@@ -98,7 +120,7 @@ class Client_Control
             .then(books => 
                 {
                     books=books.map(course => course.toObject())
-                    res.render('search_client.handlebars',{layout:'client_login.handlebars',books});
+                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
                 })
             .catch(next)
     }
@@ -106,11 +128,12 @@ class Client_Control
     // Tìm kiếm theo bộ lọc
     searchBL(req,res,next)
     {
+
         if(req.query.giaban && req.query.nxb && req.query.ngonngu){
             if(req.query.giaban === "50000") {
              books.find({$and :[
                  { giaban : {
-                     $lt: "50.000"
+                     $lt: 50
                  }},
                 { nxb :  { $in: req.query.nxb}},
                 { ngonngu :  { $in: req.query.ngonngu}}
@@ -124,8 +147,8 @@ class Client_Control
              } else if(req.query.giaban === "100000") {
                      books.find({$and :[
                           { giaban : {
-                              $gte:"50.000",
-                              $lt: "100.000"
+                              $gte:"50",
+                              $lt: "100"
                           }},
                          { nxb :  { $in: req.query.nxb}},
                          { ngonngu :  { $in: req.query.ngonngu}}
@@ -139,8 +162,8 @@ class Client_Control
              } else if (req.query.giaban === "150000") {
                  books.find({$and :[
                   { giaban : {
-                      $gte:"100.000",
-                      $lt: "150.000"
+                      $gte:"100",
+                      $lt: "150"
                   }},
                    { nxb :  { $in: req.query.nxb}},
                    { ngonngu :  { $in: req.query.ngonngu}}
@@ -154,8 +177,8 @@ class Client_Control
              } else if (req.query.giaban === "200000") {
                  books.find({$and :[
                  { giaban : {
-                      $gte:"150.000",
-                      $lt: "200.000"
+                      $gte:"150",
+                      $lt: "200"
                   }},
              { nxb :  { $in: req.query.nxb}},
              { ngonngu :  { $in: req.query.ngonngu}}
@@ -169,7 +192,7 @@ class Client_Control
              } else {
                  books.find({$and :[
                   { giaban : {
-                        $gte: "200.000"
+                        $gte: "200"
                       }},
                       { nxb :  { $in: req.query.nxb}},
                       { ngonngu :  { $in: req.query.ngonngu}}
@@ -219,7 +242,7 @@ class Client_Control
                         if(req.query.giaban === "50000") {
                             books.find({$and :[
                                 { giaban : {
-                                    $lt: "50.000"
+                                    $lt: "50"
                                 }},
                                { nxb :  { $in: req.query.nxb}},
                                 ]})
@@ -232,8 +255,8 @@ class Client_Control
                             } else if(req.query.giaban === "100000") {
                                     books.find({$and :[
                                          { giaban : {
-                                             $gte:"50.000",
-                                             $lt: "100.000"
+                                             $gte:"50",
+                                             $lt: "100"
                                          }},
                                         { nxb :  { $in: req.query.nxb}}
                                     ]})
@@ -246,8 +269,8 @@ class Client_Control
                             } else if (req.query.giaban === "150000") {
                                 books.find({$and :[
                                  { giaban : {
-                                     $gte:"100.000",
-                                     $lt: "150.000"
+                                     $gte:"100",
+                                     $lt: "150"
                                  }},
                                   { nxb :  { $in: req.query.nxb}}
                              ]})
@@ -260,8 +283,8 @@ class Client_Control
                             } else if (req.query.giaban === "200000") {
                                 books.find({$and :[
                                 { giaban : {
-                                     $gte:"150.000",
-                                     $lt: "200.000"
+                                     $gte:"150",
+                                     $lt: "200"
                                  }},
                             { nxb :  { $in: req.query.nxb}}
                              ]})
@@ -274,7 +297,7 @@ class Client_Control
                             } else {
                                 books.find({$and :[
                                  { giaban : {
-                                       $gte: "200.000"
+                                       $gte: "200"
                                      }},
                                      { nxb :  { $in: req.query.nxb}}
                                  ]})
@@ -290,7 +313,7 @@ class Client_Control
                             if(req.query.giaban === "50000") {
                                 books.find({$and :[
                                     { giaban : {
-                                        $lt: "50.000"
+                                        $lt: "50"
                                     }},
                                    { ngonngu :  { $in: req.query.ngonngu}}
                                     ]})
@@ -303,8 +326,8 @@ class Client_Control
                                 } else if(req.query.giaban === "100000") {
                                         books.find({$and :[
                                              { giaban : {
-                                                 $gte:"50.000",
-                                                 $lt: "100.000"
+                                                 $gte:"50",
+                                                 $lt: "100"
                                              }},
                                             { ngonngu :  { $in: req.query.ngonngu}}
                                         ]})
@@ -317,8 +340,8 @@ class Client_Control
                                 } else if (req.query.giaban === "150000") {
                                     books.find({$and :[
                                      { giaban : {
-                                         $gte:"100.000",
-                                         $lt: "150.000"
+                                         $gte:"100",
+                                         $lt: "150"
                                      }},
                                       { ngonngu :  { $in: req.query.ngonngu}}
                                  ]})
@@ -331,8 +354,8 @@ class Client_Control
                                 } else if (req.query.giaban === "200000") {
                                     books.find({$and :[
                                     { giaban : {
-                                         $gte:"150.000",
-                                         $lt: "200.000"
+                                         $gte:"150",
+                                         $lt: "200"
                                      }},
                                 { ngonngu :  { $in: req.query.ngonngu}}
                                  ]})
@@ -345,7 +368,7 @@ class Client_Control
                                 } else {
                                     books.find({$and :[
                                      { giaban : {
-                                           $gte: "200.000"
+                                           $gte: "200"
                                          }},
                                          { ngonngu :  { $in: req.query.ngonngu}}
                                      ]})
@@ -359,36 +382,32 @@ class Client_Control
                         }
                         else if(req.query.giaban && !req.query.nxb && !req.query.ngonngu){
                             if(req.query.giaban === "50000") {
-                                books.find({$and :[
-                                    { giaban : {
-                                        $lt: "50.000"
-                                    }},
-                                   { ngonngu :  { $in: req.query.ngonngu}}
-                                    ]})
-                                 .then(books => 
+                                books.find({giaban : {
+                                   $lt: 50
+                                }}    
+                            )
+                               .then(books => 
                                 {
-                                    books=books.map(course => course.toObject())
-                                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
-                                })
-                                .catch(next)
+                                       books=books.map(course => course.toObject())
+                                       res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                   })
+                               .catch(next)
                                 } else if(req.query.giaban === "100000") {
-                                        books.find({$and :[
-                                             { giaban : {
-                                                 $gte:"50.000",
-                                                 $lt: "100.000"
-                                             }},
-                                            { ngonngu :  { $in: req.query.ngonngu}}
-                                        ]})
-                                .then(books => 
-                                {
-                                    books=books.map(course => course.toObject())
-                                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
-                                })
-                                    .catch(next)
+                                    books.find({giaban : {
+                                        $gte: 50,
+                                        $lt: 100
+                                    }}    
+                                )
+                                   .then(books => 
+                                    {
+                                           books=books.map(course => course.toObject())
+                                           res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                       })
+                                   .catch(next)
                                 } else if (req.query.giaban === "150000") {
                                     books.find({giaban : {
-                                         $gte:"100.000",
-                                         $lt: "150.000"
+                                         $gte:"100",
+                                         $lt: "150"
                                      }}    
                                  )
                                     .then(books => 
@@ -398,10 +417,9 @@ class Client_Control
                                         })
                                     .catch(next)
                                 } else if (req.query.giaban === "200000") {
-                                    books.find(
-                                    { giaban : {
-                                         $gte:"150.000",
-                                         $lt: "200.000"
+                                    books.find({ giaban : {
+                                         $gte:"150",
+                                         $lt: "200"
                                      }
                                })
                                  .then(books => 
@@ -411,9 +429,8 @@ class Client_Control
                                       })
                                     .catch(next)
                                 } else {
-                                    books.find(
-                                     { giaban : {
-                                           $gte: "200.000"
+                                    books.find({ giaban : {
+                                           $gte: "200"
                                          }
                                      })
                                      .then(books => 
