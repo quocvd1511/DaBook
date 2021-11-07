@@ -3,6 +3,8 @@ const books=require('../models/books')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
 const client_account = require('../models/client_account')
+const passport = require("passport")
+const FacebookStrategy = require("passport-facebook").Strategy
 
 
 class Client_Control
@@ -29,7 +31,7 @@ class Client_Control
             .catch(next)
         }
     }
-
+      
     // POST signup
     signup(req, res, next){
         const formData = req.body;
@@ -448,11 +450,11 @@ class Client_Control
         res.render('khuyenmai_client.handlebars',{layout: 'client.handlebars'})
     }
 
-     //Chi tiết sách
-     chitietsach(req,res,next){
+    // Chi tiết sách
+    chitietsach(req,res,next)
+    {
         res.render('chitietsach_client.handlebars',{layout: 'client.handlebars'})
     }
-
 }
 
 module.exports = new Client_Control

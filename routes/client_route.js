@@ -3,7 +3,7 @@ const route = express.Router()
 
 const client_Control = require('../controllers/client_control')
 
-
+  
 route.get('/chitietsach', client_Control.chitietsach)
 route.post('/signup', client_Control.signup)
 route.get('/khuyenmai', client_Control.khuyenmai)
