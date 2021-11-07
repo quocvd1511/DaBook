@@ -50,7 +50,7 @@
 	        	<div class="col-md-6">
 	        		<div id="slider" class="owl-carousel product-slider">
 						<div class="item">
-                            <img src="https://revelogue.com/wp-content/uploads/2020/04/harry-potter-and-the-cursed-child-bia-sach-e1587147350573.jpg" />
+                            <img src="{{books.hinhanh}}" />
 						</div>
 					</div>
 					<!-- <div id="thumb" class="owl-carousel product-thumb">
@@ -81,7 +81,7 @@
 	        		<div class="product-dtl">
         				<div class="product-info">
 		        			<div class="product-name">
-                                <h1>Harry Potter và Hoàng tử lai</h1>
+                                <h1>{{books.tensach}}</h1>
                             </div>
 		        			<div class="reviews-counter">
 								<div class="rate">
@@ -96,13 +96,13 @@
 								    <input type="radio" id="star1" name="rate" value="1" />
 								    <label for="star1" title="text">1 star</label>
 								  </div>
-								<span>3 đánh giá</span>
+								<span>{{books.sodanhgia}}</span>
 							</div>
-		        			<div class="product-price-discount"><span>99.000 đ</span><span class="line-through">129.000 đ</span></div>
+		        			<div class="product-price-discount"><span>{{books.giaban}}.000 đ</span><span class="line-through">{{books.giagoc}}</span></div>
 		        		</div>
-	        			<p>Tác giả: <span>J. K. Rowling</span> </p>
-                        <p>Thể loại: <span>Viễn tưởng</span> </p>
-                        <p>Nhà xuất bản: <span>NXB Trẻ</span> </p>
+	        			<p>Tác giả: <span>{{books.tacgia}}</span> </p>
+                        <p>Thể loại: <span>{{books.theloai}}</span> </p>
+                        <p>Nhà xuất bản: <span>{{books.nxb}}</span> </p>
 	        			<!-- <div class="row">
 	        				<div class="col-md-6">
 	        					<label for="size">Size</label>
@@ -170,15 +170,16 @@
             <div class="product-seller-recommended">
                 <h3 class="mb-5" >Sản phẩm tương tự</h3>
                 <div class="recommended-items card-deck">
+					{{#each list_books}}
                     <div class="grid__column-2">
-                        <a class="home-product-item" href="#">
+                        <a class="home-product-item" href="/chitietsach/{{this.tensach}}">
                             <div class="home-product-item__img"
-                                style="background-image: url(https://revelogue.com/wp-content/uploads/2020/04/harry-potter-and-the-cursed-child-bia-sach-e1587147350573.jpg);">
+                                style="background-image: url({{this.hinhanh}});">
                             </div>
-                            <h4 class="home-product-item__name">Harry Potter và đứa trẻ bị nguyền rủa</h4>
+                            <h4 class="home-product-item__name">{{this.tensach}}</h4>
                             <div class="home-product-item__price">
-                                <span class="home-product-item__price-old">410.000đ</span>
-                                <span class="home-product-item__price-current">290.000đ</span>
+                                <span class="home-product-item__price-old">{{this.giagoc}}</span>
+                                <span class="home-product-item__price-current">{{this.giaban}}.000 đ</span>
                             </div>
                             <div class="home-product-item__action">
                                 <span class="home-product-item__like home-product-item--liked">
@@ -200,138 +201,31 @@
                                 <span>Yêu thích</span>
                             </div>
                             <div class="home-product-item__sale-off">
-                                <span class="home-product-item__sale-off-percent">40%</span>
+                                <span class="home-product-item__sale-off-percent">{{this.giamgia}}%</span>
                                 <span class="home-product-item__sale-off-label">GIẢM</span>
                             </div>
                         </a>
                     </div>
-
-                    <div class="grid__column-2">
-                        <a class="home-product-item" href="#">
-                            <div class="home-product-item__img"
-                                style="background-image: url(https://revelogue.com/wp-content/uploads/2020/04/harry-potter-and-the-cursed-child-bia-sach-e1587147350573.jpg);">
-                            </div>
-                            <h4 class="home-product-item__name">Harry Potter và đứa trẻ bị nguyền rủa</h4>
-                            <div class="home-product-item__price">
-                                <span class="home-product-item__price-old">410.000đ</span>
-                                <span class="home-product-item__price-current">290.000đ</span>
-                            </div>
-                            <div class="home-product-item__action">
-                                <span class="home-product-item__like home-product-item--liked">
-                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                </span>
-                                <div class="home-product-item__rating">
-                                    <i class="home-product-item__star--gold fas fa-star"></i>
-                                    <i class="home-product-item__star--gold fas fa-star"></i>
-                                    <i class="home-product-item__star--gold fas fa-star"></i>
-                                    <i class="home-product-item__star--gold fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="home-product-item__sold">57 đã bán</span>
-                            </div>
-
-                            <div class="home-product-item__favourite">
-                                <i class="fas fa-check"></i>
-                                <span>Yêu thích</span>
-                            </div>
-                            <div class="home-product-item__sale-off">
-                                <span class="home-product-item__sale-off-percent">40%</span>
-                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="grid__column-2">
-                        <a class="home-product-item" href="#">
-                            <div class="home-product-item__img"
-                                style="background-image: url(https://revelogue.com/wp-content/uploads/2020/04/harry-potter-and-the-cursed-child-bia-sach-e1587147350573.jpg);">
-                            </div>
-                            <h4 class="home-product-item__name">Harry Potter và đứa trẻ bị nguyền rủa</h4>
-                            <div class="home-product-item__price">
-                                <span class="home-product-item__price-old">410.000đ</span>
-                                <span class="home-product-item__price-current">290.000đ</span>
-                            </div>
-                            <div class="home-product-item__action">
-                                <span class="home-product-item__like home-product-item--liked">
-                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                </span>
-                                <div class="home-product-item__rating">
-                                    <i class="home-product-item__star--gold fas fa-star"></i>
-                                    <i class="home-product-item__star--gold fas fa-star"></i>
-                                    <i class="home-product-item__star--gold fas fa-star"></i>
-                                    <i class="home-product-item__star--gold fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="home-product-item__sold">57 đã bán</span>
-                            </div>
-
-                            <div class="home-product-item__favourite">
-                                <i class="fas fa-check"></i>
-                                <span>Yêu thích</span>
-                            </div>
-                            <div class="home-product-item__sale-off">
-                                <span class="home-product-item__sale-off-percent">40%</span>
-                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="grid__column-2">
-                        <a class="home-product-item" href="#">
-                            <div class="home-product-item__img"
-                                style="background-image: url(https://revelogue.com/wp-content/uploads/2020/04/harry-potter-and-the-cursed-child-bia-sach-e1587147350573.jpg);">
-                            </div>
-                            <h4 class="home-product-item__name">Harry Potter và đứa trẻ bị nguyền rủa</h4>
-                            <div class="home-product-item__price">
-                                <span class="home-product-item__price-old">410.000đ</span>
-                                <span class="home-product-item__price-current">290.000đ</span>
-                            </div>
-                            <div class="home-product-item__action">
-                                <span class="home-product-item__like home-product-item--liked">
-                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                </span>
-                                <div class="home-product-item__rating">
-                                    <i class="home-product-item__star--gold fas fa-star"></i>
-                                    <i class="home-product-item__star--gold fas fa-star"></i>
-                                    <i class="home-product-item__star--gold fas fa-star"></i>
-                                    <i class="home-product-item__star--gold fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="home-product-item__sold">57 đã bán</span>
-                            </div>
-
-                            <div class="home-product-item__favourite">
-                                <i class="fas fa-check"></i>
-                                <span>Yêu thích</span>
-                            </div>
-                            <div class="home-product-item__sale-off">
-                                <span class="home-product-item__sale-off-percent">40%</span>
-                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                            </div>
-                        </a>
-                    </div>
+					{{/each}}
                 </div>
                 <!-- /.recommended-items-->
                 <div class="product-description mb-5">
                   <h2 class="mb-5">Thông tin chi tiết</h2>
                   <dl class="row mb-5">
                     <dt class="col-sm-3">Tên sách</dt>
-                    <dd class="col-sm-9">Harry Potter và Hoàng tử lai</dd>
+                    <dd class="col-sm-9">{{books.tensach}}</dd>
                     <dt class="col-sm-3">Tác giả</dt>
-                    <dd class="col-sm-9">J. K. Rowling</dd>
+                    <dd class="col-sm-9">{{books.tacgia}}</dd>
                     <dt class="col-sm-3">Thể loại</dt>
-                    <dd class="col-sm-9">Viễn tưởng</dd>
+                    <dd class="col-sm-9">{{books.theloai}}</dd>
                     <dt class="col-sm-3">Nhà xuất bản</dt>
-                    <dd class="col-sm-9">NXB Trẻ</dd>
+                    <dd class="col-sm-9">{{books.nxb}}</dd>
                     <dt class="col-sm-3">Năm xuất bản</dt>
-                    <dd class="col-sm-9">2003</dd>
+                    <dd class="col-sm-9">{{books.namxb}}</dd>
                     <dt class="col-sm-3">Ngôn ngữ</dt>
-                    <dd class="col-sm-9">Tiếng Việt</dd>
+                    <dd class="col-sm-9">{{books.ngonngu}}</dd>
                     <dt class="col-sm-3">Hình thức bìa</dt>
-                    <dd class="col-sm-9">Bìa mềm</dd>
+                    <dd class="col-sm-9">{{books.hinhthuc}}</dd>
                   </dl>
                 </div>
               </div>
@@ -347,7 +241,7 @@
 				</ul>
 				<div class="tab-content" id="myTabContent">
 				  	<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-				  		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+						  {{books.mota}}
 				  	</div>
 				  	<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
 				  		<div class="review-heading">Đánh giá sản phẩm</div>

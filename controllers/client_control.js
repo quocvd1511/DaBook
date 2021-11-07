@@ -3,6 +3,8 @@ const books=require('../models/books')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
 const client_account = require('../models/client_account')
+const passport = require("passport")
+const FacebookStrategy = require("passport-facebook").Strategy
 
 
 class Client_Control
@@ -10,26 +12,42 @@ class Client_Control
     main(req,res,next)
     {
         if(req.session.isAuth) {
-            books.find({})
-            .then(books => 
+            books.find({'giamgia': {$gte: 22}},
+            function (err,flash_sales){
+                if(!err)
                 {
-                    books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books
-                });     
-                })
-            .catch(next)   
+                    flash_sales=flash_sales.map(course => course.toObject())
+                    books.find({}).limit(20).skip(20*1)
+                    .then(books => 
+                        {
+                            books=books.map(course => course.toObject())
+                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, flash_sales: flash_sales, books: books});     
+                        })
+                    .catch(next)            
+                } else {
+                    next(err)
+                }
+            })   
         }else{
-            books.find({})
-            .then(books => 
+            books.find({'giamgia': {$gte: 22}},
+            function (err,flash_sales){
+                if(!err)
                 {
-                    books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client.handlebars',books
-                    });
-                })
-            .catch(next)
+                    flash_sales=flash_sales.map(course => course.toObject())
+                    books.find({}).limit(20).skip(20*1)
+                    .then(books => 
+                        {
+                            books=books.map(course => course.toObject())
+                            res.render('home_client.handlebars',{layout:'client.handlebars',flash_sales: flash_sales, books: books});     
+                        })
+                    .catch(next)            
+                } else {
+                    next(err)
+                }
+            })
         }
     }
-
+      
     // POST signup
     signup(req, res, next){
         const formData = req.body;
@@ -61,18 +79,10 @@ class Client_Control
                         res.redirect('/')
                     }
                     else 
-                    {
-                               
+                    {    
                         req.session.username=client_account.matk;
-                        req.session.isAuth=true; 
-                        books.find({})
-                        .then(books => 
-                            {
-                                books=books.map(course => course.toObject())
-                                res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books
-                            });     
-                            })
-                        .catch(next)                  
+                        req.session.isAuth=true;
+                        res.redirect('/')                 
                     }
                 } else {
                     next(err)
@@ -82,18 +92,8 @@ class Client_Control
 
     get_client(req,res,next)
     {
-        if(!req.session.isAuth) res.redirect('/')
-        else {
-            books.find({})
-            .then(books => 
-                {
-                    books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books});     
-                })
-            .catch(next)   
-                }
+        res.redirect('/')
     }
-
 
     // Tìm kiếm theo tên sách, tác giả
     search(req,res,next)
@@ -443,14 +443,34 @@ class Client_Control
                         }
     }
 
+    // Khuyến mãi
     khuyenmai(req,res,next)
     {
         res.render('khuyenmai_client.handlebars',{layout: 'client.handlebars'})
     }
 
+    // Chi tiết sách
     chitietsach(req,res,next)
     {
-        res.render('chitietsach_client.handlebars',{layout: 'client.handlebars'})
+        books.findOne({'tensach': req.params.tensach},
+            function (err,book){
+                if(!err)
+                {
+                    book = mongooseToObject(book);
+                    books.find(
+                            {$and: [{'theloai': book.theloai}, {'tensach': {$ne: books.tensach}}]}
+                        ).limit(20).skip(20*1)
+                        .then(list_books => 
+                            {
+                                list_books=list_books.map(course => course.toObject())
+                                res.render('chitietsach_client.handlebars',{layout:'client.handlebars',books: book, list_books: list_books});
+                
+                            })
+                        .catch(next)                
+                } else {
+                    next(err)
+                }
+            })
     }
 }
 
