@@ -3,6 +3,10 @@
   background-color: #efefef;
 }
 
+.sale__banner{
+  border: 2px solid var(--white-color) ;
+}
+
 .sale__myvoucher {
   padding-top: 16px;
 }
@@ -71,7 +75,7 @@
   border-radius: 3px;
   font-size: 1.5rem;
   padding: 0 8px;
-  font-weight: 400;
+  font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,12 +85,13 @@
 }
 
 .btn__save:hover {
+  color: black;
   text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .sale__card-text {
   font-size: 1.3rem;
   font-weight: 400;
 }
-
 

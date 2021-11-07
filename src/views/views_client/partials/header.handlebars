@@ -315,7 +315,6 @@
                   <div class="modals-close">
                     <i class="ti-close"></i>
                   </div>
-
                   <div class="auth-form__form">
                     <div class="auth-form__group">
                       <label class="auth-form__label">Tên tài khoản</label>
@@ -355,7 +354,7 @@
                   </div>
 
                   <div class="auth-form__controls">
-                    <button class="btn btn--primary btn__signin" type="submit">Đăng ký</button>
+                    <button class="btn btn--primary btn__signin" id="dangky" type="submit">Đăng ký</button>
                   </div>
 
                   <div class="auth-form__socials">
@@ -418,7 +417,11 @@
               </button>
             </div>
             <div class="header__cart">
-              <i class="header__cart-icon ti-shopping-cart"></i>
+              <div class="header__cart-wrap">
+                <i class="header__cart-icon ti-shopping-cart">
+                  <span class="header__cart-notice">0</span>
+                </i>
+              </div>
             </div>
           </div>
         </form>
@@ -521,3 +524,17 @@
       integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
       crossorigin="anonymous"
     ></script>
+
+     <script src="sweetalert2.all.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script>
+      $('#dangky').click(function(){
+        Swal.fire({
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#1A94FF',
+          {{!-- icon: 'success', --}}
+          title: 'Đăng ký thành công'
+          })
+      })
+    </script>
