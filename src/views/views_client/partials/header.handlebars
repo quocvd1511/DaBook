@@ -40,7 +40,7 @@
 
     {{#if client_accounts}} 
      <div class="app">
-      <header class="header">
+      <header class="header ">
         <div class="grid">
           <nav class="header__navbar">
             <ul class="header__navbar-list">
@@ -115,10 +115,9 @@
                   Trợ giúp
                 </a>
               </li>
-               <li class="header__navbar-item"> 
-                 <div href="" class="">
-                  {{client_accounts}}
-                </div>
+              <li class="header__navbar-item header__navbar-user">
+                <img class="header__navbar-user-img" src="https://anhdep123.com/wp-content/uploads/2021/05/hinh-avatar-trang.jpg" alt="">
+                <p class="header__navbar-user-name">{{client_accounts}}</p>
               </li>
                <li class="header__navbar-item">
                  <a href="/logout" class="header__navbar-item--link">               

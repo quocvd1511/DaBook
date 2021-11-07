@@ -29,6 +29,7 @@
   color: var(--white-color);
   text-decoration: none;
   font-weight: 400;
+  align-items: center;
 }
 
 .header__navbar-item--separate::after {
@@ -1251,9 +1252,23 @@ footer p {
   text-align: center;
 }
 
+.header__navbar-user {
+  display: flex;
+  justify-items: center;
+  position: relative;
+}
+
 .header__navbar-user-img {
   width: 22px;
   height: 22px;
+  margin-top: -8px;
+  border-radius: 50%;
+}
+
+.header__navbar-user-name {
+  margin-left: 4px;
+  font-size: 1.23rem;
+  font-weight: 400;
 }
 
 /*# sourceMappingURL=main.css.map */
