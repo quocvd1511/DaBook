@@ -67,9 +67,46 @@
                 </ul>
               </div>
               <li class="header__navbar-item">
-                <div href="" class="header__navbar-item--link open-login-noti">
+                <div href="" class="header__navbar-item--link">
                   <i class="header__navbar-icon ti-bell"></i>
                   Thông báo
+                </div>
+                <div class="header__notify">
+                  <header class="header__notify-header">
+                      <h3>Thông báo mới nhận</h3>
+                  </header>
+                  <ul class="header__notify-list">
+                      <li class="header__notify-item header__notify-item--view">
+                          <a href="" class="header__notify-link text-decoration-none">
+                              <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="header__notify-img">
+                              <div class="header__notify-info">
+                                  <span class="header__notify-name">Đơn hàng của bạn đang được vận chuyển</span>
+                                  <span class="header__notify-descriotion">Harry Potter và bảo bối tử thần</span>
+                              </div>
+                          </a>
+                      </li>
+                      <li class="header__notify-item">
+                          <a href="" class="header__notify-link text-decoration-none">
+                              <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="header__notify-img">
+                              <div class="header__notify-info">
+                                  <span class="header__notify-name">Đơn hàng của bạn đã được xác nhận</span>
+                                  <span class="header__notify-descriotion">Harry Potter và bảo bối tử thần</span>
+                              </div>
+                          </a>
+                      </li>
+                      <li class="header__notify-item">
+                          <a href="" class="header__notify-link text-decoration-none">
+                              <img src="/client_styles/assets/img/miễn_phí_vận_chuyển.png" alt="" class="header__notify-img">
+                              <div class="header__notify-info">
+                                  <span class="header__notify-name">Mã freeship của bạn hết hạn vào ngày 15-11-2021</span>
+                                  <span class="header__notify-descriotion">Mã freeship sắp hết hạn. Đừng bỏ lỡ!</span>
+                              </div>
+                          </a>
+                      </li>
+                  </ul>
+                  <div class="header__notify-footer">
+                      <a href="" class="header__notify-footer-btn text-decoration-none">Xem tất cả</a>
+                  </div>
                 </div>
               </li>
               <li class="header__navbar-item">
@@ -387,29 +424,8 @@
         </form>
         </div>
       </header>
-    {{/if}}
-
-     <script>
-
-        var li=document.getElementsByClassName('header__search-option-item')
-
-        li[0].addEventListener('click',l0_click)
-
-        li[1].addEventListener('click',l1_click)
-
-        function l0_click(){
-                li[0].classList.add('header__search-option-item--active')
-                li[1].classList.remove('header__search-option-item--active')
-        }      
-
-        function l1_click(){
-                li[1].classList.add('header__search-option-item--active')
-                li[0].classList.remove('header__search-option-item--active')
-        }    
-
-    </script>
-
-    <script>
+      
+      <script>
         const login = document.querySelector('.open-login')
         const sign_up = document.querySelector('.open-signup')
         const cart = document.querySelector('.header__cart-icon')
@@ -441,6 +457,27 @@
             modals.classList.remove('open')
         }
         modalsClose.addEventListener('click', hideshows)
+
+    </script>
+    {{/if}}
+
+     <script>
+
+        var li=document.getElementsByClassName('header__search-option-item')
+
+        li[0].addEventListener('click',l0_click)
+
+        li[1].addEventListener('click',l1_click)
+
+        function l0_click(){
+                li[0].classList.add('header__search-option-item--active')
+                li[1].classList.remove('header__search-option-item--active')
+        }      
+
+        function l1_click(){
+                li[1].classList.add('header__search-option-item--active')
+                li[0].classList.remove('header__search-option-item--active')
+        }    
 
     </script>
 

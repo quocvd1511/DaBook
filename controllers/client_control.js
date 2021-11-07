@@ -447,6 +447,11 @@ class Client_Control
     {
         res.render('khuyenmai_client.handlebars',{layout: 'client.handlebars'})
     }
+
+    chitietsach(req,res,next)
+    {
+        res.render('chitietsach_client.handlebars',{layout: 'client.handlebars'})
+    }
 }
 
 module.exports = new Client_Control
