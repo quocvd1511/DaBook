@@ -219,4 +219,12 @@ html {
   padding-top: 7px;
 }
 
+.auth-form__socials--fb {
+  background-color: #3A5A98;
+}
+
+.auth-form__socials span {
+  color: #fff;
+}
+
 /*# sourceMappingURL=base.css.map */

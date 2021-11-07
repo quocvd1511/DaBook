@@ -1,109 +1,7 @@
 @charset "UTF-8";
-/* base */
-:root {
-  --white-color: #fff;
-  --black-color: #000;
-  --text-color: #333;
-  --blue-color: #1A94FF;
-  --light-color:#666;
-  --border:0.1rem solid rgba(0,0,0,0.1);
-  --border-hover: 1px solid #ccc;
-  --box-shadow:0 1px 10px rgba(0,0,0,0.1);
-  --header-height: 120px;
-  --navbar-height:34px;
-  --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
-  --boder-color: #AFADAD;
-}
-
-* {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: none;
-  border: none;
-  text-decoration: none;
-  /* text-transform: capitalize; */
-  transition: all 0.2s linear;
-  transition: width none;
-}
-
-html {
-  font-size: 62.5%;
-  line-height: 1.6rem;
-  /* font-family: 'Roboto', sans-serif; */
-  font-family: "Montserrat", sans-serif;
-  box-sizing: border-box;
-}
-
-/* Responsive */
-.grid {
-  width: 1200px;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.grid__full-width {
-  width: 100%;
-}
-
-.grid__row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* Test */
-.grid__column-2 {
-  padding-left: 5px;
-  padding-right: 5px;
-  width: 16.6667%;
-}
-
-.grid__column-2-4 {
-  padding-left: 5px;
-  padding-right: 5px;
-  width: 20%;
-}
-
-.grid__column-10 {
-  padding-left: 5px;
-  padding-right: 5px;
-  width: 83.3333%;
-}
-
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes growth {
-  from {
-    transform: scale(var(--growth-form));
-  }
-  to {
-    transform: scale(var(--growth-to));
-  }
-}
 /* ================book detail =========================*/
-* {
-  box-sizing: inherit;
-  transition: all 0.2s linear;
-}
-
-html {
-  font-size: 62.5%;
-  line-height: 1.6rem;
-  /* font-family: 'Roboto', sans-serif; */
-  font-family: "Montserrat", sans-serif;
-  box-sizing: border-box;
-}
-
 .pd-wrap {
-  padding: 40px 0;
+  padding: 20px 0;
   background-color: #F5F5F5;
   font-family: "Montserrat", sans-serif;
 }
@@ -166,15 +64,15 @@ html {
 
 .owl-nav button {
   position: absolute;
-  top: 50%;
+  top: 65%;
   transform: translate(0, -50%);
   outline: none;
-  height: 25px;
+  height: 20px;
 }
 
 .owl-nav button svg {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
 }
 
 .owl-nav button.owl-prev {
@@ -301,6 +199,7 @@ html {
   line-height: 24px;
   font-weight: 500;
   color: var(--text-color);
+  width: 250px;
 }
 
 .product-dtl .form-control {
@@ -347,8 +246,10 @@ html {
 .product-count .qty {
   width: 50px;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 500;
+  border-radius: 0px;
+  border: solid 1px #f5864f;
 }
 
 .round-black-btn {
@@ -357,7 +258,8 @@ html {
   color: #fff;
   padding: 7px 45px;
   display: inline-block;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  font-weight: 500;
   margin-top: 20px;
   border: solid 2px #f75409;
   transition: all 0.5s ease-in-out 0s;
@@ -496,28 +398,27 @@ html {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   /* Dấu 3 chấm cho 1 dòng */
-  /* text-overflow: ellipsis;
-  white-space: nowrap; */
 }
 
 .home-product-item__price {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  margin: 8px 10px;
+  margin: 8px 8px;
+  justify-content: space-between;
 }
 
 .home-product-item__price-old {
-  margin-left: 10px;
+  margin-left: 8px;
   font-size: 1.4rem;
   color: #666;
   text-decoration: line-through;
 }
 
 .home-product-item__price-current {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #EE4D2D;
-  margin-left: 10px;
+  margin-left: 8px;
 }
 
 .home-product-item__action {
@@ -650,7 +551,7 @@ i.home-product-item__like-icon-fill {
 }
 
 .product-seller-recommended {
-  padding: 20px 20px 0 20px;
+  padding: 0px 20px 0 20px;
 }
 
 .mb-5 {
@@ -713,12 +614,14 @@ body {
   clip: auto;
 }
 
-/* .col-md-6 {
-    position: relative;
-} */
+.col-md-6 {
+  position: relative;
+  margin-bottom: -130px;
+}
+
 .info-item {
   position: absolute;
-  top: -200px;
+  top: -250px;
   right: -280px;
   border-radius: 4px;
   border: 1px solid black;
@@ -778,11 +681,12 @@ body {
 
 .list-info {
   list-style: none;
+  padding: 0 0;
 }
 
 .list-info-item {
   width: 100%;
-  padding: 20px;
+  padding: 20px 0;
   font-weight: 500;
   border-top: 1px solid #43c3c7;
 }
