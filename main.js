@@ -6,8 +6,8 @@ const handlebars = require('express-handlebars')
 const path = require('path')
 const route = require('./routes/main_route')
 const connect_db = require('./src/config/db/db_connect')
-// const passport = require("passport")
-// const FacebookStrategy = require("passport-facebook").Strategy
+const passport = require("passport")
+const FacebookStrategy = require("passport-facebook").Strategy
 
 connect_db.connect()
 
@@ -72,8 +72,7 @@ app.engine('handlebars',
               }else {
                 return options.inverse(this);
             }
-            },
-            sum: (a, b) => a + b,
+            }
           }
           
 }));

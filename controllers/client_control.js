@@ -3,29 +3,21 @@ const books=require('../models/books')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
 const client_account = require('../models/client_account')
-// const passport = require("passport")
-// const FacebookStrategy = require("passport-facebook").Strategy
-// const { db } = require('../models/client_account')
+const passport = require("passport")
+const FacebookStrategy = require("passport-facebook").Strategy
 
 
 class Client_Control
 {
     main(req,res,next)
     {
-        // const length_page = books.runCommand({ count: 'books' })
-        // const number_page = [];
-        // for(let i = 0; i < length_page; i ++){
-        //      number_page.push(item);
-        // }
-        //  console.log(length_page);
         if(req.session.isAuth) {
-<<<<<<< HEAD
             books.find({'giamgia': {$gte: 22}},
-            function (err,flash_sales){ 
+            function (err,flash_sales){
                 if(!err)
                 {
                     flash_sales=flash_sales.map(course => course.toObject())
-                    books.find({})
+                    books.find({}).limit(20).skip(20*1)
                     .then(books => 
                         {
                             books=books.map(course => course.toObject())
@@ -36,42 +28,23 @@ class Client_Control
                     next(err)
                 }
             })   
-=======
-            books.find({})
-            .then(books => 
-                {
-                    books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books
-                });     
-                })
-            .catch(next)   
->>>>>>> parent of d7c31d4 (chi tiết sách chưa chỉnh năm xb)
         }else{
-            books.find({})
-            .then(books => 
+            books.find({'giamgia': {$gte: 22}},
+            function (err,flash_sales){
+                if(!err)
                 {
-<<<<<<< HEAD
                     flash_sales=flash_sales.map(course => course.toObject())
-
-                    books.find({})
+                    books.find({}).limit(20).skip(20*1)
                     .then(books => 
                         {
                             books=books.map(course => course.toObject())
-                            
-                            res.render('home_client.handlebars',{layout:'client.handlebars',flash_sales: flash_sales, books: books});     
+                            res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: books});     
                         })
                     .catch(next)            
                 } else {
                     next(err)
                 }
-            })
-=======
-                    books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client.handlebars',books
-                    });
-                })
-            .catch(next)
->>>>>>> parent of d7c31d4 (chi tiết sách chưa chỉnh năm xb)
+            })   
         }
     }
       
@@ -106,18 +79,10 @@ class Client_Control
                         res.redirect('/')
                     }
                     else 
-                    {
-                               
+                    {    
                         req.session.username=client_account.matk;
-                        req.session.isAuth=true; 
-                        books.find({})
-                        .then(books => 
-                            {
-                                books=books.map(course => course.toObject())
-                                res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books
-                            });     
-                            })
-                        .catch(next)                  
+                        req.session.isAuth=true;
+                        res.redirect('/')                 
                     }
                 } else {
                     next(err)
@@ -127,16 +92,7 @@ class Client_Control
 
     get_client(req,res,next)
     {
-        if(!req.session.isAuth) res.redirect('/')
-        else {
-            books.find({})
-            .then(books => 
-                {
-                    books=books.map(course => course.toObject())
-                    res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books});     
-                })
-            .catch(next)   
-                }
+        res.redirect('/')
     }
 
     // Tìm kiếm theo tên sách, tác giả
@@ -496,33 +452,25 @@ class Client_Control
     // Chi tiết sách
     chitietsach(req,res,next)
     {
-<<<<<<< HEAD
-        
-        // books.findOne(
-        //     {'tensach':req.params.tensach}
-        // )
-        // .then(books => 
-        //     {
-        //     res.render('chitietsach_client.handlebars',{layout:'client.handlebars',books:  mongooseToObject(books)});
-        //     })
-        // .catch(next)
-        // console.log(req.params.tensach);
         books.findOne({'tensach': req.params.tensach},
-        function (book){
-                res.json(mongooseToObject(book))
-                // books.find(
-                //         {$and: [  {'theloai':{'$regex' : theloai, '$options' : 'i'}}, {'tensach': {$ne: books.tensach}}]}
-                //     ).limit(5).skip(5*1)
-                //     .then(list_books => 
-                //         {
-                //             list_books=list_books.map(course => course.toObject())
-                //             res.render('chitietsach_client.handlebars',{layout:'client.handlebars',books: book, list_books: list_books});
-                //         })
-                //     .catch(next)                
-        })
-=======
-        res.render('chitietsach_client.handlebars',{layout: 'client.handlebars'})
->>>>>>> parent of d7c31d4 (chi tiết sách chưa chỉnh năm xb)
+            function (err,book){
+                if(!err)
+                {
+                    book = mongooseToObject(book);
+                    books.find(
+                            {$and: [{'theloai': book.theloai}, {'tensach': {$ne: books.tensach}}]}
+                        ).limit(20).skip(20*1)
+                        .then(list_books => 
+                            {
+                                list_books=list_books.map(course => course.toObject())
+                                res.render('chitietsach_client.handlebars',{layout:'client.handlebars',books: book, list_books: list_books});
+                
+                            })
+                        .catch(next)                
+                } else {
+                    next(err)
+                }
+            })
     }
 }
 
