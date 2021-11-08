@@ -458,8 +458,8 @@ class Client_Control
                 {
                     book = mongooseToObject(book);
                     books.find(
-                            {$and: [{'theloai': books.theloai}, {'tensach': {$ne: books.tensach}}]}
-                        ).limit(20).skip(20*1)
+                            {$and: [{'theloai': book.theloai}, {'tensach': {$ne: book.tensach}}]}
+                        ).limit(6).skip(6*1)
                         .then(list_books => 
                             {
                                 list_books=list_books.map(course => course.toObject())
