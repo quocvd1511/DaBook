@@ -386,8 +386,8 @@
 
                   <div class="swiper featured-slider">             
                       <div class="swiper-wrapper" style="height: auto; width: 100%">
-                        {{#each flash_sales}}
-                        {{!-- {{#when this.giamgia}} --}}
+                        {{#each books}}
+                        {{#when this.giamgia}}
                           <div class="swiper-slide box">
                               <div class="icons">
                                   <a href="#" class="fas fa-search"></a>
@@ -404,7 +404,7 @@
                                   <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
                               </div>
                           </div>
-                     {{!-- {{/when}} --}}
+                     {{/when}}
                      {{/each}}
                       </div>                   
                       <div class="swiper-button-next"></div>
@@ -481,7 +481,7 @@
                   {{#each books}}
                     <div class="grid__column-2-4">
 
-                      <a class="home-product-item" href="/chitietsach/{{this.tensach}}">
+                      <a class="home-product-item" href="/chitietsach">
                         <div
                           class="home-product-item__img"
                           style="background-image: url({{this.hinhanh}});"
@@ -678,7 +678,6 @@
           element.href = "/theloai/" + value;
         });
     </script>
-
 
     <!-- Bootstrap js -->
     {{!-- <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> --}}

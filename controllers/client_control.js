@@ -19,6 +19,7 @@ class Client_Control
         // }
         //  console.log(length_page);
         if(req.session.isAuth) {
+<<<<<<< HEAD
             books.find({'giamgia': {$gte: 22}},
             function (err,flash_sales){ 
                 if(!err)
@@ -35,11 +36,21 @@ class Client_Control
                     next(err)
                 }
             })   
-        }else{
-            books.find({'giamgia': {$gte: 22}},
-            function (err,flash_sales){
-                if(!err)
+=======
+            books.find({})
+            .then(books => 
                 {
+                    books=books.map(course => course.toObject())
+                    res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books
+                });     
+                })
+            .catch(next)   
+>>>>>>> parent of d7c31d4 (chi tiết sách chưa chỉnh năm xb)
+        }else{
+            books.find({})
+            .then(books => 
+                {
+<<<<<<< HEAD
                     flash_sales=flash_sales.map(course => course.toObject())
 
                     books.find({})
@@ -54,6 +65,13 @@ class Client_Control
                     next(err)
                 }
             })
+=======
+                    books=books.map(course => course.toObject())
+                    res.render('home_client.handlebars',{layout:'client.handlebars',books
+                    });
+                })
+            .catch(next)
+>>>>>>> parent of d7c31d4 (chi tiết sách chưa chỉnh năm xb)
         }
     }
       
@@ -88,10 +106,18 @@ class Client_Control
                         res.redirect('/')
                     }
                     else 
-                    {    
+                    {
+                               
                         req.session.username=client_account.matk;
-                        req.session.isAuth=true;
-                        res.redirect('/')                 
+                        req.session.isAuth=true; 
+                        books.find({})
+                        .then(books => 
+                            {
+                                books=books.map(course => course.toObject())
+                                res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books
+                            });     
+                            })
+                        .catch(next)                  
                     }
                 } else {
                     next(err)
@@ -101,7 +127,16 @@ class Client_Control
 
     get_client(req,res,next)
     {
-        res.redirect('/')
+        if(!req.session.isAuth) res.redirect('/')
+        else {
+            books.find({})
+            .then(books => 
+                {
+                    books=books.map(course => course.toObject())
+                    res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, books: books});     
+                })
+            .catch(next)   
+                }
     }
 
     // Tìm kiếm theo tên sách, tác giả
@@ -461,6 +496,7 @@ class Client_Control
     // Chi tiết sách
     chitietsach(req,res,next)
     {
+<<<<<<< HEAD
         
         // books.findOne(
         //     {'tensach':req.params.tensach}
@@ -484,6 +520,9 @@ class Client_Control
                 //         })
                 //     .catch(next)                
         })
+=======
+        res.render('chitietsach_client.handlebars',{layout: 'client.handlebars'})
+>>>>>>> parent of d7c31d4 (chi tiết sách chưa chỉnh năm xb)
     }
 }
 
