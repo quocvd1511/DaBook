@@ -452,25 +452,30 @@ class Client_Control
     // Chi tiết sách
     chitietsach(req,res,next)
     {
-        books.findOne({'tensach': req.params.tensach},
-            function (err,book){
-                if(!err)
+       
+        const query = books.findOne({ 'tensach': req.params.tensach });
+        query.exec(function (err, book) {
+            if(!err)
                 {
-                    book = mongooseToObject(book);
-                    books.find(
-                            {$and: [{'theloai': book.theloai}, {'tensach': {$ne: book.tensach}}]}
-                        ).limit(6).skip(6*1)
-                        .then(list_books => 
-                            {
-                                list_books=list_books.map(course => course.toObject())
-                                res.render('chitietsach_client.handlebars',{layout:'client.handlebars',books: book, list_books: list_books});
-                
-                            })
-                        .catch(next)                
+                    if(Boolean(book)==false) {
+                        res.redirect('/')
+                    }
+                    else 
+                    {    
+                       book = mongooseToObject(book);
+                       books.find({theloai: book.theloai}).limit(6).skip(6*1)
+                       .then(list_book => 
+                        {
+                            list_book=list_book.map(course => course.toObject())
+                            res.render('chitietsach_client.handlebars',{layout:'client.handlebars',books: book, list_books: list_book});
+                        })
+                    .catch(next)             
+                    }
                 } else {
                     next(err)
                 }
             })
+          
     }
 }
 
