@@ -32,15 +32,15 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,400&display=swap"
       rel="stylesheet"
     />
-    <script src="/client_styles/assets/js/client.js">
-    </script>
+    <script src="/client_styles/assets/js/client.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 
   </head>
   <body>
 
-    {{#if client_accounts}}
+    {{#if client_accounts}} 
      <div class="app">
-      <header class="header">
+      <header class="header ">
         <div class="grid">
           <nav class="header__navbar">
             <ul class="header__navbar-list">
@@ -67,9 +67,46 @@
                 </ul>
               </div>
               <li class="header__navbar-item">
-                <div href="" class="header__navbar-item--link open-login-noti">
+                <div href="" class="header__navbar-item--link">
                   <i class="header__navbar-icon ti-bell"></i>
                   Thông báo
+                </div>
+                <div class="header__notify">
+                  <header class="header__notify-header">
+                      <h3>Thông báo mới nhận</h3>
+                  </header>
+                  <ul class="header__notify-list">
+                      <li class="header__notify-item header__notify-item--view">
+                          <a href="" class="header__notify-link text-decoration-none">
+                              <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="header__notify-img">
+                              <div class="header__notify-info">
+                                  <span class="header__notify-name">Đơn hàng của bạn đang được vận chuyển</span>
+                                  <span class="header__notify-descriotion">Harry Potter và bảo bối tử thần</span>
+                              </div>
+                          </a>
+                      </li>
+                      <li class="header__notify-item">
+                          <a href="" class="header__notify-link text-decoration-none">
+                              <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="header__notify-img">
+                              <div class="header__notify-info">
+                                  <span class="header__notify-name">Đơn hàng của bạn đã được xác nhận</span>
+                                  <span class="header__notify-descriotion">Harry Potter và bảo bối tử thần</span>
+                              </div>
+                          </a>
+                      </li>
+                      <li class="header__notify-item">
+                          <a href="" class="header__notify-link text-decoration-none">
+                              <img src="/client_styles/assets/img/miễn_phí_vận_chuyển.png" alt="" class="header__notify-img">
+                              <div class="header__notify-info">
+                                  <span class="header__notify-name">Mã freeship của bạn hết hạn vào ngày 15-11-2021</span>
+                                  <span class="header__notify-descriotion">Mã freeship sắp hết hạn. Đừng bỏ lỡ!</span>
+                              </div>
+                          </a>
+                      </li>
+                  </ul>
+                  <div class="header__notify-footer">
+                      <a href="" class="header__notify-footer-btn text-decoration-none">Xem tất cả</a>
+                  </div>
                 </div>
               </li>
               <li class="header__navbar-item">
@@ -78,10 +115,9 @@
                   Trợ giúp
                 </a>
               </li>
-               <li class="header__navbar-item"> 
-                 <div href="" class="">
-                  {{client_accounts}}
-                </div>
+              <li class="header__navbar-item header__navbar-user">
+                <img class="header__navbar-user-img" src="https://anhdep123.com/wp-content/uploads/2021/05/hinh-avatar-trang.jpg" alt="">
+                <p class="header__navbar-user-name">{{client_accounts}}</p>
               </li>
                <li class="header__navbar-item">
                  <a href="/logout" class="header__navbar-item--link">               
@@ -249,7 +285,7 @@
 
                   <div class="auth-form__socials">
                     <a
-                      href=""
+                      href="/auth/facebook"
                       class="auth-form__socials--fb btn btn--with-icon"
                     >
                       <i
@@ -278,7 +314,6 @@
                   <div class="modals-close">
                     <i class="ti-close"></i>
                   </div>
-
                   <div class="auth-form__form">
                     <div class="auth-form__group">
                       <label class="auth-form__label">Tên tài khoản</label>
@@ -318,7 +353,7 @@
                   </div>
 
                   <div class="auth-form__controls">
-                    <button class="btn btn--primary btn__signin" type="submit">Đăng ký</button>
+                    <button class="btn btn--primary btn__signin" id="dangky" type="submit">Đăng ký</button>
                   </div>
 
                   <div class="auth-form__socials">
@@ -381,10 +416,125 @@
               </button>
             </div>
             <div class="header__cart">
-              <i class="header__cart-icon ti-shopping-cart"></i>
+              <div class="header__cart-wrap">
+                <i class="header__cart-icon ti-shopping-cart">
+                  <span class="header__cart-notice">0</span>
+                </i>
+              </div>
             </div>
           </div>
         </form>
         </div>
       </header>
+      
+      <script>
+         $(document).ready(function() {
+        const login = document.querySelector('.open-login')
+        const sign_up = document.querySelector('.open-signup')
+        const cart = document.querySelector('.header__cart-icon')
+        const notify = document.querySelector('.open-login-noti')
+        const modal = document.querySelector('.modal')
+        const modals = document.querySelector('.modal-logup')
+        const modalClose = document.querySelector('.modal-close')
+        const modalsClose = document.querySelector('.modals-close')
+        
+        function show() {
+            modal.classList.add('open')
+        }
+
+        function shows() {
+            modals.classList.add('open')
+        }
+
+        login.addEventListener('click', show)
+        sign_up.addEventListener('click', shows)
+        cart.addEventListener('click', show)
+        notify.addEventListener('click', show)
+
+        function hideshow() {
+            modal.classList.remove('open')
+        }
+        modalClose.addEventListener('click', hideshow)
+
+        function hideshows() {
+            modals.classList.remove('open')
+        }
+        modalsClose.addEventListener('click', hideshows)
+         });
+    </script>
     {{/if}}
+
+     <script>
+        $(document).ready(function() {
+        var li=document.getElementsByClassName('header__search-option-item')
+
+        li[0].addEventListener('click',l0_click)
+
+        li[1].addEventListener('click',l1_click)
+
+        function l0_click(){
+                li[0].classList.add('header__search-option-item--active')
+                li[1].classList.remove('header__search-option-item--active')
+        }      
+
+        function l1_click(){
+                li[1].classList.add('header__search-option-item--active')
+                li[0].classList.remove('header__search-option-item--active')
+        }    
+
+    </script>
+
+    <!-- Js tm kiếm  theo -->
+    <script>
+
+        var li=document.getElementsByClassName('header__search-option-item')
+
+        li[0].addEventListener('click',l0_click)
+
+        li[1].addEventListener('click',l1_click)
+
+        function l0_click(){
+                li[0].classList.add('header__search-option-item--active')
+                li[1].classList.remove('header__search-option-item--active')
+        }      
+
+        function l1_click(){
+                li[1].classList.add('header__search-option-item--active')
+                li[0].classList.remove('header__search-option-item--active')
+        }    
+        });
+    </script>
+
+    <!-- Bootstrap js -->
+    {{!-- <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> --}}
+    {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/js/swiper.min.js"></script> --}}
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+      integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+      crossorigin="anonymous"
+    ></script>
+
+     <script src="sweetalert2.all.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script>
+      $('#dangky').click(function(){
+        Swal.fire({
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#1A94FF',
+          {{!-- icon: 'success', --}}
+          title: 'Đăng ký thành công'
+          })
+      })
+    </script>

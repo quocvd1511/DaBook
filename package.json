@@ -1,3 +1,4 @@
+
 {
   "name": "dabook_web_application",
   "version": "1.0.0",
@@ -10,6 +11,8 @@
     "express-session": "^1.17.2",
     "mongoose": "^6.0.9",
     "nodemon": "^2.0.13",
+    "passport": "^0.5.0",
+    "passport-facebook": "^3.0.0",
     "sass": "^1.42.1"
   },
   "devDependencies": {},
@@ -18,7 +21,7 @@
     "watch_cli_main": "sass -w src/public/client_styles/assets/scss/main.scss src/public/client_styles/assets/css/main.css",
     "watch_cli_base": "sass -w src/public/client_styles/assets/scss/base.scss src/public/client_styles/assets/css/base.css",
     "watch_cli_sale": "sass -w src/public/client_styles/assets/scss/book_sale.scss src/public/client_styles/assets/css/book_sale.css",
-
+    "watch_cli_book_detail": "sass -w src/public/client_styles/assets/scss/book_detail.scss src/public/client_styles/assets/css/book_detail.css",
     "start": "npx nodemon main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -79,6 +79,15 @@ html {
     transform: scale(var(--growth-to));
   }
 }
+
+.auth-form__socials--fb {
+  background-color: #3A5A98;
+}
+
+.auth-form__socials span {
+  color: #fff;
+}
+
 /* Ý CODE KHÚC NÀY NHA */
 /*Modal*/
 .modal {
@@ -208,6 +217,14 @@ html {
 
 .pagination-item__icon {
   padding-top: 7px;
+}
+
+.auth-form__socials--fb {
+  background-color: #3A5A98;
+}
+
+.auth-form__socials span {
+  color: #fff;
 }
 
 /*# sourceMappingURL=base.css.map */

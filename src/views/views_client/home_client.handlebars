@@ -4,10 +4,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DaBook Shop</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DaBook Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
         integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
@@ -34,7 +30,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 
-    
 
   </head>
   <body>
@@ -391,8 +386,8 @@
 
                   <div class="swiper featured-slider">             
                       <div class="swiper-wrapper" style="height: auto; width: 100%">
-                        {{#each books}}
-                        {{#when this.giamgia}}
+                        {{#each flash_sales}}
+                        {{!-- {{#when this.giamgia}} --}}
                           <div class="swiper-slide box">
                               <div class="icons">
                                   <a href="#" class="fas fa-search"></a>
@@ -409,7 +404,7 @@
                                   <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
                               </div>
                           </div>
-                     {{/when}}
+                     {{!-- {{/when}} --}}
                      {{/each}}
                       </div>                   
                       <div class="swiper-button-next"></div>
@@ -486,7 +481,7 @@
                   {{#each books}}
                     <div class="grid__column-2-4">
 
-                      <a class="home-product-item" href="#">
+                      <a class="home-product-item" href="/chitietsach/{{this.tensach}}">
                         <div
                           class="home-product-item__img"
                           style="background-image: url({{this.hinhanh}});"
@@ -555,9 +550,11 @@
                           <i class="pagination-item__icon fas fa-angle-left"></i>
                       </a>
                   </li>
+
                   <li class="pagination-item pagination-item--active">
                       <a href="" class="pagination-item__link">1</a>
                   </li>
+
                   <li class="pagination-item">
                       <a href="" class="pagination-item__link">2</a>
                   </li>
@@ -610,40 +607,7 @@
 
     </script>
 
-    <script>
-        const login = document.querySelector('.open-login')
-        const sign_up = document.querySelector('.open-signup')
-        const cart = document.querySelector('.header__cart-icon')
-        const notify = document.querySelector('.open-login-noti')
-        const modal = document.querySelector('.modal')
-        const modals = document.querySelector('.modal-logup')
-        const modalClose = document.querySelector('.modal-close')
-        const modalsClose = document.querySelector('.modals-close')
-        
-        function show() {
-            modal.classList.add('open')
-        }
-
-        function shows() {
-            modals.classList.add('open')
-        }
-
-        login.addEventListener('click', show)
-        sign_up.addEventListener('click', shows)
-        cart.addEventListener('click', show)
-        notify.addEventListener('click', show)
-
-        function hideshow() {
-            modal.classList.remove('open')
-        }
-        modalClose.addEventListener('click', hideshow)
-
-        function hideshows() {
-            modals.classList.remove('open')
-        }
-        modalsClose.addEventListener('click', hideshows)
-
-    </script>
+    
 
     <!-- Js tm kiếm  theo -->
     <script>
@@ -682,7 +646,7 @@
                 delay: 9000,
                 disableOnInteraction: false,
                 preloadImages: true,
-                speed: 600
+                speed: 200
             },
             navigation: {
                 nextEl: ".swiper-button-next",
@@ -714,6 +678,7 @@
           element.href = "/theloai/" + value;
         });
     </script>
+
 
     <!-- Bootstrap js -->
     {{!-- <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> --}}
