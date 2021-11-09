@@ -583,6 +583,12 @@
                       </a>
                   </li>
                   {{else}}
+                    {{#ifCond CurrentPage '==' CountPage}}
+                   <li class="pagination-item">
+                      <a href="" class="pagination-item__link">
+                          <i class="pagination-item__icon fas fa-angle-left"></i>
+                      </a>
+                  </li>
                   <li class="pagination-item pagination-item--active">
                   <a href="" class="pagination-item__link" value="0">1</a>
                   </li>
@@ -623,7 +629,7 @@
                   </li>
                   <li class="pagination-item">
                       <a href="" class="pagination-item__link" value="1">
-                          <i class="pagination-item__icon fas fa-angle-right disable"></i>
+                          <i class="pagination-item__icon fas fa-angle-right"></i>
                       </a>
                   </li>
                   {{/ifCond}}

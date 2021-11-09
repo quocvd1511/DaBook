@@ -1280,4 +1280,23 @@ footer p {
   font-weight: 400;
 }
 
+.header__cart-wrap {
+  position: relative;
+  display: inline-block;
+  padding: 0 12px;
+}
+
+.header__cart-notice {
+  position: absolute;
+  top: -6px;
+  right: 30px;
+  padding: 2px 4px;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  border-radius: 17px;
+  border: 2px solid #1290fd;
+  color: var(--white-color);
+  background-color: #f75409;
+}
+
 /*# sourceMappingURL=main.css.map */
