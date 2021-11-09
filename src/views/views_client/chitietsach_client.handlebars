@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
     <link rel="stylesheet" href="/client_styles/assets/css/base.css" />
+	<link rel="stylesheet" href="/client_styles/assets/css/main.css" />
     <link rel="stylesheet" href="/client_styles/assets/css/book_detail.css" />
     <link
       rel="stylesheet"
@@ -39,7 +40,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 
-	<div class="container" style="background-color: #fff; border-radius: 4px;">
+	<div class="container" style="background-color: #fff; border-radius: 4px; margin-bottom: 20px">
 		<div class="row">
 			<div class="col-md-6">
 				<div id="slider" class="owl-carousel product-slider">
@@ -162,43 +163,49 @@
 		<div class="product-seller-recommended">
 			<h3 class="mb-5" >Sản phẩm tương tự</h3>
 			<div class="recommended-items card-deck">
-				{{#each list_books}}
-				<div class="grid__column-2">
-					<a class="home-product-item" href="/chitietsach/{{this.tensach}}">
-						<div class="home-product-item__img"
-							style="background-image: url({{this.hinhanh}});">
-						</div>
-						<h4 class="home-product-item__name d-inline-block" style="display:-webkit-box">{{this.tensach}}</h4>
-						<div class="home-product-item__price">
-							<span class="home-product-item__price-old">{{this.giagoc}}</span>
-							<span class="home-product-item__price-current">{{this.giaban}}.000 đ</span>
-						</div>
-						<div class="home-product-item__action">
-							<span class="home-product-item__like home-product-item--liked">
-								<i class="home-product-item__like-icon-empty far fa-heart"></i>
-								<i class="home-product-item__like-icon-fill fas fa-heart"></i>
-							</span>
-							<div class="home-product-item__rating">
-								<i class="home-product-item__star--gold fas fa-star"></i>
-								<i class="home-product-item__star--gold fas fa-star"></i>
-								<i class="home-product-item__star--gold fas fa-star"></i>
-								<i class="home-product-item__star--gold fas fa-star"></i>
-								<i class="fas fa-star"></i>
+				<div class="swiper featured-slider">             
+                    <div class="swiper-wrapper" style="height: auto; width: 100%">
+					{{#each list_books}}
+					<div class="grid__column-2 swiper-slide box">
+						<a class="home-product-item" href="/chitietsach/{{this.tensach}}">
+							<div class="home-product-item__img"
+								style="background-image: url({{this.hinhanh}});">
 							</div>
-							<span class="home-product-item__sold">57 đã bán</span>
-						</div>
+							<h4 class="home-product-item__name d-inline-block" style="display:-webkit-box">{{this.tensach}}</h4>
+							<div class="home-product-item__price">
+								<span class="home-product-item__price-old">{{this.giagoc}}</span>
+								<span class="home-product-item__price-current">{{this.giaban}}.000 đ</span>
+							</div>
+							<div class="home-product-item__action">
+								<span class="home-product-item__like home-product-item--liked">
+									<i class="home-product-item__like-icon-empty far fa-heart"></i>
+									<i class="home-product-item__like-icon-fill fas fa-heart"></i>
+								</span>
+								<div class="home-product-item__rating">
+									<i class="home-product-item__star--gold fas fa-star"></i>
+									<i class="home-product-item__star--gold fas fa-star"></i>
+									<i class="home-product-item__star--gold fas fa-star"></i>
+									<i class="home-product-item__star--gold fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+								<span class="home-product-item__sold">57 đã bán</span>
+							</div>
 
-						<div class="home-product-item__favourite">
-							<i class="fas fa-check"></i>
-							<span>Yêu thích</span>
-						</div>
-						<div class="home-product-item__sale-off">
-							<span class="home-product-item__sale-off-percent">{{this.giamgia}}%</span>
-							<span class="home-product-item__sale-off-label">GIẢM</span>
-						</div>
-					</a>
-				</div>
+							<div class="home-product-item__favourite">
+								<i class="fas fa-check"></i>
+								<span>Yêu thích</span>
+							</div>
+							<div class="home-product-item__sale-off">
+								<span class="home-product-item__sale-off-percent">{{this.giamgia}}%</span>
+								<span class="home-product-item__sale-off-label">GIẢM</span>
+							</div>
+						</a>
+					</div>
 				{{/each}}
+					</div>
+					<div class="swiper-button-next" style="height: 24px !important; width: 18px !important; font-weight:700; background-size: 15px 20px; color: transparent; "></div>
+					<div class="swiper-button-prev" style="height: 24px !important; width: 18px !important; font-weight:700; background-size: 15px 20px; color: transparent; "></div>
+				</div>
 			</div>
 			<!-- /.recommended-items-->
 			<div class="product-description mb-5">
@@ -247,12 +254,10 @@
 											<h1 class="rating-num">
 												4.0</h1>
 											<div class="rating">
-												<i class="ti-star"></i><i class="ti-star">
-												</i><i class="ti-star"></i><i class="ti-star">
-												</i><i class="ti-star"></i>
+												<i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i>
 											</div>
 											<div>
-												<span class="glyphicon glyphicon-user"></span> 1,050,008 total
+												<i class="fas fa-user"></i> 1,050,008 total
 											</div>
 										</div>
 										<div class="col-xs-12 col-md-6">
@@ -366,7 +371,45 @@
 			</div>
 		</div>
 	</div>
-	
+	<script>
+        var swiper = new Swiper(".featured-slider", {
+            //slidesPerView: '1',
+            spaceBetween: 10,
+            autoplay: true,
+            //effect: 'coverflow',
+            //grabCursor: true,
+            //centeredSlides: true,
+            slidesPerView: 'auto',
+            //spaceBetween: 10,
+            loop: true,
+            centeredSlides: true,
+            autoplay: {
+                delay: 9000,
+                disableOnInteraction: false,
+                preloadImages: true,
+                speed: 200
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                },
+                450: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+                1024: {
+                    slidesPerView: 4,
+                },
+            },
+        });
+        swiper.update();
+    </script>
 
     <script>
         $(document).ready(function() {

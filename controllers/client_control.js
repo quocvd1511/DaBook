@@ -463,7 +463,7 @@ class Client_Control
                     else 
                     {    
                        book = mongooseToObject(book);
-                       books.find({theloai: book.theloai}).limit(6).skip(6*1)
+                       books.find({theloai: book.theloai}).limit(12).skip(12*1)
                        .then(list_book => 
                         {
                             list_book=list_book.map(course => course.toObject())
