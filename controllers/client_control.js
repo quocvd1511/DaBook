@@ -510,17 +510,20 @@ class Client_Control
         page3 = page - 1;
     }
     books.find({'giamgia': {$gte: 22}},
-    function (err,flash_sales, book){
+    function (err,flash_sales){
         if(!err)
         {
             flash_sales=flash_sales.map(course => course.toObject());
-            book = books.find({}).limit(perPage).skip((perPage * page) - perPage)
-            .exec((err, book) => {
-              books.countDocuments((err, count) => { // đếm để tính có bao nhiêu trang
-                if (err) return next(err);
-                 res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: book, CurrentPage: page, CountPage: Math.ceil(count / perPage)}); // Trả về dữ liệu các sản phẩm theo định dạng như JSON, XML,...
-              }); 
-            });      
+           
+                    books.find({}).limit(perPage).skip((perPage * page) - perPage)
+                    .then(books => 
+                        {
+                            books=books.map(course => course.toObject())
+                            res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: books, CurrentPage: page});     
+                        })
+                    .catch(next) 
+           
+                
         } else {
             next(err)
         }
