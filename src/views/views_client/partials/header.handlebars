@@ -32,8 +32,8 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,400&display=swap"
       rel="stylesheet"
     />
-    <script src="/client_styles/assets/js/client.js">
-    </script>
+    <script src="/client_styles/assets/js/client.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 
   </head>
   <body>
@@ -428,6 +428,7 @@
       </header>
       
       <script>
+         $(document).ready(function() {
         const login = document.querySelector('.open-login')
         const sign_up = document.querySelector('.open-signup')
         const cart = document.querySelector('.header__cart-icon')
@@ -459,12 +460,12 @@
             modals.classList.remove('open')
         }
         modalsClose.addEventListener('click', hideshows)
-
+         });
     </script>
     {{/if}}
 
      <script>
-
+        $(document).ready(function() {
         var li=document.getElementsByClassName('header__search-option-item')
 
         li[0].addEventListener('click',l0_click)
@@ -501,7 +502,7 @@
                 li[1].classList.add('header__search-option-item--active')
                 li[0].classList.remove('header__search-option-item--active')
         }    
-
+        });
     </script>
 
     <!-- Bootstrap js -->
