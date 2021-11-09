@@ -5,6 +5,8 @@ const {mongooseToObject} = require('../util/mongoose.js')
 const client_account = require('../models/client_account')
 const passport = require("passport")
 const FacebookStrategy = require("passport-facebook").Strategy
+const mongoose = require('mongoose');
+const express = require('express');
 
 
 class Client_Control
@@ -21,7 +23,7 @@ class Client_Control
                     .then(books => 
                         {
                             books=books.map(course => course.toObject())
-                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, flash_sales: flash_sales, books: books});     
+                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, flash_sales: flash_sales, books: books, CurrentPage: 1});     
                         })
                     .catch(next)            
                 } else {
@@ -38,7 +40,7 @@ class Client_Control
                     .then(books => 
                         {
                             books=books.map(course => course.toObject())
-                            res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: books});     
+                            res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: books, CurrentPage: 1});     
                         })
                     .catch(next)            
                 } else {
@@ -452,7 +454,6 @@ class Client_Control
     // Chi tiết sách
     chitietsach(req,res,next)
     {
-       
         const query = books.findOne({ 'tensach': req.params.tensach });
         query.exec(function (err, book) {
             if(!err)
@@ -462,20 +463,68 @@ class Client_Control
                     }
                     else 
                     {    
-                       book = mongooseToObject(book);
-                       books.find({theloai: book.theloai}).limit(6).skip(6*1)
-                       .then(list_book => 
-                        {
-                            list_book=list_book.map(course => course.toObject())
-                            res.render('chitietsach_client.handlebars',{layout:'client.handlebars',books: book, list_books: list_book});
-                        })
+                    book = mongooseToObject(book);
+                    let date = new Date(book.namxb);
+                    let dateString;
+                   
+                    // chuyển về đúng định dạng ngày tháng năm
+                    if(date.getDate() != 0 && date.getMonth() != 0 &&date.getFullYear() != 0){
+                        dateString = date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear()
+                    } else if(date.getDate() === 0) {
+                        dateString =  date.getMonth() + "-" + date.getFullYear()
+                    }else if(date.getMonth() === 0){
+                        dateString =  date.getFullYear()
+                    } else dateString = "2021"
+              
+                    books.find({theloai: book.theloai}).limit(10).skip(10*1)
+                    .then(list_book => 
+                    {
+                        list_book=list_book.map(course => course.toObject())
+                        res.render('chitietsach_client.handlebars',{layout:'client.handlebars',books: book, list_books: list_book, Date: dateString});
+                    })
                     .catch(next)             
                     }
                 } else {
                     next(err)
                 }
             })
-          
+    }
+
+    get_pagination(req, res, next){
+    var perPage = 30; // số lượng sản phẩm xuất hiện trên 1 page
+    var page2, page3, page4, countpage;
+    var page = req.params.page;
+    var number = req.params.number;
+    
+    if(number === 2){
+        page2 = page;
+        page3 = page + 1;
+        page4 = page + 2;
+    }else if(number === 3){
+        page3 = page;
+        page2 = page - 1;
+        page4 = page + 1;
+    }else if(number === 28){
+        page4 = req.params.page;
+        page2 = page - 2;
+        page3 = page - 1;
+    }
+    books.find({'giamgia': {$gte: 22}},
+    function (err,flash_sales, book){
+        if(!err)
+        {
+            flash_sales=flash_sales.map(course => course.toObject());
+            book = books.find({}).limit(perPage).skip((perPage * page) - perPage)
+            .exec((err, book) => {
+              books.countDocuments((err, count) => { // đếm để tính có bao nhiêu trang
+                if (err) return next(err);
+                 res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: book, CurrentPage: page, CountPage: Math.ceil(count / perPage)}); // Trả về dữ liệu các sản phẩm theo định dạng như JSON, XML,...
+              }); 
+            });      
+        } else {
+            next(err)
+        }
+    })   
     }
 }
 

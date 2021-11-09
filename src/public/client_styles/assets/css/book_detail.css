@@ -812,4 +812,14 @@ body {
   margin-top: 10px;
 }
 
+.featured-slider {
+  max-width: 1120px;
+  height: auto;
+}
+
+.swiper-slide {
+  width: 190px !important;
+  margin: 5px -5px;
+}
+
 /*# sourceMappingURL=book_detail.css.map */

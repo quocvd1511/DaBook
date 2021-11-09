@@ -9,49 +9,11 @@ const connect_db = require('./src/config/db/db_connect')
 const passport = require("passport")
 const FacebookStrategy = require("passport-facebook").Strategy
 
+
 connect_db.connect()
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-
-// app.use(passport.initialize())
-// app.use(passport.session())
-
-
-// passport.serializeUser(function(user, done) {
-//   done(null, user)
-// })
-// passport.deserializeUser(function(user, done) {
-//   done(null, user)
-// })
-
-// passport.use(
-//   new FacebookStrategy(
-//     {
-//       clientID: "Client ID",
-//       clientSecret: "Client Secret",
-//       callbackURL: "http://localhost:3000/auth/facebook/callback",
-//     },
-//     function(accessToken, refreshToken, profile, cb) {
-//       return cb(null, profile)
-//     }
-//   )
-// )
-// app.get("/auth/facebook", passport.authenticate("facebook"))
-// app.get(
-//   "/auth/facebook/callback",
-//   passport.authenticate("facebook", { failureRedirect: "/" }),
-//   function(req, res) {
-//     console.log("req", req.user)
-//     res.render("data", {
-//       user: req.user,
-//     })
-//   }
-// )
-
-// app.get("/", (req, res) => {
-//   res.render(res.render("home_client.hanlebars", { layout: 'client_handlebars',username: req.user}))
-// })
 
 route(app)
 
@@ -72,9 +34,79 @@ app.engine('handlebars',
               }else {
                 return options.inverse(this);
             }
-            }
-          }
+            }, 
+            'ifCond': function (v1, operator, v2, options) {
+              switch (operator) {
+                  case '==':
+                      return (v1 == v2) ? options.fn(this) : options.inverse(this);
+                  case '===':
+                      return (v1 === v2) ? options.fn(this) : options.inverse(this);
+                  case '!=':
+                      return (v1 != v2) ? options.fn(this) : options.inverse(this);
+                  case '!==':
+                      return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+                  case '<':
+                      return (v1 < v2) ? options.fn(this) : options.inverse(this);
+                  case '<=':
+                      return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+                  case '>':
+                      return (v1 > v2) ? options.fn(this) : options.inverse(this);
+                  case '>=':
+                      return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+                  case '&&':
+                      return (v1 && v2) ? options.fn(this) : options.inverse(this);
+                  case '||':
+                      return (v1 || v2) ? options.fn(this) : options.inverse(this);
+                  default:
+                      return options.inverse(this);
+              }
+          },
+          'pagination': function(currentPage, totalPage, size, options) {
+            var startPage, endPage, context;
           
+            if (arguments.length === 3) {
+              options = size;
+              size = 5;
+            }
+          
+            startPage = currentPage - Math.floor(size / 2);
+            endPage = currentPage + Math.floor(size / 2);
+          
+            if (startPage <= 0) {
+              endPage -= (startPage - 1);
+              startPage = 1;
+            }
+          
+            if (endPage > totalPage) {
+              endPage = totalPage;
+              if (endPage - size + 1 > 0) {
+                startPage = endPage - size + 1;
+              } else {
+                startPage = 1;
+              }
+            }
+          
+            context = {
+              startFromFirstPage: false,
+              pages: [],
+              endAtLastPage: false
+            };
+            if (startPage === 1) {
+              context.startFromFirstPage = true;
+            }
+            for (var i = startPage; i <= endPage; i++) {
+              context.pages.push({
+                page: i,
+                isCurrent: i === currentPage
+              });
+            }
+            if (endPage === totalPage) {
+              context.endAtLastPage = true;
+            }
+          
+            return options.fn(context);
+          }
+        }        
 }));
 
 app.set('view engine', 'handlebars')
