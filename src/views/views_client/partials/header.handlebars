@@ -169,7 +169,11 @@
             </div>
 
             <div class="header__cart">
-              <i class="header__cart-icon ti-shopping-cart"></i>
+              <div class="header__cart-wrap">
+                <i class="header__cart-icon ti-shopping-cart">
+                  <span class="header__cart-notice">3</span>
+                </i>
+              </div>
             </div>
           </div>
         </form>
@@ -203,10 +207,29 @@
                   </li>
                 </ul>
               </div>
-              <li class="header__navbar-item">
-                <div href="" class="header__navbar-item--link open-login-noti">
-                  <i class="header__navbar-icon ti-bell"></i>
-                  Thông báo
+              <li class="header__navbar-item ">
+                <div class="header__navbar-item-notify">
+                  <div href="" class="header__navbar-item--link open-login-noti">
+                    <i class="header__navbar-icon ti-bell"></i>
+                    Thông báo
+                  </div>
+                  <div class="header__notify">
+                    <div class="header__noti--no-noti">
+                      <img src="/client_styles/assets/img/Thông_báo.png" alt="" class="header__noti-no-noti-img">
+                      <span class="header__noti-no-noti-msg">
+                        Đăng nhập để xem Thông báo
+                      </span>
+                    </div>
+                    <hr style="margin: 0">
+                    <div class="header__notify-footer-link">
+                      <div href="" class="header__notify-footer-link--size">
+                        Đăng nhập
+                      </div>
+                      <div href="" class="header__notify-footer-link--size">
+                        Đăng ký
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </li>
               <li class="header__navbar-item">
@@ -533,7 +556,7 @@
         Swal.fire({
           confirmButtonText: 'OK',
           confirmButtonColor: '#1A94FF',
-          {{!-- icon: 'success', --}}
+          icon: 'success',
           title: 'Đăng ký thành công'
           })
       })
