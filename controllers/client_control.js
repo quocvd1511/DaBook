@@ -5,6 +5,8 @@ const {mongooseToObject} = require('../util/mongoose.js')
 const client_account = require('../models/client_account')
 const passport = require("passport")
 const FacebookStrategy = require("passport-facebook").Strategy
+const mongoose = require('mongoose');
+const express = require('express');
 
 
 class Client_Control
@@ -21,7 +23,7 @@ class Client_Control
                     .then(books => 
                         {
                             books=books.map(course => course.toObject())
-                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, flash_sales: flash_sales, books: books});     
+                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, flash_sales: flash_sales, books: books, CurrentPage: 1});     
                         })
                     .catch(next)            
                 } else {
@@ -38,7 +40,7 @@ class Client_Control
                     .then(books => 
                         {
                             books=books.map(course => course.toObject())
-                            res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: books});     
+                            res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: books, CurrentPage: 1});     
                         })
                     .catch(next)            
                 } else {
@@ -106,7 +108,7 @@ class Client_Control
             .then(books => 
                 {
                     books=books.map(course => course.toObject())
-                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                    res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1 });
                 })
             .catch(next)
     }
@@ -120,7 +122,7 @@ class Client_Control
             .then(books => 
                 {
                     books=books.map(course => course.toObject())
-                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                    res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                 })
             .catch(next)
     }
@@ -137,12 +139,12 @@ class Client_Control
                  }},
                 { nxb :  { $in: req.query.nxb}},
                 { ngonngu :  { $in: req.query.ngonngu}}
-                 ]})
+                 ]}).limit(30).skip(30*1)
               .then(books => 
              {
                  books=books.map(course => course.toObject())
-                 res.render('search_client.handlebars',{layout:'client.handlebars',books});
-             })
+                 res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
+             }).limit(30).skip(30*1)
              .catch(next)
              } else if(req.query.giaban === "100000") {
                      books.find({$and :[
@@ -152,12 +154,12 @@ class Client_Control
                           }},
                          { nxb :  { $in: req.query.nxb}},
                          { ngonngu :  { $in: req.query.ngonngu}}
-                     ]})
+                     ]}).limit(30).skip(30*1)
              .then(books => 
              {
                  books=books.map(course => course.toObject())
-                 res.render('search_client.handlebars',{layout:'client.handlebars',books});
-             })
+                 res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
+             }).limit(30).skip(30*1)
                  .catch(next)
              } else if (req.query.giaban === "150000") {
                  books.find({$and :[
@@ -167,11 +169,11 @@ class Client_Control
                   }},
                    { nxb :  { $in: req.query.nxb}},
                    { ngonngu :  { $in: req.query.ngonngu}}
-              ]})
+              ]}).limit(30).skip(30*1)
                  .then(books => 
                   {
                          books=books.map(course => course.toObject())
-                         res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                         res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                      })
                  .catch(next)
              } else if (req.query.giaban === "200000") {
@@ -182,11 +184,11 @@ class Client_Control
                   }},
              { nxb :  { $in: req.query.nxb}},
              { ngonngu :  { $in: req.query.ngonngu}}
-              ]})
+              ]}).limit(30).skip(30*1)
               .then(books => 
                   {
                       books=books.map(course => course.toObject())
-                      res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                      res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                    })
                  .catch(next)
              } else {
@@ -196,11 +198,11 @@ class Client_Control
                       }},
                       { nxb :  { $in: req.query.nxb}},
                       { ngonngu :  { $in: req.query.ngonngu}}
-                  ]})
+                  ]}).limit(30).skip(30*1)
                   .then(books => 
                      {
                         books=books.map(course => course.toObject())
-                        res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                        res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                       })
                  .catch(next)
                  }
@@ -208,33 +210,33 @@ class Client_Control
             books.find({$and :[
                     { nxb :  { $in: req.query.nxb}},
                     { ngonngu :  { $in: req.query.ngonngu}}
-                ]})
+                ]}).limit(30).skip(30*1)
                 .then(books => 
                    {
                       books=books.map(course => course.toObject())
-                      res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                      res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                     })
                .catch(next)
             }
             else if(!req.query.giaban && !req.query.nxb && req.query.ngonngu){
                 books.find(
                         { ngonngu :  { $in: req.query.ngonngu}}
-                    )
+                    ).limit(30).skip(30*1)
                     .then(books => 
                        {
                           books=books.map(course => course.toObject())
-                          res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                          res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                         })
                    .catch(next)
                 }
                 else if(!req.query.giaban && req.query.nxb && !req.query.ngonngu){
                     books.find(
                             { nxb :  { $in: req.query.nxb}}
-                        )
+                        ).limit(30).skip(30*1)
                         .then(books => 
                            {
                               books=books.map(course => course.toObject())
-                              res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                              res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                             })
                        .catch(next)
                     }
@@ -245,11 +247,11 @@ class Client_Control
                                     $lt: "50"
                                 }},
                                { nxb :  { $in: req.query.nxb}},
-                                ]})
+                                ]}).limit(30).skip(30*1)
                              .then(books => 
                             {
                                 books=books.map(course => course.toObject())
-                                res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                             })
                             .catch(next)
                             } else if(req.query.giaban === "100000") {
@@ -259,11 +261,11 @@ class Client_Control
                                              $lt: "100"
                                          }},
                                         { nxb :  { $in: req.query.nxb}}
-                                    ]})
+                                    ]}).limit(30).skip(30*1)
                             .then(books => 
                             {
                                 books=books.map(course => course.toObject())
-                                res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                             })
                                 .catch(next)
                             } else if (req.query.giaban === "150000") {
@@ -273,11 +275,11 @@ class Client_Control
                                      $lt: "150"
                                  }},
                                   { nxb :  { $in: req.query.nxb}}
-                             ]})
+                             ]}).limit(30).skip(30*1)
                                 .then(books => 
                                  {
                                         books=books.map(course => course.toObject())
-                                        res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                        res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                     })
                                 .catch(next)
                             } else if (req.query.giaban === "200000") {
@@ -287,11 +289,11 @@ class Client_Control
                                      $lt: "200"
                                  }},
                             { nxb :  { $in: req.query.nxb}}
-                             ]})
+                             ]}).limit(30).skip(30*1)
                              .then(books => 
                                  {
                                      books=books.map(course => course.toObject())
-                                     res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                     res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                   })
                                 .catch(next)
                             } else {
@@ -300,11 +302,11 @@ class Client_Control
                                        $gte: "200"
                                      }},
                                      { nxb :  { $in: req.query.nxb}}
-                                 ]})
+                                 ]}).limit(30).skip(30*1)
                                  .then(books => 
                                     {
                                        books=books.map(course => course.toObject())
-                                       res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                       res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                      })
                                 .catch(next)
                                 }
@@ -316,11 +318,11 @@ class Client_Control
                                         $lt: "50"
                                     }},
                                    { ngonngu :  { $in: req.query.ngonngu}}
-                                    ]})
+                                    ]}).limit(30).skip(30*1)
                                  .then(books => 
                                 {
                                     books=books.map(course => course.toObject())
-                                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                    res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                 })
                                 .catch(next)
                                 } else if(req.query.giaban === "100000") {
@@ -330,11 +332,11 @@ class Client_Control
                                                  $lt: "100"
                                              }},
                                             { ngonngu :  { $in: req.query.ngonngu}}
-                                        ]})
+                                        ]}).limit(30).skip(30*1)
                                 .then(books => 
                                 {
                                     books=books.map(course => course.toObject())
-                                    res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                    res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                 })
                                     .catch(next)
                                 } else if (req.query.giaban === "150000") {
@@ -344,11 +346,11 @@ class Client_Control
                                          $lt: "150"
                                      }},
                                       { ngonngu :  { $in: req.query.ngonngu}}
-                                 ]})
+                                 ]}).limit(30).skip(30*1)
                                     .then(books => 
                                      {
                                             books=books.map(course => course.toObject())
-                                            res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                            res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                         })
                                     .catch(next)
                                 } else if (req.query.giaban === "200000") {
@@ -358,11 +360,11 @@ class Client_Control
                                          $lt: "200"
                                      }},
                                 { ngonngu :  { $in: req.query.ngonngu}}
-                                 ]})
+                                 ]}).limit(30).skip(30*1)
                                  .then(books => 
                                      {
                                          books=books.map(course => course.toObject())
-                                         res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                         res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                       })
                                     .catch(next)
                                 } else {
@@ -371,11 +373,11 @@ class Client_Control
                                            $gte: "200"
                                          }},
                                          { ngonngu :  { $in: req.query.ngonngu}}
-                                     ]})
+                                     ]}).limit(30).skip(30*1)
                                      .then(books => 
                                         {
                                            books=books.map(course => course.toObject())
-                                           res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                           res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                          })
                                     .catch(next)
                                     }
@@ -385,11 +387,11 @@ class Client_Control
                                 books.find({giaban : {
                                    $lt: 50
                                 }}    
-                            )
+                            ).limit(30).skip(30*1)
                                .then(books => 
                                 {
                                        books=books.map(course => course.toObject())
-                                       res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                       res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                    })
                                .catch(next)
                                 } else if(req.query.giaban === "100000") {
@@ -397,11 +399,11 @@ class Client_Control
                                         $gte: 50,
                                         $lt: 100
                                     }}    
-                                )
+                                ).limit(30).skip(30*1)
                                    .then(books => 
                                     {
                                            books=books.map(course => course.toObject())
-                                           res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                           res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                        })
                                    .catch(next)
                                 } else if (req.query.giaban === "150000") {
@@ -409,11 +411,11 @@ class Client_Control
                                          $gte:"100",
                                          $lt: "150"
                                      }}    
-                                 )
+                                 ).limit(30).skip(30*1)
                                     .then(books => 
                                      {
                                             books=books.map(course => course.toObject())
-                                            res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                            res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                         })
                                     .catch(next)
                                 } else if (req.query.giaban === "200000") {
@@ -421,22 +423,22 @@ class Client_Control
                                          $gte:"150",
                                          $lt: "200"
                                      }
-                               })
+                               }).limit(30).skip(30*1)
                                  .then(books => 
                                      {
                                          books=books.map(course => course.toObject())
-                                         res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                         res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                       })
                                     .catch(next)
                                 } else {
                                     books.find({ giaban : {
                                            $gte: "200"
                                          }
-                                     })
+                                     }).limit(30).skip(30*1)
                                      .then(books => 
                                         {
                                            books=books.map(course => course.toObject())
-                                           res.render('search_client.handlebars',{layout:'client.handlebars',books});
+                                           res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
                                          })
                                     .catch(next)
                                     }
@@ -452,7 +454,6 @@ class Client_Control
     // Chi tiết sách
     chitietsach(req,res,next)
     {
-       
         const query = books.findOne({ 'tensach': req.params.tensach });
         query.exec(function (err, book) {
             if(!err)
@@ -462,21 +463,130 @@ class Client_Control
                     }
                     else 
                     {    
-                       book = mongooseToObject(book);
-                       books.find({theloai: book.theloai}).limit(6).skip(6*1)
-                       .then(list_book => 
-                        {
-                            list_book=list_book.map(course => course.toObject())
-                            res.render('chitietsach_client.handlebars',{layout:'client.handlebars',books: book, list_books: list_book});
-                        })
+                    book = mongooseToObject(book);
+                    let date = new Date(book.namxb);
+                    let dateString;
+                   
+                    // chuyển về đúng định dạng ngày tháng năm
+                    if(date.getDate() != 0 && date.getMonth() != 0 &&date.getFullYear() != 0){
+                        dateString = date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear()
+                    } else if(date.getDate() === 0) {
+                        dateString =  date.getMonth() + "-" + date.getFullYear()
+                    }else if(date.getMonth() === 0){
+                        dateString =  date.getFullYear()
+                    } else dateString = "2021"
+              
+                    books.find({theloai: book.theloai}).limit(10).skip(10*1)
+                    .then(list_book => 
+                    {
+                        list_book=list_book.map(course => course.toObject())
+                        res.render('chitietsach_client.handlebars',{layout:'client.handlebars',books: book, list_books: list_book, Date: dateString});
+                    })
                     .catch(next)             
                     }
                 } else {
                     next(err)
                 }
             })
-          
     }
+
+    get_pagination(req, res, next){
+    var perPage = 30; // số lượng sản phẩm xuất hiện trên 1 page
+    var page2, page3, page4;
+    let page = Number(req.params.page);
+    var number = req.params.number;
+    
+    if(number == 2){
+        page2 = page + 1;
+        page3 = page + 2;
+        page4 = page + 3;
+    }else if(number == 3){
+        page3 = page;
+        page2 = page - 1;
+        page4 = page + 1;
+    }else if(number == 4){
+        page3 = page -1;
+        page2 = page - 2;
+        page4 = page;
+    }else if(page == 28){
+        page4 = page;
+        page2 = page - 2;
+        page3 = page - 1;
+    }
+    if(number == 6){
+        page2 = page - 1;
+        page3 = page;
+        page4 = page + 1;
+    }
+    if(number == -6){
+        page2 = page - 2;
+        page3 = page - 1;
+        page4 = page;
+    }
+    
+    books.find({'giamgia': {$gte: 22}},
+    function (err,flash_sales){
+        if(!err)
+        {
+            flash_sales=flash_sales.map(course => course.toObject());
+           
+                    books.find({}).limit(perPage).skip((perPage * page) - perPage)
+                    .then(books => 
+                        {
+                            books=books.map(course => course.toObject())
+                            res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: books, CurrentPage: req.params.page, CountPage: 28, Number2:page2, Number3: page3, Number4: page4});     
+                        })
+                    .catch(next) 
+           
+                
+        } else {
+            next(err)
+        }
+    })   
+    }
+
+    search_pagination(req, res, next){
+        var perPage = 30; // số lượng sản phẩm xuất hiện trên 1 page
+        var page2, page3, page4;
+        let page = Number(req.params.page);
+        var number = req.params.number;
+        
+        if(number == 2){
+            page2 = page + 1;
+            page3 = page + 2;
+            page4 = page + 3;
+        }else if(number == 3){
+            page3 = page;
+            page2 = page - 1;
+            page4 = page + 1;
+        }else if(number == 4){
+            page3 = page -1;
+            page2 = page - 2;
+            page4 = page;
+        }else if(page == 28){
+            page4 = page;
+            page2 = page - 2;
+            page3 = page - 1;
+        }
+        if(number == 6){
+            page2 = page - 1;
+            page3 = page;
+            page4 = page + 1;
+        }
+        if(number == -6){
+            page2 = page - 2;
+            page3 = page - 1;
+            page4 = page;
+        }
+            books.find({}).limit(perPage).skip((perPage * page) - perPage)
+            .then(books => 
+                {
+                    books=books.map(course => course.toObject())
+                    res.render('search_client.handlebars',{layout:'client.handlebars', books: books, CurrentPage: req.params.page, CountPage: 28, Number2:page2, Number3: page3, Number4: page4});     
+                })
+            .catch(next) 
+                  
+        }
 }
 
 module.exports = new Client_Control
