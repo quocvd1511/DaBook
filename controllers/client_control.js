@@ -492,23 +492,38 @@ class Client_Control
 
     get_pagination(req, res, next){
     var perPage = 30; // số lượng sản phẩm xuất hiện trên 1 page
-    var page2, page3, page4, countpage;
-    var page = req.params.page;
+    var page2, page3, page4;
+    let page = Number(req.params.page);
     var number = req.params.number;
     
-    if(number === 2){
-        page2 = page;
-        page3 = page + 1;
-        page4 = page + 2;
-    }else if(number === 3){
+    if(number == 2){
+        page2 = page + 1;
+        page3 = page + 2;
+        page4 = page + 3;
+    }else if(number == 3){
         page3 = page;
         page2 = page - 1;
         page4 = page + 1;
-    }else if(number === 28){
-        page4 = req.params.page;
+    }else if(number == 4){
+        page3 = page -1;
+        page2 = page - 2;
+        page4 = page;
+    }else if(page == 28){
+        page4 = page;
         page2 = page - 2;
         page3 = page - 1;
     }
+    if(number == 6){
+        page2 = page - 1;
+        page3 = page;
+        page4 = page + 1;
+    }
+    if(number == -6){
+        page2 = page - 2;
+        page3 = page - 1;
+        page4 = page;
+    }
+    
     books.find({'giamgia': {$gte: 22}},
     function (err,flash_sales){
         if(!err)
@@ -519,7 +534,7 @@ class Client_Control
                     .then(books => 
                         {
                             books=books.map(course => course.toObject())
-                            res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: books, CurrentPage: page});     
+                            res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: books, CurrentPage: req.params.page, CountPage: 28, Number2:page2, Number3: page3, Number4: page4});     
                         })
                     .catch(next) 
            

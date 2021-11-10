@@ -1,4 +1,4 @@
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -547,9 +547,9 @@
 
               {{!-- PHÂN TRANG --}}
                 <ul class="pagination home-product__pagination">
-                {{#ifCond CurrentPage '<=' 5}}
+                {{#ifCond CurrentPage '<' 6}}
                 {{!-- Nếu trang đầu tiên thì không thể lùi lại --}}
-                  {{#ifCond CurrentPage '==' 1}} 
+                  {{#ifCond CurrentPage '===' 1}} 
                   <li class="pagination-item">
                       <a href="" class="pagination-item__link">
                           <i class="pagination-item__icon fas fa-angle-left disable"></i>
@@ -557,49 +557,52 @@
                   </li>
                   {{else}}
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link">
+                      <a href="" class="pagination-item__link" name="-6">
                           <i class="pagination-item__icon fas fa-angle-left"></i>
                       </a>
                   </li>
                   {{/ifCond}}
                   <li class="pagination-item pagination-item--active">
-                      <a href="" class="pagination-item__link" data-value="0">1</a>
+                      <a href="" class="pagination-item__link" name="1">1</a>
                   </li>
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link" data-value="2">2</a>
+                      <a href="" class="pagination-item__link" name="2">2</a>
                   </li>
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link" data-value="3">3</a>
+                      <a href="" class="pagination-item__link" name="3">3</a>
                   </li>
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link" data-value="4">4</a>
+                      <a href="" class="pagination-item__link" name="4">4</a>
                   </li>
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link" data-value="5">5</a>
+                      <a href="" class="pagination-item__link" name="5">5</a>
                   </li>
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link">
+                      <a href="" class="pagination-item__link" name="6">
                           <i class="pagination-item__icon fas fa-angle-right"></i>
                       </a>
                   </li>
                   {{else}}
                     {{#ifCond CurrentPage '==' CountPage}}
                    <li class="pagination-item">
-                      <a href="" class="pagination-item__link">
+                      <a href="" class="pagination-item__link " name="-6">
                           <i class="pagination-item__icon fas fa-angle-left"></i>
                       </a>
                   </li>
                   <li class="pagination-item pagination-item--active">
-                  <a href="" class="pagination-item__link" value="0">1</a>
+                  <a href="" class="pagination-item__link" name="1">1</a>
+                  </li>
+                   <li class="pagination-item">
+                      <a href="" class="pagination-item__link" name="0">...</a>
                   </li>
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link" value="2">{{Number2}}</a>
+                      <a href="" class="pagination-item__link" name="2">{{Number2}}</a>
                   </li>
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link" value="3">{{Number3}}</a>
+                      <a href="" class="pagination-item__link" name="3">{{Number3}}</a>
                   </li>
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link" value="4">{{Number4}}</a>
+                      <a href="" class="pagination-item__link" name="4">{{Number4}}</a>
                   </li>
                   <li class="pagination-item">
                       <a href="" class="pagination-item__link">
@@ -608,27 +611,27 @@
                   </li>
                   {{else}}
                    <li class="pagination-item">
-                      <a href="" class="pagination-item__link">
+                      <a href="" class="pagination-item__link" name="-6">
                           <i class="pagination-item__icon fas fa-angle-left"></i>
                       </a>
                   </li>
                   <li class="pagination-item pagination-item--active">
-                  <a href="" class="pagination-item__link">1</a>
+                  <a href="" class="pagination-item__link" name="1">1</a>
                   </li>
                    <li class="pagination-item pagination-item--active">
-                      <a href="" class="pagination-item__link" >...</a>
+                      <a class="pagination-item__link" >...</a>
                   </li>
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link" value="2">{{Number2}}</a>
+                      <a href="" class="pagination-item__link" name="2">{{Number2}}</a>
                   </li>
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link" value="3">{{Number3}}</a>
+                      <a href="" class="pagination-item__link" name="3">{{Number3}}</a>
                   </li>
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link" value="4">{{Number4}}</a>
+                      <a href="" class="pagination-item__link" name="4">{{Number4}}</a>
                   </li>
                   <li class="pagination-item">
-                      <a href="" class="pagination-item__link" value="1">
+                      <a href="" class="pagination-item__link" name="6">
                           <i class="pagination-item__icon fas fa-angle-right"></i>
                       </a>
                   </li>
@@ -740,10 +743,20 @@
     <script>
         var list = document.querySelectorAll('.pagination-item__link');
         Array.prototype.forEach.call(list, function (element,index) {
-          var page = element.innerHTML;
-          var number = element.value;
+          var page, number;
+          if(element.name != 6 && element.name != -6){
+            page = element.innerHTML;
+            number = element.name;
+          }else if(element.name == 6){
+            number = element.name;
+            page = {{CurrentPage}} + 1;
+          }else{
+            page = {{CurrentPage}} - 1;
+            number = element.name;
+          }
           element.href = "/pagenumber/" + number + "/" + page;
         });
+        
     </script>
 
     <!-- Bootstrap js -->
