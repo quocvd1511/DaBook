@@ -33,7 +33,7 @@
       rel="stylesheet"
     />
     <script src="/client_styles/assets/js/client.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 
   </head>
   <body>
@@ -341,15 +341,17 @@
                         type="text"
                         class="auth-form__input"
                         placeholder="Nhập tên tài khoản"
+                        id = "input_tentk"
                       />
                     </div>
                     <div class="auth-form__group">
-                      <label class="auth-form__label">Email</label>
+                      <label class="auth-form__label">Email/Số điện thoại</label>
                       <input
                         name="email"
                         type="text"
                         class="auth-form__input"
-                        placeholder="Nhập Email"
+                        placeholder="Nhập Email/Số điện thoại"
+                        id = "input_lienlac"
                       />
                     </div>
                     <div class="auth-form__group">
@@ -359,6 +361,7 @@
                         type="text"
                         class="auth-form__input"
                         placeholder="Nhập mật khẩu"
+                        id = "input_nmatkhau"
                       />
                     </div>
                     <div class="auth-form__group">
@@ -367,6 +370,7 @@
                         type="text"
                         class="auth-form__input"
                         placeholder="Nhập lại mật khẩu"
+                        id = "input_xacnhanmk"
                       />
                     </div>
                   </div>
@@ -539,16 +543,27 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="sweetalert2.all.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
       $('#dangky').click(function(){
-        Swal.fire({
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#1A94FF',
-          icon: 'success',
-          title: 'Đăng ký thành công'
+        var tenkh= $('#input_tentk').val();
+        var lienlac= $('#input_lienlac').val();
+        var nmatkhau= $('#input_nmatkhau').val();
+        var xacnhanmk= $('#input_xacnhanmk').val();
+        if( tenkh=="" || lienlac=="" || nmatkhau=="" || xacnhanmk==""){
+          swal({
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#1A94FF',
+            icon: 'error',
+            title: 'Vui lòng nhập đầy đủ thông tin'
           })
+        }
+        else{
+          swal({
+            icon: 'success',
+            title: 'Đăng ký thành công'
+          });
+        }
       })
     </script>
