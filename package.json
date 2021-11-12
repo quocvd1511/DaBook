@@ -22,6 +22,7 @@
     "watch_cli_base": "sass -w src/public/client_styles/assets/scss/base.scss src/public/client_styles/assets/css/base.css",
     "watch_cli_sale": "sass -w src/public/client_styles/assets/scss/book_sale.scss src/public/client_styles/assets/css/book_sale.css",
     "watch_cli_book_detail": "sass -w src/public/client_styles/assets/scss/book_detail.scss src/public/client_styles/assets/css/book_detail.css",
+    "watch_cli_cart": "sass -w src/public/client_styles/assets/scss/cart.scss src/public/client_styles/assets/css/cart.css",
     "start": "npx nodemon main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

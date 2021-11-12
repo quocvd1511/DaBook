@@ -450,6 +450,12 @@ class Client_Control
     {
         res.render('khuyenmai_client.handlebars',{layout: 'client.handlebars'})
     }
+    
+    // Giỏ hàng
+    get_giohang(req,res,next)
+    {
+        res.render('cart_client.handlebars',{layout: 'client.handlebars'})
+    }
 
     // Chi tiết sách
     chitietsach(req,res,next)
