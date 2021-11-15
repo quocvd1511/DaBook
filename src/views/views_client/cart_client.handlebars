@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/client_styles/assets/css/cart.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+
+<style>
+    .disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;
+    }
+
+</style>
+<body>
+    <div class="cart__container grid">
+            <h1>Giỏ hàng</h1>
+            <div class="cart transition is-open">
+            
+                <div class="table">
+                
+                    <div class="layout-inline row th">
+                        <div class="col col__checkbox">Chọn</div>
+                        <div class="col col-pro">Sản phẩm</div>
+                        <div class="col col-price align-center "> 
+                            Đơn giá
+                        </div>
+                        <div class="col col-qty align-center">Số lượng</div>
+                        
+                        <div class="col">Thành tiền</div>
+                        <div class="col"><i class="far fa-trash-alt"></i></div>
+                    </div>
+                
+                    <div class="layout-inline row">
+                        <div class="col col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
+                        <div class="col col-pro layout-inline">
+                            <img class="cart__img" src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"alt="">
+                            <p class="item__name">Harry Potter và bảo bối tử thần</p>
+                        </div>
+                        
+                        <div class="col col-price col-numeric align-center ">
+                            <span>179.000 đ</span>
+                        </div>
+                
+                        <div class="col col-qty layout-inline">
+                            <a href="#" class="qty qty-minus"><span>-</span></a>
+                            <input class="input__qty" type="numeric" value="3" />
+                            <a href="#" class="qty qty-plus"><span>+</span></a>
+                        </div>
+                        
+                        <div class="col col-vat col-numeric">
+                            <p>179.000 đ</p>
+                        </div>
+                            
+                        <div class="col col-total col-numeric">               
+                            <i class="far fa-trash-alt"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="layout-inline row row-bg2">
+            
+                        <div class="col col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
+                        <div class="col col-pro layout-inline">
+                            <img class="cart__img" src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"alt="">
+                            <p class="item__name">Harry Potter và bảo bối tử thần</p>
+                        </div>
+                        
+                        <div class="col col-price col-numeric align-center ">
+                            <span>179.000 đ</span>
+                        </div>
+                
+                        <div class="col col-qty layout-inline">
+                            <a href="#" class="qty qty-minus"><span>-</span></a>
+                            <input class="input__qty" type="numeric" value="3" />
+                            <a href="#" class="qty qty-plus"><span>+</span></a>
+                        </div>
+                        
+                        <div class="col col-vat col-numeric">
+                            <p>179.000 đ</p>
+                        </div>
+                            
+                        <div class="col col-total col-numeric">               
+                            <i class="far fa-trash-alt"></i>
+                        </div>
+                    
+                    </div>
+                    
+                    <div class="layout-inline row">
+                    
+                        <div class="col col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
+                        <div class="col col-pro layout-inline">
+                            <img class="cart__img" src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"alt="">
+                            <p class="item__name">Harry Potter và bảo bối tử thần</p>
+                        </div>
+                        
+                        <div class="col col-price col-numeric align-center ">
+                            <span>179.000 đ</span>
+                        </div>
+                
+                        <div class="col col-qty layout-inline">
+                            <a href="#" class="qty qty-minus"><span>-</span></a>
+                            <input class="input__qty" type="numeric" value="3" />
+                            <a href="#" class="qty qty-plus"><span>+</span></a>
+                        </div>
+                        
+                        <div class="col col-vat col-numeric">
+                            <p>179.000 đ</p>
+                        </div>
+                            
+                        <div class="col col-total col-numeric">               
+                            <i class="far fa-trash-alt"></i>
+                        </div>
+                    </div>
+                
+                    <div class="tf">
+                    </div>         
+                </div>
+            
+                <div class="col-3 border" style="padding-top:80px;">
+                    <div class="cart-store">
+                        <img class="cart-logo-img" src="/client_styles/assets/img/logo.png" alt="">
+                        <span class="cart-label">DaBook Store</span>
+                    </div>
+                    <div class="cart-detail">
+                        <div class="user__cart-delivery">
+                            <div>
+                                <span style="font-weight: 400;">Giao hàng đến: </span>
+                                <span style="font-weight: 400;">Bùi Thị Hằng</span>
+                            </div>
+                            <div>
+                                <span style="font-weight: 400;">Số điện thoại: 0835616617</span>
+                            </div>
+                            <div class="cart_address">
+                                <span style="font-weight: 400;">Địa chỉ: Thôn 10, xã EaKtur, CưKuin, Đắk Lắk </span>
+                            </div>
+                            <a href="" style="text-decoration: none; justify-content: space-around;">Thay đổi</a>
+                        </div>
+                        <div class="cart-delivery" style="padding: 5px 0 4px;"> 
+                            <p style="font-weight: 400; font-size: 1.8rem; color: #666;">Thông tin đơn hàng</p>
+                        </div>
+                        <div class="cart-delivery" style="padding: 2px 0;">
+                            <span style="color: #666;">Tạm tính </span>
+                            <span style="color: #666;">(0) sản phẩm </span>
+                        </div>
+                        <div class="cart-delivery" style="padding: 6px 0 14px;">
+                            <span style="color: #666;">Phí giao hàng</span>
+                            <span style="color: #666;">40.000 đ</span>
+                        </div>
+                        <ul class="list-cart">
+                            {{!-- <li class="list-cart-item" style="display: none;">
+                                <i class="fas fa-city"></i>
+                                Nội thành: TP HCM
+                                <div class="cart-prices">
+                                    <div class="cart-price">
+                                        <span>20.000 đ</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-cart-item">
+                                <i class="fas fa-map-marked-alt"></i>
+                                Ngoại thành
+                                <div class="cart-prices">
+                                    <div class="cart-price">
+                                        <span>40.000 đ</span>
+                                    </div>
+                                </div>
+                            </li> --}}
+                            <li class="list-cart-item">
+                                <div class="input__sale">
+                                    <input class="form__code-sale" id="input__code-sale" type="input" placeholder="Nhập mã khuyến mãi">
+                                    <button type="submit" class="btn__apply" id="apply" >Áp dụng</button>
+                                </div>
+                                <div class="cart__sale">
+                                    <span>Giảm giá:</span>
+                                    <span>0 đ</span>
+                                </div>
+                                <div class="cart__total">
+                                    <span>Tổng tiền:</span>
+                                    <span>197.000đ</span>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    
+                </div> 
+                <a href="">
+                    <button type="submit" class="btn__buy-book" id="buy" >Đặt sách</button>
+                </a>
+                
+        </div>
+    </div>
+    
+    <script>
+        $('.visibility-cart').on('click',function(){
+       
+       var $btn =  $(this);
+       var $cart = $('.cart');
+       console.log($btn);
+       
+       if ($btn.hasClass('is-open')) {
+          $btn.removeClass('is-open');
+          $btn.text('O')
+          $cart.removeClass('is-open');     
+          $cart.addClass('is-closed');
+          $btn.addClass('is-closed');
+       } else {
+          $btn.addClass('is-open');
+          $btn.text('X')
+          $cart.addClass('is-open');     
+          $cart.removeClass('is-closed');
+          $btn.removeClass('is-closed');
+       }
+     
+                       
+     });
+     
+       // SHOPPING CART PLUS OR MINUS
+       $('a.qty-minus').on('click', function(e) {
+         e.preventDefault();
+         var $this = $(this);
+         var $input = $this.closest('div').find('input');
+         var value = parseInt($input.val());
+         
+         if (value > 1) {
+           value = value - 1;
+         } else {
+           value = 0;
+         }
+         
+         $input.val(value);
+             
+       });
+     
+       $('a.qty-plus').on('click', function(e) {
+         e.preventDefault();
+         var $this = $(this);
+         var $input = $this.closest('div').find('input');
+         var value = parseInt($input.val());
+     
+         if (value < 100) {
+         value = value + 1;
+         } else {
+           value =100;
+         }
+     
+         $input.val(value);
+       });
+     
+     // RESTRICT INPUTS TO NUMBERS ONLY WITH A MIN OF 0 AND A MAX 100
+     $('input').on('blur', function(){
+     
+       var input = $(this);
+       var value = parseInt($(this).val());
+     
+         if (value < 0 || isNaN(value)) {
+           input.val(0);
+         } else if
+           (value > 100) {
+           input.val(100);
+         }
+     });
+    </script>
+</body>
+</html>
