@@ -4,7 +4,7 @@ const route = express.Router()
 const client_Control = require('../controllers/client_control')
 
 
-
+route.get('/chitiettk', client_Control.chitiettk)
 route.post('/luukhuyenmai/', client_Control.luukhuyenmai)
 route.get('/pagenumber/:number/:page',client_Control.get_pagination)
 route.get('/chitietsach/:tensach', client_Control.chitietsach)
