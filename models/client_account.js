@@ -8,6 +8,9 @@ const client_account = new Schema({
     ngaytao: {type: Date, default: Date.now},
     diem: Number,
     tinhtrang: String,
+    makm: String,
+    diachigh: String,
+    sodt: String,
   });
   
 module.exports = mogoose.model('client_accounts',client_account)

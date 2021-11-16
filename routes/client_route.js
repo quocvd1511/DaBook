@@ -5,10 +5,11 @@ const client_Control = require('../controllers/client_control')
 
 
 
+route.post('/luukhuyenmai/', client_Control.luukhuyenmai)
 route.get('/pagenumber/:number/:page',client_Control.get_pagination)
 route.get('/chitietsach/:tensach', client_Control.chitietsach)
 route.post('/signup', client_Control.signup)
-route.get('/khuyenmai', client_Control.khuyenmai)
+route.get('/khuyenmai', client_Control.dskhuyenmai)
 route.get('/boloc',client_Control.searchBL)
 route.get('/search', client_Control.search)
 route.get('/theloai/:value', client_Control.searchTL)

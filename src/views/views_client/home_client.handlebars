@@ -384,24 +384,22 @@
                   <div class="swiper featured-slider">             
                       <div class="swiper-wrapper" style="height: auto; width: 100%">
                         {{#each flash_sales}}
-                        {{!-- {{#when this.giamgia}} --}}
                           <div class="swiper-slide box">
                               <div class="icons">
                                   <a href="#" class="fas fa-search"></a>
                                   <a href="#" class="fas fa-heart"></a>
                                   <a href="#" class="fas fa-eye"></a>
                               </div>
-                              <div class="image">
+                              <a class="image" href="/chitietsach/{{this.tensach}}">
                                   <img src="{{this.hinhanh}}"
                                       alt="">
-                              </div>
+                              </a>
                               <div class="content">
                                   <h3>{{this.tensach}}</h3>
                                   <div class="price">{{this.giaban}}.000 đ<span>{{this.giagoc}}</span></div>
                                   <a href="#" class="btn btn--primary">Thêm vào giỏ</a>
                               </div>
                           </div>
-                     {{!-- {{/when}} --}}
                      {{/each}}
                       </div>                   
                       <div class="swiper-button-next"></div>

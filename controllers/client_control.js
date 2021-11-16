@@ -3,10 +3,7 @@ const books=require('../models/books')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
 const client_account = require('../models/client_account')
-const passport = require("passport")
-const FacebookStrategy = require("passport-facebook").Strategy
-const mongoose = require('mongoose');
-const express = require('express');
+const khuyenmai = require('../models/khuyenmai')
 
 
 class Client_Control
@@ -54,6 +51,9 @@ class Client_Control
     signup(req, res, next){
         const formData = req.body;
         formData.diem = 0;
+        formData.makm = 0;
+        formData.diachigh = '';
+        formData.sodt = '';
         formData.tinhtrang = 'đang sử dụng';
 
         const Client_account = new client_account(formData);
@@ -108,7 +108,7 @@ class Client_Control
             .then(books => 
                 {
                     books=books.map(course => course.toObject())
-                    res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1 });
+                    res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1, client_accounts: req.session.username});
                 })
             .catch(next)
     }
@@ -122,7 +122,7 @@ class Client_Control
             .then(books => 
                 {
                     books=books.map(course => course.toObject())
-                    res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1});
+                    res.render('search_client.handlebars',{layout:'client.handlebars',books: books, CurrentPage: 1, client_accounts: req.session.username});
                 })
             .catch(next)
     }
@@ -446,9 +446,16 @@ class Client_Control
     }
 
     // Khuyến mãi
-    khuyenmai(req,res,next)
+    dskhuyenmai(req,res,next)
     {
-        res.render('khuyenmai_client.handlebars',{layout: 'client.handlebars'})
+        khuyenmai.find({})
+        .then(khuyenmai => 
+            {
+                khuyenmai=khuyenmai.map(course => course.toObject())
+                console.log(khuyenmai);
+                res.render('khuyenmai_client.handlebars',{layout:'client.handlebars',khuyenmai: khuyenmai, client_accounts: req.session.username});
+            })
+        .catch(next)
     }
     
     // Giỏ hàng
@@ -486,7 +493,7 @@ class Client_Control
                     .then(list_book => 
                     {
                         list_book=list_book.map(course => course.toObject())
-                        res.render('chitietsach_client.handlebars',{layout:'client.handlebars',books: book, list_books: list_book, Date: dateString});
+                        res.render('chitietsach_client.handlebars',{layout:'client.handlebars',books: book, list_books: list_book, Date: dateString, client_accounts: req.session.username});
                     })
                     .catch(next)             
                     }
@@ -593,6 +600,27 @@ class Client_Control
             .catch(next) 
                   
         }
+
+    luukhuyenmai(req,res,next){
+        if(req.session.isAuth) {
+            books.find({'giamgia': {$gte: 22}},
+            function (err,flash_sales){
+                if(!err)
+                {
+                    flash_sales=flash_sales.map(course => course.toObject())
+                    books.find({}).limit(20).skip(20*1)
+                    .then(books => 
+                        {
+                            books=books.map(course => course.toObject())
+                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, flash_sales: flash_sales, books: books, CurrentPage: 1});     
+                        })
+                    .catch(next)            
+                } else {
+                    next(err)
+                }
+            })   
+        }else{}
+    }
 }
 
 module.exports = new Client_Control
