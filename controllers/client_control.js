@@ -461,7 +461,14 @@ class Client_Control
     // Giỏ hàng
     get_giohang(req,res,next)
     {
-        res.render('cart_client.handlebars',{layout: 'client.handlebars'})
+        client_login.findOne({'matk': req.session.username})
+        .then(thongtintk => 
+            {
+                thongtintk=mongooseToObject(thongtintk);
+                res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: req.session.username, thongtin: thongtintk})           
+            })
+        .catch(next)
+        
     }
 
     // Chi tiết sách
@@ -602,24 +609,13 @@ class Client_Control
         }
 
     luukhuyenmai(req,res,next){
-        if(req.session.isAuth) {
-            books.find({'giamgia': {$gte: 22}},
-            function (err,flash_sales){
-                if(!err)
-                {
-                    flash_sales=flash_sales.map(course => course.toObject())
-                    books.find({}).limit(20).skip(20*1)
-                    .then(books => 
-                        {
-                            books=books.map(course => course.toObject())
-                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, flash_sales: flash_sales, books: books, CurrentPage: 1});     
-                        })
-                    .catch(next)            
-                } else {
-                    next(err)
-                }
-            })   
-        }else{}
+        client_login.updateOne({'matk':req.session.username}, {
+            'makm': req.params.value
+        })
+        .then(() => 
+        {
+            res.redirect('/khuyenmai')
+        })
     }
 
     chitiettk(req,res,next){
