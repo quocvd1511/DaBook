@@ -65,45 +65,47 @@
                 </ul>
               </div>
               <li class="header__navbar-item">
-                <div href="" class="header__navbar-item--link">
-                  <i class="header__navbar-icon ti-bell"></i>
-                  Thông báo
-                </div>
-                <div class="header__notify">
-                  <header class="header__notify-header">
-                      <h3>Thông báo mới nhận</h3>
-                  </header>
-                  <ul class="header__notify-list">
-                      <li class="header__notify-item header__notify-item--view">
-                          <a href="" class="header__notify-link text-decoration-none">
-                              <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="header__notify-img">
-                              <div class="header__notify-info">
-                                  <span class="header__notify-name">Đơn hàng của bạn đang được vận chuyển</span>
-                                  <span class="header__notify-descriotion">Harry Potter và bảo bối tử thần</span>
-                              </div>
-                          </a>
-                      </li>
-                      <li class="header__notify-item">
-                          <a href="" class="header__notify-link text-decoration-none">
-                              <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="header__notify-img">
-                              <div class="header__notify-info">
-                                  <span class="header__notify-name">Đơn hàng của bạn đã được xác nhận</span>
-                                  <span class="header__notify-descriotion">Harry Potter và bảo bối tử thần</span>
-                              </div>
-                          </a>
-                      </li>
-                      <li class="header__notify-item">
-                          <a href="" class="header__notify-link text-decoration-none">
-                              <img src="/client_styles/assets/img/miễn_phí_vận_chuyển.png" alt="" class="header__notify-img">
-                              <div class="header__notify-info">
-                                  <span class="header__notify-name">Mã freeship của bạn hết hạn vào ngày 15-11-2021</span>
-                                  <span class="header__notify-descriotion">Mã freeship sắp hết hạn. Đừng bỏ lỡ!</span>
-                              </div>
-                          </a>
-                      </li>
-                  </ul>
-                  <div class="header__notify-footer">
-                      <a href="" class="header__notify-footer-btn text-decoration-none">Xem tất cả</a>
+                <div class="header__navbar-item-notify">
+                  <div href="" class="header__navbar-item--link">
+                    <i class="header__navbar-icon ti-bell"></i>
+                    Thông báo
+                  </div>
+                  <div class="header__notify">
+                    <header class="header__notify-header">
+                        <h3>Thông báo mới nhận</h3>
+                    </header>
+                    <ul class="header__notify-list">
+                        <li class="header__notify-item header__notify-item--view">
+                            <a href="" class="header__notify-link text-decoration-none">
+                                <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="header__notify-img">
+                                <div class="header__notify-info">
+                                    <span class="header__notify-name">Đơn hàng của bạn đang được vận chuyển</span>
+                                    <span class="header__notify-descriotion">Harry Potter và bảo bối tử thần</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="header__notify-item">
+                            <a href="" class="header__notify-link text-decoration-none">
+                                <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="header__notify-img">
+                                <div class="header__notify-info">
+                                    <span class="header__notify-name">Đơn hàng của bạn đã được xác nhận</span>
+                                    <span class="header__notify-descriotion">Harry Potter và bảo bối tử thần</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="header__notify-item">
+                            <a href="" class="header__notify-link text-decoration-none">
+                                <img src="/client_styles/assets/img/miễn_phí_vận_chuyển.png" alt="" class="header__notify-img">
+                                <div class="header__notify-info">
+                                    <span class="header__notify-name">Mã freeship của bạn hết hạn vào ngày 15-11-2021</span>
+                                    <span class="header__notify-descriotion">Mã freeship sắp hết hạn. Đừng bỏ lỡ!</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="header__notify-footer">
+                        <a href="" class="header__notify-footer-btn text-decoration-none">Xem tất cả</a>
+                    </div>
                   </div>
                 </div>
               </li>
@@ -115,7 +117,7 @@
               </li>
               <li class="header__navbar-item header__navbar-user">
                 <img class="header__navbar-user-img" src="https://anhdep123.com/wp-content/uploads/2021/05/hinh-avatar-trang.jpg" alt="">
-                <a href="/chitiettk"><p class="header__navbar-user-name">{{client_accounts}}</p><a>
+                <a href="/chitiettk"><p class="header__navbar-user-name header__navbar-item--link">{{client_accounts}}</p><a>
               </li>
                <li class="header__navbar-item">
                  <a href="/logout" class="header__navbar-item--link">               
@@ -288,12 +290,12 @@
                     <div class="custom-control custom-checkbox">
                       <input
                         type="checkbox"
-                        class="custom-control-input"
+                        class="control-input"
                         id="customControlInline"
-                        style="margin-top: 2px;"
+                        style="margin-top: -2px; margin-right: 3px; "
                       />
                       <label
-                        class="custom-control-label"
+                        class="control-label"
                         for="customControlInline"
                       >Remember me</label>
                     </div>
@@ -554,7 +556,7 @@
         var nmatkhau= $('#input_nmatkhau').val();
         var xacnhanmk= $('#input_xacnhanmk').val();
         if( tenkh=="" || lienlac=="" || nmatkhau=="" || xacnhanmk==""){
-          swal({
+          Swal.fire({
             confirmButtonText: 'OK',
             confirmButtonColor: '#1A94FF',
             icon: 'error',
@@ -562,7 +564,7 @@
           })
         }
         else{
-          swal({
+          Swal.fire({
             confirmButtonText: 'OK',
             confirmButtonColor: '#1A94FF',
             icon: 'success',
