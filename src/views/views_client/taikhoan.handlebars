@@ -44,8 +44,8 @@
             <div class="nav flex-column account__nav">
               <li class="account__nav-user">
                 <img class="account__nav-user-img" src="https://anhdep123.com/wp-content/uploads/2021/05/hinh-avatar-trang.jpg" alt="">
-                <!-- <p class="account__nav-user-name">{{client_accounts}}</p> -->
-                <lable class="account__nav-user-name">anhongkimy</lable>
+                {{!-- <p class="account__nav-user-name">{{client_accounts}}</p> --}}
+                <label class="account__nav-user-name">anhongkimy</label>
               </li>
 
               <div class="account__nav-container">
@@ -62,7 +62,7 @@
                     <a href="#hoso" class="account__nav-list-link account__nav-list-link--active" id="account_profile">
                       <span>Hồ sơ</span>
                     </a>
-                    <a href="#diachi" class="account__nav-list-link">
+                    <a href="#diachi" class="account__nav-list-link" id="account_address">
                       <span>Địa chỉ</span>
                     </a>
                     <a href="" class="account__nav-list-link">
@@ -161,11 +161,11 @@
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Giới tính</label>
                         <p class="account__content-profile-text">
-                          <input class="form-check-input" type="radio" name="gioitinh" id ="Nam" checked >
+                          <input class="check-input" type="radio" name="gioitinh" id ="Nam" checked >
                           <label for="Nam">
                             Nam &nbsp;&nbsp;&nbsp;
                           </label>
-                          <input class="form-check-input" type="radio" name="gioitinh" id ="Nu">
+                          <input class="check-input" type="radio" name="gioitinh" id ="Nu">
                           <label for="Nữ">
                             Nữ
                           </label>
@@ -288,7 +288,15 @@
         $('#list_user_account').show();
         $('#list_user_noti').hide();
 
-        $('#hoso').toggle();
+        $('#hoso').show();
+      })
+
+      $('#account_profile').click(function(){
+        $('#hoso').show();
+      })
+      $('#account_address').click(function(){
+        $('#diachi').show();
+        $('#hoso').hide();
       })
 
       $('#user_noti').click(function(){

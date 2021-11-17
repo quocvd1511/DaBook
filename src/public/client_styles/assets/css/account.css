@@ -146,6 +146,10 @@
     text-transform: none;
   }
   
+  .check-input{
+    top: 10px;
+  }
+
   .account__content-profile-dropdown {
     position: relative;
     display: flex;

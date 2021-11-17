@@ -889,9 +889,11 @@ footer p {
   position: relative;
   margin-top: 20px;
   margin-left: -4px;
+  box-sizing: border-box;
+  display: block;
 }
 
-.custom-control-label {
+.control-label {
   position: absolute;
   font-size: 1.4rem;
   top: -5px;
@@ -1168,7 +1170,7 @@ footer p {
   height: 20px;
 }
 
-.header__notify:hover {
+.header__navbar-item-notify:hover .header__notify:hover {
   display: block;
 }
 
@@ -1319,6 +1321,13 @@ footer p {
   margin-left: 4px;
   font-size: 1.23rem;
   font-weight: 400;
+  color: var(--white-color);
+}
+
+.header__navbar-user:hover,
+.header__navbar-user-link:hover{
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* Hiển thị số lượng sản phẩm trong giỏ hàng  */
