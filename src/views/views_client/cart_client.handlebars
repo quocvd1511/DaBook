@@ -8,14 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 
-<style>
-    .disabled {
-    pointer-events: none;
-    cursor: default;
-    opacity: 0.6;
-    }
-
-</style>
 <body>
     <div class="cart__container grid">
             <h1>Giỏ hàng</h1>
@@ -24,20 +16,20 @@
                 <div class="table">
                 
                     <div class="layout-inline row th">
-                        <div class="col col__checkbox">Chọn</div>
-                        <div class="col col-pro">Sản phẩm</div>
+                        <div class="col-auto ">Chọn</div>
+                        <div class="col-4 col-pro">Sản phẩm</div>
                         <div class="col col-price align-center "> 
                             Đơn giá
                         </div>
-                        <div class="col col-qty align-center">Số lượng</div>
+                        <div class="col-auto col-qty align-center">Số lượng</div>
                         
                         <div class="col">Thành tiền</div>
-                        <div class="col"><i class="far fa-trash-alt"></i></div>
+                        <div class="col-auto col__bin"><i class="far fa-trash-alt"></i></div>
                     </div>
                 
                     <div class="layout-inline row">
-                        <div class="col col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
-                        <div class="col col-pro layout-inline">
+                        <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
+                        <div class="col-4 col-pro layout-inline">
                             <img class="cart__img" src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"alt="">
                             <p class="item__name">Harry Potter và bảo bối tử thần</p>
                         </div>
@@ -46,7 +38,7 @@
                             <span>179.000 đ</span>
                         </div>
                 
-                        <div class="col col-qty layout-inline">
+                        <div class="col-auto col-qty layout-inline">
                             <a href="#" class="qty qty-minus"><span>-</span></a>
                             <input class="input__qty" type="numeric" value="3" />
                             <a href="#" class="qty qty-plus"><span>+</span></a>
@@ -56,24 +48,24 @@
                             <p>179.000 đ</p>
                         </div>
                             
-                        <div class="col col-total col-numeric">               
+                        <div class="col-auto col__bin">               
                             <i class="far fa-trash-alt"></i>
                         </div>
                     </div>
                     
                     <div class="layout-inline row row-bg2">
             
-                        <div class="col col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
-                        <div class="col col-pro layout-inline">
+                        <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
+                        <div class="col-4 col-pro layout-inline">
                             <img class="cart__img" src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"alt="">
-                            <p class="item__name">Harry Potter và bảo bối tử thần</p>
+                            <p class="item__name">Harry Potter và bảo bối tử thần Harry Potter và bảo bối tử thần Harry Potter và bảo bối tử thần Harry Potter và bảo bối tử thần</p>
                         </div>
                         
                         <div class="col col-price col-numeric align-center ">
                             <span>179.000 đ</span>
                         </div>
                 
-                        <div class="col col-qty layout-inline">
+                        <div class="col-auto col-qty layout-inline">
                             <a href="#" class="qty qty-minus"><span>-</span></a>
                             <input class="input__qty" type="numeric" value="3" />
                             <a href="#" class="qty qty-plus"><span>+</span></a>
@@ -83,7 +75,7 @@
                             <p>179.000 đ</p>
                         </div>
                             
-                        <div class="col col-total col-numeric">               
+                        <div class="col-auto col__bin">               
                             <i class="far fa-trash-alt"></i>
                         </div>
                     
@@ -91,8 +83,8 @@
                     
                     <div class="layout-inline row">
                     
-                        <div class="col col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
-                        <div class="col col-pro layout-inline">
+                        <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
+                        <div class="col-4 col-pro layout-inline">
                             <img class="cart__img" src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"alt="">
                             <p class="item__name">Harry Potter và bảo bối tử thần</p>
                         </div>
@@ -101,7 +93,7 @@
                             <span>179.000 đ</span>
                         </div>
                 
-                        <div class="col col-qty layout-inline">
+                        <div class="col-auto col-qty layout-inline">
                             <a href="#" class="qty qty-minus"><span>-</span></a>
                             <input class="input__qty" type="numeric" value="3" />
                             <a href="#" class="qty qty-plus"><span>+</span></a>
@@ -111,7 +103,7 @@
                             <p>179.000 đ</p>
                         </div>
                             
-                        <div class="col col-total col-numeric">               
+                        <div class="col-auto col__bin">               
                             <i class="far fa-trash-alt"></i>
                         </div>
                     </div>
