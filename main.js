@@ -8,10 +8,13 @@ const route = require('./routes/main_route')
 const connect_db = require('./src/config/db/db_connect')
 const passport = require("passport")
 const FacebookStrategy = require("passport-facebook").Strategy
-
+const { session } = require('passport')
+const { Strategy } = require('passport-facebook')
 
 connect_db.connect()
 
+
+//--Tạo API with facebook
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
@@ -113,6 +116,44 @@ app.set('view engine', 'handlebars')
 app.set('views', [__dirname + '\\src\\views\\views_admin', __dirname + '\\src\\views\\views_client', __dirname + '\\src\\views\\views_delivery'])
 
 app.use(express.static(path.join(__dirname, 'src/public')))
+
+
+//----Connect with facebook-----------------------
+app.use(passport.initialize())
+app.use(passport.session())
+passport.serializeUser(function(user, done) {
+  done(null, user)
+})
+passport.deserializeUser(function(user, done) {
+  done(null, user)
+})
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: "1585513025115259",
+      clientSecret: "6eba2961329ccbcdad2a580bcc184eab",
+      callbackURL: "http://localhost:3000/auth/facebook/callback",
+    },
+    function(accessToken, refreshToken, profile, cb) {
+      return cb(null, profile)
+    }
+  )
+)
+app.get("/auth/facebook", passport.authenticate("facebook"))
+app.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", { failureRedirect: "/" }),
+  function(req, res) {
+    req.session.username=req.session.passport.user.id
+    req.session.isAuth=true
+    res.redirect('/')
+  }
+)
+//--------------------------------------------------------
+
+
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

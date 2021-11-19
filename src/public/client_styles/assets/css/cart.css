@@ -138,6 +138,16 @@ a {
   /* width: 5%; */
 }
 
+.col__checkbox {
+  margin: 10px;
+  text-align: center;
+}
+
+.col__bin {
+  font-size: 1.6rem;
+  margin: 20px;
+}
+
 .col-pro {
   width: 100%;
   width: 350px !important;
@@ -278,6 +288,12 @@ a.qty-minus {
   margin-left: 4px;
   font-size: 1.6rem;
   font-weight: 500;
+  align-items: center;
+  overflow: hidden;
+  width: 200px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 @media screen and (max-width: 900px) {
