@@ -609,8 +609,8 @@ class Client_Control
         }
 
     luukhuyenmai(req,res,next){
-        client_login.updateOne({'matk':req.session.username}, {
-            'makm': req.params.value
+        client_login.findOneAndUpdate({'matk':req.session.username}, {
+            $push: { 'danhsach_km': req.params.value }
         })
         .then(() => 
         {
@@ -619,7 +619,13 @@ class Client_Control
     }
 
     chitiettk(req,res,next){
-        res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: req.session.username})
+        client_login.findOne({'matk': req.session.username})
+        .then(thongtintk => 
+            {
+                thongtintk=mongooseToObject(thongtintk);
+                res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: req.session.username, thongtin: thongtintk})
+            })
+        .catch(next)
     }
 }
 
