@@ -26,16 +26,16 @@
                         <div class="col">Thành tiền</div>
                         <div class="col-auto col__bin"><i class="far fa-trash-alt"></i></div>
                     </div>
-                
+                    {{#each chitietgh.ctgiohang}}
                     <div class="layout-inline row">
                         <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
                         <div class="col-4 col-pro layout-inline">
-                            <img class="cart__img" src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"alt="">
-                            <p class="item__name">Harry Potter và bảo bối tử thần</p>
+                            <img class="cart__img" src="{{this.hinhanh}}"alt="">
+                            <p class="item__name">{{this.tensach}}</p>
                         </div>
                         
                         <div class="col col-price col-numeric align-center ">
-                            <span>179.000 đ</span>
+                            <span>{{this.giaban}}.000 đ</span>
                         </div>
                 
                         <div class="col-auto col-qty layout-inline">
@@ -52,8 +52,8 @@
                             <i class="far fa-trash-alt"></i>
                         </div>
                     </div>
-                    
-                    <div class="layout-inline row row-bg2">
+                {{/each}}
+                    {{!-- <div class="layout-inline row row-bg2">
             
                         <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
                         <div class="col-4 col-pro layout-inline">
@@ -106,7 +106,7 @@
                         <div class="col-auto col__bin">               
                             <i class="far fa-trash-alt"></i>
                         </div>
-                    </div>
+                    </div> --}}
                 
                     <div class="tf">
                     </div>         
