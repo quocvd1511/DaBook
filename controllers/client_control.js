@@ -100,7 +100,7 @@ class Client_Control
         client_account.findOne({matk: req.session.username}, 
             function (err, Client_account)
             {
-                if(Client_account===false)
+                if(Boolean(Client_account)==false)
                 {
                     const new_client=
                     {
