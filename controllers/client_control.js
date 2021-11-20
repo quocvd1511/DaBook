@@ -31,7 +31,7 @@ class Client_Control
                     .then(books => 
                         {
                             books=books.map(course => course.toObject())
-                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, flash_sales: flash_sales, books: books, CurrentPage: 1});     
+                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: thongtintk, flash_sales: flash_sales, books: books, CurrentPage: 1});     
                         })
                     .catch(next) 
                     }))           
@@ -120,8 +120,9 @@ class Client_Control
                         matk: req.session.username,
                         email: "none",
                         diem: 0,
-                        tinhtrang: "đang sử dụng",
-                        sodt: "none"
+                        tinhtrang: "Đang sử dụng",
+                        sodt: "none",
+
                     }
 
                     const new_account = new client_account(new_client);
@@ -655,48 +656,6 @@ class Client_Control
     })   
     }
 
-    search_pagination(req, res, next){
-        var perPage = 30; // số lượng sản phẩm xuất hiện trên 1 page
-        var page2, page3, page4;
-        let page = Number(req.params.page);
-        var number = req.params.number;
-        
-        if(number == 2){
-            page2 = page + 1;
-            page3 = page + 2;
-            page4 = page + 3;
-        }else if(number == 3){
-            page3 = page;
-            page2 = page - 1;
-            page4 = page + 1;
-        }else if(number == 4){
-            page3 = page -1;
-            page2 = page - 2;
-            page4 = page;
-        }else if(page == 28){
-            page4 = page;
-            page2 = page - 2;
-            page3 = page - 1;
-        }
-        if(number == 6){
-            page2 = page - 1;
-            page3 = page;
-            page4 = page + 1;
-        }
-        if(number == -6){
-            page2 = page - 2;
-            page3 = page - 1;
-            page4 = page;
-        }
-            books.find({}).limit(perPage).skip((perPage * page) - perPage)
-            .then(books => 
-                {
-                    books=books.map(course => course.toObject())
-                    res.render('search_client.handlebars',{layout:'client.handlebars', books: books, CurrentPage: req.params.page, CountPage: 28, Number2:page2, Number3: page3, Number4: page4});     
-                })
-            .catch(next) 
-                  
-        }
 
     luukhuyenmai(req,res,next){
         if(req.session.isAuth){
@@ -750,8 +709,7 @@ class Client_Control
             ]);
             query.exec(function (err,ct) {
                 if (err) throw err;
-                else {          
-                ct = ct.toObject();
+                else {
                 client_login.findOne({'matk': req.session.username})
                 .then(thongtintk => 
                     {
@@ -759,7 +717,6 @@ class Client_Control
                         res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, chitietgh: ct})           
                     })
                 .catch(next)
-                
             }
         });
     }
