@@ -123,7 +123,7 @@
 							<input type="text" name="quantity" value="1" class="qty">
 							<div class="qtyplus">+</div>
 						</form>
-						<a href="#" class="round-black-btn">Thêm vào giỏ hàng</a>
+						<a href="/themgiohang/{{books.tensach}}" class="round-black-btn">Thêm vào giỏ hàng</a>
 					</div>
 				</div>
 				<div class="info-item col-auto border">
@@ -370,6 +370,14 @@
 		</div>
 	</div>
 	
+	{{!-- THÊM VÀO GIỎ HÀNG --}}
+	{{!-- <script>
+       var list = document.querySelectorAll('.round-black-btn');
+        Array.prototype.forEach.call(list, function (element,index) {
+			console.log({{books.tensach}})
+              element.href = "/themgiohang/" + {{books.tensach}};
+        });
+    </script> --}}
 
 	<script>
         var swiper = new Swiper(".featured-slider", {

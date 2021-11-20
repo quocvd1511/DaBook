@@ -6,8 +6,10 @@ const khuyenmai = new Schema({
     phantram:Number,
     loai:String,
     noidung:String,
-    ngaybd:Date,
-    ngaykt:Date,
+    ngaykt:{type: Date,
+      transform: v => v.getDate() + "/" + v.getMonth() + "/" + v.getFullYear()
+    },
+    ngaybd: Date,
     sl:Number,
     manhap:String,
     dieukien:Number,

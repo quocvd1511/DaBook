@@ -146,22 +146,23 @@
                     <form style="margin-top: 30px;"> 
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Tên đăng nhập</label>
-                        <p class="account__content-profile-text">anhongkimy</p>
+                        <p class="account__content-profile-text">{{thongtin.matk}}</p>
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Email</label>
-                        <p class="account__content-profile-text">anhongkimy@abc.com</p>
+                        <p class="account__content-profile-text">{{thongtin.email}}</p>
                         <a  class="account__content-profile-text" href="#">Thay đổi</a>
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Số điện thoại</label>
-                        <p class="account__content-profile-text">019283745</p>
+                        <p class="account__content-profile-text">{{thongtin.sodt}}</p>
                         <a  class="account__content-profile-text" href="#">Thay đổi</a>
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Giới tính</label>
                         <p class="account__content-profile-text">
-                          <input class="check-input" type="radio" name="gioitinh" id ="Nam" checked >
+                          {{#ifCond thongtin.gioitinh '==' 'nam'}}
+                          <input class="check-input checked" type="radio" name="gioitinh" id ="Nam" checked>
                           <label for="Nam">
                             Nam &nbsp;&nbsp;&nbsp;
                           </label>
@@ -169,6 +170,16 @@
                           <label for="Nữ">
                             Nữ
                           </label>
+                          {{else}}
+                          <input class="check-input" type="radio" name="gioitinh" id ="Nam">
+                          <label for="Nam">
+                            Nam &nbsp;&nbsp;&nbsp;
+                          </label>
+                          <input class="check-input checked" type="radio" name="gioitinh" id ="Nu" checked>
+                          <label for="Nữ">
+                            Nữ
+                          </label>
+                          {{/ifCond}}
                         </p>
                       </div>
                       <div class="account__content-profile-row">
@@ -252,15 +263,15 @@
                       <div class="account__address-info-content">
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Họ và tên</label>
-                          <p class="account__content-address-text">Nguyễn Văn A</p>  
+                          <p class="account__content-address-text">{{thongtin.hoten}}</p>  
                         </div>
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Số điện thoại</label>
-                          <p class="account__content-address-text">19281024872</p>  
+                          <p class="account__content-address-text">{{thongtin.sodt}}</p>  
                         </div>
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Địa chỉ</label>
-                          <p class="account__content-address-text">Số 34, tổ 7, đường Võ Tấn Đức, khóm 2, thị trấn Tam Bình, huyện Tam Bình ,tỉnh Vĩnh Long</p>  
+                          <p class="account__content-address-text">{{thongtin.diachigh}}</p>  
                         </div>
                       </div>
                       <div class="account__address-info-btn">
