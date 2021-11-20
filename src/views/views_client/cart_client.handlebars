@@ -26,16 +26,17 @@
                         <div class="col">Thành tiền</div>
                         <div class="col-auto col__bin"><i class="far fa-trash-alt"></i></div>
                     </div>
-                    {{#each chitietgh.ctgiohang}}
+                    {{#each chitietgh}}
+                        {{!-- {{>client_accounts.giohang book=.}} --}}
                     <div class="layout-inline row">
                         <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
                         <div class="col-4 col-pro layout-inline">
                             <img class="cart__img" src="{{this.hinhanh}}"alt="">
-                            <p class="item__name">{{this.tensach}}</p>
+                            <p class="item__name">{{chitietgh.diem}}</p>
                         </div>
                         
                         <div class="col col-price col-numeric align-center ">
-                            <span>{{this.giaban}}.000 đ</span>
+                            <span>100.000 đ</span>
                         </div>
                 
                         <div class="col-auto col-qty layout-inline">
@@ -53,7 +54,7 @@
                         </div>
                     </div>
                 {{/each}}
-                    {{!-- <div class="layout-inline row row-bg2">
+                    <div class="layout-inline row row-bg2">
             
                         <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
                         <div class="col-4 col-pro layout-inline">
@@ -106,7 +107,7 @@
                         <div class="col-auto col__bin">               
                             <i class="far fa-trash-alt"></i>
                         </div>
-                    </div> --}}
+                    </div>
                 
                     <div class="tf">
                     </div>         

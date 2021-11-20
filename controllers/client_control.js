@@ -710,8 +710,7 @@ class Client_Control
     }
 
     chitietgiohang(req,res,next){
-        var  ListOfBooks= {};
-       client_login.aggregate([
+       const query = client_login.aggregate([
             { $lookup:
                {
                  from: 'books',
@@ -719,22 +718,18 @@ class Client_Control
                  foreignField: 'tensach',
                  as: 'ctgiohang'
                }
-             }
-            ],function (err,ct) {
+             },
+             { $unwind: "$ctgiohang"}
+            ]);
+            query.exec(function (err,ct) {
                 if (err) throw err;
-                else {
-                // ct.find({}).forEach(function(doc) {
-                //       doc.ctgiohang.forEach(function (d){
-                //           ListOfBooks[d.tensach] = d.tensach;
-                //        });
-                //     })
-                //     res.json(ListOfBooks)}
+                else {          
+                ct = ct.toObject();
                 client_login.findOne({'matk': req.session.username})
                 .then(thongtintk => 
                     {
                         thongtintk=mongooseToObject(thongtintk);
-                        res.json(ct)
-                        // res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, chitetgh: ct})           
+                        res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, chitietgh: ct})           
                     })
                 .catch(next)
                 

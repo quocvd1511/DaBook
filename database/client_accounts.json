@@ -1,0 +1,44 @@
+[{
+  "_id": {
+    "$oid": "6197b9fd98339f07e4881452"
+  },
+  "danhsach_km": [
+    {
+      "makm": "101"
+    },
+    {
+      "makm": "102"
+    }
+  ],
+  "diachigoc": "khu phố 1b, thuận an, bình dương",
+  "diachigh": "diachi",
+  "diem": 0,
+  "email": "133@gmail.com",
+  "gioitinh": "nam",
+  "hoten": "Nguyễn Văn A",
+  "matk": "client002",
+  "matkhau": "102",
+  "ngaysinh": {
+    "$date": "2001-10-31T17:00:00Z"
+  },
+  "ngaytao": {
+    "$date": "2021-10-10T17:00:00Z"
+  },
+  "sodt": "872478425",
+  "tinhtrang": "Đang sử dụng",
+  "giohang": [
+    {
+      "tensach": "Rong Ruổi Scotland Cùng Anh, Em Nhé!"
+    },
+    {
+      "tensach": "Hạt Muối Rong Chơi"
+    },
+    {
+      "tensach": "Điều Kỳ Diệu Của Tiệm Tạp Hóa Namiya (Tái Bản 2018)"
+    },
+    {
+      "tensach": "Harry Potter Và Chiếc Cốc Lửa - Tập 4 (Tái Bản 2017)"
+    }
+  ],
+  "sl_giohang": 4
+}]
