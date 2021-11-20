@@ -104,6 +104,31 @@ class Client_Control
             })
     }
 
+    // Login with facebook
+    auth_facebook_callback(req,res)
+    {
+        req.session.username=req.session.passport.user.id
+        req.session.isAuth=true
+        client_account.findOne({matk: req.session.username}, 
+            function (err, Client_account)
+            {
+                if(Client_account===false)
+                {
+                    const new_client=
+                    {
+                        matk: req.session.username,
+                        email: "none",
+                        diem: 0,
+                        tinhtrang: "đang sử dụng",
+                        sodt: "none"
+                    }
+                    const new_account = new client_account(new_client);
+                    new_account.save();
+                }
+            })
+        res.redirect('/')
+    }
+
     get_client(req,res,next)
     {
         res.redirect('/')
@@ -735,6 +760,10 @@ class Client_Control
                 
             }
         });
+    }
+
+    thanhtoan(req,res,next){
+        res.render('payment.handlebars',{layout: 'client.handlebars', client_accounts: req.session.username})
     }
 }
 
