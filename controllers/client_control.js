@@ -12,12 +12,12 @@ class Client_Control
     {
         if(req.session.isAuth) {
 
-            const virtual = client_login.findOne({'matk': req.session.username});
-            virtual.get(function(thongtintk, virtual, doc) {
-            thongtintk=mongooseToObject(thongtintk);
-            console.log(thongtintk);
-            return thongtintk;
-            });
+            // const virtual = client_login.findOne({'matk': req.session.username});
+            // virtual.get(function(thongtintk, virtual, doc) {
+            // thongtintk=mongooseToObject(thongtintk);
+            // console.log(thongtintk);
+            // return thongtintk;
+            // });
             
 
             books.find({'giamgia': {$gte: 22}},
@@ -31,7 +31,7 @@ class Client_Control
                     .then(books => 
                         {
                             books=books.map(course => course.toObject())
-                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: thongtintk, flash_sales: flash_sales, books: books, CurrentPage: 1});     
+                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: req.session.username, flash_sales: flash_sales, books: books, CurrentPage: 1});     
                         })
                     .catch(next) 
                     }))           
@@ -107,6 +107,7 @@ class Client_Control
     // Login with facebook
     auth_facebook_callback(req,res)
     {
+        console.log(req.session.passport);
         req.session.username=req.session.passport.user.id
         req.session.isAuth=true
         client_account.findOne({matk: req.session.username}, 
@@ -122,6 +123,7 @@ class Client_Control
                         tinhtrang: "đang sử dụng",
                         sodt: "none"
                     }
+
                     const new_account = new client_account(new_client);
                     new_account.save();
                 }
