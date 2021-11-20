@@ -20,6 +20,4 @@ route.get('/giohang', client_Control.get_giohang)
 route.get('/',client_Control.get_client)
 route.post('/',client_Control.post_client)
 
-
-
 module.exports = route
