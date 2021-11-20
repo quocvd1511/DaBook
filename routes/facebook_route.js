@@ -5,18 +5,21 @@ const FacebookStrategy = require("passport-facebook").Strategy
 const { session } = require('passport')
 const { Strategy } = require('passport-facebook')
 const client_Control = require('../controllers/client_control')
+const id_facebook = require('../id_facebook')
 
 passport.serializeUser(function(user, done) {
   done(null, user)
 })
+
 passport.deserializeUser(function(user, done) {
   done(null, user)
 })
+
 passport.use(
   new FacebookStrategy(
     {
-      clientID: "1585513025115259",
-      clientSecret: "6eba2961329ccbcdad2a580bcc184eab",
+      clientID: id_facebook.clientid,
+      clientSecret: id_facebook.secretid,
       callbackURL: "http://localhost:3000/auth/facebook/callback",
     },
     function(accessToken, refreshToken, profile, cb) {
