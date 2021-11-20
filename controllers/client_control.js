@@ -650,6 +650,10 @@ class Client_Control
     chitiettk(req,res,next){
         res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: req.session.username})
     }
+
+    thanhtoan(req,res,next){
+        res.render('payment.handlebars',{layout: 'client.handlebars', client_accounts: req.session.username})
+    }
 }
 
 module.exports = new Client_Control
