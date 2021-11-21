@@ -62,11 +62,20 @@ class Client_Control
     // POST signup
     signup(req, res, next){
         const formData = req.body;
+        // formData.diem = 0;
+        // formData.makm = 0;
+        // formData.diachigh = '';
+        // formData.sodt = '';
+        // formData.tinhtrang = 'đang sử dụng';
+        // matk: req.session.username,
+        // formData.email = "";
         formData.diem = 0;
-        formData.makm = 0;
-        formData.diachigh = '';
-        formData.sodt = '';
-        formData.tinhtrang = 'đang sử dụng';
+        formData.tinhtrang = "Đang sử dụng";
+        formData.diachigoc = "";
+        formData.gioitinh = "";
+        formData.sodt = "";
+        formData.sl_giohang = 0;
+
 
         const Client_account = new client_account(formData);
         Client_account.save()
@@ -117,12 +126,20 @@ class Client_Control
                 {
                     const new_client=
                     {
+                        // matk: req.session.username,
+                        // email: "none",
+                        // diem: 0,
+                        // tinhtrang: "Đang sử dụng",
+                        // sodt: "none",
                         matk: req.session.username,
-                        email: "none",
+                        email: "",
+                        matkhau: "",
                         diem: 0,
                         tinhtrang: "Đang sử dụng",
-                        sodt: "none",
-
+                        diachigoc: "",
+                        gioitinh: "",
+                        sodt: "",
+                        sl_giohang: 0,
                     }
 
                     const new_account = new client_account(new_client);
@@ -686,54 +703,23 @@ class Client_Control
 
     themgiohang(req,res,next){
         client_login.updateOne({"matk": req.session.username}, 
-            { $push: { "giohang": {"tensach": req.params.tensach, "giaban": req.params.giaban, "hinhanh": req.params.hinhanh}}, 
+            { $push: { "giohang": {"tensach": req.query.tensach, "giaban": req.query.giaban, "hinhanh": req.query.hinhanh, "soluong": req.query.soluong}}, 
             $inc: {"sl_giohang": +1}
         })
         .then(() => 
         {
-            res.redirect('/chitietsach/' + req.params.tensach);
+            res.redirect('/chitietsach/' + req.query.tensach);
         })
     }
 
     chitietgiohang(req,res,next){
-       client_login.aggregate([
-            { $lookup:
-               {
-                 from: 'books',
-                 localField: 'giohang.tensach',
-                 foreignField: 'tensach',
-                 as: 'ctgiohang'
-               }
-             }
-            ]).then(ct => {
-                // res.json(ct)
-                ct = (ct) => { if (ct == null){ return null; } return ct.toObject(); };
-                console.log(ct)
                 client_login.findOne({'matk': req.session.username})
                 .then(thongtintk => 
                     {
-                      
                         thongtintk=mongooseToObject(thongtintk);
-                        res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, chitietgh: ct})           
+                        res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk})           
                     })
                     .catch(next)
-                }).catch(next)
-                
-            
-        //     query.exec(function (err,ct) {
-        //         if (err) throw err;
-        //         else {
-        //            const chitiet = mongooseToObject(ct);
-        //         client_login.findOne({'matk': req.session.username})
-        //         .then(thongtintk => 
-        //             {
-        //                 console.log(chitiet);
-        //                 thongtintk=mongooseToObject(thongtintk);
-        //                 res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, chitietgh: chitiet})           
-        //             })
-        //         .catch(next)
-        //     }
-        // });
     }
 
     thanhtoan(req,res,next){

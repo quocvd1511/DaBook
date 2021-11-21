@@ -6,7 +6,7 @@ const handlebars = require('express-handlebars')
 const path = require('path')
 const route = require('./routes/main_route')
 const connect_db = require('./src/config/db/db_connect')
-// const id_facebook = require('./id_facebook')
+const id_facebook = require('./id_facebook')
 connect_db.connect()
 
 
@@ -33,7 +33,15 @@ app.engine('handlebars',
               }else {
                 return options.inverse(this);
             }
-            }, 
+            },
+            "chanle": function(conditional, options) {
+              if (conditional%2 == 0) {
+                return options.fn(this);
+              }else {
+                return options.inverse(this);
+            }
+            }
+            , 
             'ifCond': function (v1, operator, v2, options) {
               switch (operator) {
                   case '==':
@@ -104,7 +112,8 @@ app.engine('handlebars',
             }
           
             return options.fn(context);
-          }
+          },
+          'tinhtien': (a, b) => a*b,
         }        
 }));
 

@@ -11,7 +11,9 @@ const client_account = new Schema({
     danhsach_km: {
       makm: String,
     },
-    diachigh: String,
+    diachigh: {
+      diachi: String,
+    },
     diachigoc: String,
     gioitinh: String,
     sodt: String,
@@ -19,6 +21,7 @@ const client_account = new Schema({
       tensach: String,
       giaban: Number,
       hinhanh: String,
+      soluong: Number,
     },
     sl_giohang: Number,
   });

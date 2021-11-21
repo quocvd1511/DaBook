@@ -4,7 +4,7 @@ const route = express.Router()
 const client_Control = require('../controllers/client_control')
 
 
-route.get('/themgiohang/:tensach/:giaban/:hinhanh', client_Control.themgiohang)
+route.get('/themgiohang', client_Control.themgiohang)
 route.get('/chitietgiohang', client_Control.chitietgiohang)
 route.get('/chitiettk', client_Control.chitiettk)
 route.get('/luukhuyenmai/:value', client_Control.luukhuyenmai)
