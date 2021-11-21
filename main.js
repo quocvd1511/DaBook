@@ -6,7 +6,7 @@ const handlebars = require('express-handlebars')
 const path = require('path')
 const route = require('./routes/main_route')
 const connect_db = require('./src/config/db/db_connect')
-const id_facebook = require('./id_facebook')
+
 connect_db.connect()
 
 
