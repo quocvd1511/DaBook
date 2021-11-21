@@ -26,16 +26,17 @@
                         <div class="col">Thành tiền</div>
                         <div class="col-auto col__bin"><i class="far fa-trash-alt"></i></div>
                     </div>
-                
+                    {{#each chitietgh}}
+                        {{!-- {{>client_accounts.giohang book=.}} --}}
                     <div class="layout-inline row">
                         <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
                         <div class="col-4 col-pro layout-inline">
-                            <img class="cart__img" src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"alt="">
-                            <p class="item__name">Harry Potter và bảo bối tử thần</p>
+                            <img class="cart__img" src="{{this.hinhanh}}"alt="">
+                            <p class="item__name">{{chitietgh.diem}}</p>
                         </div>
                         
                         <div class="col col-price col-numeric align-center ">
-                            <span>179.000 đ</span>
+                            <span>100.000 đ</span>
                         </div>
                 
                         <div class="col-auto col-qty layout-inline">
@@ -52,7 +53,7 @@
                             <i class="far fa-trash-alt"></i>
                         </div>
                     </div>
-                    
+                {{/each}}
                     <div class="layout-inline row row-bg2">
             
                         <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
@@ -121,13 +122,13 @@
                         <div class="user__cart-delivery">
                             <div>
                                 <span style="font-weight: 400;">Giao hàng đến: </span>
-                                <span style="font-weight: 400;">Bùi Thị Hằng</span>
+                                <span style="font-weight: 400;">{{thongtin.matk}}</span>
                             </div>
                             <div>
-                                <span style="font-weight: 400;">Số điện thoại: 0835616617</span>
+                                <span style="font-weight: 400;">Số điện thoại: 0{{thongtin.sodt}}</span>
                             </div>
                             <div class="cart_address">
-                                <span style="font-weight: 400;">Địa chỉ: Thôn 10, xã EaKtur, CưKuin, Đắk Lắk </span>
+                                <span style="font-weight: 400;">Địa chỉ: {{thongtin.diachigh}} </span>
                             </div>
                             <a href="" style="text-decoration: none; justify-content: space-around;">Thay đổi</a>
                         </div>
