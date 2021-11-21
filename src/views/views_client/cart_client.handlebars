@@ -26,17 +26,19 @@
                         <div class="col">Thành tiền</div>
                         <div class="col-auto col__bin"><i class="far fa-trash-alt"></i></div>
                     </div>
-                    {{#each chitietgh}}
+                   
+                        {{!-- {{#if chitietgh.ctgiohang}} --}}
+                            {{#each client_accounts.giohang}}
                         {{!-- {{>client_accounts.giohang book=.}} --}}
                     <div class="layout-inline row">
                         <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
                         <div class="col-4 col-pro layout-inline">
                             <img class="cart__img" src="{{this.hinhanh}}"alt="">
-                            <p class="item__name">{{chitietgh.diem}}</p>
+                            <p class="item__name">{{this.tensach}}</p>
                         </div>
                         
                         <div class="col col-price col-numeric align-center ">
-                            <span>100.000 đ</span>
+                            <span>{{this.giaban}}.000 đ</span>
                         </div>
                 
                         <div class="col-auto col-qty layout-inline">
@@ -54,7 +56,8 @@
                         </div>
                     </div>
                 {{/each}}
-                    <div class="layout-inline row row-bg2">
+                {{!-- {{/if}} --}}
+                    {{!-- <div class="layout-inline row row-bg2">
             
                         <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
                         <div class="col-4 col-pro layout-inline">
@@ -108,7 +111,7 @@
                             <i class="far fa-trash-alt"></i>
                         </div>
                     </div>
-                
+                 --}}
                     <div class="tf">
                     </div>         
                 </div>

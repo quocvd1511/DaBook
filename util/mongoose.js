@@ -5,5 +5,7 @@ module.exports = {
 
     mongooseToObject: function (mongoose) {
         return mongoose ? mongoose.toObject() : mongoose;
+    // mongooseToObject = (doc) => { if (doc == null){ return null; } return doc.toObject(); 
+
     }
 }

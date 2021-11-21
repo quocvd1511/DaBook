@@ -17,6 +17,8 @@ const client_account = new Schema({
     sodt: String,
     giohang: {
       tensach: String,
+      giaban: Number,
+      hinhanh: String,
     },
     sl_giohang: Number,
   });

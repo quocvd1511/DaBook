@@ -686,7 +686,7 @@ class Client_Control
 
     themgiohang(req,res,next){
         client_login.updateOne({"matk": req.session.username}, 
-            { $push: { "giohang": {"tensach": req.params.tensach}}, 
+            { $push: { "giohang": {"tensach": req.params.tensach, "giaban": req.params.giaban, "hinhanh": req.params.hinhanh}}, 
             $inc: {"sl_giohang": +1}
         })
         .then(() => 
@@ -696,7 +696,7 @@ class Client_Control
     }
 
     chitietgiohang(req,res,next){
-       const query = client_login.aggregate([
+       client_login.aggregate([
             { $lookup:
                {
                  from: 'books',
@@ -704,21 +704,36 @@ class Client_Control
                  foreignField: 'tensach',
                  as: 'ctgiohang'
                }
-             },
-             { $unwind: "$ctgiohang"}
-            ]);
-            query.exec(function (err,ct) {
-                if (err) throw err;
-                else {
+             }
+            ]).then(ct => {
+                // res.json(ct)
+                ct = (ct) => { if (ct == null){ return null; } return ct.toObject(); };
+                console.log(ct)
                 client_login.findOne({'matk': req.session.username})
                 .then(thongtintk => 
                     {
+                      
                         thongtintk=mongooseToObject(thongtintk);
                         res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, chitietgh: ct})           
                     })
-                .catch(next)
-            }
-        });
+                    .catch(next)
+                }).catch(next)
+                
+            
+        //     query.exec(function (err,ct) {
+        //         if (err) throw err;
+        //         else {
+        //            const chitiet = mongooseToObject(ct);
+        //         client_login.findOne({'matk': req.session.username})
+        //         .then(thongtintk => 
+        //             {
+        //                 console.log(chitiet);
+        //                 thongtintk=mongooseToObject(thongtintk);
+        //                 res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, chitietgh: chitiet})           
+        //             })
+        //         .catch(next)
+        //     }
+        // });
     }
 
     thanhtoan(req,res,next){
