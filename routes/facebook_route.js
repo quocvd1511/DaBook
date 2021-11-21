@@ -5,7 +5,7 @@ const FacebookStrategy = require("passport-facebook").Strategy
 const { session } = require('passport')
 const { Strategy } = require('passport-facebook')
 const client_Control = require('../controllers/client_control')
-const id_facebook = require('../id_facebook')
+// const id_facebook = require('../id_facebook')
 
 passport.serializeUser(function(user, done) {
   done(null, user)
