@@ -11,15 +11,6 @@ class Client_Control
     main(req,res,next)
     {
         if(req.session.isAuth) {
-
-            // const virtual = client_login.findOne({'matk': req.session.username});
-            // virtual.get(function(thongtintk, virtual, doc) {
-            // thongtintk=mongooseToObject(thongtintk);
-            // console.log(thongtintk);
-            // return thongtintk;
-            // });
-            
-
             books.find({'giamgia': {$gte: 22}},
             function (err,flash_sales){
                 if(!err)
