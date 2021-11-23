@@ -237,15 +237,15 @@
   background-color: var(--blue-color);
 }
 
+.account-btn--primary fa-plus :hover,
 .account-btn--primary:hover {
-  color: black;
   text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  opacity: 0.7;
 }
 
 /*Địa chỉ*/
-.account__content-address-form{
+.account__address-form{
   display: flex;
   flex-direction: column;
   position: relative;
@@ -339,12 +339,16 @@
   padding: 6px 10px;
   font-size: 1.6rem;
   font-weight: 400;
-  color: rgb(60, 60, 60);
 }
 
-.account__btn-default:hover,
 .account__btn-edit:hover{
   cursor: pointer;
+}
+
+.account__btn-default--primary:hover{
+  cursor: pointer;
+  color: rgb(60, 60, 60);
+  border-color: #ff8636;
 }
 
 .account__btn-default--disable{
@@ -470,8 +474,7 @@ tbody{
 
 /*Đơn hàng*/
 .account__order-heading{
-  align-items: center;
-  padding: 23px 0;
+  padding: 30px 0;
   height: 86px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -483,3 +486,232 @@ tbody{
   color: var(--white-color);
   text-align: left;
 }
+
+/*Thông báo*/
+.account__content--noti{
+  background-color: var(--white-color);
+  border-radius: 3px;
+  margin-left: 20px;
+}
+
+.account__noti-heading{
+  display: flex;
+  align-items: center;
+  padding: 23px 30px;
+  height: 86px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.account__notify-list {
+  padding-left: 0;
+}
+
+.account__notify-item {
+  display: flex;
+  border-top: 0.8px solid #edebeb;
+  align-items: center;
+  padding:20px;
+}
+
+.account__notify-item:hover {
+  background-color: #eeeeee;
+}
+
+.account__notify-item--view {
+  background-color: rgb(250 240 235);
+}
+
+.account__notify-link {
+  display: flex;
+  flex: 1;
+  text-decoration: none;
+}
+
+.account__notify-link:hover{
+  text-decoration: none;
+}
+
+.account__notify-img {
+  width: 80px;
+  object-fit: contain;
+}
+
+.account__notify-info {
+  margin-left: 12px;
+}
+
+.account__notify-name {
+  display: block;
+  font-size: 1.7rem;
+  color: var(--text-color);
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin-top: 5px;
+}
+
+.account__notify-description {
+  display: block;
+  font-size: 1.5rem;
+  color: #756F6E;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.account__notify-time{
+  display: block;
+  font-size: 1.3rem;
+  color: #756F6E;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+/*Kho voucher*/
+.account__voucher-form{
+  background-color: var(--white-color);
+  border-radius: 3px;
+}
+
+.voucher__navbar{
+  display: flex;
+  padding: 0 30px;
+}
+
+.voucher__nav-item{
+  position: relative;
+  font-size: 1.8rem;
+  font-weight: 400;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.voucher__nav-item-link--active{
+  border-bottom: 1.5px solid #eb5e00;
+}
+
+.voucher__nav-item-link--active span{
+  color: #eb5e00;
+}
+
+.voucher__nav-item-link-text{
+  color: var(--text-color);
+}
+
+.voucher__nav-item-link-text:hover,
+.voucher__nav-item-link:hover{
+  text-decoration: none;
+  color: #eb5e00;
+}
+
+.account__content--voucher{
+  border-radius: 3px;
+  margin-left: 20px;
+}
+
+.voucher__content{
+  padding-top: 20px;
+}
+
+
+/**/
+.list-card{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 50px;
+}
+
+.account__card {
+  display: flex;
+  max-height: 100px;
+  border: 1px solid #d8d8d8;
+  border-radius: 3px;
+  margin: 20px 20px 0 20px;
+  box-sizing: border-box;
+}
+
+.account-img{
+  flex: 0;
+  z-index: 0;
+}
+
+.account__voucher-logo {
+  width: 100px;
+  padding: 8px;
+  background-color: var(--blue-color);
+  border-radius: 2px;
+  margin-top: -1;
+  margin-left: -1;
+}
+
+.account__card-content{
+  align-items: center;
+  display: flex;
+}
+
+.card-container{
+  margin-left: 10px;
+  width: 200px;
+}
+
+.account__card-text {
+  font-size: 1.4rem;
+  font-weight: 400;
+  flex: 1;
+}
+
+.card-link{
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.account__card--expired{
+  opacity: 0.6;
+}
+
+
+/* .card-button{
+  width: 100px;
+}
+
+.btn__save {
+  float: right;
+  min-width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+  font-size: 1.5rem;
+  padding: 0 10px;
+  margin-right: 10px;
+  font-weight: 500;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.btn__save--primary{
+  color: var(--white-color);
+  background-color: var(--blue-color);
+}
+
+.btn__save--primary:hover {
+  opacity: 0.7;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--white-color);
+}
+
+.btn__save--disable{
+  cursor: not-allowed;
+  opacity: 0.5;
+  color: var(--black-color);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn__save--disable:hover{
+  text-decoration: none;
+  color: var(--black-color);
+} */
+  

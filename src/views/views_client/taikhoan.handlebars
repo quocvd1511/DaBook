@@ -47,7 +47,7 @@
                 <label class="account__nav-user-name">{{client_accounts}}</label>
                 {{!-- <label class="account__nav-user-name">anhongkimy</label> --}}
               </li>
-
+<!--Navigation-->
               <div class="account__nav-container">
                 <li class="account__nav-item">
                   <div class="account__nav-title">
@@ -84,9 +84,9 @@
       
                 <li class="account__nav-item">
                   <div class="account__nav-title">
-                    <a class="account__nav-title-link" id="user_noti" href="#">
+                    <a class="account__nav-title-link" id="user_noti" href="#thongbao">
                       <i class="account__nav-title-icon fas fa-bell"></i>
-                      <span class="account__nav-title-text">
+                      <span class="account__nav-title-text" id="noti">
                         Thông báo
                       </span>
                     </a>      
@@ -163,7 +163,7 @@
                         <label class="account__content-profile-label">Ngày sinh</label>
                         <div class="account__content-profile-text">
                           <div class="account__content-profile-dropdown" id="input_day">
-                            <span>1</span>
+                            <span id="ngay">1</span>
                             <i class="account__content-profile-dropdown-icon fas fa-chevron-down"></i>
                           </div>
                           <div class="vertical-menu" id="list_day">
@@ -226,12 +226,15 @@
                   </div>
                 </div>
               </div>
-
+            </div>
+            <div class="tab-content account__content">
               <div class="tab-pane" id="diachi" role="tabpanel" aria-labelledby="diachi-tab">
                 <div class="account__address-form">
                   <div class="account__address-heading">
                     <h1 class="account__address-heading-title">Địa chỉ của tôi</h1>
-                    <button class="account-btn account-btn--primary">Thêm địa chỉ mới</button>
+                    <button class="account-btn account-btn--primary">
+                      <i class="fas fa-plus" style="margin-right: 3px;"></i>
+                      Thêm địa chỉ mới</button>
                   </div>
                   <form> 
                     <div class="account__address-info">
@@ -287,7 +290,9 @@
                   </form>
                 </div>
               </div>
+            </div>
 
+            <div class="tab-content account__content">
               <div class="tab-pane" id="doimatkhau" role="tabpanel" aria-labelledby="doimatkhau-tab">
                 <div class="account__profile-form">
                   <div class="account__profile-heading">
@@ -299,16 +304,16 @@
                       <div class="account__profile-info-content">
                         <div class="account__content-profile-row">
                           <label class="account__content-password-label">Mật khẩu hiện tại</label>
-                          <input class="check-text" type="password" value="">
+                          <input class="check-text" type="password" value="" id="matkhauht">
                           <a class="account__content-profile-link" href="#">Quên mật khẩu</a> 
                         </div>
                         <div class="account__content-profile-row">
                           <label class="account__content-password-label">Mật khẩu mới</label>
-                          <input class="check-text" type="password" value="">
+                          <input class="check-text" type="password" value="" id="matkhaumoi">
                         </div>
                         <div class="account__content-profile-row">
                           <label class="account__content-password-label">Xác nhận mật khẩu</label>
-                          <input class="check-text" type="password" value="">
+                          <input class="check-text" type="password" value="" id="xacnhanmk">
                         </div>  
                       </div>
                       <div class="account__content-profile-row">
@@ -321,7 +326,9 @@
                   </div> 
                 </div>
               </div>
+            </div>
 
+            <div class="tab-content account__content">
               <div class="tab-pane" id="donhang" role="tabpanel" aria-labelledby="donhang-tab">
                 <div class="account__address-form">
                   <div class="account__order-heading">
@@ -347,35 +354,129 @@
                             <td>100.000</td>
                             <td>Giao hàng thành công</td>
                           </tr>
-                          <tr>
-                            <td class="plus">12345</td>
-                            <td>18:36 01/12/2021</td>
-                            <td>Sách Thất tịch không mưa</td>
-                            <td>100.000</td>
-                            <td>Giao hàng thành công</td>
-                          </tr>
-                          <tr>
-                            <td class="plus">12345</td>
-                            <td>02:17 01/12/2021</td>
-                            <td>Sách Thất tịch không mưa</td>
-                            <td>100.000</td>
-                            <td>Giao hàng thành công</td>
-                          </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
+            <div class="tab-content account__content--noti">
               <div class="tab-pane" id="thongbao" role="tabpanel" aria-labelledby="thongbao-tab">
-                
+                <div class="account__address-form">
+                  <div class="account__noti-heading">
+                    <h1 class="account__address-heading-title">Thông báo của tôi</h1>
+                    <div class="account__btn-default account__btn-default--primary" id="btn_danhdau">
+                      <span>Đánh dấu Đã đọc tất cả</span>
+                    </div>
+                  </div>
+                  <ul class="account__notify-list">
+                    <li class="account__notify-item account__notify-item--view">
+                      <a href="" class="account__notify-link">
+                        <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="account__notify-img">
+                        <div class="account__notify-info">
+                          <span class="account__notify-name">Đơn hàng của bạn đang được vận chuyển</span>
+                          <span class="account__notify-description">Harry Potter và bảo bối tử thần</span>
+                          <span class="account__notify-time">12:30 11/11/2021</span>
+                        </div>
+                      </a>
+                      <div class="account__btn-default account__btn-default--primary">
+                        <span>Xem chi tiết</span>
+                      </div>
+                    </li>
+                    <li class="account__notify-item">
+                      <a href="" class="account__notify-link">
+                        <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="account__notify-img">
+                        <div class="account__notify-info">
+                          <span class="account__notify-name">Đơn hàng của bạn đã được xác nhận</span>
+                          <span class="account__notify-description">Harry Potter và bảo bối tử thần</span>
+                          <span class="account__notify-time">12:30 11/11/2021</span>
+                        </div>
+                      </a>
+                      <div class="account__btn-default account__btn-default--primary">
+                        <span>Xem chi tiết</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
+            </div>
 
+            <div class="tab-content account__content--voucher">
               <div class="tab-pane" id="khovoucher" role="tabpanel" aria-labelledby="khovoucher-tab">
-                
+                <div class="account__noti-heading">
+                  <h1 class="account__address-heading-title">Mã giảm giá của tôi</h1>
+                </div>
+                <div class="account__voucher-form">
+                  <div class="voucher__navbar">
+                    <div class="col-2">
+                      <div class="voucher__nav-item voucher__nav-item-link--active" id="all_voucher_link">
+                        <a class="voucher__nav-item-link" href="#all_voucher">
+                          <span class="voucher__nav-item-link-text">Tất cả</span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="voucher__nav-item" id="expired_voucher_link">
+                        <a class="voucher__nav-item-link" href="#expired_voucher">
+                          <span class="voucher__nav-item-link-text">Đã sử dụng</span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-8"></div>
+                  </div>
+                  <form>
+                    <div class="tab-pane" id="all_voucher" role="tabpanel" aria-labelledby="all_voucher-tab">
+                      <div class="list-card">
+                        <div class="account__card">
+                          <div class="account__card-img">
+                            <img src="/client_styles/assets/img/logo.png" class="account__voucher-logo">
+                          </div>
+                          <div class="account__card-content">
+                            <div class="card-container">
+                              <h3 class="card-title khachhang" name="{{this.makm}}">Giảm {{this.phantram}}%</h3>      
+                              <p class="card-text account__card-text">Đơn hàng từ {{this.dieukien}}.000VNĐ</p>                                       
+                              <p class="card-text account__card-text"><small class="text-muted">HSD: 31/12/2021</small></p>
+                            </div> 
+                            <div>
+                              <a href="" class="card-link" name="{{this.makm}}">
+                                <span>Dùng ngay</span> 
+                                <i class="fas fa-chevron-right"></i>
+                              </a>
+                            </div> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="expired_voucher" role="tabpanel" aria-labelledby="expired_voucher-tab">
+                      <div class="list-card">
+                        <div class="account__card account__card--expired">
+                          <div class="account__card-img">
+                            <img src="/client_styles/assets/img/logo.png" class="account__voucher-logo">
+                          </div>
+                          <div class="account__card-content">
+                            <div class="card-container">
+                              <h3 class="card-title khachhang" name="{{this.makm}}">Giảm {{this.phantram}}%</h3>      
+                              <p class="card-text account__card-text">Đơn hàng từ {{this.dieukien}}.000VNĐ</p>                                       
+                              <p class="card-text account__card-text"><small class="text-muted">HSD: 31/12/2021</small></p>
+                            </div> 
+                            <div>
+                              <a href="" class="card-link" name="{{this.makm}}">
+                                <span>Dùng ngay</span> 
+                                <i class="fas fa-chevron-right"></i>
+                              </a>
+                            </div> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
+            </div>
 
+            <div class="tab-content account__content">
               <div class="tab-pane" id="diemtichluy" role="tabpanel" aria-labelledby="diemtichluy-tab">
                 <div class="account__address-form">
                   <div class="account__address-heading">
@@ -406,16 +507,6 @@
                             <td class="col-center">05/12/2021</td>
                             <td>Trừ 10 điểm khi đặt sách Thất Tịch không mưa</td>
                           </tr>
-                          <tr>
-                            <td class="col-center plus">+10</td>
-                            <td class="col-center">01/12/2021</td>
-                            <td>Chúc mừng, bạn được nhận 10 điểm khi mua sách thành công</td>
-                          </tr>
-                          <tr>
-                            <td class="col-center plus">+10</td>
-                            <td class="col-center">01/12/2021</td>
-                            <td>Chúc mừng, bạn được  nhận 10 điểm khi mua sách thành công</td>
-                          </tr>
                         </tbody>
                       </table>
                     </div>
@@ -434,7 +525,6 @@
       /*Tài khoản của tôi*/
       $('#user_account').click(function(){
         $('#list_user_account').show();
-        $('#list_user_noti').hide();
         $('#hoso').show();
         $('#diachi').hide();
         $('#doimatkhau').hide();
@@ -458,105 +548,140 @@
         $('#account_address').removeClass('account__nav-list-link--active');
         $('#account_password').removeClass('account__nav-list-link--active');
         $('#order').removeClass('account__nav-list-link--active');
-        $('voucher').removeClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
+        $('#voucher').removeClass('account__nav-list-link--active');
         $('#point').removeClass('account__nav-list-link--active');
       })
 
       /*Địa chỉ*/
       $('#account_address').click(function(){
-        $('#diachi').show();
         $('#hoso').hide();
+        $('#diachi').show();
         $('#doimatkhau').hide();
         $('#donhang').hide();
         $('#thongbao').hide();
+        $('#khovoucher').hide();
         $('#diemtichluy').hide();
-        $('#account_address').addClass('account__nav-list-link--active');
         $('#account_profile').removeClass('account__nav-list-link--active');
+        $('#account_address').addClass('account__nav-list-link--active');
         $('#account_password').removeClass('account__nav-list-link--active');
         $('#order').removeClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
+        $('#voucher').removeClass('account__nav-list-link--active');
         $('#point').removeClass('account__nav-list-link--active');
       })
 
       /*Đổi mật khẩu*/
       $('#account_password').click(function(){
-        $('#doimatkhau').show();
-        $('#diachi').hide();
         $('#hoso').hide();
-        $('#donhang').hide();        
+        $('#diachi').hide();
+        $('#doimatkhau').show();
+        $('#donhang').hide();
         $('#thongbao').hide();
+        $('#khovoucher').hide();
         $('#diemtichluy').hide();
-        $('#account_password').addClass('account__nav-list-link--active');
-        $('#account_address').removeClass('account__nav-list-link--active');
         $('#account_profile').removeClass('account__nav-list-link--active');
+        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#account_password').addClass('account__nav-list-link--active');
         $('#order').removeClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
+        $('#voucher').removeClass('account__nav-list-link--active');
         $('#point').removeClass('account__nav-list-link--active');
+
       })
 
       /*Đơn mua*/
       $('#user_order').click(function(){
-        $('#list_user_noti').hide();
         $('#list_user_account').hide();
-        $('#donhang').show();
-        $('#doimatkhau').hide();
-        $('#diachi').hide();
         $('#hoso').hide();
+        $('#diachi').hide();
+        $('#doimatkhau').hide();
+        $('#donhang').show();
         $('#thongbao').hide();
+        $('#khovoucher').hide();
         $('#diemtichluy').hide();
-        $('#order').addClass('account__nav-list-link--active');
-        $('#account_password').removeClass('account__nav-list-link--active');
-        $('#account_address').removeClass('account__nav-list-link--active');
         $('#account_profile').removeClass('account__nav-list-link--active');
-        $('#point').removeClass('account__nav-list-link--active');
+        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#account_password').removeClass('account__nav-list-link--active');
+        $('#order').addClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
         $('#voucher').removeClass('account__nav-list-link--active');
-
+        $('#point').removeClass('account__nav-list-link--active');
       })
 
       /*Thông báo*/
       $('#user_noti').click(function(){
-        $('#list_user_noti').show();
         $('#list_user_account').hide();
-        $('#thongbao').show();
         $('#hoso').hide();
         $('#diachi').hide();
         $('#doimatkhau').hide();
         $('#donhang').hide();
+        $('#thongbao').show();
+        $('#khovoucher').hide();
         $('#diemtichluy').hide();
-        $('#noti_general').addClass('account__nav-list-link--active');
+        $('#account_profile').removeClass('account__nav-list-link--active');
+        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#account_password').removeClass('account__nav-list-link--active');
+        $('#order').removeClass('account__nav-list-link--active');
+        $('#noti').addClass('account__nav-list-link--active');
+        $('#voucher').removeClass('account__nav-list-link--active');
+        $('#point').removeClass('account__nav-list-link--active');
       })
 
       /*Kho voucher*/
       $('#user_voucher').click(function(){
-        $('#list_user_noti').hide();
         $('#list_user_account').hide();
+        $('#hoso').hide();
+        $('#diachi').hide();
+        $('#doimatkhau').hide();
+        $('#donhang').hide();
+        $('#thongbao').hide();
         $('#khovoucher').show();
         $('#diemtichluy').hide();
-        $('#donhang').hide();
-        $('#doimatkhau').hide();
-        $('#diachi').hide();
-        $('#hoso').hide();
+        $('#expired_voucher').hide();
+        $('#account_profile').removeClass('account__nav-list-link--active');
+        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#account_password').removeClass('account__nav-list-link--active');
+        $('#order').removeClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
         $('#voucher').addClass('account__nav-list-link--active');
         $('#point').removeClass('account__nav-list-link--active');
-        $('#order').removeClass('account__nav-list-link--active');
-        $('#account_password').removeClass('account__nav-list-link--active');
-        $('#account_address').removeClass('account__nav-list-link--active');
-        $('#account_profile').removeClass('account__nav-list-link--active');
+        
       })
 
       /*Điểm tích lũy*/
       $('#user_point').click(function(){
-        $('#list_user_noti').hide();
         $('#list_user_account').hide();
-        $('#diemtichluy').show();
-        $('#donhang').hide();
-        $('#doimatkhau').hide();
-        $('#diachi').hide();
         $('#hoso').hide();
-        $('#point').addClass('account__nav-list-link--active');
-        $('#voucher').removeClass('account__nav-list-link--active');
-        $('#order').removeClass('account__nav-list-link--active');
-        $('#account_password').removeClass('account__nav-list-link--active');
-        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#diachi').hide();
+        $('#doimatkhau').hide();
+        $('#donhang').hide();
+        $('#thongbao').hide();
+        $('#khovoucher').hide();
+        $('#diemtichluy').show();
         $('#account_profile').removeClass('account__nav-list-link--active');
+        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#account_password').removeClass('account__nav-list-link--active');
+        $('#order').removeClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
+        $('#voucher').removeClass('account__nav-list-link--active');
+        $('#point').addClass('account__nav-list-link--active');
+      })
+
+      $('#expired_voucher_link').click(function(){
+        $('#expired_voucher_link').addClass('voucher__nav-item-link--active');
+        $('#all_voucher_link').removeClass('voucher__nav-item-link--active');
+
+        $('#expired_voucher').show();
+        $('#all_voucher').hide();
+      })
+
+      $('#all_voucher_link').click(function(){
+        $('#all_voucher_link').addClass('voucher__nav-item-link--active');
+        $('#expired_voucher_link').removeClass('voucher__nav-item-link--active');
+
+        $('#all_voucher').show();
+        $('#expired_voucher').hide();
       })
     </script>
     
@@ -564,7 +689,9 @@
     <script>
       var container = $('#list_day');
       $('#input_day').click(function(){
-        $('#list_day').toggle();
+        $('#list_day').show();
+        if()
+
       })
 
       $('#input_month').click(function(){
@@ -575,14 +702,22 @@
         $('#list_year').toggle();
       }) 
     </script>
-    <!--Button Xác nhận đổi mật khẩu-->
+
+    <!--Button Xác nhận đổi mật khẩu
     <script>
-      $('#btn_xacnhan').click(function(){
-        if($)
-        $('#btn_xacnhan').removeClass.('btn_account--disable');
-        $('#btn_xacnhan').addClass.('btn_account--primary');
+      function kiemtra{
+        if($('#matkhauht').val()!=""|| $('#matkhaumoi').val()!=""|| $('#xacnhanmk').val()!=""){
+          $('#btn_xacnhan').removeClass.('btn_account--disable');
+          $('#btn_xacnhan').addClass.('btn_account--primary');
+        }
+      }
+    </script>-->
+    <script>
+      $('#btn_danhdau').click(function(){
+        $('.account__notify-item').removeClass('account__notify-item--view');
+        $('#btn_danhdau').removeClass('account__btn-default--primary');
+        $('#btn_danhdau').addClass('account__btn-default--disable');
       })
     </script>
-
 </body>
 </html>
