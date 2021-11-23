@@ -139,7 +139,7 @@
                                                 <p class="card-text sale__card-text">Đơn hàng từ {{this.dieukien}}.000VNĐ</p>  
                                             </div>
                                             <div class="col-3">
-                                                <a href="#" class="btn__save" name="{{this.makm}}">Lưu</a>
+                                                <a href="#" class="btn__save btn__save--primary" name="{{this.makm}}">Lưu</a>
                                             </div>                                         
                                         </div>
                                         <p class="card-text sale__card-text"><small class="text-muted">HSD: {{this.ngaykt}}</small></p>
@@ -174,7 +174,7 @@
                                                 <p class="card-text sale__card-text">Đơn hàng từ {{this.dieukien}}.000VNĐ</p>  
                                             </div>
                                             <div class="col-3">
-                                                <a href="" class="btn__save" name="{{this.makm}}">Lưu</a>
+                                                <a href="" class="btn__save btn__save--primary" name="{{this.makm}}">Lưu</a>
                                             </div>                                         
                                         </div>
                                         <p class="card-text sale__card-text"><small class="text-muted">HSD: {{this.ngaykt}}</small></p>
@@ -198,7 +198,7 @@
                                                 <p class="card-text sale__card-text">Đơn hàng từ {{this.dieukien}}.000VNĐ</p>  
                                             </div>
                                             <div class="col-3">
-                                                <a href="" class="btn__save disable" name="{{this.makm}}">Đã hết</a>
+                                                <a href="" class="btn__save btn__save--disable" name="{{this.makm}}">Đã hết</a>
                                             </div>                                         
                                         </div>
                                         <p class="card-text sale__card-text"><small class="text-muted">HSD: 31/12/2021</small></p>
@@ -215,13 +215,25 @@
         </div>
     </div>
 
-        {{!-- Lưu mã khuyến mãi cho tài khoản --}}
-        <script>
-       var list = document.querySelectorAll('.btn__save');
-        Array.prototype.forEach.call(list, function (element,index) {
-          var value = element.name;
-              element.href = "/luukhuyenmai/" + value;
-        });
+    {{!-- Lưu mã khuyến mãi cho tài khoản --}}
+    <script>
+    var list = document.querySelectorAll('.btn__save');
+    Array.prototype.forEach.call(list, function (element,index) {
+        var value = element.name;
+            element.href = "/luukhuyenmai/" + value;
+    });
+    </script>
+
+    <script>
+        var stt=0;
+        $('.btn__save').click(function(){         
+            if(stt > 3)
+            {
+                $('btn__save').removeClass('btn__save--primary');
+                $('btn__save').addClass('btn__save--disable');
+            }
+            stt++;
+        })
     </script>
 </body>
 </html> 
