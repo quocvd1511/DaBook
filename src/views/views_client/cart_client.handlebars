@@ -47,7 +47,7 @@
                         </div>
                         
                         <div class="col col-vat col-numeric">
-                            <p>{{tinhtien this.giaban '*' this.soluong}}.000 đ</p>
+                            <p class="price__item" value="{{tinhtien this.giaban '*' this.soluong}}.000">{{tinhtien this.giaban '*' this.soluong}}.000 đ</p>
                         </div>
                             
                         <div class="col-auto col__bin">               
@@ -153,7 +153,9 @@
                                 </div>
                                 <div class="cart__total">
                                     <span>Tổng tiền:</span>
-                                    <span>197.000đ</span>
+                                    {{#each client_accounts.giohang}}
+                                    <span>{{total this.giaban}} đ</span>
+                                    {{/each}}
                                 </div>
                             </li>
 
@@ -204,10 +206,7 @@
          } else {
            value = 0;
          }
-         
-
-         $input.val(value);
-        
+         $input.val(value);    
        });
      
        $('a.qty-plus').on('click', function(e) {
@@ -238,6 +237,17 @@
            input.val(100);
          }
      }); --}}
+
+     function totalIt()
+    {
+        var input = document.getElementsByClassName(".cart__total");
+        var total = 0;
+        for (var i = 0; i < input.length; i++)
+        {
+                total += parseFloat(input[i].value);
+        }
+        document.getElementsByClassName(".cart__total").value = total.toFixed(2) + " đ";
+    }
     </script>
 </body>
 </html>

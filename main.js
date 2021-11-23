@@ -6,7 +6,6 @@ const handlebars = require('express-handlebars')
 const path = require('path')
 const route = require('./routes/main_route')
 const connect_db = require('./src/config/db/db_connect')
-
 connect_db.connect()
 
 
@@ -127,6 +126,13 @@ app.engine('handlebars',
                     return (v1 * v2 / 100);
                
             }
+          },
+          'total': function(arr) {
+            const s = 0;
+            for(const i=0; i<arr.length; i++) {
+              s = s + arr[i];
+            }
+            return s;
           }
         }        
 }));

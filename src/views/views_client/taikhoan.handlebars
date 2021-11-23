@@ -44,14 +44,14 @@
             <div class="nav flex-column account__nav">
               <li class="account__nav-user">
                 <img class="account__nav-user-img" src="https://anhdep123.com/wp-content/uploads/2021/05/hinh-avatar-trang.jpg" alt="">
-                {{!-- <p class="account__nav-user-name">{{client_accounts}}</p> --}}
-                <label class="account__nav-user-name">anhongkimy</label>
+                <label class="account__nav-user-name">{{client_accounts}}</label>
+                {{!-- <label class="account__nav-user-name">anhongkimy</label> --}}
               </li>
-
+<!--Navigation-->
               <div class="account__nav-container">
                 <li class="account__nav-item">
                   <div class="account__nav-title">
-                    <a class="account__nav-title-link" id="user_account"  href="#">
+                    <a class="account__nav-title-link" id="user_account" href="#hoso">
                       <i class="account__nav-title-icon fas fa-user"></i>
                       <span class="account__nav-title-text">
                         Tài khoản của tôi
@@ -65,7 +65,7 @@
                     <a href="#diachi" class="account__nav-list-link" id="account_address">
                       <span>Địa chỉ</span>
                     </a>
-                    <a href="" class="account__nav-list-link">
+                    <a href="#doimatkhau" class="account__nav-list-link" id="account_password">
                       <span>Đổi mật khẩu</span>
                     </a>
                   </div>
@@ -73,10 +73,10 @@
       
                 <li class="account__nav-item">
                   <div class="account__nav-title">
-                    <a class="account__nav-title-link" id="user_order" href="#">
+                    <a class="account__nav-title-link" id="user_order" href="#donhang">
                       <i class="account__nav-title-icon fas fa-clipboard-list"></i>
-                      <span class="account__nav-title-text">
-                        Đơn mua
+                      <span class="account__nav-title-text" id="order">
+                        Đơn hàng
                       </span>
                     </a>        
                   </div>
@@ -84,34 +84,20 @@
       
                 <li class="account__nav-item">
                   <div class="account__nav-title">
-                    <a class="account__nav-title-link" id="user_noti" href="#">
+                    <a class="account__nav-title-link" id="user_noti" href="#thongbao">
                       <i class="account__nav-title-icon fas fa-bell"></i>
-                      <span class="account__nav-title-text">
+                      <span class="account__nav-title-text" id="noti">
                         Thông báo
                       </span>
                     </a>      
-                  </div>
-                  <div class="account__nav-list" id="list_user_noti">
-                    <a href="" class="account__nav-list-link">
-                      <span>Cập nhật đơn hàng</span>
-                    </a>
-                    <a href="" class="account__nav-list-link">
-                      <span>Khuyến mãi</span>
-                    </a>
-                    <a href="" class="account__nav-list-link">
-                      <span>Hoạt động</span>
-                    </a>
-                    <a href="" class="account__nav-list-link">
-                      <span>Cập nhật đánh giá</span>
-                    </a>
                   </div>
                 </li>
       
                 <li class="account__nav-item">
                   <div class="account__nav-title">
-                    <a class="account__nav-title-link" id="user_voucher" href="#">
+                    <a class="account__nav-title-link" id="user_voucher" href="#khovoucher">
                       <i class="account__nav-title-icon fas fa-ticket-alt"></i>
-                      <span class="account__nav-title-text">
+                      <span class="account__nav-title-text" id="voucher">
                         Kho voucher
                       </span>
                     </a>        
@@ -120,9 +106,9 @@
 
                 <li class="account__nav-item">
                   <div class="account__nav-title">
-                    <a class="account__nav-title-link" id="user_voucher" href="#">
+                    <a class="account__nav-title-link" id="user_point" href="#diemtichluy">
                       <i class="account__nav-title-icon fas fa-star"></i>
-                      <span class="account__nav-title-text">
+                      <span class="account__nav-title-text" id="point">
                         Điểm tích lũy
                       </span>
                     </a>        
@@ -136,57 +122,48 @@
             <div class="tab-content account__content">
               <div class="tab-pane active" id="hoso" role="tabpanel" aria-labelledby="hoso-tab">
                 <div class="account__profile-form">
-
                   <div class="account__profile-heading">
                     <h1 class="account__profile-heading-title">Hồ sơ của tôi</h1>
                     <p class="account__profile-heading-notice">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
                   </div>
-
                   <div class="row account__content-container">
-                    <form style="margin-top: 30px;"> 
+                    <form> 
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Tên đăng nhập</label>
-                        <p class="account__content-profile-text">{{thongtin.matk}}</p>
+                        <p class="account__content-profile-text">anhongkimy</p>
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Email</label>
-                        <p class="account__content-profile-text">{{thongtin.email}}</p>
-                        <a  class="account__content-profile-text" href="#">Thay đổi</a>
+                        <p class="account__content-profile-text">anhongkimy@abc.com</p>
+                        <a class="account__content-profile-link" href="#">Thay đổi</a>
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Số điện thoại</label>
-                        <p class="account__content-profile-text">{{thongtin.sodt}}</p>
-                        <a  class="account__content-profile-text" href="#">Thay đổi</a>
+                        <p class="account__content-profile-text">019283745</p>
+                        <a  class="account__content-profile-link" href="#">Thay đổi</a>
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Giới tính</label>
                         <p class="account__content-profile-text">
-                          {{#ifCond thongtin.gioitinh '==' 'nam'}}
-                          <input class="check-input checked" type="radio" name="gioitinh" id ="Nam" checked>
-                          <label for="Nam">
-                            Nam &nbsp;&nbsp;&nbsp;
-                          </label>
-                          <input class="check-input" type="radio" name="gioitinh" id ="Nu">
-                          <label for="Nữ">
-                            Nữ
-                          </label>
-                          {{else}}
                           <input class="check-input" type="radio" name="gioitinh" id ="Nam">
                           <label for="Nam">
                             Nam &nbsp;&nbsp;&nbsp;
                           </label>
-                          <input class="check-input checked" type="radio" name="gioitinh" id ="Nu" checked>
+                          <input class="check-input" type="radio" name="gioitinh" id ="Nu" checked >
                           <label for="Nữ">
-                            Nữ
+                            Nữ &nbsp;&nbsp;&nbsp;
                           </label>
-                          {{/ifCond}}
+                          <input class="check-input" type="radio" name="gioitinh" id ="Nam">
+                          <label for="Khac">
+                            Khác 
+                          </label>
                         </p>
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Ngày sinh</label>
                         <div class="account__content-profile-text">
                           <div class="account__content-profile-dropdown" id="input_day">
-                            <span>Ngày</span>
+                            <span id="ngay">1</span>
                             <i class="account__content-profile-dropdown-icon fas fa-chevron-down"></i>
                           </div>
                           <div class="vertical-menu" id="list_day">
@@ -202,10 +179,9 @@
                             <a href="#">10</a>
                           </div>
                         </div>
-
                         <div class="account__content-profile-text">
                           <div class="account__content-profile-dropdown" id="input_month"> 
-                            <span>Tháng</span>
+                            <span>1</span>
                             <i class="account__content-profile-dropdown-icon fas fa-chevron-down"></i>
                           </div>
                           <div class="vertical-menu" id="list_month">
@@ -221,10 +197,9 @@
                             <a href="#">10</a>
                           </div>
                         </div>
-
                         <div class="account__content-profile-text">
                           <div class="account__content-profile-dropdown" id="input_year">
-                            <span>Năm</span>
+                            <span>2001</span>
                             <i class="account__content-profile-dropdown-icon fas fa-chevron-down"></i>
                           </div>
                           <div class="vertical-menu" id="list_year">
@@ -244,75 +219,469 @@
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label"></label>
                         <div class="account__content-profile-text">
-                          <button class="account-btn">Lưu thay đổi</button>
+                          <button class="account-btn account-btn--primary">Lưu thay đổi</button>
                         </div>
                       </div>
                     </form>
                   </div>
                 </div>
               </div>
-
+            </div>
+            <div class="tab-content account__content">
               <div class="tab-pane" id="diachi" role="tabpanel" aria-labelledby="diachi-tab">
                 <div class="account__address-form">
                   <div class="account__address-heading">
                     <h1 class="account__address-heading-title">Địa chỉ của tôi</h1>
-                    <button class="account-btn">Thêm địa chỉ mới</button>
+                    <button class="account-btn account-btn--primary">
+                      <i class="fas fa-plus" style="margin-right: 3px;"></i>
+                      Thêm địa chỉ mới</button>
                   </div>
                   <form> 
                     <div class="account__address-info">
                       <div class="account__address-info-content">
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Họ và tên</label>
-                          <p class="account__content-address-text">{{thongtin.hoten}}</p>  
+                          <p class="account__content-address-text">Nguyễn Văn A</p>  
+                          <p class=" account__content-address-text address-mode" id="address_mode">Địa chỉ mặc định</p> 
                         </div>
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Số điện thoại</label>
-                          <p class="account__content-address-text">{{thongtin.sodt}}</p>  
+                          <p class="account__content-address-text">81024872</p>  
                         </div>
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Địa chỉ</label>
-                          <p class="account__content-address-text">{{thongtin.diachigh}}</p>  
+                          <p class="account__content-address-text">Số 34, tổ 7, đường Võ Tấn Đức, khóm 2, thị trấn Tam Bình, huyện Tam Bình ,tỉnh Vĩnh Long</p>  
                         </div>
                       </div>
                       <div class="account__address-info-btn">
                         <div class="account__btn-edit">
-                          <a href="">Sửa</a>
+                          <a href="" style="text-decoration:none">Sửa</a>
                         </div>
-                        <div class="account__btn-default">
-                          <button>Thiết lập mặc định</button>
+                        <div class="account__btn-default account__btn-default--disable">
+                          <span>Thiết lập mặc định</span>
                         </div>
                       </div>
+                    </div>  
+
+                    <div class="account__address-info">
+                      <div class="account__address-info-content">
+                        <div class="account__content-address-row">
+                          <label class="account__content-address-label">Họ và tên</label>
+                          <p class="account__content-address-text">Nguyễn Văn A</p>  
+                        </div>
+                        <div class="account__content-address-row">
+                          <label class="account__content-address-label">Số điện thoại</label>
+                          <p class="account__content-address-text">81024872</p>  
+                        </div>
+                        <div class="account__content-address-row">
+                          <label class="account__content-address-label">Địa chỉ</label>
+                          <p class="account__content-address-text">Số 34, tổ 7, đường Võ Tấn Đức, khóm 2, thị trấn Tam Bình, huyện Tam Bình ,tỉnh Vĩnh Long</p>  
+                        </div>
                       </div>
-                    </div>                      
+                      <div class="account__address-info-btn">
+                        <div class="account__btn-edit">
+                          <a href="" style="text-decoration:none">Sửa</a>
+                        </div>
+                        <div class="account__btn-default account__btn-default--primary">
+                          <span>Thiết lập mặc định</span>
+                        </div>
+                      </div>
+                    </div> 
                   </form>
                 </div>
               </div>
+            </div>
+
+            <div class="tab-content account__content">
+              <div class="tab-pane" id="doimatkhau" role="tabpanel" aria-labelledby="doimatkhau-tab">
+                <div class="account__profile-form">
+                  <div class="account__profile-heading">
+                    <h1 class="account__profile-heading-title">Đổi mật khẩu</h1>
+                    <p class="account__profile-heading-notice">Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu</p>
+                  </div>
+                  <div class="account__content-container">
+                    <form> 
+                      <div class="account__profile-info-content">
+                        <div class="account__content-profile-row">
+                          <label class="account__content-password-label">Mật khẩu hiện tại</label>
+                          <input class="check-text" type="password" value="" id="matkhauht">
+                          <a class="account__content-profile-link" href="#">Quên mật khẩu</a> 
+                        </div>
+                        <div class="account__content-profile-row">
+                          <label class="account__content-password-label">Mật khẩu mới</label>
+                          <input class="check-text" type="password" value="" id="matkhaumoi">
+                        </div>
+                        <div class="account__content-profile-row">
+                          <label class="account__content-password-label">Xác nhận mật khẩu</label>
+                          <input class="check-text" type="password" value="" id="xacnhanmk">
+                        </div>  
+                      </div>
+                      <div class="account__content-profile-row">
+                        <label class="account__content-password-label"></label>
+                        <div class="account__content-profile-text">
+                          <button class="account-btn account-btn--disable" id="btn_xacnhan">Xác nhận</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div> 
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content account__content">
+              <div class="tab-pane" id="donhang" role="tabpanel" aria-labelledby="donhang-tab">
+                <div class="account__address-form">
+                  <div class="account__order-heading">
+                    <h1 class="account__address-heading-title">Đơn hàng của tôi</h1>
+                  </div>
+                  <div class="account__order-table">
+                    <div class="dashboard-order"> 
+                      <table class="table-responsive">
+                        <thead>
+                          <tr>
+                            <th>Mã đơn hàng</th>
+                            <th>Ngày đặt</th>
+                            <th>Sản phẩm</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="plus">12345</td>
+                            <td>20:54 01/12/2021</td>
+                            <td>Sách Thất tịch không mưa</td>
+                            <td>100.000</td>
+                            <td>Giao hàng thành công</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content account__content--noti">
+              <div class="tab-pane" id="thongbao" role="tabpanel" aria-labelledby="thongbao-tab">
+                <div class="account__address-form">
+                  <div class="account__noti-heading">
+                    <h1 class="account__address-heading-title">Thông báo của tôi</h1>
+                    <div class="account__btn-default account__btn-default--primary" id="btn_danhdau">
+                      <span>Đánh dấu Đã đọc tất cả</span>
+                    </div>
+                  </div>
+                  <ul class="account__notify-list">
+                    <li class="account__notify-item account__notify-item--view">
+                      <a href="" class="account__notify-link">
+                        <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="account__notify-img">
+                        <div class="account__notify-info">
+                          <span class="account__notify-name">Đơn hàng của bạn đang được vận chuyển</span>
+                          <span class="account__notify-description">Harry Potter và bảo bối tử thần</span>
+                          <span class="account__notify-time">12:30 11/11/2021</span>
+                        </div>
+                      </a>
+                      <div class="account__btn-default account__btn-default--primary">
+                        <span>Xem chi tiết</span>
+                      </div>
+                    </li>
+                    <li class="account__notify-item">
+                      <a href="" class="account__notify-link">
+                        <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="account__notify-img">
+                        <div class="account__notify-info">
+                          <span class="account__notify-name">Đơn hàng của bạn đã được xác nhận</span>
+                          <span class="account__notify-description">Harry Potter và bảo bối tử thần</span>
+                          <span class="account__notify-time">12:30 11/11/2021</span>
+                        </div>
+                      </a>
+                      <div class="account__btn-default account__btn-default--primary">
+                        <span>Xem chi tiết</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content account__content--voucher">
+              <div class="tab-pane" id="khovoucher" role="tabpanel" aria-labelledby="khovoucher-tab">
+                <div class="account__noti-heading">
+                  <h1 class="account__address-heading-title">Mã giảm giá của tôi</h1>
+                </div>
+                <div class="account__voucher-form">
+                  <div class="voucher__navbar">
+                    <div class="col-2">
+                      <div class="voucher__nav-item voucher__nav-item-link--active" id="all_voucher_link">
+                        <a class="voucher__nav-item-link" href="#all_voucher">
+                          <span class="voucher__nav-item-link-text">Tất cả</span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="voucher__nav-item" id="expired_voucher_link">
+                        <a class="voucher__nav-item-link" href="#expired_voucher">
+                          <span class="voucher__nav-item-link-text">Đã sử dụng</span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-8"></div>
+                  </div>
+                  <form>
+                    <div class="tab-pane" id="all_voucher" role="tabpanel" aria-labelledby="all_voucher-tab">
+                      <div class="list-card">
+                        <div class="account__card">
+                          <div class="account__card-img">
+                            <img src="/client_styles/assets/img/logo.png" class="account__voucher-logo">
+                          </div>
+                          <div class="account__card-content">
+                            <div class="card-container">
+                              <h3 class="card-title khachhang" name="{{this.makm}}">Giảm {{this.phantram}}%</h3>      
+                              <p class="card-text account__card-text">Đơn hàng từ {{this.dieukien}}.000VNĐ</p>                                       
+                              <p class="card-text account__card-text"><small class="text-muted">HSD: 31/12/2021</small></p>
+                            </div> 
+                            <div>
+                              <a href="" class="card-link" name="{{this.makm}}">
+                                <span>Dùng ngay</span> 
+                                <i class="fas fa-chevron-right"></i>
+                              </a>
+                            </div> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="expired_voucher" role="tabpanel" aria-labelledby="expired_voucher-tab">
+                      <div class="list-card">
+                        <div class="account__card account__card--expired">
+                          <div class="account__card-img">
+                            <img src="/client_styles/assets/img/logo.png" class="account__voucher-logo">
+                          </div>
+                          <div class="account__card-content">
+                            <div class="card-container">
+                              <h3 class="card-title khachhang" name="{{this.makm}}">Giảm {{this.phantram}}%</h3>      
+                              <p class="card-text account__card-text">Đơn hàng từ {{this.dieukien}}.000VNĐ</p>                                       
+                              <p class="card-text account__card-text"><small class="text-muted">HSD: 31/12/2021</small></p>
+                            </div> 
+                            <div>
+                              <a href="" class="card-link" name="{{this.makm}}">
+                                <span>Dùng ngay</span> 
+                                <i class="fas fa-chevron-right"></i>
+                              </a>
+                            </div> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content account__content">
+              <div class="tab-pane" id="diemtichluy" role="tabpanel" aria-labelledby="diemtichluy-tab">
+                <div class="account__address-form">
+                  <div class="account__address-heading">
+                    <h1 class="account__address-heading-title">Điểm của tôi</h1>
+                    <p class="account__profile-heading-notice">
+                      Bạn đang có <span class="account__point">500</span> điểm.
+                    </p>
+                  </div>
+                  <div class="account__point-table">
+                    <p class="table-title">LỊCH SỬ ĐIỂM</p>
+                    <div class="dashboard-order"> 
+                      <table class="table-responsive">
+                        <thead>
+                          <tr>
+                            <th>Điểm</th>
+                            <th>Thời gian</th>
+                            <th>Nội dung</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="col-center plus">+10</td>
+                            <td class="col-center">01/12/2021</td>
+                            <td>Nhận được 10 điểm khi mua sách thành công</td>
+                          </tr>
+                          <tr>
+                            <td class="col-center minus">-10</td>
+                            <td class="col-center">05/12/2021</td>
+                            <td>Trừ 10 điểm khi đặt sách Thất Tịch không mưa</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div> 
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <!-- JS nav user account (chưa xong)-->
+    <!-- JS nav user account -->
     <script>
+      /*Tài khoản của tôi*/
       $('#user_account').click(function(){
         $('#list_user_account').show();
-        $('#list_user_noti').hide();
-
         $('#hoso').show();
+        $('#diachi').hide();
+        $('#doimatkhau').hide();
+        $('#donhang').hide();
+        $('#thongbao').hide();
+        $('#khovoucher').hide();
+        $('#diemtichluy').hide();
+        $('#account_profile').addClass('account__nav-list-link--active');
       })
 
+      /*Hồ sơ*/
       $('#account_profile').click(function(){
         $('#hoso').show();
-      })
-      $('#account_address').click(function(){
-        $('#diachi').show();
-        $('#hoso').hide();
+        $('#diachi').hide();
+        $('#doimatkhau').hide();
+        $('#donhang').hide();
+        $('#thongbao').hide();
+        $('#khovoucher').hide();
+        $('#diemtichluy').hide();
+        $('#account_profile').addClass('account__nav-list-link--active');
+        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#account_password').removeClass('account__nav-list-link--active');
+        $('#order').removeClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
+        $('#voucher').removeClass('account__nav-list-link--active');
+        $('#point').removeClass('account__nav-list-link--active');
       })
 
-      $('#user_noti').click(function(){
-        $('#list_user_noti').show();
+      /*Địa chỉ*/
+      $('#account_address').click(function(){
+        $('#hoso').hide();
+        $('#diachi').show();
+        $('#doimatkhau').hide();
+        $('#donhang').hide();
+        $('#thongbao').hide();
+        $('#khovoucher').hide();
+        $('#diemtichluy').hide();
+        $('#account_profile').removeClass('account__nav-list-link--active');
+        $('#account_address').addClass('account__nav-list-link--active');
+        $('#account_password').removeClass('account__nav-list-link--active');
+        $('#order').removeClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
+        $('#voucher').removeClass('account__nav-list-link--active');
+        $('#point').removeClass('account__nav-list-link--active');
+      })
+
+      /*Đổi mật khẩu*/
+      $('#account_password').click(function(){
+        $('#hoso').hide();
+        $('#diachi').hide();
+        $('#doimatkhau').show();
+        $('#donhang').hide();
+        $('#thongbao').hide();
+        $('#khovoucher').hide();
+        $('#diemtichluy').hide();
+        $('#account_profile').removeClass('account__nav-list-link--active');
+        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#account_password').addClass('account__nav-list-link--active');
+        $('#order').removeClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
+        $('#voucher').removeClass('account__nav-list-link--active');
+        $('#point').removeClass('account__nav-list-link--active');
+
+      })
+
+      /*Đơn mua*/
+      $('#user_order').click(function(){
         $('#list_user_account').hide();
+        $('#hoso').hide();
+        $('#diachi').hide();
+        $('#doimatkhau').hide();
+        $('#donhang').show();
+        $('#thongbao').hide();
+        $('#khovoucher').hide();
+        $('#diemtichluy').hide();
+        $('#account_profile').removeClass('account__nav-list-link--active');
+        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#account_password').removeClass('account__nav-list-link--active');
+        $('#order').addClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
+        $('#voucher').removeClass('account__nav-list-link--active');
+        $('#point').removeClass('account__nav-list-link--active');
+      })
+
+      /*Thông báo*/
+      $('#user_noti').click(function(){
+        $('#list_user_account').hide();
+        $('#hoso').hide();
+        $('#diachi').hide();
+        $('#doimatkhau').hide();
+        $('#donhang').hide();
+        $('#thongbao').show();
+        $('#khovoucher').hide();
+        $('#diemtichluy').hide();
+        $('#account_profile').removeClass('account__nav-list-link--active');
+        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#account_password').removeClass('account__nav-list-link--active');
+        $('#order').removeClass('account__nav-list-link--active');
+        $('#noti').addClass('account__nav-list-link--active');
+        $('#voucher').removeClass('account__nav-list-link--active');
+        $('#point').removeClass('account__nav-list-link--active');
+      })
+
+      /*Kho voucher*/
+      $('#user_voucher').click(function(){
+        $('#list_user_account').hide();
+        $('#hoso').hide();
+        $('#diachi').hide();
+        $('#doimatkhau').hide();
+        $('#donhang').hide();
+        $('#thongbao').hide();
+        $('#khovoucher').show();
+        $('#diemtichluy').hide();
+        $('#expired_voucher').hide();
+        $('#account_profile').removeClass('account__nav-list-link--active');
+        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#account_password').removeClass('account__nav-list-link--active');
+        $('#order').removeClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
+        $('#voucher').addClass('account__nav-list-link--active');
+        $('#point').removeClass('account__nav-list-link--active');
+        
+      })
+
+      /*Điểm tích lũy*/
+      $('#user_point').click(function(){
+        $('#list_user_account').hide();
+        $('#hoso').hide();
+        $('#diachi').hide();
+        $('#doimatkhau').hide();
+        $('#donhang').hide();
+        $('#thongbao').hide();
+        $('#khovoucher').hide();
+        $('#diemtichluy').show();
+        $('#account_profile').removeClass('account__nav-list-link--active');
+        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#account_password').removeClass('account__nav-list-link--active');
+        $('#order').removeClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
+        $('#voucher').removeClass('account__nav-list-link--active');
+        $('#point').addClass('account__nav-list-link--active');
+      })
+
+      $('#expired_voucher_link').click(function(){
+        $('#expired_voucher_link').addClass('voucher__nav-item-link--active');
+        $('#all_voucher_link').removeClass('voucher__nav-item-link--active');
+
+        $('#expired_voucher').show();
+        $('#all_voucher').hide();
+      })
+
+      $('#all_voucher_link').click(function(){
+        $('#all_voucher_link').addClass('voucher__nav-item-link--active');
+        $('#expired_voucher_link').removeClass('voucher__nav-item-link--active');
+
+        $('#all_voucher').show();
+        $('#expired_voucher').hide();
       })
     </script>
     
@@ -320,7 +689,9 @@
     <script>
       var container = $('#list_day');
       $('#input_day').click(function(){
-        $('#list_day').toggle();
+        $('#list_day').show();
+        if()
+
       })
 
       $('#input_month').click(function(){
@@ -330,6 +701,23 @@
       $('#input_year').click(function(){
         $('#list_year').toggle();
       }) 
+    </script>
+
+    <!--Button Xác nhận đổi mật khẩu
+    <script>
+      function kiemtra{
+        if($('#matkhauht').val()!=""|| $('#matkhaumoi').val()!=""|| $('#xacnhanmk').val()!=""){
+          $('#btn_xacnhan').removeClass.('btn_account--disable');
+          $('#btn_xacnhan').addClass.('btn_account--primary');
+        }
+      }
+    </script>-->
+    <script>
+      $('#btn_danhdau').click(function(){
+        $('.account__notify-item').removeClass('account__notify-item--view');
+        $('#btn_danhdau').removeClass('account__btn-default--primary');
+        $('#btn_danhdau').addClass('account__btn-default--disable');
+      })
     </script>
 </body>
 </html>
