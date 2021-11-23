@@ -10,7 +10,7 @@
       "makm": "102"
     }
   ],
-  "diachigoc": "khu phố 1b, thuận an, bình dương",
+  "diachigoc": "khu phố 1b, Thuận An, Bình Dương",
   "diachigh": "diachi",
   "diem": 0,
   "email": "133@gmail.com",
@@ -28,17 +28,55 @@
   "tinhtrang": "Đang sử dụng",
   "giohang": [
     {
-      "tensach": "Rong Ruổi Scotland Cùng Anh, Em Nhé!"
+      "tensach": "Harry Potter Và Hội Phượng Hoàng - Tập 5 (Tái Bản 2017)",
+      "giaban": 291,
+      "hinhanh": "https://cdn0.fahasa.com/media/catalog/product/cache/1/small_image/600x600/9df78eab33525d08d6e5fb8d27136e95/h/a/harrypottervahondaphuthuytap5.jpg",
+      "soluong": 3
     },
     {
-      "tensach": "Hạt Muối Rong Chơi"
+      "tensach": "Kho Tàng Truyện Tiếu Lâm Việt Nam (Tái Bản 2021)",
+      "giaban": 53,
+      "hinhanh": "https://cdn0.fahasa.com/media/catalog/product/cache/1/small_image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/m/image_221285.jpg",
+      "soluong": 4
     },
     {
-      "tensach": "Điều Kỳ Diệu Của Tiệm Tạp Hóa Namiya (Tái Bản 2018)"
-    },
-    {
-      "tensach": "Harry Potter Và Chiếc Cốc Lửa - Tập 4 (Tái Bản 2017)"
+      "tensach": "Đời Về Cơ Bản Là Buồn Cười (Tái Bản 2020)",
+      "giaban": 59,
+      "hinhanh": "https://cdn0.fahasa.com/media/catalog/product/cache/1/small_image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/m/image_195509_1_36276.jpg",
+      "soluong": 2
     }
   ],
-  "sl_giohang": 4
+  "sl_giohang": 3
+},{
+  "_id": {
+    "$oid": "6199f27015744300b652adaa"
+  },
+  "matk": "hongcute",
+  "email": "hongcute@gmail.com",
+  "matkhau": "123",
+  "diem": 0,
+  "tinhtrang": "Đang sử dụng",
+  "diachigh": "",
+  "diachigoc": "",
+  "gioitinh": "",
+  "sodt": "",
+  "sl_giohang": 2,
+  "ngaytao": {
+    "$date": "2021-11-21T07:17:04.943Z"
+  },
+  "__v": 0,
+  "giohang": [
+    {
+      "tensach": "Tuyển Tập Truyện Ngắn Lỗ Tấn",
+      "giaban": 85,
+      "hinhanh": "https://cdn0.fahasa.com/media/catalog/product/cache/1/small_image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/m/image_195509_1_34807.jpg",
+      "soluong": 1
+    },
+    {
+      "tensach": "Tinh Hoa Văn Chương Việt - Cá Bống Mú",
+      "giaban": 39,
+      "hinhanh": "https://cdn0.fahasa.com/media/catalog/product/cache/1/small_image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/m/image_195509_1_50112.jpg",
+      "soluong": 2
+    }
+  ]
 }]

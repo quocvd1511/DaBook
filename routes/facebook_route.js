@@ -10,11 +10,9 @@ const id_facebook = require('../id_facebook')
 passport.serializeUser(function(user, done) {
   done(null, user)
 })
-
 passport.deserializeUser(function(user, done) {
   done(null, user)
 })
-
 passport.use(
   new FacebookStrategy(
     {

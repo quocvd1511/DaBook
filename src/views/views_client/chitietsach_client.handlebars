@@ -65,8 +65,9 @@
 						<img src="https://vcdn.tikicdn.com/media/catalog/product/n/x/nxbtre_full_21422017_044234.u2769.d20170227.t140710.991739.jpg" />
 					</div>
 				</div>
+				
 				<div id="thumb" class="owl-carousel product-thumb">
-					<div class="item">
+					<div class="item" name="hinhanh">
 						<img src="{{books.hinhanh}}" />
 					</div>
 					<div class="item">
@@ -88,11 +89,12 @@
 						<img src="https://vcdn.tikicdn.com/media/catalog/product/n/x/nxbtre_full_21422017_044234.u2769.d20170227.t140710.991739.jpg" />
 					</div>
 				</div> 
+				
 			</div>
 			<div class="col-md-6">
 				<div class="product-dtl">
 					<div class="product-info">
-						<div class="product-name">
+						<div class="product-name" name="tensach">
 							<h1><b>{{books.tensach}}</b></h1>
 						</div>
 						<div class="reviews-counter">
@@ -110,7 +112,7 @@
 								</div>
 							<span>{{books.sodanhgia}}</span>
 						</div>
-						<div class="product-price-discount"><span>{{books.giaban}}.000 đ</span><span class="line-through">{{books.giagoc}}</span></div>
+						<div class="product-price-discount"><span name="giaban">{{books.giaban}}.000 đ</span><span class="line-through">{{books.giagoc}}</span></div>
 					</div>
 					<p>Tác giả: <span>{{books.tacgia}}</span> </p>
 					<p>Thể loại: <span>{{books.theloai}}</span> </p>
@@ -118,12 +120,13 @@
 					
 					<div class="product-count">
 						<label for="size">Số lượng</label>
-						<form action="#" class="display-flex">
+						<form class="display-flex">
 							<div class="qtyminus">-</div>
-							<input type="text" name="quantity" value="1" class="qty">
+							<input type="text" name="soluong" value="1" class="qty">
 							<div class="qtyplus">+</div>
 						</form>
-						<a href="/themgiohang/{{books.tensach}}" class="round-black-btn">Thêm vào giỏ hàng</a>
+						<a href="" class="round-black-btn">Thêm vào giỏ hàng</a>
+						 {{!-- <button class="round-black-btn" type="submit">Thêm vào giỏ hàng</button> --}}
 					</div>
 				</div>
 				<div class="info-item col-auto border">
@@ -159,6 +162,7 @@
 					</div>
 				</div>
 			</div>
+		
 		<div class="swiper featured-slider">             
                     <div class="swiper-wrapper" style="height: auto; width: 100%">
 					{{#each list_books}}
@@ -371,13 +375,12 @@
 	</div>
 	
 	{{!-- THÊM VÀO GIỎ HÀNG --}}
-	{{!-- <script>
-       var list = document.querySelectorAll('.round-black-btn');
-        Array.prototype.forEach.call(list, function (element,index) {
-			console.log({{books.tensach}})
-              element.href = "/themgiohang/" + {{books.tensach}};
-        });
-    </script> --}}
+	<script>
+      $('round-black-btn').on('click', function(){
+		   var now = $(".qty").val();
+		   this.href = this.href.replace("/themgiohang?tensach={{books.tensach}}&giaban={{books.giaban}}&hinhanh={{books.hinhanh}}&soluong=now")
+	  })
+    </script>
 
 	<script>
         var swiper = new Swiper(".featured-slider", {
@@ -500,6 +503,10 @@
                     $(".qty").val(parseInt(now)+1);
                 }
             });
+			$('.round-black-btn').on("click", function(){
+		   var now = $(".qty").val();
+		   this.href = "/themgiohang?tensach={{books.tensach}}&giaban={{books.giaban}}&hinhanh={{books.hinhanh}}&soluong=" + now;
+	  })
 		});
     </script>
 
