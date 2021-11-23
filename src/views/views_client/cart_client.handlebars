@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/client_styles/assets/css/cart.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    
 </head>
 
 <body>
@@ -37,7 +38,7 @@
                         </div>
                         
                         <div class="col col-price col-numeric align-center ">
-                            <span>{{this.giaban}}.000 đ</span>
+                            <span class="col-price">{{this.giaban}}000 </span>
                         </div>
                 
                         <div class="col-auto col-qty layout-inline">
@@ -47,7 +48,11 @@
                         </div>
                         
                         <div class="col col-vat col-numeric">
+<<<<<<< HEAD
                             <p class="price__item" value="{{tinhtien this.giaban '*' this.soluong}}.000">{{tinhtien this.giaban '*' this.soluong}}.000 đ</p>
+=======
+                            <p class="col-vat" >{{tinhtien this.giaban this.soluong}}000 </p>
+>>>>>>> fac979c72d68766cc5466d62c210ad916c83a1da
                         </div>
                             
                         <div class="col-auto col__bin">               
@@ -64,7 +69,7 @@
                         </div>
                         
                         <div class="col col-price col-numeric align-center ">
-                            <span>{{this.giaban}}.000 đ</span>
+                            <span class="col-price">{{this.giaban}}000 </span>
                         </div>
                 
                         <div class="col-auto col-qty layout-inline">
@@ -116,7 +121,7 @@
                         </div>
                         <div class="cart-delivery" style="padding: 6px 0 14px;">
                             <span style="color: #666;">Phí giao hàng</span>
-                            <span style="color: #666;">40.000 đ</span>
+                            <span class="totals-value" id="cart-shipping" style="color: #666;">40000 </span>
                         </div>
                         <ul class="list-cart">
                             {{!-- <li class="list-cart-item" style="display: none;">
@@ -201,7 +206,7 @@
          var $input = $this.closest('div').find('input');
          var value = parseInt($input.val());
          
-         if (value > 1) {
+         if (value > 2) {
            value = value - 1;
          } else {
            value = 0;
@@ -230,7 +235,7 @@
        var input = $(this);
        var value = parseInt($(this).val());
      
-         if (value < 0 || isNaN(value)) {
+         if (value <= 0 || isNaN(value)) {
            input.val(0);
          } else if
            (value > 100) {
@@ -249,5 +254,78 @@
         document.getElementsByClassName(".cart__total").value = total.toFixed(2) + " đ";
     }
     </script>
+
+    <script>
+
+        var shippingRate = 40000; 
+        var fadeTime = 300;
+
+        /* Assign actions */
+        $('.col-qty input').change( function() {
+        updateQuantity(this);
+        });
+
+        function recalculateCart()
+        {
+        var subtotal = 0;
+        
+        /* Sum up row totals */
+        $('.layout-inline').each(function () {
+            subtotal += parseInt($(this).children('.col-vat').text());
+        });
+
+        console.log(subtotal);
+        
+        /* Calculate totals */
+        var sale = 0;  // Để tạm
+        var shipping = (subtotal > 0 ? shippingRate : 0);
+        var total = subtotal - sale + shipping;
+        console.log(total);
+        
+        /* Update totals display */
+        $('.totals-value').fadeOut(fadeTime, function() {
+            $('#cart-subtotal').html(subtotal.toFixed(2));
+            $('#cart-sale').html(sale.toFixed(2));
+            $('#cart-shipping').html(shipping.toFixed(2));
+            $('#cart-total').html(total.toFixed(2));
+            console.log(total);
+            if(total == 0){
+            $('.btn__buy-book').fadeOut(fadeTime);
+            }else{
+            $('.btn__buy-book').fadeIn(fadeTime);
+            }
+            $('.totals-value').fadeIn(fadeTime);
+        });
+        }
+
+        function updateQuantity(quantityInput)
+        {
+        /* Calculate line price */
+        var productRow = $(quantityInput).parent().parent();
+        var price = parseFloat(productRow.children('.col-price').text());
+        var quantity = $(quantityInput).val();
+        var linePrice = price * quantity;
+        
+        /* Update line price display and recalc cart totals */
+        productRow.children('.col-vat').each(function () {
+            $(this).fadeOut(fadeTime, function() {
+            $(this).text(linePrice.toFixed(2));
+            recalculateCart();
+            $(this).fadeIn(fadeTime);
+            });
+        });  
+        }
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous">
+      </script>
+      <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+      integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+      crossorigin="anonymous">
+      </script>
 </body>
 </html>
