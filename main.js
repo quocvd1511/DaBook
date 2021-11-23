@@ -113,7 +113,21 @@ app.engine('handlebars',
           
             return options.fn(context);
           },
-          'tinhtien': (a, b) => a*b,
+          'tinhtien': function (v1, operator, v2, options) {
+            switch (operator) {
+                case '+':
+                    return (v1 + v2);
+                case '-':
+                    return (v1 - v2);
+                case '*':
+                    return (v1 * v2);
+                case '/':
+                    return (v1 / v2);
+                case '%':
+                    return (v1 * v2 / 100);
+               
+            }
+          }
         }        
 }));
 

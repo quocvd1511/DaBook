@@ -4,14 +4,16 @@ const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
 const client_account = require('../models/client_account')
 const khuyenmai = require('../models/khuyenmai')
+const giohang = require('../models/giohang')
+const donhang = require('../models/donhang')
+
 
 
 class Client_Control
 {
     main(req,res,next)
     {
-        if(req.session.isAuth) {
-            books.find({'giamgia': {$gte: 22}},
+        books.find({'giamgia': {$gte: 22}},
             function (err,flash_sales){
                 if(!err)
                 {
@@ -30,43 +32,17 @@ class Client_Control
                     next(err)
                 }
             })   
-        }else{
-            books.find({'giamgia': {$gte: 22}},
-            function (err,flash_sales){
-                if(!err)
-                {
-                    flash_sales=flash_sales.map(course => course.toObject())
-                    books.find({}).limit(20).skip(20*1)
-                    .then(books => 
-                        {
-                            books=books.map(course => course.toObject())
-                            res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: books, CurrentPage: 1});     
-                        })
-                    .catch(next)            
-                } else {
-                    next(err)
-                }
-            })   
-        }
     }
       
     // POST signup
     signup(req, res, next){
         const formData = req.body;
-        // formData.diem = 0;
-        // formData.makm = 0;
-        // formData.diachigh = '';
-        // formData.sodt = '';
-        // formData.tinhtrang = 'đang sử dụng';
-        // matk: req.session.username,
-        // formData.email = "";
         formData.diem = 0;
         formData.tinhtrang = "Đang sử dụng";
         formData.diachigoc = "";
         formData.gioitinh = "";
         formData.sodt = "";
         formData.sl_giohang = 0;
-
 
         const Client_account = new client_account(formData);
         Client_account.save()
@@ -133,8 +109,10 @@ class Client_Control
                         sl_giohang: 0,
                     }
 
-                    const new_account = new client_account(new_client);
-                    new_account.save();
+                    const Client_account = new client_account(new_client);
+                    Client_account.save()
+                    .then(() => res.redirect('/'))
+                    .catch(error => {});
                 }
             })
         res.redirect('/')
@@ -544,19 +522,6 @@ class Client_Control
         .catch(next)
          }
     }
-    
-    // Giỏ hàng
-    get_giohang(req,res,next)
-    {
-        client_login.findOne({'matk': req.session.username})
-        .then(thongtintk => 
-            {
-                thongtintk=mongooseToObject(thongtintk);
-                res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk})           
-            })
-        .catch(next)
-        
-    }
 
     // Chi tiết sách
     chitietsach(req,res,next)
@@ -609,6 +574,7 @@ class Client_Control
             })
     }
 
+    //phân trang cũ
     get_pagination(req, res, next){
     var perPage = 30; // số lượng sản phẩm xuất hiện trên 1 page
     var page2, page3, page4;
@@ -664,7 +630,7 @@ class Client_Control
     })   
     }
 
-
+    //lưu khuyến mãi
     luukhuyenmai(req,res,next){
         if(req.session.isAuth){
         client_login.updateOne({"matk": req.session.username}, 
@@ -682,6 +648,7 @@ class Client_Control
         }
     }
 
+    //xem chi tiết tài khoản
     chitiettk(req,res,next){
         client_login.findOne({'matk': req.session.username})
         .then(thongtintk => 
@@ -692,29 +659,98 @@ class Client_Control
         .catch(next)
     }
 
+    // thêm vào giỏ hàng
     themgiohang(req,res,next){
-        client_login.updateOne({"matk": req.session.username}, 
+        client_account.updateOne({"matk": req.session.username},
             { $push: { "giohang": {"tensach": req.query.tensach, "giaban": req.query.giaban, "hinhanh": req.query.hinhanh, "soluong": req.query.soluong}}, 
             $inc: {"sl_giohang": +1}
         })
         .then(() => 
         {
-            res.redirect('/chitietsach/' + req.query.tensach);
-        })
+        const tongtien = req.query.giaban * req.query.soluong;
+
+        giohang.find({"matk": req.session.username}).exec(function(err, docs) {
+            if (docs.length){
+                giohang.updateOne({"matk": req.session.username},
+                { $push: { "ds_sach": {"tensach": req.query.tensach, "giaban": req.query.giaban, "hinhanh": req.query.hinhanh, "soluong": req.query.soluong}}, 
+                $inc: {"sl_sach": +1, "tongtien": + tongtien}
+                })
+                .then(() => 
+                {
+                    res.redirect('/chitietsach/' + req.query.tensach);
+                }).catch(next)
+            } else {
+                const newgiohang = new giohang({
+                    matk: req.session.username,
+                    sl_sach: 1,
+                    tongtien: tongtien,
+                    $push: {"ds_sach": {"tensach": req.query.tensach, "giaban": req.query.giaban, "hinhanh": req.query.hinhanh, "soluong": req.query.soluong}},
+                    diachigh: req.query.diachigh,
+                });
+                
+                newgiohang.save(function (err, gh) {
+                    if (err) return console.error(err);
+                    res.redirect('/chitietsach/' + req.query.tensach)
+                  });
+              }
+            });
+        });
     }
 
+    //xem chi tiết giỏ hàng
     chitietgiohang(req,res,next){
                 client_login.findOne({'matk': req.session.username})
                 .then(thongtintk => 
                     {
                         thongtintk=mongooseToObject(thongtintk);
-                        res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk})           
+                        giohang.findOne({'matk': req.session.username}).then(gh =>{
+                            gh=mongooseToObject(gh);
+                            res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, giohang: gh})         
+                        })
                     })
                     .catch(next)
     }
 
+    // áp dụng khuyến mãi
+    nhapkhuyenmai(req,res,next){
+        client_login.find({"danhsach_km": {"makm": req.query.makm}})
+        .then(() => 
+            {
+                client_login.updateOne({"matk": req.session.username}, 
+                { $pull: { "danhsach_km": {"makm": req.query.makm }}
+                })
+                .then(() => 
+                {
+                client_login.findOne({'matk': req.session.username})
+                .then(thongtintk => 
+                    {
+                        thongtintk=mongooseToObject(thongtintk);
+                        khuyenmai.findOne({'makm': req.query.makm})
+                        .then(makm =>
+                        {
+                            makm=mongooseToObject(makm);
+                            res.render('cart_client.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, makhuyenmai: makm})           
+                        })
+                        .catch(next)       
+                    })
+                    .catch(next)
+                                    
+                })  
+                 
+            })
+            .catch(next)
+        
+    }
+
+    // thanh toán đơn hàng
     thanhtoan(req,res,next){
-        res.render('payment.handlebars',{layout: 'client.handlebars', client_accounts: req.session.username})
+        client_login.findOne({'matk': req.session.username})
+        .then(thongtintk => 
+            {
+                thongtintk=mongooseToObject(thongtintk);
+                res.render('payment.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk})            })
+            .catch(next)
+        
     }
 }
 
