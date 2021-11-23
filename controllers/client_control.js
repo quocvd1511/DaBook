@@ -10,6 +10,7 @@ class Client_Control
 {
     main(req,res,next)
     {
+        
         if(req.session.isAuth) {
             books.find({'giamgia': {$gte: 22}},
             function (err,flash_sales){
@@ -18,13 +19,19 @@ class Client_Control
                     flash_sales=flash_sales.map(course => course.toObject())
                     client_login.findOne({'matk': req.session.username}).then((thongtintk => {
                     thongtintk=mongooseToObject(thongtintk);
-                    books.find({}).limit(20).skip(20*1)
-                    .then(books => 
-                        {
-                            books=books.map(course => course.toObject())
-                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: thongtintk, flash_sales: flash_sales, books: books, CurrentPage: 1});     
-                        })
-                    .catch(next) 
+                    books.find({}, function(err,temp_book)
+                    {
+                        temp_book=temp_book.map(course => course.toObject())
+                        const page = parseInt(req.query.page)
+                        books.find({}).limit(20).skip(20*page)
+                        .then(books => 
+                            {
+                                books=books.map(course => course.toObject())
+                                console.log(temp_book)
+                                res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: thongtintk, flash_sales: flash_sales, books: books, sl_sach: temp_book });     
+                            })
+                        .catch(next) 
+                    })
                     }))           
                 } else {
                     next(err)
@@ -36,19 +43,32 @@ class Client_Control
                 if(!err)
                 {
                     flash_sales=flash_sales.map(course => course.toObject())
-                    books.find({}).limit(20).skip(20*1)
-                    .then(books => 
+                    //console.log(flash_sales)
+                    const page = parseInt(req.query.page)
+                    books.find({}, function(err,temp_book)
+                    {
+                        if(!err)
                         {
-                            books=books.map(course => course.toObject())
-                            res.render('home_client.handlebars',{layout:'client.handlebars', flash_sales: flash_sales, books: books, CurrentPage: 1});     
-                        })
-                    .catch(next)            
+                        temp_book=temp_book.map(course => course.toObject())
+                        const page = parseInt(req.query.page)
+                        books.find({}).limit(20).skip(20*page)
+                        .then(books => 
+                            {
+                                books=books.map(course => course.toObject())
+                                console.log(temp_book)
+                                res.render('home_client.handlebars',{layout:'client.handlebars',flash_sales: flash_sales, books: books, sl_sach: temp_book });     
+                            })
+                        .catch(next) 
+                        }
+                        else next(err)
+                    })         
                 } else {
                     next(err)
                 }
             })   
         }
     }
+
       
     // POST signup
     signup(req, res, next){
