@@ -1,0 +1,109 @@
+[{
+  "_id": {
+    "$oid": "61920dbed688143f4c94ddc4"
+  },
+  "makm": "MGG15",
+  "phantram": 15,
+  "loai": "mã giảm giá",
+  "noidung": "nhà giáo Việt Nam",
+  "ngaybd": {
+    "$date": "2021-11-19T00:00:00Z"
+  },
+  "ngaykt": {
+    "$date": "2021-11-20T00:00:00Z"
+  },
+  "sl": 1,
+  "manhap": "MGG15",
+  "dieukien": 200,
+  "daluu": 3
+},{
+  "_id": {
+    "$oid": "61920dbed688143f4c94ddc5"
+  },
+  "makm": "MPGH10",
+  "phantram": 10,
+  "loai": "miễn phí giao hàng",
+  "noidung": "siêu sale 12.12",
+  "ngaybd": {
+    "$date": "2021-12-11T17:00:00Z"
+  },
+  "ngaykt": {
+    "$date": "2021-12-11T17:00:00Z"
+  },
+  "sl": 2,
+  "manhap": "MPGH10",
+  "dieukien": 100,
+  "daluu": 2
+},{
+  "_id": {
+    "$oid": "61920dbed688143f4c94ddc6"
+  },
+  "makm": "KHTT20",
+  "phantram": 20,
+  "loai": "ưu đãi khách hàng thân thiết",
+  "noidung": "sinh nhật Dabook",
+  "ngaybd": {
+    "$date": "2021-01-11T17:00:00Z"
+  },
+  "ngaykt": {
+    "$date": "2021-02-11T17:00:00Z"
+  },
+  "sl": 5,
+  "manhap": "KHTT20",
+  "dieukien": 250,
+  "daluu": 0
+},{
+  "_id": {
+    "$oid": "6197d80a98339f07e4881461"
+  },
+  "makm": "MGG104",
+  "phantram": 20,
+  "loai": "mã giảm giá",
+  "noidung": "nhà giáo Việt Nam",
+  "ngaybd": {
+    "$date": "2021-11-20T00:00:00Z"
+  },
+  "ngaykt": {
+    "$date": "2021-11-20T00:00:00Z"
+  },
+  "sl": 0,
+  "manhap": "MGG104",
+  "dieukien": 200,
+  "daluu": 1
+},{
+  "_id": {
+    "$oid": "6197d80a98339f07e4881462"
+  },
+  "makm": "MPGH105",
+  "phantram": 10,
+  "loai": "miễn phí giao hàng",
+  "noidung": "siêu sale 12.12",
+  "ngaybd": {
+    "$date": "2021-12-11T17:00:00Z"
+  },
+  "ngaykt": {
+    "$date": "2021-12-11T17:00:00Z"
+  },
+  "sl": 4,
+  "manhap": "MPGH105",
+  "dieukien": 100,
+  "daluu": 0
+},{
+  "_id": {
+    "$oid": "6197d80a98339f07e4881463"
+  },
+  "makm": "KHTT106",
+  "phantram": 20,
+  "loai": "ưu đãi khách hàng thân thiết",
+  "noidung": "sinh nhật Dabook",
+  "ngaybd": {
+    "$date": "2021-01-11T17:00:00Z"
+  },
+  "ngaykt": {
+    "$date": "2021-02-11T17:00:00Z"
+  },
+  "sl": 5,
+  "manhap": "KHTT106",
+  "dieukien": 250,
+  "daluu": 0
+}]
