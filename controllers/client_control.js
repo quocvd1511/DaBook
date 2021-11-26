@@ -20,19 +20,26 @@ class Client_Control
                     flash_sales=flash_sales.map(course => course.toObject())
                     client_login.findOne({'matk': req.session.username}).then((thongtintk => {
                     thongtintk=mongooseToObject(thongtintk);
-                    books.find({}).limit(20).skip(20*1)
-                    .then(books => 
-                        {
-                            books=books.map(course => course.toObject())
-                            res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: thongtintk, flash_sales: flash_sales, books: books, CurrentPage: 1});     
-                        })
-                    .catch(next) 
+                    books.find({}, function(err,temp_book)
+                    {
+                        temp_book=temp_book.map(course => course.toObject())
+                        const page = parseInt(req.query.page)
+                        books.find({}).limit(20).skip(20*page)
+                        .then(books => 
+                            {
+                                books=books.map(course => course.toObject())
+                                console.log(temp_book)
+                                res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: thongtintk, flash_sales: flash_sales, books: books, sl_sach: temp_book });     
+                            })
+                        .catch(next) 
+                    })
                     }))           
                 } else {
                     next(err)
                 }
             })   
     }
+
       
     // POST signup
     signup(req, res, next){
@@ -654,7 +661,21 @@ class Client_Control
         .then(thongtintk => 
             {
                 thongtintk=mongooseToObject(thongtintk);
-                res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk})
+                client_login('danhsach_makm').aggregate([
+                    { $lookup:
+                       {
+                         from: 'khuyenmai',
+                         localField: 'makh_id',
+                         foreignField: 'makm',
+                         as: 'chitietkm'
+                       }
+                     }
+                    ]).toArray(function(err, res) {
+                    if (err) throw err;
+                    console(res);
+                    res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk, ctkm: res})
+                    client_login.close();
+                  });
             })
         .catch(next)
     }

@@ -538,29 +538,29 @@
               </div>
 
               {{!-- PHÂN TRANG --}}
-              
+
               <div class="content_detail__pagination cdp" actpage="1">
                 <a href="#!-1" class="cdp_i">prev</a>
-                <a href="#!1" class="cdp_i">1</a>
-                <a href="#!2" class="cdp_i">2</a>
-                <a href="#!3" class="cdp_i">3</a>
-                <a href="#!4" class="cdp_i">4</a>
-                <a href="#!5" class="cdp_i">5</a>
-                <a href="#!6" class="cdp_i">6</a>
-                <a href="#!7" class="cdp_i">7</a>
-                <a href="#!8" class="cdp_i">8</a>
-                <a href="#!9" class="cdp_i">9</a>
-                <a href="#!10" class="cdp_i">10</a>
-                <a href="#!11" class="cdp_i">11</a>
-                <a href="#!12" class="cdp_i">12</a>
-                <a href="#!13" class="cdp_i">13</a>
-                <a href="#!14" class="cdp_i">14</a>
-                <a href="#!15" class="cdp_i">15</a>
-                <a href="#!16" class="cdp_i">16</a>
-                <a href="#!17" class="cdp_i">17</a>
-                <a href="#!18" class="cdp_i">18</a>
-                <a href="#!19" class="cdp_i">19</a>
-                <a href="#!+1" class="cdp_i">next</a>
+                {{!-- <a href="?page=1" class="cdp_i">1</a> --}}
+                {{!-- <a href="?page=2" class="cdp_i">2</a>
+                <a href="?page=3" class="cdp_i">3</a>
+                <a href="?page=4" class="cdp_i">4</a>
+                <a href="?page=5" class="cdp_i">5</a>
+                <a href="?page=6" class="cdp_i">6</a>
+                <a href="?page=7" class="cdp_i">7</a>
+                <a href="?page=8" class="cdp_i">8</a>
+                <a href="?page=9" class="cdp_i">9</a>
+                <a href="?page=10" class="cdp_i">10</a>
+                <a href="?page=11" class="cdp_i">11</a>
+                <a href="?page=12" class="cdp_i">12</a>
+                <a href="?page=13" class="cdp_i">13</a>
+                <a href="?page=14" class="cdp_i">14</a>
+                <a href="?page=15" class="cdp_i">15</a>
+                <a href="?page=16" class="cdp_i">16</a>
+                <a href="?page=17" class="cdp_i">17</a>
+                <a href="?page=18" class="cdp_i">18</a>
+                <a href="?page=19" class="cdp_i">19</a>
+                <a href="#!+1" class="cdp_i">next</a> --}}
               </div>
             </div>
           </div>
@@ -591,18 +591,57 @@
     </script>
 
     <script>
-      window.onload = function(){
+      window.onload = function()
+      {
+        //--------------------------------------------------
+        var count=0
+        {{#each sl_sach}}
+          count++
+        {{/each}}
+        count=Math.ceil(count/20)
+        var temp=count
+        count=1
+        while(count<temp)
+        {
+          var linkE ="?page="+count.toString()
+          var final="<a href=\""+linkE+"\" class=\"cdp_i\">"+count.toString()+"</a>"
+         // console.log(final)
+          $('.cdp').append(final)
+          count++
+        }
+        $('.cdp').append("<a href=\"#!+1\" class=\"cdp_i\">next</a>")
+        //----------------------------------------------------
+
+        const params = new URLSearchParams(window.location.search)
+        //console.log(typeof params.get('page'))
+        if(Boolean(params.get('page')))
+        {
+            $('.cdp').attr('actpage', params.get('page'));
+        } else  $('.cdp').attr('actpage',1);
         var paginationPage = parseInt($('.cdp').attr('actpage'), 10);
-        $('.cdp_i').on('click', function(){
+        $('.cdp_i').on('click', function()
+        {
           var go = $(this).attr('href').replace('#!', '');
-          if (go === '+1') {
-            paginationPage++;
-          } else if (go === '-1') {
-            paginationPage--;
-          }else{
+
+          if (go === '+1') 
+          {
+            let temp="?page="+(parseInt(params.get('page'))+1).toString()
+            $(this).attr('href',temp)
+          } 
+          else if (go === '-1')
+           {
+            let temp="?page="+(parseInt(params.get('page'))-1).toString()
+            $(this).attr('href',temp)
+          }
+          else
+          {
+            //$('.cdp').attr('actpage', params.get('page'));
             paginationPage = parseInt(go, 10);
           }
-          $('.cdp').attr('actpage', paginationPage);
+
+          //const params = new URLSearchParams(window.location.search)
+          //console.log(typeof params.get('page'))
+          $('.cdp').attr('actpage', params.get('page'));
         });
       };
     </script>
