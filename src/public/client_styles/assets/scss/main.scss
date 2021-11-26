@@ -1200,7 +1200,7 @@ padding-right: 4px;
       height: 38px;
       min-width: 38px;
       border-radius: 38px;
-      border: 2px solid #666;
+      border: 2px solid transparent;
       line-height: 33px;
       padding: 0;
       color: #666;
@@ -1223,7 +1223,7 @@ padding-right: 4px;
   
     &_i:hover {
       background-color: #1A94FF;
-      color: #666;
+      color: #fff;
     }
   
     &:not([actpage="1"]) &_i:nth-child(1) {
@@ -1257,7 +1257,7 @@ padding-right: 4px;
       // active
       .cdp_i:nth-child(#{$i + 1}) {
         background-color: #1A94FF;
-        color: #666;
+        color: #fff;
         display: inline-block;
   
         +.cdp_i:last-child {
