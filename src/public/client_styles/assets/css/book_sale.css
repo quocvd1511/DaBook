@@ -48,61 +48,94 @@
   margin-top: 24px;
 }
 
-.sale__voucher-container {
-  border-radius: 3px;
-  justify-content: center;
-  margin: 12px 0;
-}
 
-.sale__voucher-logo {
-  background-color: var(--blue-color);
-  padding: 8px;
-  width: 100px;
-  border-radius: 2px;
-}
-
-.sale__card {
-  margin: 8px;
-}
-
-.sale__card-text {
-  font-size: 1.3rem;
-  font-weight: 400;
-}
-
-.btn__save {
-  float: right;
-  margin: 0 8px;
-  width: 50px;
-  height: 30px;
-  text-decoration: none;
-  border: none;
-  border-radius: 3px;
-  font-size: 1.5rem;
-  padding: 0 8px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn__save--primary{
-  color: var(--white-color);
-  background-color: var(--blue-color);
-  cursor: pointer;
-}
-
-.btn__save--primary:hover {
-  opacity: 0.7;
-}
-
-.btn__save--disable{
-  opacity: 0.5;
-  color: black;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.account-btn--disable:hover{
-  cursor: not-allowed;
+  .list-card{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
   }
   
+  .sale__card {
+    display: flex;
+    max-height: 100px;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+    margin: 20px 20px 0 20px;
+    box-sizing: border-box;
+  }
+  
+  .sale-img{
+    flex: 0;
+    z-index: 0;
+  }
+  
+  .sale__voucher-logo {
+    width: 100px;
+    padding: 8px;
+    background-color: var(--blue-color);
+    border-radius: 2px;
+    margin-top: -1;
+    margin-left: -1;
+  }
+  
+  .sale__card-content{
+    align-items: center;
+    display: flex;
+  }
+  
+  .card-container{
+    margin-left: 10px;
+    width: 200px;
+  }
+  
+  .sale__card-text {
+    font-size: 1.4rem;
+    font-weight: 400;
+    flex: 1;
+  }
+
+  .card-button{
+    width: 150px;
+  }
+  
+  .btn__save {
+    float: right;
+    width: 70px;
+    height: 35px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.5rem;
+    padding: 0 10px;
+    margin-right: 20px;
+    font-weight: 500;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn__save--primary{
+    color: var(--white-color);
+    background-color: var(--blue-color);
+  }
+  
+  .btn__save--primary:hover {
+    opacity: 0.7;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--white-color);
+  }
+  
+  .btn__save--disable{
+    cursor: not-allowed;
+    opacity: 0.5;
+    color: var(--black-color);
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn__save--disable:hover{
+    text-decoration: none;
+    color: var(--black-color);
+  } 
+    

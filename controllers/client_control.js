@@ -656,28 +656,45 @@ class Client_Control
     }
 
     //xem chi tiết tài khoản
+    // chitiettk(req,res,next){
+    //     client_login.findOne({'matk': req.session.username})
+    //     .then(thongtintk => 
+    //         {
+    //             thongtintk=mongooseToObject(thongtintk);
+    //             client_login('danhsach_makm').aggregate([
+    //                 { $lookup:
+    //                    {
+    //                      from: 'khuyenmai',
+    //                      localField: 'makh_id',
+    //                      foreignField: 'makm',
+    //                      as: 'chitietkm'
+    //                    }
+    //                  }
+    //                 ]).toArray(function(err, res) {
+    //                 if (err) throw err;
+    //                 console(res);
+    //                 res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk})
+    //                 client_login.close();
+    //               });
+    //         })
+    //     .catch(next)
+    // }
     chitiettk(req,res,next){
+
         client_login.findOne({'matk': req.session.username})
-        .then(thongtintk => 
+
+        .then(thongtintk =>
+
             {
+
                 thongtintk=mongooseToObject(thongtintk);
-                client_login('danhsach_makm').aggregate([
-                    { $lookup:
-                       {
-                         from: 'khuyenmai',
-                         localField: 'makh_id',
-                         foreignField: 'makm',
-                         as: 'chitietkm'
-                       }
-                     }
-                    ]).toArray(function(err, res) {
-                    if (err) throw err;
-                    console(res);
-                    res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk, ctkm: res})
-                    client_login.close();
-                  });
+
+                res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk})
+
             })
+
         .catch(next)
+
     }
 
     // thêm vào giỏ hàng
