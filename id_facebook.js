@@ -1,6 +1,6 @@
 const id=
 {
-    clientid: "1254302755092908",
-    secretid: "f93b2f09e77ee4730b89e25a3690dfa4",
+    clientid: "1585513025115259",
+    secretid: "6eba2961329ccbcdad2a580bcc184eab",
 }
 module.exports = id
