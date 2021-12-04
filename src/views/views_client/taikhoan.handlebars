@@ -130,16 +130,16 @@
                     <form> 
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Tên đăng nhập</label>
-                        <p class="account__content-profile-text">anhongkimy</p>
+                        <p class="account__content-profile-text">{{client_accounts.matk}}</p>
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Email</label>
-                        <p class="account__content-profile-text">anhongkimy@abc.com</p>
+                        <p class="account__content-profile-text">{{client_accounts.email}}</p>
                         <a class="account__content-profile-link" href="#">Thay đổi</a>
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Số điện thoại</label>
-                        <p class="account__content-profile-text">019283745</p>
+                        <p class="account__content-profile-text">{{client_accounts.sodt}}</p>
                         <a  class="account__content-profile-link" href="#">Thay đổi</a>
                       </div>
                       <div class="account__content-profile-row">
@@ -241,16 +241,16 @@
                       <div class="account__address-info-content">
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Họ và tên</label>
-                          <p class="account__content-address-text">Nguyễn Văn A</p>  
+                          <p class="account__content-address-text">{{client_accounts.hoten}}</p>  
                           <p class=" account__content-address-text address-mode" id="address_mode">Địa chỉ mặc định</p> 
                         </div>
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Số điện thoại</label>
-                          <p class="account__content-address-text">81024872</p>  
+                          <p class="account__content-address-text">{{client_accounts.sodt}}</p>  
                         </div>
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Địa chỉ</label>
-                          <p class="account__content-address-text">Số 34, tổ 7, đường Võ Tấn Đức, khóm 2, thị trấn Tam Bình, huyện Tam Bình ,tỉnh Vĩnh Long</p>  
+                          <p class="account__content-address-text">{{client_accounts.diachigoc}}</p>  
                         </div>
                       </div>
                       <div class="account__address-info-btn">
@@ -429,15 +429,17 @@
                   <form>
                     <div class="tab-pane" id="all_voucher" role="tabpanel" aria-labelledby="all_voucher-tab">
                       <div class="list-card">
+                       {{#each client_accounts.danhsach_km}}
+                     
                         <div class="account__card">
                           <div class="account__card-img">
                             <img src="/client_styles/assets/img/logo.png" class="account__voucher-logo">
                           </div>
                           <div class="account__card-content">
                             <div class="card-container">
-                              <h3 class="card-title khachhang" name="{{this.makm}}">Giảm {{this.phantram}}%</h3>      
-                              <p class="card-text account__card-text">Đơn hàng từ {{this.dieukien}}.000VNĐ</p>                                       
-                              <p class="card-text account__card-text"><small class="text-muted">HSD: 31/12/2021</small></p>
+                              <h3 class="card-title khachhang" name="{{this.makm}}">Giảm {{this.phantram}}%</h3>
+                              <p class="card-text account__card-text">Mã nhập {{this.makm}}</p>                                       
+                              <p class="card-text account__card-text"><small class="text-muted">HSD: {{this.ngaybd}}</small></p>
                             </div> 
                             <div>
                               <a href="" class="card-link" name="{{this.makm}}">
@@ -447,6 +449,7 @@
                             </div> 
                           </div>
                         </div>
+                        {{/each}}
                       </div>
                     </div>
                     <div class="tab-pane" id="expired_voucher" role="tabpanel" aria-labelledby="expired_voucher-tab">

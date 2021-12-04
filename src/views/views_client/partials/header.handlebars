@@ -362,7 +362,7 @@
                       <label class="auth-form__label">Mật khẩu</label>
                       <input
                         name="matkhau"
-                        type="text"
+                        type="password"
                         class="auth-form__input"
                         placeholder="Nhập mật khẩu"
                         id = "input_nmatkhau"
@@ -371,7 +371,7 @@
                     <div class="auth-form__group">
                       <label class="auth-form__label">Xác nhận mật khẩu</label>
                       <input
-                        type="text"
+                        type="password"
                         class="auth-form__input"
                         placeholder="Nhập lại mật khẩu"
                         id = "input_xacnhanmk"
@@ -381,6 +381,14 @@
 
                   <div class="auth-form__controls">
                     <button class="btn btn--primary btn__signin" id="dangky" type="submit">Đăng ký</button>
+                    <div class="modal-message hide-message" id="message">
+                      <div class="modal__inner-message">
+                        <div class="modal__body-message">
+                          <h2>Đăng ký thành công</h2>
+                          <i class="far fa-check-circle" style="color: var(--blue-color); font-size:100px; text-align:center;"></i>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="auth-form__socials">
@@ -547,29 +555,11 @@
       crossorigin="anonymous"
     ></script>
 
-    
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
       $('#dangky').click(function(){
-        var tenkh= $('#input_tentk').val();
-        var lienlac= $('#input_lienlac').val();
-        var nmatkhau= $('#input_nmatkhau').val();
-        var xacnhanmk= $('#input_xacnhanmk').val();
-        if( tenkh=="" || lienlac=="" || nmatkhau=="" || xacnhanmk==""){
-          Swal.fire({
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#1A94FF',
-            icon: 'error',
-            title: 'Vui lòng nhập đầy đủ thông tin'
-          })
-        }
-        else{
-          Swal.fire({
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#1A94FF',
-            icon: 'success',
-            title: 'Đăng ký thành công'
-          })
+        if($('#input_tentk').val()!=""||$('#input_lienlac').val()!=""||$('#input_nmatkhau').val()!=""||$('#input_xacnhanmk').val()!="")
+        {
+          $('#message').removeClass('hide-message');
         }
       })
     </script>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Document</title>
+    <title>DaBook Shop</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/client_styles/assets/css/payment.css">
@@ -23,10 +23,10 @@
                 <a href="">Thay đổi</a>
             </div>
             <div class="shipping__info--user">
-                <span> <i class="far fa-id-badge" style="color: rgb(0, 132, 255); padding: 10px;"></i> Tần Thùy Trang</span>
-                <span>0943738385</span>
+                <span> <i class="far fa-id-badge" style="color: rgb(0, 132, 255); padding: 10px;"></i> {{client_accounts.hoten}}</span>
+                <span>{{client_accounts.sodt}}</span>
             </div>
-            <span> <i class="ti-location-pin" style="color: rgb(0, 132, 255); padding: 8px"></i> Xóm 4, Thôn 10, Xã EaKtur, Huyện CưKuin, tỉnh Đăk Lăk</span>
+            <span> <i class="ti-location-pin" style="color: rgb(0, 132, 255); padding: 8px"></i> {{client_accounts.diachigoc}}</span>
         </div>
 
         <div class="col-8 bill__info">

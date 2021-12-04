@@ -30,59 +30,59 @@
                    
                     {{#each client_accounts.giohang}}
                     {{#chanle @index}}
-                    <div class="layout-inline row">
-                        <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
-                        <div class="col-4 col-pro layout-inline">
-                            <img class="cart__img" src="{{this.hinhanh}}"alt="">
-                            <p class="item__name">{{this.tensach}}</p>
-                        </div>
+                        <div class="layout-inline row">
+                            <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
+                            <div class="col-4 col-pro layout-inline">
+                                <img class="cart__img" src="{{this.hinhanh}}"alt="">
+                                <p class="item__name">{{this.tensach}}</p>
+                            </div>
+                        <div class="layout-inline row row-bg2">
+                            <div class="col col-price col-numeric align-center" id="giaban">
+                                    <span class="col-price" id="id_giaban">{{this.giaban}}000 </span>
+                            </div>
                         
-                        <div class="col col-price col-numeric align-center ">
-                            <span class="col-price">{{this.giaban}}000 </span>
+                            <div class="col-auto col-qty layout-inline">
+                                <a href="#" class="qty qty-minus"><span>-</span></a>
+                                <input class="input__qty" id="id_soluong" type="numeric" value="{{this.soluong}}" />
+                                <a href="#" class="qty qty-plus"><span>+</span></a>
+                            </div>
+                                
+                            <div class="col col-vat col-numeric" id="thanhtien">
+                                <p class="price__item" id="id_thanhtien" value="{{tinhtien this.giaban '*' this.soluong}}.000">{{tinhtien this.giaban '*' this.soluong}}.000 đ</p>
+                            </div>
+                                    
+                            <div class="col-auto col__bin">               
+                                <i class="far fa-trash-alt"></i>
+                            </div>
                         </div>
-                
-                        <div class="col-auto col-qty layout-inline">
-                            <a href="#" class="qty qty-minus"><span>-</span></a>
-                            <input class="input__qty" type="numeric" value="{{this.soluong}}" />
-                            <a href="#" class="qty qty-plus"><span>+</span></a>
                         </div>
-                        
-                        <div class="col col-vat col-numeric">
-                            <p class="col-vat" >{{tinhtien this.giaban this.soluong}}000 </p>
-                        </div>
-                            
-                        <div class="col-auto col__bin">               
-                            <i class="far fa-trash-alt"></i>
-                        </div>
-                    </div>
                     {{else}}
-                    <div class="layout-inline row row-bg2">
-            
-                        <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
-                        <div class="col-4 col-pro layout-inline">
-                            <img class="cart__img" src="{{this.hinhanh}}"alt="">
-                            <p class="item__name">{{this.tensach}}</p>
-                        </div>
+                        <div class="layout-inline row row-bg2">
+                            <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
+                            <div class="col-4 col-pro layout-inline">
+                                <img class="cart__img" src="{{this.hinhanh}}"alt="">
+                                <p class="item__name">{{this.tensach}}</p>
+                            </div>
+                        <div class="layout-inline row row-bg2">
+                            <div class="col col-price col-numeric align-center" id="giaban">
+                                    <span class="col-price" id="id_giaban">{{this.giaban}}000 </span>
+                            </div>
                         
-                        <div class="col col-price col-numeric align-center ">
-                            <span class="col-price">{{this.giaban}}000 </span>
+                            <div class="col-auto col-qty layout-inline">
+                                <a href="#" class="qty qty-minus"><span>-</span></a>
+                                <input class="input__qty" id="id_soluong" type="numeric" value="{{this.soluong}}" />
+                                <a href="#" class="qty qty-plus"><span>+</span></a>
+                            </div>
+                                
+                            <div class="col col-vat col-numeric" id="thanhtien">
+                                <p class="price__item" id="id_thanhtien" value="{{tinhtien this.giaban '*' this.soluong}}.000">{{tinhtien this.giaban '*' this.soluong}}.000 đ</p>
+                            </div>
+                                    
+                            <div class="col-auto col__bin">               
+                                <i class="far fa-trash-alt"></i>
+                            </div>
                         </div>
-                
-                        <div class="col-auto col-qty layout-inline">
-                            <a href="#" class="qty qty-minus"><span>-</span></a>
-                            <input class="input__qty" type="numeric" value="{{this.soluong}}" />
-                            <a href="#" class="qty qty-plus"><span>+</span></a>
                         </div>
-                        
-                        <div class="col col-vat col-numeric">
-                            <p class="col-vat">{{tinhtien this.soluong this.giaban}}000 </p>
-                        </div>
-                            
-                        <div class="col-auto col__bin">               
-                            <i class="far fa-trash-alt"></i>
-                        </div>
-                    
-                    </div>
                     {{/chanle}}
                 {{/each}}
                     <div class="tf">
@@ -98,13 +98,13 @@
                         <div class="user__cart-delivery">
                             <div>
                                 <span style="font-weight: 400;">Giao hàng đến: </span>
-                                <span style="font-weight: 400;">{{thongtin.matk}}</span>
+                                <span style="font-weight: 400;">{{client_accounts.matk}}</span>
                             </div>
                             <div>
-                                <span style="font-weight: 400;">Số điện thoại: 0{{thongtin.sodt}}</span>
+                                <span style="font-weight: 400;">Số điện thoại: 0{{client_accounts.sodt}}</span>
                             </div>
                             <div class="cart_address">
-                                <span style="font-weight: 400;">Địa chỉ: {{thongtin.diachigh}} </span>
+                                <span style="font-weight: 400;">Địa chỉ: {{client_accounts.diachigh}} </span>
                             </div>
                             <a href="" style="text-decoration: none; justify-content: space-around;">Thay đổi</a>
                         </div>
@@ -113,25 +113,50 @@
                         </div>
                         <div class="cart-delivery" style="padding: 2px 0;">
                             <span style="color: #666;">Tạm tính </span>
-                            <span style="color: #666;">(0) sản phẩm </span>
+                            <span style="color: #666;" id="id_soluong_sanpham">(0) sản phẩm </span>
                         </div>
                         <div class="cart-delivery" style="padding: 6px 0 14px;">
                             <span style="color: #666;">Phí giao hàng</span>
                             <span class="totals-value" id="cart-shipping" style="color: #666;">40000 </span>
                         </div>
                         <ul class="list-cart">
-                            <li class="list-cart-item">
-                                <div class="input__sale">
-                                    <input class="form__code-sale" id="input__code-sale" type="input" placeholder="Nhập mã khuyến mãi">
-                                    <button type="submit" class="btn__apply" id="apply" >Áp dụng</button>
+                            {{!-- <li class="list-cart-item" style="display: none;">
+                                <i class="fas fa-city"></i>
+                                Nội thành: TP HCM
+                                <div class="cart-prices">
+                                    <div class="cart-price">
+                                        <span>20.000 đ</span>
+                                    </div>
                                 </div>
+                            </li>
+                            <li class="list-cart-item">
+                                <i class="fas fa-map-marked-alt"></i>
+                                Ngoại thành
+                                <div class="cart-prices">
+                                    <div class="cart-price">
+                                        <span>40.000 đ</span>
+                                    </div>
+                                </div>
+                            </li> --}}
+                            
+                            <li class="list-cart-item">
+                                <form method="get" action="/nhapkhuyenmai" class="input__sale">
+                                    <input class="form__code-sale" id="input__code-sale" type="text" placeholder="Nhập mã khuyến mãi" name="makm" value="{{makhuyenmai.makm}}">
+                                    <button type="submit" class="btn__apply" id="apply" >Áp dụng</button>
+                                </form>
                                 <div class="cart__sale">
                                     <span>Giảm giá:</span>
-                                    <span class="totals-value" id="cart-sale">0 </span>
+                                    {{#if makhuyenmai}}
+                                    <span> {{tinhtien 100 '%' makhuyenmai.phantram }}.000 đ</span>
+                                    {{else}}
+                                    <span> 0đ</span>
+                                    {{/if}}
                                 </div>
                                 <div class="cart__total">
                                     <span>Tổng tiền:</span>
-                                    <span class="totals-value" id="cart-total">197000</span>
+                                    {{!-- {{#each client_accounts.giohang}} --}}
+                                    <span id="tongtien"></span>
+                                    {{!-- {{/each}} --}}
                                 </div>
                             </li>
 
@@ -145,15 +170,31 @@
                 
         </div>
     </div>
-    
-    <script>
-        $('.qty qty-plus').on('click', function(){
-
-        })
-        console.log()
-    </script>
 
     <script>
+        //---------------------------------
+
+        var list_thanhtien = document.querySelectorAll('#id_thanhtien')
+        var TongTien=0
+        for(var i=0;i<list_thanhtien.length;i++)
+        {
+            var value=list_thanhtien[i].innerHTML;
+            value=value.substr(0,value.length-6)
+            TongTien+=parseInt(value)
+            $('#tongtien').text(TongTien.toString()+".000 đ")
+        }
+
+        var list_soluong = document.querySelectorAll('#id_soluong')
+        var TongSoLuong=0;
+        for(var i=0;i<list_soluong.length;i++)
+        {
+            var value=list_soluong[i].value
+            TongSoLuong+=parseInt(value)
+            $('#id_soluong_sanpham').text('('+TongSoLuong.toString()+') Sản phẩm')
+        }
+        
+        //--------------------------------------------------
+
         $('.visibility-cart').on('click',function(){
        
        var $btn =  $(this);
@@ -180,38 +221,64 @@
        // SHOPPING CART PLUS OR MINUS
        $('a.qty-minus').on('click', function(e) {
          e.preventDefault();
+         //console.log('a.col-price')
          var $this = $(this);
          var $input = $this.closest('div').find('input');
+         var gia_ban=$this.parent().parent().parent().find("#giaban").find(".col-price")
+         var thanh_tien=$this.parent().parent().parent().find("#thanhtien").find(".price__item")
          var value = parseInt($input.val());
-         
-         if (value > 2) {
+         //$('.input__qty').value=6
+         if (value > 0) {
            value = value - 1;
-         } else {
-           value = 0;
-         }
-         
+           var sum=value*(parseInt(gia_ban.text())/1000)
+            TongTien-=(parseInt(gia_ban.text())/1000)
+            var temp=sum.toString()+".000đ"
+            thanh_tien.text(temp)
+            $('#tongtien').text(TongTien.toString()+".000 đ")
+            $input.val(value); 
 
-         $input.val(value);
-        
+            TongSoLuong-=1;
+            $('#id_soluong_sanpham').text('('+TongSoLuong.toString()+') Sản phẩm')
+         }   
        });
-     
+
+       
        $('a.qty-plus').on('click', function(e) {
          e.preventDefault();
          var $this = $(this);
-         var $input = $this.closest('div').find('input');
+         var $input = $this.closest('div').find('input')
+         var gia_ban=$this.parent().parent().parent().find("#giaban").find(".col-price")
+         var thanh_tien=$this.parent().parent().parent().find("#thanhtien").find(".price__item")
          var value = parseInt($input.val());
-     
          if (value < 100) {
-         value = value + 1;
-         } else {
-           value =100;
+            value = value + 1;
+            var sum=value*(parseInt(gia_ban.text())/1000)
+            TongTien+=(parseInt(gia_ban.text())/1000)
+            var temp=sum.toString()+".000đ"
+            thanh_tien.text(temp)
+            $('#tongtien').text(TongTien.toString()+".000 đ")
+            $input.val(value);
+
+            TongSoLuong+=1
+            $('#id_soluong_sanpham').text('('+TongSoLuong.toString()+') Sản phẩm')
          }
-     
-         $input.val(value);
+
+
+         //var tong_gia=$this.parent().parent().parent().parent().parent().find('.list-cart-item').find('.cart__total').find('#tongtien').html()
+         //console.log(tong_gia)
+
+
        });
+
+
+        $("#id_soluong").change(function()
+        {
+            console.log("Change")
+        })
+
      
      // RESTRICT INPUTS TO NUMBERS ONLY WITH A MIN OF 0 AND A MAX 100
-     $('input').on('blur', function(){
+     {{!-- $('input').on('blur', function(){
      
        var input = $(this);
        var value = parseInt($(this).val());
@@ -222,7 +289,18 @@
            (value > 100) {
            input.val(100);
          }
-     });
+     }); --}}
+
+     function totalIt()
+    {
+        var input = document.getElementsByClassName(".cart__total");
+        var total = 0;
+        for (var i = 0; i < input.length; i++)
+        {
+                total += parseFloat(input[i].value);
+        }
+        document.getElementsByClassName(".cart__total").value = total.toFixed(2) + " đ";
+    }
     </script>
 
     <script>
