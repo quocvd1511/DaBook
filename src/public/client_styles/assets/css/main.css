@@ -921,7 +921,7 @@ footer p {
   top: -5px;
 }
 
-.modal-message{
+.modal-message {
   position: absolute;
   top: 0;
   left: 0;
@@ -929,7 +929,7 @@ footer p {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.hide-message{
+.hide-message {
   display: none;
 }
 
