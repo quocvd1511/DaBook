@@ -226,64 +226,91 @@
     </script>
 
     <script>
-
-        var shippingRate = 40000; 
-        var fadeTime = 300;
-
-        /* Assign actions */
-        $('.col-qty input').change( function() {
-        updateQuantity(this);
-        });
-
-        function recalculateCart()
+        window.onload = function()
         {
-        var subtotal = 0;
-        
-        /* Sum up row totals */
-        $('.layout-inline').each(function () {
-            subtotal += parseInt($(this).children('.col-vat').text());
-        });
+            var list = document.querySelectorAll('.row'); 
 
-        console.log(subtotal);
-        
-        /* Calculate totals */
-        var sale = 0;  // Để tạm
-        var shipping = (subtotal > 0 ? shippingRate : 0);
-        var total = subtotal - sale + shipping;
-        console.log(total);
-        
-        /* Update totals display */
-        $('.totals-value').fadeOut(fadeTime, function() {
-            $('#cart-subtotal').html(subtotal.toFixed(2));
-            $('#cart-sale').html(sale.toFixed(2));
-            $('#cart-shipping').html(shipping.toFixed(2));
-            $('#cart-total').html(total.toFixed(2));
-            console.log(total);
-            if(total == 0){
-            $('.btn__buy-book').fadeOut(fadeTime);
-            }else{
-            $('.btn__buy-book').fadeIn(fadeTime);
+            for(var i=0; i<list.length;i++) 
+            {
+                console.log("ngoài" + list[i])
             }
-            $('.totals-value').fadeIn(fadeTime);
-        });
+
+            var a = document.querySelectorAll('.col-price');
+
+            console.log(a);
+            for (var j = 0; j < a.length; j++ ){
+                console.log("trong" + a[j]);
+            }
+
+            $('.qty-plus').on('click', function(){
+                $(".qty-plus").selectedIndex;
+                console.log("hehehe " + $('.qty-plus').selectedIndex);
+            })
+
+            var shippingRate = 40000; 
+            var fadeTime = 300;
+
+            /* Assign actions */
+            $('.col-qty input').change( function() {
+            updateQuantity(this);
+            });
+
+            console.log("His");
+            recalculateCart();
+            updateQuantity(quantityInput);
         }
 
-        function updateQuantity(quantityInput)
-        {
-        /* Calculate line price */
-        var productRow = $(quantityInput).parent().parent();
-        var price = parseFloat(productRow.children('.col-price').text());
-        var quantity = $(quantityInput).val();
-        var linePrice = price * quantity;
-        
-        /* Update line price display and recalc cart totals */
-        productRow.children('.col-vat').each(function () {
-            $(this).fadeOut(fadeTime, function() {
-            $(this).text(linePrice.toFixed(2));
-            recalculateCart();
-            $(this).fadeIn(fadeTime);
+            function recalculateCart()
+            {
+            var subtotal = 0;
+            
+            /* Sum up row totals */
+            $('.layout-inline').each(function () {
+                subtotal += parseInt($(this).children('.col-vat').text());
+                console.log(this);
+                console.log(subtotal);
             });
-        });  
+
+            /* Calculate totals */
+            var sale = 0;  // Để tạm
+            var shipping = (subtotal > 0 ? shippingRate : 0);
+            var total = subtotal - sale + shipping;
+            console.log(total);
+            
+            /* Update totals display */
+            $('.totals-value').fadeOut(fadeTime, function() {
+                $('#cart-subtotal').html(subtotal.toFixed(2));
+                $('#cart-sale').html(sale.toFixed(2));
+                $('#cart-shipping').html(shipping.toFixed(2));
+                $('#cart-total').html(total.toFixed(2));
+                console.log(total);
+                if(total == 0){
+                $('.btn__buy-book').fadeOut(fadeTime);
+                }else{
+                $('.btn__buy-book').fadeIn(fadeTime);
+                }
+                $('.totals-value').fadeIn(fadeTime);
+            });
+            }
+
+            function updateQuantity(quantityInput)
+            {
+            /* Calculate line price */
+            var productRow = $(quantityInput).parent().parent();
+            console.log(productRow);
+            var price = parseFloat(productRow.children('.col-price').text());
+            var quantity = $(quantityInput).val();
+            var linePrice = price * quantity;
+            
+            /* Update line price display and recalc cart totals */
+            productRow.children('.col-vat').each(function () {
+                $(this).fadeOut(fadeTime, function() {
+                $(this).text(linePrice.toFixed(2));
+                recalculateCart();
+                $(this).fadeIn(fadeTime);
+                });
+            });  
+        
         }
     </script>
 

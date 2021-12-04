@@ -85,7 +85,7 @@ body {
   position: fixed;
   height: 100%;
   width: 240px;
-  background: #0a2558;
+  background: #1A94FF;
   transition: all 0.5s ease;
 }
 .sidebar.active {
@@ -125,10 +125,10 @@ body {
   transition: all 0.4s ease;
 }
 .sidebar .nav-links li a.active {
-  background: #081d45;
+  background: #1712FF;
 }
 .sidebar .nav-links li a:hover {
-  background: #081d45;
+  background: #1712FF;
 }
 .sidebar .nav-links li i {
   min-width: 60px;
