@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Admin Dashboard" name="description">
+        <meta content="ThemeDesign" name="author">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>DaBook Shop</title>
+
+        <link rel="shortcut icon" href="/admin_styles/assets/images/logo.png">
+
+        <link href="\admin_styles\assets\css\bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="\admin_styles\assets\css\icons.css" rel="stylesheet" type="text/css">
+        <link href="\admin_styles\assets\css\style.css" rel="stylesheet" type="text/css">
+
+    </head>
+
+
+    <body class="fixed-left layout2">
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!--Header Start -->
+            <header class="topbar">
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <div class="text-center">
+                        <a href="index.html" class="logo"><img src="/admin_styles/assets/images/logo.png" alt="logo-img"></a>
+                        <a href="index.html" class="logo-sm"><img src="/admin_styles/assets/images/logo.png" alt="logo-img"></a>
+                    </div>
+                </div>
+                <!-- Button mobile view to collapse sidebar menu -->
+                
+
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <ul class="list-inline menu-left mb-0">
+                            <li class="float-left">
+                                <button class="button-menu-mobile open-left waves-light waves-effect">
+                                    <i class="mdi mdi-menu"></i>
+                                </button>
+                            </li>
+                            <li class="hide-phone app-search float-left">
+                                <form role="search" class="navbar-form">
+                                    <input type="text" placeholder="Search..." class="form-control search-bar">
+                                    <a href="" class="btn-search"><i class="fa fa-search"></i></a>
+                                </form>
+                            </li>
+                        </ul>
+    
+                        <ul class="nav navbar-right float-right list-inline">
+                            
+                            <li class="d-none d-sm-block">
+                                <a href="#" id="btn-fullscreen" class="waves-effect waves-light notification-icon-box"><i class="mdi mdi-fullscreen"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Header End -->
+
+            <!-- ========== Menu ========== -->
+
+            <div class="left side-menu">
+                <div class="sidebar-inner slimscrollleft">
+
+                    <div id="sidebar-menu">
+                        <ul>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-book-open"></i> <span> Sách </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/xemds_sach.html">Xem danh sách sách</a></li>
+                                    <li><a href="/themsach.html">Thêm sách</a></li>
+                                    <li><a href="/capnhat_sach.html">Cập nhật thông tin sách</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-user-cog"></i><span> Tài khoản </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/QLtaikhoan.html">Xem danh sách tài khoản</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-receipt"></i><span> Đơn hàng </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/DS_donhang.html">Xem danh sách đơn hàng</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-piggy-bank"></i><span> Khuyến mãi </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/DS_khuyenmai.html">Danh sách khuyến mãi</a></li>
+                                    <li><a href="/them_km.html">Thêm khuyến mãi</a></li>
+                                    <li><a href="/capnhat_km.html">Cập nhật thông tin khuyến mãi</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-truck"></i> <span> Vận chuyển </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/vanchuyen.html">Cập nhật trạng thái đơn hàng</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="ti-stats-up"></i><span> Thống kê </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/thongke.html">Thống kê</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div> <!-- end sidebarinner -->
+            </div>
+            <!--Menu End -->
+
+            <!-- Start right Content here -->
+
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+
+                    <div class="">
+                        <div class="page-header-title">
+                            <h4 class="page-title">Chi tiết đơn hàng</h4>
+                        </div>
+                    </div>
+
+                    <div class="page-content-wrapper ">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <!-- <div class="panel-heading">
+                                            <h4>Invoice</h4>
+                                        </div> -->
+                                        <div class="card-body">
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="invoice-title">
+                                                        <h4 class="float-right" style="margin-top: 30px;">Đơn hàng #12345</h4>
+                                                        <div style="display: flex; align-items: center;">
+                                                            <img style="width:80px; height: 80px;" src="/admin_styles/assets/images/logo.png" height="30" class="d-print-none" alt="logo-img">
+                                                            <h3 style="font-weight: 500; color: #fff; margin-left: 10px; margin-top: 10px;">DaBook Shop</h3>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <address>
+                                                                <strong>Nhà bán:</strong><br>
+                                                                DaBook Shop<br>
+                                                                19001529<br>
+                                                                Khu phố 6, Phường Linh Trung, TP.Thủ Đức<br>
+                                                            </address>
+                                                        </div>
+                                                        <div class="col-6 text-right">
+                                                            <address>
+                                                                <strong>Người nhận:</strong><br>
+                                                                Tần Thùy Trang<br>
+                                                                0943738385<br>
+                                                                thôn 10, xã EaKtur, CưKuin, Đăk Lăk<br>
+                                                            </address>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <address>
+                                                                <strong>Hình thức thanh toán:</strong><br>
+                                                                Momo: 0943738385<br>
+                                                            </address>
+                                                        </div>
+                                                        <div class="col-6 text-right">
+                                                            <address>
+                                                                <strong>Ngày đặt hàng:</strong><br>
+                                                                29/10/2021<br><br>
+                                                            </address>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="card">
+                                                        <div class="card-heading">
+                                                            <h3 class="card-title"><strong>Tổng đơn hàng</strong></h3>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="table-responsive">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <td><strong>Mã sách</strong></td>
+                                                                        <td class="text-center"><strong>Đơn giá</strong></td>
+                                                                        <td class="text-center"><strong>Số lượng</strong>
+                                                                        </td>
+                                                                        <td class="text-right"><strong>Thành tiền</strong></td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                                                                    <tr>
+                                                                        <td>SA01</td>
+                                                                        <td class="text-center">197.000 đ</td>
+                                                                        <td class="text-center">1</td>
+                                                                        <td class="text-right">197.000 đ</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>BS-400</td>
+                                                                        <td class="text-center">123.000 đ</td>
+                                                                        <td class="text-center">3</td>
+                                                                        <td class="text-right">369.000 đ</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="thick-line"></td>
+                                                                        <td class="thick-line"></td>
+                                                                        <td class="thick-line text-center">
+                                                                            <strong>Tạm tính</strong></td>
+                                                                        <td class="thick-line text-right">566.000 đ</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="no-line"></td>
+                                                                        <td class="no-line"></td>
+                                                                        <td class="no-line text-center">
+                                                                            <strong>Phí vận chuyển</strong></td>
+                                                                        <td class="no-line text-right">40.000 đ</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="no-line"></td>
+                                                                        <td class="no-line"></td>
+                                                                        <td class="no-line text-center">
+                                                                            <strong>Tổng</strong></td>
+                                                                        <td class="no-line text-right"><h4 class="m-0">604.000 đ</h4></td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            <div class="d-print-none">
+                                                                <div class="float-right">
+                                                                    <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i></a>
+                                                                    <a href="#" class="btn btn-primary waves-effect waves-light">Đang vận chuyển</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div> <!-- end row -->
+                                        </div> <!-- card body -->
+                                    </div> <!-- end card -->
+
+                                </div> <!-- end col -->
+
+                            </div>
+                            <!-- end row -->
+
+                        </div><!-- container-fluid -->
+
+                    </div> <!-- Page content Wrapper -->
+
+                </div> <!-- content -->
+
+                <footer class="footer">
+                    © 2016 - 2018 Appzia - All Rights Reserved.
+                </footer>
+
+            </div>
+            <!-- End Right content here -->
+
+        </div>
+        <!-- END wrapper -->
+
+
+        <!-- jQuery  -->
+        <script src="\admin_styles\assets\js\jquery.min.js"></script>
+        <script src="\admin_styles\assets\js\popper.min.js"></script>
+        <script src="\admin_styles\assets\js\bootstrap.min.js"></script>
+        <script src="\admin_styles\assets\js\modernizr.min.js"></script>
+        <script src="\admin_styles\assets\js\detect.js"></script>
+        <script src="\admin_styles\assets\js\fastclick.js"></script>
+        <script src="\admin_styles\assets\js\jquery.slimscroll.js"></script>
+        <script src="\admin_styles\assets\js\jquery.blockUI.js"></script>
+        <script src="\admin_styles\assets\js\waves.js"></script>
+        <script src="\admin_styles\assets\js\wow.min.js"></script>
+        <script src="\admin_styles\assets\js\jquery.nicescroll.js"></script>
+        <script src="\admin_styles\assets\js\jquery.scrollTo.min.js"></script>
+
+        <script src="\admin_styles\assets\js\app.js"></script>
+
+    </body>
+</html>

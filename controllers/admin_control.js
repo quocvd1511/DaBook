@@ -8,8 +8,8 @@ const {mongooseToObject} = require('../util/mongoose.js')
 class Admin_Control{
     login(req,res,next)
     {
-        console.log(req.session)
-       res.render('admin_login', {layout: 'admin_login.handlebars'})  
+        //console.log(req.session)
+        res.render('login', {layout: 'admin_login.handlebars'})  
         //console.log(req.session)
     }
 
@@ -57,14 +57,14 @@ class Admin_Control{
                 .then(books => 
                     {
                         books=books.map(course => course.toObject())
-                        res.render('admin_qlSach',{layout: 'admin.handlebars', books})
+                        res.render('xemds_sach',{layout: 'admin.handlebars', books})
                     })
         }
     }
 
     Them_Sach(req,res,next)
     {
-        res.render('admin_ThemSach',{layout: 'admin.handlebars'})
+        res.render('themsach',{layout: 'admin.handlebars'})
     }
 
     chitietSach(req,res,next)
@@ -115,6 +115,11 @@ class Admin_Control{
             .then(() => res.redirect('/admin/quan-ly-sach'))
     }
 
+    CapNhatSach(req,res,next)
+    {
+        res.render('capnhat_km',{layout: 'admin.handlebars', admin_account: req.session.username})
+    }
+
     //-------------------------------------------------------------------------------------------------------------------------------------------------
 
     //------------QUAN LY TAI KHOAN---------------------------------
@@ -126,7 +131,7 @@ class Admin_Control{
                 {
                     client_account=client_account.map(course => course.toObject())
                     //console.log(client_account)
-                    res.render('admin_qlTaiKhoan',{layout: 'admin.handlebars', admin_account: req.session.username, client_account})
+                    res.render('QLtaikhoan',{layout: 'admin.handlebars', admin_account: req.session.username, client_account})
                 })
     }
 
@@ -146,16 +151,41 @@ class Admin_Control{
     Ql_KhuyenMai(req,res,next)
     {
        // console.log(req.session.username)
-       res.render('admin_qlKhuyenMai',{layout: 'admin.handlebars', admin_account: req.session.username})
-    }   
+       res.render('DS_khuyenmai',{layout: 'admin.handlebars', admin_account: req.session.username})
+    }
+
+    ThemKhuyenMai(req,res,next)
+    {
+        res.render('them_km',{layout: 'admin.handlebars'})
+    }
 
     Ql_HoaDon(req,res,next)
     {
        // console.log(req.session.username)
-        res.render('admin_qlHoaDon',{layout: 'admin.handlebars', admin_account: req.session.username})
+        res.render('DS_donhang',{layout: 'admin.handlebars', admin_account: req.session.username})
+    }
+
+    CapNhatKhuyenMai(req,res,next)
+    {
+        res.render('capnhat_km', {layout: 'admin.handlebars'})
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    //---Quan ly thong ke----
+    Ql_ThongKe(req,res,next)
+    {
+        res.render('thongke', {layout: 'admin.handlebars'})
+    }
+
+
+
+    //---Quan lu van chuyen-----
+    Ql_VanChuyen(req,res,next)
+    {
+        res.render('vanchuyen',{layout: 'admin.handlebars'})
+    }
 }
 
 module.exports = new Admin_Control
