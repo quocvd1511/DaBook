@@ -72,6 +72,7 @@
 
             <!-- ========== Menu ========== -->
 
+            
             <div class="left side-menu">
                 <div class="sidebar-inner slimscrollleft">
 
@@ -80,8 +81,8 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-book-open"></i> <span> Sách </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/xemds_sach.html">Xem danh sách sách</a></li>
-                                    <li><a href="/themsach.html">Thêm sách</a></li>
+                                    <li><a href="/admin/quan-ly-sach">Xem danh sách sách</a></li>
+                                    <li><a href="/admin/them-sach">Thêm sách</a></li>
                                     <li><a href="/capnhat_sach.html">Cập nhật thông tin sách</a></li>
                                 </ul>
                             </li>
@@ -89,22 +90,22 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-user-cog"></i><span> Tài khoản </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/QLtaikhoan.html">Xem danh sách tài khoản</a></li>
+                                    <li><a href="/admin/quan-ly-tai-khoan">Xem danh sách tài khoản</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-receipt"></i><span> Đơn hàng </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/DS_donhang.html">Xem danh sách đơn hàng</a></li>
+                                    <li><a href="/admin/quan-ly-don-hang">Xem danh sách đơn hàng</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-piggy-bank"></i><span> Khuyến mãi </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/DS_khuyenmai.html">Danh sách khuyến mãi</a></li>
-                                    <li><a href="/them_km.html">Thêm khuyến mãi</a></li>
+                                    <li><a href="/admin/quan-ly-khuyen-mai">Danh sách khuyến mãi</a></li>
+                                    <li><a href="/admin/them-khuyen-mai">Thêm khuyến mãi</a></li>
                                     <li><a href="/capnhat_km.html">Cập nhật thông tin khuyến mãi</a></li>
                                 </ul>
                             </li>
@@ -112,14 +113,14 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-truck"></i> <span> Vận chuyển </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/vanchuyen.html">Cập nhật trạng thái đơn hàng</a></li>
+                                    <li><a href="/admin/quan-ly-van-chuyen">Cập nhật trạng thái đơn hàng</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-stats-up"></i><span> Thống kê </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/thongke.html">Thống kê</a></li>
+                                    <li><a href="/admin/thong-ke">Thống kê</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -166,46 +167,21 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                {{#each khuyenmais}}
                                                 <tr>
-                                                    <td>KM01</td>
-                                                    <td>Giảm giá ngày nhà giáo Việt Nam</td>
-                                                    <td>7%</td>
-                                                    <td>150.000 đ</td>
-                                                    <td>15/11/2021</td>
-                                                    <td>21/11/2021</td>
+                                                    <td>{{this.makm}}</td>
+                                                    <td>{{this.noidung}}</td>
+                                                    <td>{{this.phantram}}%</td>
+                                                    <td>{{this.dieukien}}.000đ</td>
+                                                    <td>{{this.ngaybd}}</td>
+                                                    <td>{{this.ngaykt}}</td>
                                                     <td>Đã kết thúc</td>
                                                     <td style="display: flex;">
-                                                        <span class="btn btn-primary" style=" justify-content: center;">Sửa</span>
+                                                        <a href="/admin/quan-ly-khuyen-mai/cap-nhat-khuyen-mai/{{this._id}}"><span class="btn btn-primary" style=" justify-content: center;">Sửa</span></a>
                                                         <span class="btn btn-danger" style=" justify-content: center;">Xóa</span>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>KM02</td>
-                                                    <td>Giảm giá ngày Flash Sale</td>
-                                                    <td>10%</td>
-                                                    <td>200.000 đ</td>
-                                                    <td>23/11/2021</td>
-                                                    <td>27/11/2021</td>
-                                                    <td>Đã kết thúc</td>
-                                                    <td style="display: flex;">
-                                                        <span class="btn btn-primary" style=" justify-content: center;">Sửa</span>
-                                                        <span class="btn btn-danger" style=" justify-content: center;">Xóa</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>KM03</td>
-                                                    <td>Giảm giá lễ giáng sinh</td>
-                                                    <td>10%</td>
-                                                    <td>180.000 đ</td>
-                                                    <td>18/12/2021</td>
-                                                    <td>26/12/2021</td>
-                                                    <td>Chưa bắt đầu</td>
-                                                    <td style="display: flex;">
-                                                        <span class="btn btn-primary" style=" justify-content: center;">Sửa</span>
-                                                        <span class="btn btn-danger" style=" justify-content: center;">Xóa</span>
-                                                    </td>
-                                                </tr>
-                                                
+                                                {{/each}}
                                                 </tbody>
                                             </table>
 

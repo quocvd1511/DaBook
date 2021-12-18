@@ -4,15 +4,13 @@ const ObjectId=Schema.ObjectId
 
 const Book = new Schema({
   masach:String,
-  khuvuc:String,
-  nhom:String,
   theloai:String,
   danhsach:String,  
   hinhanh:String,
   tensach:String,
   tacgia:String,
   nxb:String,
-  namxb:Date,
+  namxb:String,
   hinhthuc:String,
   mota:String,
   giaban:Number, 
@@ -20,7 +18,7 @@ const Book = new Schema({
   sodanhgia:String,
   sobinhchon:String,
   soluongton:String,
-  ngonngu:String,
+  soluongdaban: String,
   giagoc:String,
   });
 

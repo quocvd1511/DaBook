@@ -28,7 +28,6 @@ class Client_Control
                         .then(books => 
                             {
                                 books=books.map(course => course.toObject())
-                                console.log(temp_book)
                                 res.render('home_client.handlebars',{layout:'client.handlebars',client_accounts: thongtintk, flash_sales: flash_sales, books: books, sl_sach: temp_book });     
                             })
                         .catch(next) 

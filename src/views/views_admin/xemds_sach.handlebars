@@ -72,7 +72,6 @@
             <!-- Header End -->
 
             <!-- ========== Menu ========== -->
-
             <div class="left side-menu">
                 <div class="sidebar-inner slimscrollleft">
 
@@ -81,8 +80,8 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-book-open"></i> <span> Sách </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/xemds_sach.html">Xem danh sách sách</a></li>
-                                    <li><a href="/themsach.html">Thêm sách</a></li>
+                                    <li><a href="/admin/quan-ly-sach">Xem danh sách sách</a></li>
+                                    <li><a href="/admin/them-sach">Thêm sách</a></li>
                                     <li><a href="/capnhat_sach.html">Cập nhật thông tin sách</a></li>
                                 </ul>
                             </li>
@@ -90,22 +89,22 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-user-cog"></i><span> Tài khoản </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/QLtaikhoan.html">Xem danh sách tài khoản</a></li>
+                                    <li><a href="/admin/quan-ly-tai-khoan">Xem danh sách tài khoản</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-receipt"></i><span> Đơn hàng </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/DS_donhang.html">Xem danh sách đơn hàng</a></li>
+                                    <li><a href="/admin/quan-ly-don-hang">Xem danh sách đơn hàng</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-piggy-bank"></i><span> Khuyến mãi </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/DS_khuyenmai.html">Danh sách khuyến mãi</a></li>
-                                    <li><a href="/them_km.html">Thêm khuyến mãi</a></li>
+                                    <li><a href="/admin/quan-ly-khuyen-mai">Danh sách khuyến mãi</a></li>
+                                    <li><a href="/admin/them-khuyen-mai">Thêm khuyến mãi</a></li>
                                     <li><a href="/capnhat_km.html">Cập nhật thông tin khuyến mãi</a></li>
                                 </ul>
                             </li>
@@ -113,14 +112,14 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-truck"></i> <span> Vận chuyển </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/vanchuyen.html">Cập nhật trạng thái đơn hàng</a></li>
+                                    <li><a href="/admin/quan-ly-van-chuyen">Cập nhật trạng thái đơn hàng</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-stats-up"></i><span> Thống kê </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/thongke.html">Thống kê</a></li>
+                                    <li><a href="/admin/thong-ke">Thống kê</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -187,7 +186,7 @@
                                                     <td>Việt Nam</td>
                                                     <td>Tiếng Việt</td>
                                                     <td style="display: flex;">
-                                                        <span class="btn btn-primary" style=" justify-content: center;">Sửa</span>
+                                                        <a href="/admin/quan-ly-sach/cap-nhat-sach/{{this._id}}"><span class="btn btn-primary" style=" justify-content: center;">Sửa</span></a>
                                                         <span class="btn btn-danger" style=" justify-content: center;">Xóa</span>
                                                     </td>
                                                 </tr>

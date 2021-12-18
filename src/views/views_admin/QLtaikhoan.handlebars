@@ -73,6 +73,7 @@
 
             <!-- ========== Menu ========== -->
 
+             
             <div class="left side-menu">
                 <div class="sidebar-inner slimscrollleft">
 
@@ -81,8 +82,8 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-book-open"></i> <span> Sách </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/xemds_sach.html">Xem danh sách sách</a></li>
-                                    <li><a href="/themsach.html">Thêm sách</a></li>
+                                    <li><a href="/admin/quan-ly-sach">Xem danh sách sách</a></li>
+                                    <li><a href="/admin/them-sach">Thêm sách</a></li>
                                     <li><a href="/capnhat_sach.html">Cập nhật thông tin sách</a></li>
                                 </ul>
                             </li>
@@ -90,22 +91,22 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-user-cog"></i><span> Tài khoản </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/QLtaikhoan.html">Xem danh sách tài khoản</a></li>
+                                    <li><a href="/admin/quan-ly-tai-khoan">Xem danh sách tài khoản</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-receipt"></i><span> Đơn hàng </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/DS_donhang.html">Xem danh sách đơn hàng</a></li>
+                                    <li><a href="/admin/quan-ly-don-hang">Xem danh sách đơn hàng</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-piggy-bank"></i><span> Khuyến mãi </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/DS_khuyenmai.html">Danh sách khuyến mãi</a></li>
-                                    <li><a href="/them_km.html">Thêm khuyến mãi</a></li>
+                                    <li><a href="/admin/quan-ly-khuyen-mai">Danh sách khuyến mãi</a></li>
+                                    <li><a href="/admin/them-khuyen-mai">Thêm khuyến mãi</a></li>
                                     <li><a href="/capnhat_km.html">Cập nhật thông tin khuyến mãi</a></li>
                                 </ul>
                             </li>
@@ -113,14 +114,14 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-truck"></i> <span> Vận chuyển </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/vanchuyen.html">Cập nhật trạng thái đơn hàng</a></li>
+                                    <li><a href="/admin/quan-ly-van-chuyen">Cập nhật trạng thái đơn hàng</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-stats-up"></i><span> Thống kê </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/thongke.html">Thống kê</a></li>
+                                    <li><a href="/admin/thong-ke">Thống kê</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -169,77 +170,22 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                {{#each client_account}}
                                                 <tr>
                                                     <td>KH01</td>
-                                                    <td>Tần Thùy Trang</td>
-                                                    <td>Thôn 10, xã EaKtur, CưKuin, Đăk Lăk </td>
+                                                    <td>{{this.hoten}}</td>
+                                                    <td>{{this.diachigoc}}</td>
                                                     <td>101, 103, 104</td>
-                                                    <td>0943738385</td>
-                                                    <td>2019/04/29</td>
-                                                    <td>17</td>
-                                                    <td>thuytrang@gmail.com</td>
-                                                    <td>Đang hoạt động</td>
+                                                    <td>{{this.sodt}}</td>
+                                                    <td>{{this.ngaytao}}</td>
+                                                    <td>{{this.diem}}</td>
+                                                    <td>{{this.email}}</td>
+                                                    <td>{{this.tinhtrang}}</td>
                                                     <td>
                                                         <span class="btn btn-danger" style="display: flex; justify-content: center;">Khóa</span>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>KH02</td>
-                                                    <td>Ân Hồng Kim Ý</td>
-                                                    <td>Thôn 10, xã EaKtur, CưKuin, Đăk Lăk </td>
-                                                    <td>101, 103, 104</td>
-                                                    <td>0943738385</td>
-                                                    <td>2018/04/29</td>
-                                                    <td>145</td>
-                                                    <td>kimy@gmail.com</td>
-                                                    <td>Đang hoạt động</td>
-                                                    <td>
-                                                        <span class="btn btn-danger" style="display: flex; justify-content: center;">Khóa</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>KH02</td>
-                                                    <td>Nguyễn Thị Hồng</td>
-                                                    <td>Thôn 10, xã EaKtur, CưKuin, Đăk Lăk </td>
-                                                    <td>101, 103, 104</td>
-                                                    <td>0943738385</td>
-                                                    <td>2019/06/29</td>
-                                                    <td>127</td>
-                                                    <td>hongnguyen@gmail.com</td>
-                                                    <td>Đang hoạt động</td>
-                                                    <td>
-                                                        <span class="btn btn-danger" style="display: flex; justify-content: center;">Khóa</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>KH04</td>
-                                                    <td>Văn Đình Quốc</td>
-                                                    <td>Thôn 10, xã EaKtur, CưKuin, Đăk Lăk </td>
-                                                    <td>101, 108, 104</td>
-                                                    <td>0943738385</td>
-                                                    <td>2020/08/19</td>
-                                                    <td>11</td>
-                                                    <td>vdq@gmail.com</td>
-                                                    <td>Đang hoạt động</td>
-                                                    <td>
-                                                        <span class="btn btn-danger" style="display: flex; justify-content: center;">Khóa</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>KH01</td>
-                                                    <td>Nguyễn Thị Nhân</td>
-                                                    <td>Thôn 10, xã EaKtur, CưKuin, Đăk Lăk </td>
-                                                    <td>101, 103, 104</td>
-                                                    <td>0943738385</td>
-                                                    <td>2019/03/29</td>
-                                                    <td>20</td>
-                                                    <td>nhannguyen@gmail.com</td>
-                                                    <td>Đang hoạt động</td>
-                                                    <td>
-                                                        <span class="btn btn-danger" style="display: flex; justify-content: center;">Khóa</span>
-                                                    </td>
-                                                </tr>
-                                        
+                                                {{/each}}
                                                 </tbody>
                                             </table>
 

@@ -77,8 +77,8 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-book-open"></i> <span> Sách </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/xemds_sach.html">Xem danh sách sách</a></li>
-                                    <li><a href="/themsach.html">Thêm sách</a></li>
+                                    <li><a href="/admin/quan-ly-sach">Xem danh sách sách</a></li>
+                                    <li><a href="/admin/them-sach">Thêm sách</a></li>
                                     <li><a href="/capnhat_sach.html">Cập nhật thông tin sách</a></li>
                                 </ul>
                             </li>
@@ -86,22 +86,22 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-user-cog"></i><span> Tài khoản </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/QLtaikhoan.html">Xem danh sách tài khoản</a></li>
+                                    <li><a href="/admin/quan-ly-tai-khoan">Xem danh sách tài khoản</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-receipt"></i><span> Đơn hàng </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/DS_donhang.html">Xem danh sách đơn hàng</a></li>
+                                    <li><a href="/admin/quan-ly-don-hang">Xem danh sách đơn hàng</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-piggy-bank"></i><span> Khuyến mãi </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/DS_khuyenmai.html">Danh sách khuyến mãi</a></li>
-                                    <li><a href="/them_km.html">Thêm khuyến mãi</a></li>
+                                    <li><a href="/admin/quan-ly-khuyen-mai">Danh sách khuyến mãi</a></li>
+                                    <li><a href="/admin/them-khuyen-mai">Thêm khuyến mãi</a></li>
                                     <li><a href="/capnhat_km.html">Cập nhật thông tin khuyến mãi</a></li>
                                 </ul>
                             </li>
@@ -109,14 +109,14 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-truck"></i> <span> Vận chuyển </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/vanchuyen.html">Cập nhật trạng thái đơn hàng</a></li>
+                                    <li><a href="/admin/quan-ly-van-chuyen">Cập nhật trạng thái đơn hàng</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-stats-up"></i><span> Thống kê </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/thongke.html">Thống kê</a></li>
+                                    <li><a href="/admin/thong-ke">Thống kê</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -147,23 +147,29 @@
                                 <div class="col-lg-6" style="margin-left: 300px;">
                                     
                                     <div class="card">
+                                        <form method="POST" action="/admin/quan-ly-khuyen-mai/cap-nhat-khuyen-mai/save">
                                         <div class="card-body">
                                             <h4 class="m-b-30 m-t-0">Cập nhật thông tin khuyến mãi</h4>
+                                            {{#each khuyenmais}}
                                             <div class="demo-box">
+                                                <p class="text-muted m-b-15 font-13">
+                                                    ID
+                                                </p>
+                                                <input type="text" class="form-control" maxlength="25" name="_id" id="placement" placeholder="Mã khuyến mãi" value={{this._id}}>
                                                 <p class="text-muted m-b-15 font-13">
                                                     Mã khuyến mãi
                                                 </p>
-                                                <input type="text" class="form-control" maxlength="25" name="placement" id="placement" placeholder="Mã khuyến mãi">
+                                                <input type="text" class="form-control" maxlength="25" name="makm" id="placement" placeholder="Mã khuyến mãi" value={{this.makm}}>
         
                                                 <div class="m-t-20">
                                                     <p class="text-muted m-b-15 font-13">
                                                         Nội dung khuyến mãi
                                                     </p>
-                                                    <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="Nội dung khuyến mãi" style="margin-bottom: 18px;"></textarea>
+                                                    <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="Nội dung khuyến mãi" style="margin-bottom: 18px;" name="noidung">{{this.noidung}}</textarea>
                                                 </div>
                                                 <div class="form-group ">
                                                     <label>Chọn tình trạng khuyến mãi</label>
-                                                        <select class="form-control">
+                                                        <select class="form-control" name="tinhtrang">
                                                             <option>Đã kết thúc</option>
                                                             <option>Đang mở</option>
                                                             <option>Chưa bắt đầu</option>
@@ -171,35 +177,35 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Phần trăm khuyến mãi</label>
-                                                    <input id="demo1" type="text" value="55" name="demo1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary">
+                                                    <input id="demo1" type="text" value={{this.phantram}} name="demo1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="control-label">Mức giá tối thiểu áp dụng khuyến mãi</label>
-                                                    <input id="demo3" type="text" value="" name="demo3" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary">
+                                                    <input id="demo3" type="text" value={{this.dieukien}} name="demo3" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary">
                                                 </div>
                                             </div>
-
+        
                                             <div class="">
                                                 <form action="#">
                                                     <div class="form-group">
                                                         <label>Ngày bắt đầu và ngày kết thúc khuyến mãi</label>
                                                         <div>
                                                             <div class="input-daterange input-group" id="date-range">
-                                                                <input type="text" class="form-control" name="start">
+                                                                <input type="text" class="form-control" name="ngaybd" value={{this.ngaybd}}>
                                                                 <span class="input-group-addon bg-primary text-white b-0">to</span>
-                                                                <input type="text" class="form-control" name="end">
+                                                                <input type="text" class="form-control" name="ngaykt" value={{this.ngaykt}}>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </form>
                                             </div>
-                                            
-                                            <span class="btn btn-primary" style="display: flex; justify-content: center;">Cập nhật</span>
+                                            {{/each}}
+                                            <button type="submit" class="btn btn-primary" style="display: flex; justify-content: center;">Cập nhật</button>
                                         </div> <!-- card-body -->
+                                        </form>
                                     </div> <!-- card -->
                                 </div> <!-- col -->
-
                             </div> <!-- End row -->
 
                         </div><!-- container-fluid -->

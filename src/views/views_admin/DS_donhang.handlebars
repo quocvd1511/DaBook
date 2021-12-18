@@ -76,6 +76,7 @@
             <!-- Header End -->
 
             <!-- ========== Menu ========== -->
+             
             <div class="left side-menu">
                 <div class="sidebar-inner slimscrollleft">
 
@@ -84,8 +85,8 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-book-open"></i> <span> Sách </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/xemds_sach.html">Xem danh sách sách</a></li>
-                                    <li><a href="/themsach.html">Thêm sách</a></li>
+                                    <li><a href="/admin/quan-ly-sach">Xem danh sách sách</a></li>
+                                    <li><a href="/admin/them-sach">Thêm sách</a></li>
                                     <li><a href="/capnhat_sach.html">Cập nhật thông tin sách</a></li>
                                 </ul>
                             </li>
@@ -93,22 +94,22 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-user-cog"></i><span> Tài khoản </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/QLtaikhoan.html">Xem danh sách tài khoản</a></li>
+                                    <li><a href="/admin/quan-ly-tai-khoan">Xem danh sách tài khoản</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-receipt"></i><span> Đơn hàng </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/DS_donhang.html">Xem danh sách đơn hàng</a></li>
+                                    <li><a href="/admin/quan-ly-don-hang">Xem danh sách đơn hàng</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-piggy-bank"></i><span> Khuyến mãi </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/DS_khuyenmai.html">Danh sách khuyến mãi</a></li>
-                                    <li><a href="/them_km.html">Thêm khuyến mãi</a></li>
+                                    <li><a href="/admin/quan-ly-khuyen-mai">Danh sách khuyến mãi</a></li>
+                                    <li><a href="/admin/them-khuyen-mai">Thêm khuyến mãi</a></li>
                                     <li><a href="/capnhat_km.html">Cập nhật thông tin khuyến mãi</a></li>
                                 </ul>
                             </li>
@@ -116,14 +117,14 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-truck"></i> <span> Vận chuyển </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/vanchuyen.html">Cập nhật trạng thái đơn hàng</a></li>
+                                    <li><a href="/admin/quan-ly-van-chuyen">Cập nhật trạng thái đơn hàng</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-stats-up"></i><span> Thống kê </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/thongke.html">Thống kê</a></li>
+                                    <li><a href="/admin/thong-ke">Thống kê</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -176,67 +177,38 @@
                                                 <tr>
                                                     <th>Mã ĐH</th>
                                                     <th>Ngày lập</th>
-                                                    <th>Mã giỏ hàng</th>
+                                                    <th>Mã tài khoản</th>
                                                     <th>Hình thức thanh toán</th>
                                                     <th>Vận chuyển</th>
                                                     <th>Mã khuyến mãi</th>
+                                                    <th>Số lượng sách</th>
                                                     <th>Tổng tiền</th>
                                                     <th>Thông tin người nhận</th>
-                                                    <td>Tình trạng thanh toán</td>
-                                                    <td>Tình trạng đơn hàng</td>
+                                                    <th>Tình trạng thanh toán</th>
+                                                    <th>Tình trạng đơn hàng</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                {{#each donhang}}
                                                 <tr>
-                                                    <td>DH01</td>
-                                                    <td>2019/06/29</td>
-                                                    <td>GH01</td>
-                                                    <td>Trực tiếp</td>
-                                                    <td>Ngoại thành</td>
-                                                    <td>101, 103, 105</td>
-                                                    <td>170.000</td>
-                                                    <td>Tần Thùy Trang 0943738385 Thôn 10, xã EaKtur, CưKuin, Đăk Lăk</td>
-                                                    <td>Chưa thanh toán</td>
-                                                    <td>Chờ vận chuyển</td>
+                                                    <td>{{this.madh}}</td>
+                                                    <td>{{this.ngaylap}}</td>
+                                                    <td>{{this.matk}}</td>
+                                                    <td>{{this.hinhthucthanhtoan}}</td>
+                                                    <td>{{this.vanchuyen}}</td>
+                                                    <td>{{this.makm}}</td>
+                                                    <td>{{this.soluongsach}}</td>
+                                                    <td>{{this.tongtien}}</td>
+                                                    <td>{{this.thongtinnguoinhan}}</td>
+                                                    <td>{{this.tinhtrangthanhtoan}}</td>
+                                                    <td>{{this.tinhtrangdonhang}}</td>
                                                     <td style="display: flex;">
-                                                        <span class="btn btn-primary" style="justify-content: center;">Xem chi tiết</span>
+                                                        <a href="/admin/quan-ly-van-chuyen/{{this.madh}}"><span class="btn btn-primary" style="justify-content: center;">Xem chi tiết</span></a>
                                                         <span class="btn btn-primary" style="justify-content: center;">Vận chuyển</span>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>DH01</td>
-                                                    <td>2021/08/29</td>
-                                                    <td>GH01</td>
-                                                    <td>Trực tiếp</td>
-                                                    <td>Ngoại thành</td>
-                                                    <td>101, 103, 105</td>
-                                                    <td>170.000</td>
-                                                    <td>Tần Thùy Trang 0943738385 Thôn 10, xã EaKtur, CưKuin, Đăk Lăk, việt Nam</td>
-                                                    <td>Chưa thanh toán</td>
-                                                    <td>Chờ vận chuyển</td>
-                                                    <td style="display: flex;">
-                                                        <span class="btn btn-primary" style="justify-content: center;">Xem chi tiết</span>
-                                                        <span class="btn btn-primary" style="justify-content: center;">Vận chuyển</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>DH01</td>
-                                                    <td>2019/04/29</td>
-                                                    <td>GH01</td>
-                                                    <td>Trực tiếp</td>
-                                                    <td>Ngoại thành</td>
-                                                    <td>101, 103, 105</td>
-                                                    <td>170.000</td>
-                                                    <td>Tần Thùy Trang 0943738385 Thôn 10, xã EaKtur, CưKuin, Đăk Lăk</td>
-                                                    <td>Chưa thanh toán</td>
-                                                    <td>Chờ vận chuyển</td>
-                                                    <td style="display: flex;">
-                                                        <span class="btn btn-primary" style="justify-content: center;">Xem chi tiết</span>
-                                                        <span class="btn btn-primary" style="justify-content: center;">Vận chuyển</span>
-                                                    </td>
-                                                </tr>
-                                            
+                                                {{/each}}
                                                 </tbody>
                                             </table>
 
