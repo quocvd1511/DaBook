@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DaBook Shop</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta content="Admin Dashboard" name="description">
+        <meta content="ThemeDesign" name="author">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link rel="shortcut icon" href="assets/images/logo.png">
+
+        <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="assets\css\icons.css" rel="stylesheet" type="text/css">
+        <link href="assets\css\style.css" rel="stylesheet" type="text/css">
+
+    </head>
+
+
+    <body class="fixed-left layout2">
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!--Header Start -->
+            <header class="topbar">
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <div class="text-center">
+                        <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="logo-img"></a>
+                        <a href="index.html" class="logo-sm"><img src="assets/images/logo.png" alt="logo-img"></a>
+                    </div>
+                </div>
+                <!-- Button mobile view to collapse sidebar menu -->
+                
+
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <ul class="list-inline menu-left mb-0">
+                            <li class="float-left">
+                                <button class="button-menu-mobile open-left waves-light waves-effect">
+                                    <i class="mdi mdi-menu"></i>
+                                </button>
+                            </li>
+                            <li class="hide-phone app-search float-left">
+                                <form role="search" class="navbar-form">
+                                    <input type="text" placeholder="Search..." class="form-control search-bar">
+                                    <a href="" class="btn-search"><i class="fa fa-search"></i></a>
+                                </form>
+                            </li>
+                        </ul>
+    
+                        <ul class="nav navbar-right float-right list-inline">
+                            
+                            <li class="d-none d-sm-block">
+                                <a href="#" id="btn-fullscreen" class="waves-effect waves-light notification-icon-box"><i class="mdi mdi-fullscreen"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Header End -->
+
+            <!-- ========== Menu ========== -->
+
+            <div class="left side-menu">
+                <div class="sidebar-inner slimscrollleft">
+
+                    <div id="sidebar-menu">
+                        <ul>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-book-open"></i> <span> Sách </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/xemds_sach.html">Xem danh sách sách</a></li>
+                                    <li><a href="/themsach.html">Thêm sách</a></li>
+                                    <li><a href="/capnhat_sach.html">Cập nhật thông tin sách</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-user-cog"></i><span> Tài khoản </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/QLtaikhoan.html">Xem danh sách tài khoản</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-receipt"></i><span> Đơn hàng </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/DS_donhang.html">Xem danh sách đơn hàng</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-piggy-bank"></i><span> Khuyến mãi </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/DS_khuyenmai.html">Danh sách khuyến mãi</a></li>
+                                    <li><a href="/them_km.html">Thêm khuyến mãi</a></li>
+                                    <li><a href="/capnhat_km.html">Cập nhật thông tin khuyến mãi</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-truck"></i> <span> Vận chuyển </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/vanchuyen.html">Cập nhật trạng thái đơn hàng</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="ti-stats-up"></i><span> Thống kê </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/thongke.html">Thống kê</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div> <!-- end sidebarinner -->
+            </div>
+            <!--Menu End -->
+
+            <!-- Start right Content here -->
+
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+
+                    <div class="">
+                        <div class="page-header-title">
+                            <h4 class="page-title">Thêm sách</h4>
+                        </div>
+                    </div>
+
+                    <div class="page-content-wrapper ">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+
+                                        <div class="card-body">
+                                            <h4 class="m-t-0 m-b-30">Nhập thông tin sách</h4>
+
+                                            <div class="row">
+                                                <div class="col-sm-6 col-xs-12">
+
+                                                    <div class="m-t-20">
+                                                        <form class="" action="#">
+                                                            <div class="form-group">
+                                                                <label>Nhập mã sách</label>
+                                                                <input type="text" class="form-control" required="" placeholder="Mã sách">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Hình ảnh</label>
+                                                                <div>
+                                                                    <input parsley-type="url" type="url" class="form-control" required="" placeholder="URL">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Nhập tên sách</label>
+                                                                <div>
+                                                                    <input data-parsley-type="digits" type="text" class="form-control" required="" placeholder="Tên sách">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group ">
+                                                                <label>Thể loại</label>
+                                                                    <select class="form-control">
+                                                                        <option>Giả tưởng</option>
+                                                                        <option>Ngôn tình</option>
+                                                                        <option>Huyền bí</option>
+                                                                        <option>Kinh dị</option>
+                                                                        <option>Trinh thám</option>
+                                                                        <option>Tâm linh</option>
+                                                                        <option>Khoa học viễn tưởng</option>
+                                                                        <option>Du ký</option>
+                                                                        <option>Nấu ăn</option>
+                                                                        <option>Tuổi teen</option>
+                                                                        <option>Nghệ thuật</option>
+                                                                        <option>Phát triển bản thân</option>
+                                                                        <option>Động lực</option>
+                                                                        <option>Sức khỏe</option>
+                                                                        <option>Lịch sử</option>
+                                                                        <option>Du lịch</option>
+                                                                        <option>Sách hướng dẫn</option>
+                                                                        <option>Gia đình và xã hội</option>
+                                                                        <option>Hài hước</option>
+                                                                        <option>Sách thiếu nhi</option>
+                                                                    </select>
+                                                            </div>
+                                                            
+                                                            <div class="form-group">
+                                                                <label>Nhập tác giả</label>
+                                                                <div>
+                                                                    <input data-parsley-type="alphanum" type="text" class="form-control" required="" placeholder="Tác giả">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Nhập nội dung</label>
+                                                                <div>
+                                                                    <textarea required="" class="form-control" rows="5"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-sm-6 col-xs-12">
+
+                                                    <div class="m-t-20">
+                                                        <form action="#">
+                                                            <div class="form-group">
+                                                                <label>Nhập nhà xuất bản</label>
+                                                                <div>
+                                                                    <input data-parsley-type="alphanum" type="text" class="form-control" required="" placeholder="Nhà xuất bản">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Nhập năm xuất bản</label>
+                                                                <div>
+                                                                    <input data-parsley-type="alphanum" type="text" class="form-control" required="" placeholder="Năm xuất bản">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Nhập số lượng</label>
+                                                                <div>
+                                                                    <input data-parsley-type="number" type="text" class="form-control" required="" placeholder="Số lượng sách">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Nhập phần trăm giảm</label>
+                                                                <div>
+                                                                    <input data-parsley-type="number" type="text" class="form-control" required="" placeholder="Phần trăm giảm">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <p>Ngôn ngữ</p>
+                                                                <div style="margin-left: 8px;">
+                                                                    <div class="radio radio-info form-check-inline">
+                                                                        <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="checked">
+                                                                        <label for="inlineRadio1"> Tiếng Việt </label>
+                                                                    </div>
+                                                                    <div class="radio radio-info form-check-inline">
+                                                                        <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
+                                                                        <label for="inlineRadio2"> Tiếng  Anh </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group" style="margin-top: 17px;">
+                                                                <label>Nhập giá bán</label>
+                                                                <div>
+                                                                    <input data-parsley-type="alphanum" type="text" class="form-control" required="" placeholder="Giá bán">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group m-b-0">
+                                                                <div>
+                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                                        Thêm
+                                                                    </button>
+                                                                    <button type="reset" class="btn btn-light waves-effect m-l-5">
+                                                                        Hủy
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- end row -->
+
+                        </div><!-- container-fluid -->
+
+                    </div> <!-- Page content Wrapper -->
+
+                </div> <!-- content -->
+
+                <footer class="footer">
+                    © 2016 - 2018 Appzia - All Rights Reserved.
+                </footer>
+
+            </div>
+            <!-- End Right content here -->
+
+        </div>
+        <!-- END wrapper -->
+
+
+        <!-- jQuery  -->
+        <script src="assets\js\jquery.min.js"></script>
+        <script src="assets\js\popper.min.js"></script>
+        <script src="assets\js\bootstrap.min.js"></script>
+        <script src="assets\js\modernizr.min.js"></script>
+        <script src="assets\js\detect.js"></script>
+        <script src="assets\js\fastclick.js"></script>
+        <script src="assets\js\jquery.slimscroll.js"></script>
+        <script src="assets\js\jquery.blockUI.js"></script>
+        <script src="assets\js\waves.js"></script>
+        <script src="assets\js\wow.min.js"></script>
+        <script src="assets\js\jquery.nicescroll.js"></script>
+        <script src="assets\js\jquery.scrollTo.min.js"></script>
+
+        <script src="assets\js\app.js"></script>
+
+        <script type="text/javascript" src="assets\plugins\parsleyjs\parsley.min.js"></script>
+
+        <script type="text/javascript">
+			$(document).ready(function() {
+				$('form').parsley();
+			});
+		</script>
+
+    </body>
+</html>
