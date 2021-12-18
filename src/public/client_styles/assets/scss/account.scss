@@ -1,291 +1,777 @@
 /* Thông tin tài khoản */
 .account{
-    padding: 30px 0;
-  }
+  padding: 30px 0;
+}
   
-  .account__nav{
-    display: block;
-  }
-  
-  .account__nav-user {
-    padding: 18px 0;
-    display: flex;
-    justify-items: center;
-    position: relative;
-    border-bottom: 0.8px solid #e4e0e0;
-  }
-  
-  .account__nav-user-img {
-    width: 50px;
-    height: 50px;
-    margin-top: -5px;
-    border-radius: 50%;
-  }
-  
-  .account__nav-user-name {
-    padding-left: 10px;
-    margin-left: 4px;
-    font-size: 1.6rem;
-    font-weight: 600;
-    margin-top: 9px;
-  }
-  
-  .account__nav-container{
-    margin-top: 10px;
-  }
-  
-  .account__nav-item{
-    position: relative;
-    font-size: 1.6rem;
-    font-weight: 450;
-  }
-  
-  .account__nav-title{
-    margin-top: 15px;
-  }
-  
-  .account__nav-title-link{
-    text-decoration: none;
-  }
-  
-  .account__nav-title-icon{
-      text-align: center;
-      min-width: 20px;
-      color: #FF6600;
-  }
-  
-  .account__nav-title-text{
-      color: rgb(40, 40, 40);
-  }
-  
-  .account__navbar-item-title{
-      color: var(--black-color);
-  }
-  
-  .account__nav-list{
-      padding-left: 30px;  
-      display: none;
-  }
-  
-  .account__nav-list-link{
-      font-size: 1.6rem;
-      font-weight: 400;
-      margin-top: 10px; 
-      color: rgb(60, 60, 60);
-      text-decoration: none;
-      display: block;
-  }
-  
-  .account__nav-list-link:hover,
-  .account__nav-title-text:hover{
-    color: var(--blue-color);
-    cursor: pointer;
-  }
-  
-  .account__nav-list-link--active{
-    color: var(--blue-color);
-    cursor: pointer;
-  }
-  
-  .account__content{
-    background-color: var(--white-color);
-    border-radius: 3px;
-    margin-left: 20px;
-    padding: 0 30px;
-  }
-  
-  .account__profile-form{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-  
-  .account__profile-heading{
-    padding: 17px 0;
-    border-bottom: 0.8px solid #efefef;
+/*Navigation*/
+.account__nav{
+  display: block;
+}
+
+.account__nav-user {
+  padding: 20px 0;
+  display: flex;
+  justify-items: center;
+  position: relative;
+  border-bottom: 0.8px solid #e4e0e0;
+}
+
+.account__nav-user-img {
+  width: 50px;
+  height: 50px;
+  margin-top: -5px;
+  border-radius: 50%;
+}
+
+.account__nav-user-name {
+  padding-left: 10px;
+  margin-left: 4px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 9px;
+}
+
+.account__nav-container{
+  margin-top: 10px;
+}
+
+.account__nav-item{
+  position: relative;
+  font-size: 1.6rem;
+  font-weight: 450;
+}
+
+.account__nav-title{
+  margin-top: 15px;
+}
+
+.account__nav-title-link{
+  text-decoration: none;
+}
+
+.account__nav-title-icon{
+    text-align: center;
+    min-width: 20px;
+    color: #FF6600;
+    filter: brightness(92%);
+
+}
+
+.account__nav-title-text{
     color: rgb(40, 40, 40);
-  }
-  
-  .account__profile-heading-title{
-    font-size: 2rem;
-    font-weight: 500;
-    line-height: 1.9rem;
-    margin: 0;
-  }
-  
-  .account__profile-heading-notice{
-    font-size: 1.6rem;
-    font-weight: 400;
-    margin-top: 5px; 
-    margin-bottom: 0;
-    text-transform: none;
-  }
-  
-  .account__content-container{
-    padding-left: 30px;
-  }
-  
-  .account__content-profile-row{
-    margin-bottom: 30px;
-  }
-  
-  .account__content-profile-label{
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 20px;
-    min-width: 120px;
-    color: rgb(116, 116, 116);
-  }
-  
-  .account__content-profile-text{
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 20px;
-    padding-left: 15px;
-    display: inline-block;
-    text-transform: none;
-  }
-  
-  .account__content-profile-dropdown {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    font-size: 1.6rem;
-    width: 120px;
-    height: 40px;
-    border: 0.5px solid rgb(215, 215, 215);
-    border-radius: 2px;
-  }
-  
-  .account__content-profile-dropdown:hover{
-    border-color: var(--blue-color);
-    cursor: pointer;
-  }
-  
-  .account__content-profile-dropdown span{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex: 1;
-    white-space:nowrap;
-  }
-  
-  .account__content-profile-dropdown-icon{
-    font-size: 1.2rem;
-    margin-top: 3px;
-  }
-  
-  .vertical-menu {
-    width: 120px;
-    height: 120px;
-    overflow-y: auto;
-    position: absolute;
-    z-index: 600;
+}
+
+.account__navbar-item-title{
+    color: var(--black-color);
+}
+
+.account__nav-list{
+    padding-left: 30px;  
     display: none;
-  }
-  
-  .vertical-menu a {
-    background-color: var(--white-color);
-    color: black;
+}
+
+.account__nav-list-link{
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-top: 10px; 
+    color: rgb(60, 60, 60);
+    text-decoration: none;
     display: block;
-    padding: 5px;
-    text-decoration: none;
-  }
-  
-  .vertical-menu a:hover {
-    background-color: #ccc;
-  }
-  
-  .vertical-menu a.active {
-    color: var(--white-color);
-  }
-  
-  .account-btn {
-    min-width: 90px;
-    height: 40px;
-    border: none;
-    border-radius: 2px;
-    font-size: 1.6rem;
-    padding: 0 15px;
-    font-weight: 400;
-    justify-content: center;
-    color: var(--white-color);
-    background-color: var(--blue-color);
-  }
-  
-  .account-btn:hover {
-    color: black;
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-  }
-  
-  .account__content-address-form{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-  
-  .account__address-heading{
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #efefef;
-    padding: 22px 0;
-    height: 80px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  
-  .account__address-heading-title{
-    flex: 1;
-  }
-  
-  .account__address-info{
-    padding: 20px;
-    background: #fff;
-    min-height: 100px;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #efefef;
-  }
-  
-  .account__address-info-content{
-    flex: 1;
-  }
-  
-  .account__address-info-content{
-    width: 220px;
-    height: 100%;
-    display: flex;
-    flex-shrink: 1;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .account__content-address-row{
-    margin-bottom: 10px;
-  }
-  
-  .account__content-address-label{
-    font-size: 1.55rem;
-    font-weight: 400;
-    line-height: 20px;
-    min-width: 120px;
-    color: rgb(116, 116, 116);
-    vertical-align: top;
-  }
-  
-  .account__content-address-text{
-    font-size: 1.6rem;
-    font-weight: 400;
-    padding-left: 15px;
-    display: inline-block;
-    text-transform: none;
-    margin: 0;
-    line-height: 2rem;
-    max-width: 500px;
-  }
-  
-  .account__address-info-btn{
-    text-align: right;
-  }
+}
+
+.account__nav-title-link:hover,
+.account__nav-list-link:hover,
+.account__nav-title-text:hover{
+  color: var(--blue-color);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.account__nav-list-link--active{
+  color: var(--blue-color);
+  cursor: pointer;
+}
+
+/*Content*/
+.account__content{
+  background-color: var(--white-color);
+  border-radius: 3px;
+  margin-left: 20px;
+  padding: 0 30px;
+}
+
+/*Hồ sơ*/
+.account__profile-form{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.account__profile-heading{
+  padding: 17px 0;
+  border-bottom: 0.8px solid #efefef;
+  color: rgb(40, 40, 40);
+}
+
+.account__profile-heading-title{
+  font-size: 2.3rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.account__profile-heading-notice{
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.account__content-container{
+  padding-left: 50px;
+}
+
+.account__content-container form{
+  margin-top: 30px;
+}
+
+.account__content-profile-row{
+  margin-bottom: 30px;
+}
+
+.account__content-profile-label{
+  font-size: 1.6rem;
+  font-weight: 400;
+  min-width: 120px;
+  color: rgb(116, 116, 116);
+}
+
+.account__content-profile-text{
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding-left: 15px;
+  display: inline-block;
+  text-transform: none;
+}
+
+.hide-text{
+  display: none;
+}
+
+.account__content-profile-link{
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding-left: 15px;
+}
+
+.account__content-profile-link:hover{
+  text-decoration: none;
+}
+
+.check-input{
+  margin-right: 3px;
+}
+
+.account__content-profile-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 1.6rem;
+  width: 120px;
+  height: 40px;
+  border: 0.5px solid rgb(215, 215, 215);
+  border-radius: 2px;
+}
+
+.account__content-profile-dropdown:hover{
+  border-color: var(--blue-color);
+  cursor: pointer;
+}
+
+.account__content-profile-dropdown label{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  white-space:nowrap;
+}
+
+.account__content-profile-dropdown-icon{
+  font-size: 1.2rem;
+  margin-top: 3px;
+}
+
+.vertical-menu {
+  width: 120px;
+  height: 170px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 600;
+  display: none;
+}
+
+.vertical-menu label {
+  background-color: var(--white-color);
+  color: black;
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+  margin-bottom: 0;
+}
+
+.vertical-menu label:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu label.active {
+  color: var(--white-color);
+}
+
+.account-btn{
+  min-width: 90px;
+  height: 40px;
+  border: none;
+  border-radius: 2px;
+  font-size: 1.6rem;
+  padding: 0px 20px;
+  font-weight: 400;
+  justify-content: center;
+}
+
+.account-btn--primary {
+  color: var(--white-color);
+  background-color: var(--blue-color);
+}
+
+.account-btn--primary fa-plus :hover,
+.account-btn--primary:hover {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+/*Địa chỉ*/
+.account__address-form{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.account__address-heading{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #efefef;
+  padding: 23px 0;
+  height: 86px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.account__address-heading-title{
+  flex: 1;
+  font-size: 2.3rem;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.account__address-info{
+  padding: 30px;
+  background: #fff;
+  min-height: 100px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #efefef;
+}
+
+.account__address-info-content{
+  flex: 1;
+}
+
+.account__address-info-content{
+  width: 220px;
+  height: 100%;
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.account__content-address-row{
+  margin-bottom: 10px;
+}
+
+.account__content-address-label{
+  font-size: 1.55rem;
+  font-weight: 400;
+  line-height: 20px;
+  min-width: 120px;
+  color: rgb(116, 116, 116);
+  vertical-align: top;
+}
+
+.account__content-address-text{
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding-left: 15px;
+  display: inline-block;
+  text-transform: none;
+  margin: 0;
+  line-height: 2rem;
+  max-width: 500px;
+}
+
+#address-mode{
+  color:#FF6600;
+  font-size: 1.5rem;
+}
+
+.account__address-info-btn{
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.account__btn-edit{
+  font-size: 1.6rem;
+  text-align: end;
+}
+
+.account__btn-default{
+  height: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  padding: 6px 10px;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.account__btn-edit:hover{
+  cursor: pointer;
+}
+
+.account__btn-default--primary:hover{
+  cursor: pointer;
+  color: rgb(60, 60, 60);
+  border-color: #ff8636;
+}
+
+.account__btn-default--disable{
+  cursor: not-allowed;
+  color: #cccccc;
+}
+
+.modal-address{
+  position: absolute;
+  top: 0;
+  bottom: 25px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.hide-address{
+  display: none;
+}
+
+.modal__inner-address {
+  width: 500px;
+  background-color: #fff;
+  border: 0.5px solid #dbdbdb;
+  border-radius: 5px;
+  animation: fadeIn linear 0.1s;
+  position: relative;
+  margin: 200 auto;
+  padding: 30px;
+}
+
+.address-form__group{
+  margin-top: 18px;
+}
+
+.address-form__label{
+  font-size: 1.5rem;
+  padding-left: 12px;
+  min-width: 120px;
+}
+
+.address-form__input{
+  width: 70%;
+  height: 40px;
+  margin-top: 8px;
+  padding: 0 12px;
+  font-size: 1.5rem;
+  border-radius: 3px;
+  border: 1px solid var(--boder-color);
+  outline: none;
+}
+
+.address-form__input:focus{
+  border-color: var(--text-color);
+}
+
+.address-form__controls{
+  margin: 20px 10px 0 0;
+  text-align: right;
+}
+
+#cancel-newaddress:hover{
+  cursor: pointer;
+}
+
+#save-newaddress{
+  margin-left: 15px;
+}
+
+/*Mật khẩu*/
+.account__content-password-label{
+font-size: 1.6rem;
+font-weight: 400;
+min-width: 150px;
+color: rgb(116, 116, 116);
+}
+
+.check-text{
+width: 400px;
+height: 40px;
+font-size: 1.6rem;
+margin-left: 10px ;
+padding: 0 8px;
+border-radius: 2px;
+border: 1px solid rgba(116, 116, 116, 0.5);
+outline: none;
+}
+
+.check-text:focus{
+border-color: rgb(116, 116, 116);
+}
+
+.account-btn--disable{
+  opacity: 0.5;
+  color: black;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.account-btn--disable:hover{
+cursor: not-allowed;
+}
+
+.account__point{
+  font-size: 2.3rem;
+  color: #FF6600;
+  margin-top: 0;
+  margin-bottom: 30;
+}
+
+/*Điểm tích lũy*/
+.account__point-table{
+  padding: 0 30px 30px 30px;
+}
+
+.table-title{
+  font-size: 2rem; 
+  font-weight:400; 
+  margin:20px 0; 
+  text-align:center; 
+  color: #eb5e00
+}
+
+.dashboard-order{
+  display: block;
+  margin-bottom: 0;
+}
+
+.table-responsive{
+  width: 100%;
+  display: table;
+}
+
+.table-responsive thead{
+  display: table-header-group;
+}
+
+.table-responsive thead tr{
+  padding: 15px;
+}
+
+thead{
+  vertical-align: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.table-responsive thead  th{
+  padding: 20px 15px;
+  background-color: #efefef;
+  color: rgb(116, 116, 116);
+  text-align: center;
+}
+
+.table-responsive tbody{
+  display: table-row-group;
+}
+
+tbody{
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.table-responsive tbody td{
+  color: var(--black-color);
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding: 20px 15px;
+  border-top: 0.3px solid #edebeb;
+}
+
+.table-responsive tbody tr:hover{
+  background-color: #f2faff ;
+}
+
+.dashboard-order .col-center{
+  text-align: center;
+}
+
+.dashboard-order .plus{
+  color: var(--blue-color);
+}
+.dashboard-order .minus{
+  color: #FF6600;
+}
+
+/*Đơn hàng*/
+.account__order-heading{
+  padding: 30px 0;
+  height: 86px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.account__order-table .table-responsive thead  th{
+  padding: 20px 15px;
+  background-color: #eb5e00;
+  color: var(--white-color);
+  text-align: left;
+}
+
+/*Thông báo*/
+.account__content--noti{
+  background-color: var(--white-color);
+  border-radius: 3px;
+  margin-left: 20px;
+}
+
+.account__noti-heading{
+  display: flex;
+  align-items: center;
+  padding: 23px 30px;
+  height: 86px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.account__notify-list {
+  padding-left: 0;
+}
+
+.account__notify-item {
+  display: flex;
+  border-top: 0.8px solid #edebeb;
+  align-items: center;
+  padding:20px;
+}
+
+.account__notify-item:hover {
+  background-color: #eeeeee;
+}
+
+.account__notify-item--view {
+  background-color: rgb(250 240 235);
+}
+
+.account__notify-link {
+  display: flex;
+  flex: 1;
+  text-decoration: none;
+}
+
+.account__notify-link:hover{
+  text-decoration: none;
+}
+
+.account__notify-img {
+  width: 80px;
+  object-fit: contain;
+}
+
+.account__notify-info {
+  margin-left: 12px;
+}
+
+.account__notify-name {
+  display: block;
+  font-size: 1.7rem;
+  color: var(--text-color);
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin-top: 5px;
+}
+
+.account__notify-description {
+  display: block;
+  font-size: 1.5rem;
+  color: #756F6E;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.account__notify-time{
+  display: block;
+  font-size: 1.3rem;
+  color: #756F6E;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+/*Kho voucher*/
+.account__voucher-form{
+  background-color: var(--white-color);
+  border-radius: 3px;
+}
+
+.voucher__navbar{
+  display: flex;
+  padding: 0 30px;
+}
+
+.voucher__nav-item{
+  position: relative;
+  font-size: 1.8rem;
+  font-weight: 400;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.voucher__nav-item-link--active{
+  border-bottom: 1.5px solid #eb5e00;
+}
+
+.voucher__nav-item-link--active span{
+  color: #eb5e00;
+}
+
+.voucher__nav-item-link-text{
+  color: var(--text-color);
+}
+
+.voucher__nav-item-link-text:hover,
+.voucher__nav-item-link:hover{
+  text-decoration: none;
+  color: #eb5e00;
+}
+
+.account__content--voucher{
+  border-radius: 3px;
+  margin-left: 20px;
+}
+
+.voucher__content{
+  padding-top: 20px;
+}
+
+/**/
+.list-card{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 50px;
+}
+
+.account__card {
+  display: flex;
+  max-height: 100px;
+  border: 1px solid #d8d8d8;
+  border-radius: 3px;
+  margin: 20px 20px 0 20px;
+  box-sizing: border-box;
+}
+
+.account-img{
+  flex: 0;
+  z-index: 0;
+}
+
+.account__voucher-logo {
+  width: 100px;
+  padding: 8px;
+  background-color: var(--blue-color);
+  border-radius: 2px;
+  margin-top: -1;
+  margin-left: -1;
+}
+
+.account__card-content{
+  align-items: center;
+  display: flex;
+}
+
+.card-container{
+  margin-left: 10px;
+  width: 200px;
+}
+
+.account__card-text {
+  font-size: 1.4rem;
+  font-weight: 400;
+  flex: 1;
+}
+
+.card-link{
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.account__card--expired{
+  opacity: 0.6;
+}
+
+.text-danger{
+  font-size: 1.3rem;
+  color: red;
+}
+
+.modal-message{
+  position: absolute;
+  top: 0;
+  bottom:240px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.hide-message{
+  display: none;
+}
+
+.modal__inner-message {
+  width: 400px;
+  height: 150px;
+  background-color: #fff;
+  border: 0.5px solid #dbdbdb;
+  border-radius: 5px;
+  animation: fadeIn linear 0.1s;
+  position: relative;
+  margin: 300px auto;
+}
+
+.modal__body-message {
+  padding: 15px;
+  text-align: center;
+}
+
+.modal__body-message h2 {
+  color: var(--black-color);
+  margin-bottom: 10px;
+}
