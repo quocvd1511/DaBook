@@ -275,6 +275,7 @@
                           class="auth-form__input"
                           placeholder="Nhập tên tài khoản hoặc Email"
                         />
+                        <small></small>
                       </div>
                       <div class="auth-form__group">
                         <label class="auth-form__label">Mật khẩu</label>
@@ -284,6 +285,7 @@
                           class="auth-form__input"
                           placeholder="Nhập mật khẩu"
                         />
+                        <small></small>
                       </div>
                     </div>
                     <div class="form-group">
@@ -343,57 +345,49 @@
                     <i class="ti-close"></i>
                   </div>
                   <div class="auth-form__form">
-                    <div class="auth-form__group">
+                    <div class="auth-form__group" id = "input_tentk">
                       <label class="auth-form__label">Tên tài khoản</label>
                       <input
                         name="matk"
                         type="text"
                         class="auth-form__input"
                         placeholder="Nhập tên tài khoản"
-                        id = "input_tentk"
                       />
+                      <small class="text-error hide-message">Tên tài khoản không để trống</small>
                     </div>
-                    <div class="auth-form__group">
+                    <div class="auth-form__group" id = "input_lienlac">
                       <label class="auth-form__label">Email/Số điện thoại</label>
                       <input
                         name="email"
                         type="text"
                         class="auth-form__input"
                         placeholder="Nhập Email/Số điện thoại"
-                        id = "input_lienlac"
                       />
+                      <small class="text-error hide-message">Email/Số điện thoại không để trống</small>
                     </div>
-                    <div class="auth-form__group">
+                    <div class="auth-form__group" id = "input_nmatkhau">
                       <label class="auth-form__label">Mật khẩu</label>
                       <input
                         name="matkhau"
                         type="password"
                         class="auth-form__input"
                         placeholder="Nhập mật khẩu"
-                        id = "input_nmatkhau"
                       />
+                      <small class="text-error hide-message">Mật khẩu không để trống</small>
                     </div>
-                    <div class="auth-form__group">
+                    <div class="auth-form__group" id = "input_xacnhanmk">
                       <label class="auth-form__label">Xác nhận mật khẩu</label>
                       <input
                         type="password"
                         class="auth-form__input"
-                        placeholder="Nhập lại mật khẩu"
-                        id = "input_xacnhanmk"
+                        placeholder="Nhập lại mật khẩu"               
                       />
+                      <small class="text-error hide-message">Xác nhận mật khẩu không chính xác</small>
                     </div>
                   </div>
 
                   <div class="auth-form__controls">
                     <button class="btn btn--primary btn__signin" id="dangky" type="submit">Đăng ký</button>
-                    <div class="modal-message hide-message" id="message">
-                      <div class="modal__inner-message">
-                        <div class="modal__body-message">
-                          <h2>Đăng ký thành công</h2>
-                          <i class="far fa-check-circle" style="color: var(--blue-color); font-size:100px; text-align:center;"></i>
-                        </div>
-                      </div>
-                    </div>
                   </div>
 
                   <div class="auth-form__socials">
@@ -409,6 +403,14 @@
                   <div class="auth-form__footer">
                     <span>Bạn đã có tài khoản?</span> &nbsp;&nbsp;
                     <a href="">Đăng nhập</a>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-message hide-message" id="message">
+                <div class="modal__inner-message">
+                  <div class="modal__body-message">
+                    <h2>Đăng ký thành công</h2>
+                    <i class="far fa-check-circle" style="color: var(--blue-color); font-size:100px; text-align:center;"></i>
                   </div>
                 </div>
               </div>
@@ -564,11 +566,36 @@
       crossorigin="anonymous"
     ></script>
 
+    <!--đăng kí-->
     <script>
-      $('#dangky').click(function(){
-        if($('#input_tentk').val()!=""||$('#input_lienlac').val()!=""||$('#input_nmatkhau').val()!=""||$('#input_xacnhanmk').val()!="")
-        {
-          $('#message').removeClass('hide-message');
+      $(document).ready(function(){
+        const dk = document.getElementById('dangky');
+        const a = document.getElementById('input_tentk');
+        const tentk = a.getElementsByTagName('input');
+        const tentk_error = a.getElementsByTagName('small');
+        const b = document.getElementById('input_lienlac');
+        const lienlac = b.getElementsByTagName('input');
+        const c = document.getElementById('input_nmatkhau');
+        const matkhau = c.getElementsByTagName('input');
+        const d = document.getElementById('input_xacnhanmk');
+        const matkhau2 = d.getElementsByTagName('input');
+
+        dk.addEventListener('click', check_signup)
+
+        function check_input(input){
+          if(input==""){
+            return false;
+          }else{
+            return true;
+          }
         }
-      })
+        function check_signup(){
+          if(check_input(tentk.value)){
+           .classList.remove('hide-message')
+          }
+          else{
+            document.getElementById('message').classList.remove('hide-message')
+          }
+        }
+      });
     </script>

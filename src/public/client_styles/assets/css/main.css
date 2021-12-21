@@ -870,6 +870,13 @@ footer p {
   border-color: var(--text-color);
 }
 
+.text-error{
+  color:red;
+  font-size: 1.3rem;
+  margin-left: 10px;
+  display: none;
+}
+
 .auth-form__controls {
   display: flex;
   justify-content: space-around;
@@ -945,6 +952,7 @@ footer p {
 .modal-message {
   position: absolute;
   top: 0;
+  bottom:0;
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
