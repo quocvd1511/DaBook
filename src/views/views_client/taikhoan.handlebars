@@ -128,13 +128,13 @@
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Email</label>
-                        <p class="account__content-profile-text" id="email">{{client_accounts.email}}</p>
+                        <p class="account__content-profile-text" id="default_email">{{client_accounts.email}}</p>
                         <input class="check-text hide-text" type="text" value="" id="new_email">
                         <a class="account__content-profile-link" href="#" id="change_email" >Thay đổi</a>
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Số điện thoại</label>
-                        <p class="account__content-profile-text" id="phone">{{client_accounts.sodt}}</p>
+                        <p class="account__content-profile-text" id="default_phone">{{client_accounts.sodt}}</p>
                         <input class="check-text hide-text" type="text" value="" id="new_phone">
                         <a  class="account__content-profile-link" href="#" id="change_phone">Thay đổi</a>
                       </div>
@@ -159,7 +159,7 @@
                         <label class="account__content-profile-label">Ngày sinh</label>
                         <div class="account__content-profile-text">
                           <div class="account__content-profile-dropdown" id="input_day">
-                            <label for="1" id="day">1</label>
+                            <label id="default_day">1</label>
                             <i class="account__content-profile-dropdown-icon fas fa-chevron-down"></i>
                           </div>
                           <div class="vertical-menu" id="list_day">
@@ -167,7 +167,7 @@
                         </div>
                         <div class="account__content-profile-text" id="month">
                           <div class="account__content-profile-dropdown" id="input_month"> 
-                            <label for="1">1</label>
+                            <label id="default_month">1</label>
                             <i class="account__content-profile-dropdown-icon fas fa-chevron-down"></i>
                           </div>
                           <div class="vertical-menu" id="list_month">
@@ -175,7 +175,7 @@
                         </div>
                         <div class="account__content-profile-text" id="year">
                           <div class="account__content-profile-dropdown" id="input_year">
-                            <label>2000</label>
+                            <label id="default_year">2000</label>
                             <i class="account__content-profile-dropdown-icon fas fa-chevron-down"></i>
                           </div>
                           <div class="vertical-menu" id="list_year">
@@ -244,19 +244,19 @@
                   </div>
                   <div class="account__content-container">
                     <form> 
-                      <div class="account__profile-info-content" id="matkhau">
+                      <div class="account__profile-info-content">
                         <div class="account__content-profile-row">
                           <label class="account__content-password-label">Mật khẩu hiện tại</label>
-                          <input class="check-text test" type="password" value="" id="matkhauht">
+                          <input class="check-text test" type="password" value="" id="matkhauht" onkeyup="check()">
                           <a class="account__content-profile-link" href="#">Quên mật khẩu</a> 
                         </div>
                         <div class="account__content-profile-row">
                           <label class="account__content-password-label">Mật khẩu mới</label>
-                          <input class="check-text test" type="password" value="" id="matkhaumoi">
+                          <input class="check-text test" type="password" value="" id="matkhaumoi" onkeyup="check()">
                         </div>
                         <div class="account__content-profile-row">
                           <label class="account__content-password-label">Xác nhận mật khẩu</label>
-                          <input class="check-text test" type="password" value="" id="xacnhanmk">
+                          <input class="check-text test" type="password" value="" id="xacnhanmk" onkeyup="check()">
                         </div>  
                       </div>
                       <div class="account__content-profile-row">
@@ -517,6 +517,12 @@
         $('#khovoucher').hide();
         $('#diemtichluy').hide();
         $('#account_profile').addClass('account__nav-list-link--active');
+        $('#account_address').removeClass('account__nav-list-link--active');
+        $('#account_password').removeClass('account__nav-list-link--active');
+        $('#order').removeClass('account__nav-list-link--active');
+        $('#noti').removeClass('account__nav-list-link--active');
+        $('#voucher').removeClass('account__nav-list-link--active');
+        $('#point').removeClass('account__nav-list-link--active');
       })
 
       /*Hồ sơ*/
@@ -672,64 +678,77 @@
     <!--JS Thay đổi-->
     <script>
       $('#change_email').click(function(){
-        $('#email').hide();
+        $('#default_email').hide();
         $('#new_email').show();
         $('#change_email').hide();
       })
 
       $('#change_phone').click(function(){
-        $('#phone').hide();
+        $('#default_phone').hide();
         $('#new_phone').show();
         $('#change_phone').hide();
       })
-
-      $('#btn_save').click(function(){
-        let a = $('#new_phone').val();
-        if(a!=""){
-          $('#phone').replaceWith(`<p class="account__content-profile-text" id="phone">  ${a}  </p> `);
-        }
-        let b = $('#new_email').val();
-        if(b!=""){
-          $('#email').replaceWith(`<p class="account__content-profile-text" id="email">  ${b}  </p> `);
-        }
-        $('#new_phone').hide();
-        $('#new_email').hide();
-        $('#change_phone').show();
-        $('#change_email').show();
+      $(document).ready(function(){
+        $('#btn_save').click(function(){
+          let a = $('#new_phone').val();
+          if(a!=""){
+            $('#default_phone').replaceWith(`<p class="account__content-profile-text" id="phone">  ${a}  </p> `);
+          }
+          let b = $('#new_email').val();
+          if(b!=""){
+            $('#default_email').replaceWith(`<p class="account__content-profile-text" id="email">  ${b}  </p> `);
+          }
+          $('#new_phone').hide();
+          $('#new_email').hide();
+          $('#change_phone').show();
+          $('#change_email').show();
+        })
       })
     </script>
 
     <!-- JS scroll ngày tháng năm  -->
     <script>
-      for (var i = 1; i < 32; i++) {
-          $('#list_day').append(`<label>${i}</label>`);
-      }
-
-      for (var i = 1; i < 13; i++) {
-          $('#list_month').append(`<label>${i}</label>`);
-      }
-
-      for (var i = 1950; i < 2022; i++) {
-          $('#list_year').append(`<label>${i}</label>`);
-      }
-
       $('#input_day').click(function(){
-          $('#list_day').toggle();
+        $('#list_day').show();
       })
 
+      for (var i = 1; i < 32; i++) {
+        $('#list_day').append(`<label id="${i}" onclick="newday(id)">${i}</label>`);  
+      }
+
+      function newday(id){
+        $('#default_day').replaceWith(`<label id="default_day">${id}</label>`);
+        $('#list_day').hide();
+      }
+    </script>
+    <script>
       $('#input_month').click(function(){
-        $('#list_month').toggle();
+        $('#list_month').show();
       })
 
+      for (var j = 1; j < 13; j++) {
+          $('#list_month').append(`<label id="${j}" onclick="newmonth(id)">${j}</label>`);
+      }
+
+      function newmonth(id){
+        $('#default_month').replaceWith(`<label id="default_month">${id}</label>`);
+        $('#list_month').hide();
+      }
+
+      </script>
+      <script>
       $('#input_year').click(function(){
-        $('#list_year').toggle();
+        $('#list_year').show();
       })
 
-      $('.new_day').click(function() {
-        let x = $('.new_day').val();
-        $('#day').replaceWith(`<label class="new_day" for="${x}">${x}</label>`);
-      }) 
+      for (var k = 1950; k < 2022; k++) {
+          $('#list_year').append(`<label id="${k}" onclick="newyear(id)">${k}</label>`);
+      }
 
+      function newyear(id){
+        $('#default_year').replaceWith(`<label id="default_year">${id}</label>`);
+        $('#list_year').hide();
+      }
     </script>
 
     <!--Thêm địa chỉ mới-->
@@ -775,33 +794,27 @@
 
     <!--Button Xác nhận đổi mật khẩu-->
     <script>
-      function validatePassword(){
-        let x = $('#matkhauht').val();
-        let y = $('matkhaumoi').val();
-        let z = $('xacnhanmk').val();
-        if(x!="" || y!="" || z!="")
+      
+      function validatePassword(input){   
+        if( input != "")
         {
           return true;
         }else {
           return false;
         }
       }
-      /*$('#matkhauht').keyup(function(){
-        if(!validatePassword())
-        {
-
-        }
-      })*/
-      $('.test').keyup(function(){
-        if(validatePassword())
+      
+      function check(){
+      let x = $('#matkhauht').val();
+      let y = $('matkhaumoi').val();
+      let z = $('xacnhanmk').val();
+        if(validatePassword(x) && validatePassword(y) && validatePassword(z) && y==z)
         {
           $('#btn_xacnhan').removeClass('account-btn--disable');
           $('#btn_xacnhan').addClass('account-btn--primary');
-          /*$('#btn_xacnhan').click(function(){
-            if($('#matkhauht').val() === $('#input_matkhau').val()){
-              $('#message').removeClass('hide-message');
-            }
-          })*/
+        }else
+        {
+          alert('Thông tin không đầy đủ')
         }
       })
     </script>
