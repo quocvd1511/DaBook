@@ -49,21 +49,6 @@
               </li>
             </ul>
             <ul class="header__navbar-list">
-              <div class="header__language-select">
-                <span class="header__language-select-label">Ngôn ngữ</span>
-                <i class="header__language-select-icon ti-angle-down"></i>
-                <ul class="header__language-option">
-                  <li
-                    class="header__language-option-item header__language-option-item--active">
-                    <span>Việt Nam</span>
-                    <i class="ti-check"></i>
-                  </li>
-                  <li class="header__language-option-item">
-                    <span>English</span>
-                    <i class="ti-check"></i>
-                  </li>
-                </ul>
-              </div>
               <li class="header__navbar-item">
                 <div class="header__navbar-item-notify">
                   <div href="" class="header__navbar-item--link">
@@ -192,21 +177,6 @@
               </li>
             </ul>
             <ul class="header__navbar-list">
-              <div class="header__language-select">
-                <span class="header__language-select-label">Ngôn ngữ</span>
-                <i class="header__language-select-icon ti-angle-down"></i>
-                <ul class="header__language-option">
-                  <li
-                    class="header__language-option-item header__language-option-item--active">
-                    <span>Việt Nam</span>
-                    <i class="ti-check"></i>
-                  </li>
-                  <li class="header__language-option-item">
-                    <span>English</span>
-                    <i class="ti-check"></i>
-                  </li>
-                </ul>
-              </div>
               <li class="header__navbar-item ">
                 <div class="header__navbar-item-notify">
                   <div href="" class="header__navbar-item--link open-login-noti">
@@ -322,7 +292,7 @@
                   
                   <div class="auth-form__footer">
                     <span>Bạn chưa có tài khoản?</span> &nbsp;&nbsp;
-                    <a href="">Đăng ký</a>
+                    <div><a href="" id="change-signup" data-toggle="collapse" class="hide_modal change-signup">Đăng ký</a></div>
                   </div>
                 </div>
               </div>
@@ -402,7 +372,7 @@
                   </div>
                   <div class="auth-form__footer">
                     <span>Bạn đã có tài khoản?</span> &nbsp;&nbsp;
-                    <a href="">Đăng nhập</a>
+                    <a href="" id="change-signin" data-toggle="collapse" class="change-signin">Đăng nhập</a>
                   </div>
                 </div>
               </div>
@@ -503,6 +473,43 @@
         modalsClose.addEventListener('click', hideshows)
          });
     </script>
+
+    <script>
+        $("#change-signup").on('click', function() {
+
+          const sign_up = document.querySelector('.change-signup')
+          const modal = document.querySelector('.modal')
+          const modals = document.querySelector('.modal-logup')
+          const modalClose = document.querySelector('.modal-close')
+          const modalsClose = document.querySelector('.modals-close')
+
+          modal.classList.remove('open')
+
+          modals.classList.add('open')
+          sign_up.addEventListener('click', modals.classList.add('open'))
+
+        });
+    </script>
+
+    <script>
+        $("#change-signin").on('click', function() {
+
+
+
+          const modal = document.querySelector('.modal')
+          const modals = document.querySelector('.modal-logup')
+          const modalClose = document.querySelector('.modal-close')
+          const modalsClose = document.querySelector('.modals-close')
+
+          modals.classList.remove('open')
+
+          modal.classList.add('open')
+
+
+        });
+    </script>
+
+
     {{/if}}
 
      <script>
@@ -538,7 +545,6 @@
                 li[0].classList.add('header__search-option-item--active')
                 li[1].classList.remove('header__search-option-item--active')
         }      
-
         function l1_click(){
                 li[1].classList.add('header__search-option-item--active')
                 li[0].classList.remove('header__search-option-item--active')
