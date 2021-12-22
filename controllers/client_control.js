@@ -876,6 +876,32 @@ class Client_Control
                 res.render('payment.handlebars',{layout: 'client.handlebars',thongtintk: client_account, sach: MangSach})
             })
     }
+
+    binhluan(req,res,next)
+    {
+        books.updateOne({"tensach": req.query.tensach},
+            { $push: { "review": {"matk": req.query.matk, "noidung": req.query.review}}
+        })
+        .then(() => 
+        {
+        const tongtien = req.query.giaban * req.query.soluong;
+            res.redirect('/chitietsach/' + req.query.tensach)
+        });
+    }
+
+    capnhattk(req,res,next)
+    {
+        client_account.updateOne({"matk": req.session.username},
+            { "email": req.query.email,
+              "sodt": req.query.phone,
+              "gioitinh": req.query.gioitinh,
+              "ngaysinh": req.query.day + "/" + req.query.month + "/" + req.query.year,
+        })
+        .then(() => 
+        {
+            res.redirect('/chitiettk')
+        });
+    }
 }
 
 module.exports = new Client_Control

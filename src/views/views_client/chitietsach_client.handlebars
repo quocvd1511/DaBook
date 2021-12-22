@@ -112,7 +112,11 @@
 								</div>
 							<span>{{books.sodanhgia}}</span>
 						</div>
+<<<<<<< HEAD
 						<div class="product-price-discount"><span name="giaban">{{books.giaban}}</span><span class="line-through">{{books.giagoc}}</span></div>
+=======
+						<div class="product-price-discount"><span name="giaban">{{format_price books.giaban}}</span><span class="line-through">{{format_price books.giagoc}}</span></div>
+>>>>>>> 088b502eaf9e673b40164d309fa0540b80a8d4f2
 					</div>
 					<p>Tác giả: <span>{{books.tacgia}}</span> </p>
 					<p>Thể loại: <span>{{books.theloai}}</span> </p>
@@ -125,7 +129,11 @@
 							<input type="text" name="soluong" value="1" class="qty">
 							<div class="qtyplus">+</div>
 						</form>
+<<<<<<< HEAD
 						<a class="add-to-cart round-black-btn">Thêm vào giỏ hàng</a>
+=======
+						<a href="" class="add-to-cart round-black-btn">Thêm vào giỏ hàng</a>
+>>>>>>> 088b502eaf9e673b40164d309fa0540b80a8d4f2
 						 {{!-- <button class="round-black-btn" type="submit">Thêm vào giỏ hàng</button> --}}
 					</div>
 				</div>
@@ -173,8 +181,13 @@
 							</div>
 							<h4 class="home-product-item__name d-inline-block" style="display:-webkit-box">{{this.tensach}}</h4>
 							<div class="home-product-item__price">
+<<<<<<< HEAD
 								<span class="home-product-item__price-old">{{this.giagoc}}</span>
 								<span class="home-product-item__price-current">{{this.giaban}}</span>
+=======
+								<span class="home-product-item__price-old">{{format_price this.giagoc}}</span>
+								<span class="home-product-item__price-current">{{format_price this.giaban}}</span>
+>>>>>>> 088b502eaf9e673b40164d309fa0540b80a8d4f2
 							</div>
 							<div class="home-product-item__action">
 								<span class="home-product-item__like home-product-item--liked">
@@ -353,21 +366,9 @@
 						</div>
 						<div class="form-group">
 							<label></label>
-							<textarea class="form-control" rows="10"></textarea>
+							<textarea class="form-control" id="review-text" rows="10"></textarea>
 						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<input type="text" name="" class="form-control" placeholder="Name*">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<input type="text" name="" class="form-control" placeholder="Email Id*">
-								</div>
-							</div>
-						</div>
-						<button class="round-black-btn">Submit Review</button>
+						<a href="" class="review-btn round-black-btn">Submit Review</a>
 					</form>
 				</div>
 			</div>
@@ -419,7 +420,7 @@
         $(document).ready(function() {
 		    var slider = $("#slider");
 		    var thumb = $("#thumb");
-		    var slidesPerPage = 4; //globaly define number of elements per page
+		    var slidesPerPage = 4; // globaly define number of elements per page
 		    var syncedSecondary = true;
 		    slider.owlCarousel({
 		        items: 1,
@@ -497,10 +498,21 @@
                 }
             });
 
+<<<<<<< HEAD
 
 			$('.round-black-btn').on("click", function(){
+=======
+			// Thêm giỏ hàng
+			$('.add-to-cart').on("click", function(){
+>>>>>>> 088b502eaf9e673b40164d309fa0540b80a8d4f2
 		   var now = $(".qty").val();
 		   this.href = "/themgiohang?tensach={{books.tensach}}&giaban={{books.giaban}}&hinhanh={{books.hinhanh}}&soluong=" + now;
+			})
+
+			// Submit review
+		   	$('.review-btn').on("click", function(){
+		   var now = $('#review-text').val();
+		   this.href = "/binhluan?tensach={{books.tensach}}&review=" + now + "&matk={{client_accounts.matk}}";
 	  })
 		});
     </script>

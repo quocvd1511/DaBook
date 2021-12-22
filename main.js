@@ -133,6 +133,14 @@ app.engine('handlebars',
               s = s + arr[i];
             }
             return s;
+          },
+          'format_price': function(price){
+            let formatter = new Intl.NumberFormat('vi-VN', {
+              style: 'currency',
+              currency: 'VND',
+            })
+            new_price = formatter.format(price);
+           return new_price;
           }
         }        
 }));
