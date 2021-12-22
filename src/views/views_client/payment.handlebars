@@ -33,20 +33,22 @@
             <div class="shipping__address--header " style="padding: 10px;">
                 <span style="font-size: 1.6rem;">Được giao bởi <i style="color: rgb(0, 132, 255);">DaBookStore</i> </span>
             </div>
+            {{#each sach}}
             <div class="bill__info--product">
                 <div class="col-6 col-pro layout-inline">
                     <img class="cart__img" src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"alt="">
-                    <p class="item__name">Harry Potter và bảo bối tử thần Harry Potter và bảo bối tử thần Harry Potter và bảo bối tử thần Harry Potter và bảo bối tử thần</p>
+                    <p class="item__name">{{this.tensach}}</p>
                 </div>
 
                 <div class="col col-price ">
-                    <span>Số lượng: 1</span>
+                    <span>Số lượng: {{this.SoLuong}}</span>
                 </div>
                 
                 <div class="col col-price  ">
-                    <span>179.000 đ</span>
+                    <span>{{this.TongTien}}</span>
                 </div>
             </div>
+            {{/each}}
             <div class="bill__info--time">
                 <span>Giao vào: Thứ 2, 15/11/2021</span>
                 <span style="color: #333; padding: 0 10px">Được giao bởi <img class="delivery__logo" src="/client_styles/assets/img/delivery.png" alt=""></span>

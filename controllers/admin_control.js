@@ -288,7 +288,7 @@ class Admin_Control{
     {
         donhang.find({madh: req.params.slug})
             .then(donhang =>{
-                    console.log(donhangg)
+                    console.log(donhang)
                     donhang = donhang.map(course => course.toObject())
                     client_account.find({matk: donhang[0].matk})
                     .then(client_account =>{

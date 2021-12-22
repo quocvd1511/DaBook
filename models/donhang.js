@@ -3,7 +3,7 @@ const Schema = mogoose.Schema;
 
 const donhang = new Schema({
     madh: String,
-    ngaylap: String,
+    ngaylap: {type: Date, default: Date.now},
     matk: String,
     hinhthucthanhtoan: String,
     vanchuyen: String,
@@ -12,12 +12,14 @@ const donhang = new Schema({
     thongtinnguoinhan: String,
     tinhtrangthanhtoan: String,
     tinhtrangdonhang: String,
-    ds_sach: {
+    ds_sach: [{
+      masach: String,
       tensach: String,
       giaban: Number,
+      giagiam: Number,
       hinhanh: String,
       soluong: Number,
-    },
+    }],
   });
   
 module.exports = mogoose.model('donhangs',donhang)

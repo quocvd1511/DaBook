@@ -780,14 +780,101 @@ class Client_Control
     }
 
     // thanh toán đơn hàng
-    thanhtoan(req,res,next){
-        client_login.findOne({'matk': req.session.username})
-        .then(thongtintk => 
-            {
-                thongtintk=mongooseToObject(thongtintk);
-                res.render('payment.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk})            })
-            .catch(next)
+    taohoadon(req,res,next)
+    {
+        // client_login.findOne({'matk': req.session.username})
+        // .then(thongtintk => 
+        //     {
+        //         thongtintk=mongooseToObject(thongtintk);
+        //         res.render('payment.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk})            })
+        //     .catch(next)
+        donhang.find({})
+            .then(donhang_x =>{
+                //console.log(donhang)
+                var MangTien = JSON.parse(req.body.data)
+                //console.log(MangTien)
+                var TongTien=0
+                for(var i=0;i<MangTien.length;i++)
+                {
+                    TongTien+=parseInt(MangTien[i].TongTien)
+                }
+                 var n = donhang_x.length
+                 if(n!=0)
+                 {
+                    var code = donhang_x[n-1].madh
+                    code = code.substring(2,5)
+                    var madh="dh00"+(parseInt(code)+1).toString()
+                    var ThanhToan = ''
+                    var TinhTrangThanhToan =''
+                    if(req.body.value==='first')
+                    {
+                        ThanhToan = "Trực tiếp"
+                        TinhTrangThanhToan = "Chưa thanh toán"
+                    } 
+                    else
+                    {
+                        ThanhToan = "Trực tuyến"
+                        TinhTrangThanhToan = "Đã thanh toán"
+                    }
+                    var FormData=
+                    {
+                        ds_sach: MangTien,
+                        matk: req.session.username,
+                        madh: madh,
+                        hinhthucthanhtoan: 'Trực tiếp',
+                        tinhtrangthanhtoan: 'Chưa thanh toán',
+                        tinhtrangdonhang: 'chờ xác nhận',
+                        tongtien: TongTien
+                    }
+                    //console.log(FormData)
+                    FormData = new donhang(FormData)
+                    FormData.save()
+                 } else
+                 {
+                    var madh="dh00"+(1).toString()
+                    var ThanhToan = ''
+                    var TinhTrangThanhToan =''
+                    if(req.body.value==='first')
+                    {
+                        ThanhToan = "Trực tiếp"
+                        TinhTrangThanhToan = "Chưa thanh toán"
+                    } 
+                    else
+                    {
+                        ThanhToan = "Trực tuyến"
+                        TinhTrangThanhToan = "Đã thanh toán"
+                    }
+                    var FormData={
+                        ds_sach: MangTien,
+                        matk: req.session.username,
+                        madh: madh,
+                        hinhthucthanhtoan: 'Trực tiếp',
+                        tinhtrangthanhtoan: 'Chưa thanh toán',
+                        tinhtrangdonhang: 'chờ xác nhận',
+                        tongtien: TongTien
+                    }
+
+                    FormData = new donhang(FormData)
+                    FormData.save()
+
+                 }
+
+                 client_account.find({'matk': req.session.username})
+                    .then(client_account =>{
+                        res.render('payment.handlebars',{layout: 'client.handlebars',thongtintk: client_account, sach: MangTien})
+                    })
+            })
+
         
+    }
+
+    thanhtoan(req,res,next)
+    {
+        client_account.find({'matk': req.session.username})
+            .then(client_account => {
+                var MangSach = JSON.parse(req.body.data)
+                res.render('payment.handlebars',{layout: 'client.handlebars',thongtintk: client_account, sach: MangSach})
+            })
     }
 }
 
