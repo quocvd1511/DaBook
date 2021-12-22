@@ -39,7 +39,7 @@
             <div class="nav flex-column account__nav">
               <li class="account__nav-user">
                 <img class="account__nav-user-img" src="https://anhdep123.com/wp-content/uploads/2021/05/hinh-avatar-trang.jpg" alt="">
-                <label class="account__nav-user-name">{{client_accounts}}</label>
+                <label class="account__nav-user-name">{{client_accounts.matk}}</label>
               </li>
               <!--Navigation-->
               <div class="account__nav-container">
@@ -145,11 +145,11 @@
                           <label for="Nam">
                             Nam &nbsp;&nbsp;&nbsp;
                           </label>
-                          <input class="check-input" type="radio" name="gioitinh" id ="Nu" checked>
+                          <input class="check-input" type="radio" name="gioitinh" value="1" id ="Nu" checked>
                           <label for="Nu">
                             Nữ &nbsp;&nbsp;&nbsp;
                           </label>
-                          <input class="check-input" type="radio" name="gioitinh" id ="Khac">
+                          <input class="check-input" type="radio" name="gioitinh" value="0" id ="Khac">
                           <label for="Khac">
                             Khác 
                           </label>
@@ -185,7 +185,7 @@
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label"></label>
                         <div class="account__content-profile-text">
-                          <button class="account-btn account-btn--primary" id="btn_save">Lưu thay đổi</button>
+                          <a href="" class="account-btn account-btn--primary" id="btn_save">Lưu thay đổi</a>
                         </div>
                       </div>
                     </form>
@@ -505,6 +505,26 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- JS nav user account -->
+
+    {{!-- Lưu thông tin thay đổi --}}
+    <script>
+       $('#btn_save').click(function(){
+         var phone = $('#new_phone').val();
+         var email =  $('#new_email').val();
+
+         var radios = document.getElementsByName('gioitinh');
+         for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+            var gioitinh = (radios[i].value);
+          break;
+        }
+
+        console.log(day,month, year)
+        	this.href = "/capnhattaikhoan?day=" + day + "&month="+ month + "&year=" + year + "&phone=" + phone + "&email=" + email + "&gioitinh=" + gioitinh;
+      }
+      })
+    </script>
+
     <script>
       /*Tài khoản của tôi*/
       $('#user_account').click(function(){

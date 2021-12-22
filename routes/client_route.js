@@ -5,6 +5,8 @@ const client_Control = require('../controllers/client_control')
 
 
 
+route.get('/capnhattaikhoan', client_Control.capnhattk)
+route.get('/binhluan', client_Control.binhluan)
 route.get('/nhapkhuyenmai', client_Control.nhapkhuyenmai)
 route.get('/themgiohang', client_Control.themgiohang)
 route.get('/chitietgiohang', client_Control.chitietgiohang)
