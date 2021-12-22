@@ -5,6 +5,7 @@ const client_Control = require('../controllers/client_control')
 
 
 
+route.post('/themdiachi', client_Control.themdiachi)
 route.get('/capnhattaikhoan', client_Control.capnhattk)
 route.get('/binhluan', client_Control.binhluan)
 route.get('/nhapkhuyenmai', client_Control.nhapkhuyenmai)

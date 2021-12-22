@@ -813,6 +813,17 @@ class Client_Control
             res.redirect('/chitiettk')
         });
     }
+
+    themdiachi(req,res,next){
+        console.log(req.query.hoten, req.query.sodt, req.query.diachi)
+        client_account.updateOne({"matk": req.session.username},
+        { $push: { "diachigh": {"hoten": req.query.hoten, "sdt": req.query.sodt, "diachi": req.query.diachi}}
+        })
+        .then(() => 
+        {
+            res.redirect('/chitiettk')
+        });
+    }
 }
 
 module.exports = new Client_Control

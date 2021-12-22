@@ -11,6 +11,8 @@ const client_account = new Schema({
     tinhtrang: String,
     danhsach_km: Array,
     diachigh: {
+      hoten: String,
+      sdt: String,
       diachi: String,
     },
     diachigoc:{

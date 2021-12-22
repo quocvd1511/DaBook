@@ -467,25 +467,27 @@
           </div>
         </div>
         
-        <div class="modal-address hide-address" id="new__address">
+        <div class="modal-address hide-address" id="new__address" method="post" action="/themdiachi">
           <div class="modal__inner-address">
             <div class="modal__body-address">
               <h2>Địa chỉ mới</h2> 
               <div class="address-form__group">
                 <label class="address-form__label">Họ và tên</label>
-                <input name="" type="text" class="address-form__input" placeholder="Nhập họ tên" id = "hotenmoi"/>
+                <input name="hoten" type="text" class="address-form__input" placeholder="Nhập họ tên" value="" id ="hotenmoi"/>
               </div>
               <div class="address-form__group">
                 <label class="address-form__label">Số điện thoại</label>
-                <input name="" type="text" class="address-form__input" placeholder="Nhập số điện thoại" id = "sdtmoi"/>
+                <input name="sodt" type="text" class="address-form__input" placeholder="Nhập số điện thoại" value="" id ="sdtmoi"/>
               </div>
               <div class="address-form__group">
                 <label class="address-form__label">Địa chỉ</label>
-                <input name="" type="text" class="address-form__input" placeholder="Nhập địa chỉ" id = "diachimoi"/>
+                <input name="diachi" type="text" class="address-form__input" placeholder="Nhập địa chỉ" value="" id ="diachimoi"/>
               </div>
               <div class="address-form__controls">
-                <button class="account-btn account-btn--disable" id="cancel-newaddress" type="submit">Hủy</button>
+                <button class="account-btn account-btn--disable" id="cancel-newaddress">Hủy</button>
+               <a id="save-btn" href="">
                 <button class="account-btn account-btn--primary" id="save-newaddress" type="submit">Lưu</button>
+               </a>
               </div>
             </div>
           </div>
@@ -518,7 +520,35 @@
             var gioitinh = (radios[i].value);
           break;
         }
+        console.log(day,month, year)
+        	this.href = "/capnhattaikhoan?day=" + day + "&month="+ month + "&year=" + year + "&phone=" + phone + "&email=" + email + "&gioitinh=" + gioitinh;
+      }
+      })
+    </script>
 
+     <script>
+       $('#save-btn').click(function(){
+         var hoten = $('#hotenmoi').val();
+         var sdt =  $('#sdtmoi').val();
+         var diachi =  $('#diachimoi').val();
+
+        console.log(hoten,sdt, diachi)
+        	this.href = "/themdiachia?hoten=" + hoten + "&sdt="+ sdt + "&diachi=" + diachi;
+      }
+      })
+    </script>
+
+    <script>
+       $('#bhotenmoi').click(function(){
+         var phone = $('#new_phone').val();
+         var email =  $('#new_email').val();
+
+         var radios = document.getElementsByName('gioitinh');
+         for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+            var gioitinh = (radios[i].value);
+          break;
+        }
         console.log(day,month, year)
         	this.href = "/capnhattaikhoan?day=" + day + "&month="+ month + "&year=" + year + "&phone=" + phone + "&email=" + email + "&gioitinh=" + gioitinh;
       }
@@ -722,7 +752,18 @@
           $('#new_email').hide();
           $('#change_phone').show();
           $('#change_email').show();
+
         })
+
+        $('#save-btn').click(function(){
+         var hoten = $('#hotenmoi').val();
+         var sdt =  $('#sdtmoi').val();
+         var diachi =  $('#diachimoi').val();
+
+        console.log(hoten,sdt, diachi)
+        	this.href = "/themdiachia?hoten=" + hoten + "&sdt="+ sdt + "&diachi=" + diachi;
+      }
+      })
       })
     </script>
 
