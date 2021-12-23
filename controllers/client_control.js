@@ -738,7 +738,7 @@ class Client_Control
                     })
                         .then(res.send('Add'))
                 }
-        })
+            })
         // client_account.updateOne({"matk": req.session.username},
         //     { $push: { "giohang": {"tensach": req.body.tensach, "giaban": req.body.giaban, "hinhanh": req.body.hinhanh, "soluong": req.body.soluong}}, 
         //     $inc: {"sl_giohang": +1}
@@ -955,19 +955,43 @@ class Client_Control
 
     capnhattk(req,res,next)
     {
-        if(req.session.isAuth)
+        console.log(req.body.email, req.body.phone, req.body.sex)
+        const ngaysinh = req.body.day + "/" + req.body.month + "/" + req.body.year
+        client_account.updateOne({"matk": req.session.username},
+            { "email": req.body.email,
+              "sodt": req.body.phone,
+              "gioitinh": req.body.sex,
+              "ngaysinh": ngaysinh,
+        })
+        .then(() => 
         {
-            client_account.updateOne({"matk": req.session.username},
-                { "email": req.query.email,
-                "sodt": req.query.phone,
-                "gioitinh": req.query.gioitinh,
-                "ngaysinh": req.query.day + "/" + req.query.month + "/" + req.query.year,
-            })
-            .then(() => 
-            {
-                res.redirect('/chitiettk')
-            });
-        } else res.redirect('/')
+            res.redirect('/chitiettk')
+        });
+        // console.log(req.query.email)
+        // res.json(req.query.email)
+    }
+
+    themdiachi(req,res,next){
+        console.log(req.body.hoten, req.body.sodt, req.body.diachi)
+        client_account.updateOne({"matk": req.session.username},
+        { $push: { "diachigh": {"hoten": req.body.hoten, "sdt": req.body.sodt, "diachi": req.body.diachi}}
+        })
+        .then(() => 
+        {
+            res.redirect('/chitiettk')
+        });
+    }
+
+    capnhatmatkhau(req,res,next)
+    {
+        console.log(req.body.matkhau)
+        client_account.updateOne({"matk": req.session.username},
+            { "matkhau": req.body.matkhau,
+        })
+        .then(() => 
+        {
+            res.redirect('/chitiettk')
+        });
     }
 
     capnhatgiohang(req,res,next)

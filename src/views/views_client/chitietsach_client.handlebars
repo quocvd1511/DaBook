@@ -364,6 +364,14 @@
 	
 
 	<script>
+		$('.add-to-cart').on("click", function(){
+		   var now = $(".qty").val();
+		   this.href = "/themgiohang?tensach={{books.tensach}}&giaban={{books.giaban}}&hinhanh={{books.hinhanh}}&soluong=" + now;
+			})
+
+	</script>
+
+	<script>
         var swiper = new Swiper(".featured-slider", {
             //slidesPerView: '1',
             spaceBetween: 10,

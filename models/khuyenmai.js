@@ -7,7 +7,7 @@ const khuyenmai = new Schema({
     loai:String,
     noidung:String,
     ngaykt:{type: Date,
-      transform: v => v.getDate() + "/" + v.getMonth() + "/" + v.getFullYear()
+      transform: v => v.getDate() + "-" + v.getMonth() + "-" + v.getFullYear()
     },
     ngaybd: Date,
     sl:Number,
