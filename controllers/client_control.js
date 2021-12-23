@@ -642,24 +642,24 @@ class Client_Control
     }
 
     //lưu khuyến mãi
-    luukhuyenmai(req,res,next)
+    luukhuyenmai(req,res,next){
+        if(req.session.isAuth){
+    client_login.updateOne({"matk": req.session.username}, 
+        { $push: { "danhsach_km":  {"manhap": req.query.manhap, "phantram": req.query.phantram, "ngaykt": req.query.ngaykt}}
+        //{"manhap": req.params.manhap, "ngaykt": req.params.ngaykt, "phantram": req.params.phantram}
+    })
+    .then(() => 
     {
-        if(req.session.isAuth)
-        {
-        client_login.updateOne({"matk": req.session.username}, 
-            { $push: { "danhsach_km": {"makm": req.params.value} }
-        })
-        .then(() => 
-        {
-            khuyenmai.updateOne({"makm": req.params.value},
-            { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
-                res.redirect('/khuyenmai');
-            })    
-        })
-        }else{
+        khuyenmai.updateOne({"manhap": req.query.manhap},
+        { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
             res.redirect('/khuyenmai');
-        }
-    }
+        })    
+    })
+}else{
+    res.redirect('/khuyenmai');
+}
+}
+
 
     //xem chi tiết tài khoản
     // chitiettk(req,res,next){
