@@ -3,7 +3,7 @@ const Schema = mogoose.Schema;
 
 const donhang = new Schema({
     madh: String,
-    ngaylap: {type: Date, default: Date.now},
+    ngaylap: {type: Date, default: Date.now, transform: v => v.getDate() + "/" + v.getMonth() + "/" + v.getFullYear()},
     matk: String,
     hinhthucthanhtoan: String,
     vanchuyen: String,
