@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
     <title>Document</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/client_styles/assets/css/cart.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    
     
 </head>
 
@@ -36,7 +45,7 @@
                             </div>
                             <div class="col-4 col-pro layout-inline">
                                 <img class="cart__img" src="{{this.hinhanh}}"alt="">
-                                <p class="item__name">{{this.tensach}}</p>
+                                <p class="tensach item__name">{{this.tensach}}</p>
                             </div>
                             <div class="col col-price col-numeric align-center" id="giaban">
                                     <span class="col-price" id="id_giaban">{{this.giaban}}</span>
@@ -44,7 +53,7 @@
                         
                             <div class="col-auto col-qty layout-inline">
                                 <a href="#" class="qty qty-minus"><span>-</span></a>
-                                <input class="input__qty" id="id_soluong" type="numeric" value="{{this.soluong}}" />
+                                <input class="soluong input__qty" id="id_soluong" type="numeric" value="{{this.soluong}}" />
                                 <a href="#" class="qty qty-plus"><span>+</span></a>
                             </div>
                                 
@@ -64,7 +73,7 @@
                             </div>
                             <div class="col-4 col-pro layout-inline">
                                 <img class="cart__img" src="{{this.hinhanh}}"alt="">
-                                <p class="item__name">{{this.tensach}}</p>
+                                <p class="tensach item__name">{{this.tensach}}</p>
                             </div>
 
                             <div class="col col-price col-numeric align-center" id="giaban">
@@ -73,7 +82,7 @@
                         
                             <div class="col-auto col-qty layout-inline">
                                 <a href="#" class="qty qty-minus"><span>-</span></a>
-                                <input class="input__qty" id="id_soluong" type="numeric" value="{{this.soluong}}" />
+                                <input class="soluong input__qty" id="id_soluong" type="numeric" value="{{this.soluong}}" />
                                 <a href="#" class="qty qty-plus"><span>+</span></a>
                             </div>
                                 
@@ -174,6 +183,7 @@
     </div>
 
     <script>
+
         var TongTien=0
         var TienShip=parseInt($('#cart-shipping').text())
         var TongSoLuong=0
@@ -266,11 +276,14 @@
          var thanh_tien=$this.parent().parent().find("#id_thanhtien")
          var value = parseInt($input.val());
          var checkbox =$this.parent().parent().find('.checkbuy')
+         var tensach =$this.parent().parent().find('.tensach').text()
+         var soluong =parseInt($this.parent().find('.soluong').val())
+         var matk=$('.ten-dang-nhap').text()
          //$('.input__qty').value=6
         
-        // console.log($input)
 
-         if (value > 1) {
+         if (value > 1) 
+         {
            value = value - 1;
            var sum=value*(parseInt(gia_ban.text()))
 
@@ -285,7 +298,21 @@
                 TongSoLuong-=1;
                 $('#id_soluong_sanpham').text('('+TongSoLuong.toString()+') Sản phẩm')
             }
-         }   
+         }
+            var temp=soluong
+            if(soluong>1) temp=soluong-1
+            $.ajax({
+                url: '/updategiohang',
+				method: 'POST',
+				data: JSON.stringify({
+                    matk: matk,
+					tensach: tensach,
+					soluong: temp,
+				}),
+				contentType: 'application/json',
+            })
+
+
        });
 
        
@@ -297,6 +324,9 @@
          var thanh_tien=$this.parent().parent().find("#id_thanhtien") 
          var checkbox =$this.parent().parent().find('.checkbuy')
          var value = parseInt($input.val());
+         var tensach =$this.parent().parent().find('.tensach').text()
+         var soluong =parseInt($this.parent().find('.soluong').val())
+         var matk=$('.ten-dang-nhap').text()
 
          if (value < 100) {
             value = value + 1;
@@ -313,6 +343,17 @@
                 $('#id_soluong_sanpham').text('('+TongSoLuong.toString()+') Sản phẩm')
             }
          }
+
+           $.ajax({
+                url: '/updategiohang',
+				method: 'POST',
+				data: JSON.stringify({
+                    matk: matk,
+					tensach: tensach,
+					soluong: soluong+1,
+				}),
+				contentType: 'application/json',
+            })
 
 
          //var tong_gia=$this.parent().parent().parent().parent().parent().find('.list-cart-item').find('.cart__total').find('#tongtien').html()
@@ -443,15 +484,8 @@
         }
     </script>
 
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous">
-      </script>
-      <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-      integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
-      crossorigin="anonymous">
-      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

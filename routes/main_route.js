@@ -8,12 +8,16 @@ const clientRouter = require('../routes/client_route')
 const deliveryRoute = require('../routes/delivery_route')
 const faceRoute = require('../routes/facebook_route')
 
+const store = new session.MemoryStore()
+
 function router(app)
 {
     app.use(session({
         secret: 'dabook',
-        resave: false,
-        saveUninitialized: false,
+        resave: true,
+        cookie: {expires: false},
+        saveUninitialized: true,
+        store,
     }))
     app.use(passport.initialize())
     app.use(passport.session())    

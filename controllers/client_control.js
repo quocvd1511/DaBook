@@ -6,6 +6,8 @@ const client_account = require('../models/client_account')
 const khuyenmai = require('../models/khuyenmai')
 const giohang = require('../models/giohang')
 const donhang = require('../models/donhang')
+const { json } = require('express')
+const { redirect } = require('express/lib/response')
 
 
 
@@ -13,6 +15,7 @@ class Client_Control
 {
     main(req,res,next)
     {
+        //console.log(req.session)
         books.find({'giamgia': {$gte: 22}},
             function (err,flash_sales){
                 if(!err)
@@ -106,7 +109,6 @@ class Client_Control
                         // sodt: "none",
                         matk: req.session.username,
                         email: "",
-                        matkhau: "",
                         diem: 0,
                         tinhtrang: "Đang sử dụng",
                         diachigoc: "",
@@ -133,7 +135,8 @@ class Client_Control
     search(req,res,next)
     {   
          // lấy giá trị của key name trong query parameters gửi lên
-         if(req.session.isAuth) {
+         if(req.session.isAuth) 
+         {
             client_login.findOne({'matk': req.session.username}).then((thongtintk => {
                 thongtintk=mongooseToObject(thongtintk);
                 books.find({ $or :[
@@ -532,6 +535,7 @@ class Client_Control
     // Chi tiết sách
     chitietsach(req,res,next)
     {
+        //console.log(req.sessionID)
         const query = books.findOne({ 'tensach': req.params.tensach });
         query.exec(function (err, book) {
             if(!err)
@@ -554,7 +558,8 @@ class Client_Control
                         dateString =  date.getFullYear()
                     } else dateString = "2021"
                     
-                    if(req.session.isAuth) {
+                    if(req.session.isAuth) 
+                    {
                         client_login.findOne({'matk': req.session.username}).then((thongtintk => {
                             thongtintk=mongooseToObject(thongtintk);
                             books.find({theloai: book.theloai}).limit(10).skip(10*1)
@@ -637,63 +642,137 @@ class Client_Control
     }
 
     //lưu khuyến mãi
-    
-        luukhuyenmai(req,res,next){
-                if(req.session.isAuth){
-            client_login.updateOne({"matk": req.session.username}, 
-                { $push: { "danhsach_km":  {"manhap": req.query.manhap, "phantram": req.query.phantram, "ngaykt": req.query.ngaykt}}
-                //{"manhap": req.params.manhap, "ngaykt": req.params.ngaykt, "phantram": req.params.phantram}
-            })
-            .then(() => 
-            {
-                khuyenmai.updateOne({"manhap": req.query.manhap},
-                { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
-                    res.redirect('/khuyenmai');
-                })    
-            })
-        }else{
+    luukhuyenmai(req,res,next){
+        if(req.session.isAuth){
+    client_login.updateOne({"matk": req.session.username}, 
+        { $push: { "danhsach_km":  {"manhap": req.query.manhap, "phantram": req.query.phantram, "ngaykt": req.query.ngaykt}}
+        //{"manhap": req.params.manhap, "ngaykt": req.params.ngaykt, "phantram": req.params.phantram}
+    })
+    .then(() => 
+    {
+        khuyenmai.updateOne({"manhap": req.query.manhap},
+        { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
             res.redirect('/khuyenmai');
-        }
-        }
+        })    
+    })
+}else{
+    res.redirect('/khuyenmai');
+}
+}
+
 
     //xem chi tiết tài khoản
+    // chitiettk(req,res,next){
+    //     client_login.findOne({'matk': req.session.username})
+    //     .then(thongtintk => 
+    //         {
+    //             thongtintk=mongooseToObject(thongtintk);
+    //             client_login('danhsach_makm').aggregate([
+    //                 { $lookup:
+    //                    {
+    //                      from: 'khuyenmai',
+    //                      localField: 'makh_id',
+    //                      foreignField: 'makm',
+    //                      as: 'chitietkm'
+    //                    }
+    //                  }
+    //                 ]).toArray(function(err, res) {
+    //                 if (err) throw err;
+    //                 console(res);
+    //                 res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk})
+    //                 client_login.close();
+    //               });
+    //         })
+    //     .catch(next)
+    // }
     chitiettk(req,res,next){
 
-        // client_login.findOne({'matk': req.session.username})
-
-        // .then(thongtintk =>
-        //     {
-        //         thongtintk=mongooseToObject(thongtintk)
-        //         khuyenmai.find({'makm': {$in: thongtintk.danhsach_km }})
-        //         .then(khuyenmai => 
-        //         {
-        //             khuyenmai=khuyenmai.map(course => course.toObject())
-        //             // 'taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, khuyenmai: khuyenmai}
-        //         })
-        //     })
-
-        // .catch(next)
         client_login.findOne({'matk': req.session.username})
+
         .then(thongtintk =>
-            {   
-                thongtintk=mongooseToObject(thongtintk)
-                res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk})
+
+            {
+
+                thongtintk=mongooseToObject(thongtintk);
+
+                res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk})
 
             })
+
         .catch(next)
+
     }
 
     // thêm vào giỏ hàng
-    themgiohang(req,res,next){
-    console.log(req.query.soluong)
-        client_account.updateOne({"matk": req.session.username},
-            { $push: { "giohang": {"tensach": req.query.tensach, "giaban": req.query.giaban, "hinhanh": req.query.hinhanh, "soluong": req.query.soluong}}, 
-            $inc: {"sl_giohang": +1}
-        })
-        .then(() => 
-        {
-        res.redirect('/chitietsach/' + req.query.tensach)
-        });
+    themgiohang(req,res,next)
+    {
+        req.session.username=req.body.matk
+        req.session.isAuth = true
+        //console.log(req.body.matk)
+        //req.body = JSON.parse(req.body)
+       //console.log(req.body)
+       client_account.findOne({'matk': req.body.matk})
+        .then(thongtintk =>
+            {
+                //console.log(thongtintk)
+                var cart = thongtintk.giohang
+                var flag=false
+                for(var i=0; i<cart.length;i++)
+                {
+                    if(cart[i].tensach===req.body.tensach)
+                    {
+                        flag=true
+                        cart[i].soluong+=req.body.soluong
+                    }
+                }
+                if(flag===true)
+                {
+                    client_account.updateOne({'matk': req.session.username},{'giohang': cart})
+                        .then(res.send('Update'))
+                }
+                else
+                {
+                    client_account.updateOne({"matk": req.session.username},
+                    { $push: { "giohang": {"tensach": req.body.tensach, "giaban": req.body.giaban, "hinhanh": req.body.hinhanh, "soluong": req.body.soluong}}, 
+                    $inc: {"sl_giohang": +1}
+                    })
+                        .then(res.send('Add'))
+                }
+            })
+        // client_account.updateOne({"matk": req.session.username},
+        //     { $push: { "giohang": {"tensach": req.body.tensach, "giaban": req.body.giaban, "hinhanh": req.body.hinhanh, "soluong": req.body.soluong}}, 
+        //     $inc: {"sl_giohang": +1}
+        // })
+        // .then(() => 
+        // {
+        // const tongtien = req.body.giaban * req.body.soluong;
+
+        // giohang.find({"matk": req.session.username}).exec(function(err, docs) {
+        //     if (docs.length){
+        //         giohang.updateOne({"matk": req.session.username},
+        //         { $push: { "ds_sach": {"tensach": req.body.tensach, "giaban": req.body.giaban, "hinhanh": req.body.hinhanh, "soluong": req.body.soluong}}, 
+        //         $inc: {"sl_sach": +1, "tongtien": + tongtien}
+        //         })
+        //         .then(() => 
+        //         {
+        //             res.redirect('/chitietsach/' + req.body.tensach);
+        //         }).catch(next)
+        //     } else {
+        //         const newgiohang = new giohang({
+        //             matk: req.session.username,
+        //             sl_sach: 1,
+        //             tongtien: tongtien,
+        //             $push: {"ds_sach": {"tensach": req.body.tensach, "giaban": req.body.giaban, "hinhanh": req.body.hinhanh, "soluong": req.body.soluong}},
+        //             diachigh: req.body.diachigh,
+        //         });
+                
+        //         newgiohang.save(function (err, gh) {
+        //             if (err) return console.error(err);
+        //             res.redirect('/chitietsach/' + req.body.tensach)
+        //           });
+        //       }
+        //     });
+        // });
     }
 
     //xem chi tiết giỏ hàng
@@ -711,7 +790,9 @@ class Client_Control
     }
 
     // áp dụng khuyến mãi
-    nhapkhuyenmai(req,res,next){
+    nhapkhuyenmai(req,res,next)
+    {
+
         client_login.find({"danhsach_km": {"makm": req.query.makm}})
         .then(() => 
             {
@@ -823,7 +904,7 @@ class Client_Control
 
                  client_account.find({'matk': req.session.username})
                     .then(client_account =>{
-                        res.render('payment.handlebars',{layout: 'client.handlebars',thongtintk: client_account, sach: MangTien})
+                        res.render('payment.handlebars',{layout: 'client.handlebars',client_accounts: client_account, sach: MangTien})
                     })
             })
 
@@ -832,23 +913,44 @@ class Client_Control
 
     thanhtoan(req,res,next)
     {
-        client_account.find({'matk': req.session.username})
-            .then(client_account => {
-                var MangSach = JSON.parse(req.body.data)
-                res.render('payment.handlebars',{layout: 'client.handlebars',thongtintk: client_account, sach: MangSach})
-            })
+        if(req.session.isAuth)
+        {
+            client_account.findOne({'matk': req.session.username})
+                .then(client_account => 
+                {
+                    var MangSach = JSON.parse(req.body.data)
+                    var SoLuong =0
+                    var ThanhTien=0
+                    for(var i=0;i<MangSach.length;i++)
+                    {
+                        SoLuong+=parseInt(MangSach[i].SoLuong)
+                        ThanhTien+=parseInt(MangSach[i].TongTien)
+                    }
+                    SoLuong=SoLuong.toString()
+                    ThanhTien=ThanhTien.toString()
+                    var shipday = new Date()
+                    shipday.setDate(shipday.getDate() + 4)
+                    var ShipDay = new Date(shipday)
+                    ShipDay = ShipDay.getDate().toString() + '/' + ShipDay.getMonth().toString()+ '/' + ShipDay.getFullYear().toString()
+                    client_account=mongooseToObject(client_account)
+                    res.render('payment.handlebars',{layout: 'client.handlebars',client_accounts: client_account, sach: MangSach, tongtien: ThanhTien ,soluong: SoLuong, thanhtien: ThanhTien, shipday: ShipDay})
+                })
+        } else res.redirect('/')
     }
 
     binhluan(req,res,next)
     {
-        books.updateOne({"tensach": req.query.tensach},
-            { $push: { "review": {"matk": req.query.matk, "noidung": req.query.review}}
-        })
-        .then(() => 
+        if(req.session.isAuth)
         {
-        const tongtien = req.query.giaban * req.query.soluong;
-            res.redirect('/chitietsach/' + req.query.tensach)
-        });
+            books.updateOne({"tensach": req.query.tensach},
+                { $push: { "review": {"matk": req.query.matk, "noidung": req.query.review}}
+            })
+            .then(() => 
+            {
+            const tongtien = req.query.giaban * req.query.soluong;
+                res.redirect('/chitietsach/' + req.query.tensach)
+            });
+        } else redirect('/')
     }
 
     capnhattk(req,res,next)
@@ -890,6 +992,24 @@ class Client_Control
         {
             res.redirect('/chitiettk')
         });
+    }
+
+    capnhatgiohang(req,res,next)
+    {
+        client_account.findOne({'matk': req.body.matk})
+            .then(thongtintk =>{
+                var cart = thongtintk.giohang
+                for(var i=0;i<cart.length;i++)
+                {
+                    if(cart[i].tensach===req.body.tensach)
+                    {
+                        cart[i].soluong=req.body.soluong
+                    }
+                }
+                client_account.updateOne({'matk': req.body.matk},{'giohang': cart})
+                 .then(res.send('OK'))
+                
+            })
     }
 }
 

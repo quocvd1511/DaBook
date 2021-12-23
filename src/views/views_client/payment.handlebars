@@ -50,7 +50,7 @@
             </div>
             {{/each}}
             <div class="bill__info--time">
-                <span>Giao vào: Thứ 2, 15/11/2021</span>
+                <span>Giao vào: {{shipday}}</span>
                 <span style="color: #333; padding: 0 10px">Được giao bởi <img class="delivery__logo" src="/client_styles/assets/img/delivery.png" alt=""></span>
             </div>
         </div>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="cart-delivery" style="padding: 2px 0;">
                     <span style="color: #666;">Tạm tính </span>
-                    <span style="color: #666;">(0) sản phẩm </span>
+                    <span style="color: #666;">({{soluong}}) sản phẩm </span>
                 </div>
                 <div class="cart-delivery" style="padding: 6px 0 14px;">
                     <span style="color: #666;">Phí giao hàng</span>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="cart__total">
                             <span>Tổng tiền:</span>
-                            <span>197.000đ</span>
+                            <span>{{tongtien}}</span>
                         </div>
                     </li>
 
@@ -113,3 +113,4 @@
     </div>
 </body>
 </html>
+
