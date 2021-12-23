@@ -9,8 +9,14 @@ const client_account = new Schema({
     ngaytao: {type: Date, default: Date.now,  transform: v => v.getDate() + "/" + v.getMonth() + "/" + v.getFullYear()},
     diem: Number,
     tinhtrang: String,
-    danhsach_km: Array,
+    danhsach_km: [{
+      phantram: String,
+      manhap: String,
+      ngaykt: String,
+    }],
     diachigh: {
+      hoten: String,
+      sdt: String,
       diachi: String,
     },
     diachigoc:{

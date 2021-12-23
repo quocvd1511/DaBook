@@ -1,109 +1,120 @@
 [{
-  "_id": {
-    "$oid": "61920dbed688143f4c94ddc4"
+  "_id": "61bab255ded11dd7a67b9886",
+  "daluu": 10,
+  "dieukien": 200,
+  "img": "https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png",
+  "loai": "Free Ship",
+  "makm": "101",
+  "manhap": "VOUCHER001",
+  "ngaybd": {
+    "$date": "2021-06-10T00:00:00Z"
   },
-  "makm": "MGG15",
+  "ngaykt": {
+    "$date": "2022-02-02T00:00:00Z"
+  },
+  "noidung": "Siêu to bự",
+  "phantram": 10,
+  "sl": 11
+},{
+  "_id": "61c165c8170cdcb453ed7e97",
+  "daluu": 10,
+  "dieukien": 200,
+  "img": "https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png",
+  "loai": "Free Ship",
+  "makm": "102",
+  "manhap": "VOUCHER002",
+  "ngaybd": {
+    "$date": "2021-06-10T00:00:00Z"
+  },
+  "ngaykt": {
+    "$date": "2022-06-06T00:00:00Z"
+  },
+  "noidung": "Vip vip vip",
+  "phantram": 10,
+  "sl": 11
+},{
+  "_id": "61c165ca170cdcb453ed7e98",
+  "daluu": 10,
+  "dieukien": 200,
+  "img": "https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png",
+  "loai": "Free Ship",
+  "makm": "103",
+  "manhap": "VOUCHER003",
+  "ngaybd": {
+    "$date": "2021-06-10T00:00:00Z"
+  },
+  "ngaykt": {
+    "$date": "2022-02-02T00:00:00Z"
+  },
+  "noidung": "Nghỉ lễ siêu vip",
+  "phantram": 10,
+  "sl": 11
+},{
+  "_id": "61c165ce170cdcb453ed7e99",
+  "daluu": 11,
+  "dieukien": 200,
+  "img": "https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png",
+  "loai": "mã giảm giá",
+  "makm": "104",
+  "manhap": "VOUCHER004",
+  "ngaybd": {
+    "$date": "2021-06-10T00:00:00Z"
+  },
+  "ngaykt": {
+    "$date": "2021-02-02T00:00:00Z"
+  },
+  "noidung": "Còn không ta",
+  "phantram": 10,
+  "sl": 10
+},{
+  "_id": "61c3f0a945d265f298467b0e",
+  "daluu": 10,
+  "dieukien": 200,
+  "img": "https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png",
+  "loai": "mã giảm giá",
+  "makm": "105",
+  "manhap": "VOUCHER005",
+  "ngaybd": {
+    "$date": "2021-12-10T00:00:00Z"
+  },
+  "ngaykt": {
+    "$date": "2021-12-22T00:00:00Z"
+  },
+  "noidung": "Siêu sale tháng 12",
+  "phantram": 10,
+  "sl": 11
+},{
+  "_id": "61c3f0f545d265f298467b0f",
+  "daluu": 10,
+  "dieukien": 200,
+  "img": "https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png",
+  "loai": "ưu đãi khách hàng",
+  "makm": "106",
+  "manhap": "VOUCHER006",
+  "ngaybd": {
+    "$date": "2021-12-10T00:00:00Z"
+  },
+  "ngaykt": {
+    "$date": "2021-12-31T00:00:00Z"
+  },
+  "noidung": "Siêu sale cuối năm",
   "phantram": 15,
-  "loai": "mã giảm giá",
-  "noidung": "nhà giáo Việt Nam",
-  "ngaybd": {
-    "$date": "2021-11-19T00:00:00Z"
-  },
-  "ngaykt": {
-    "$date": "2021-11-20T00:00:00Z"
-  },
-  "sl": 1,
-  "manhap": "MGG15",
+  "sl": 11
+},{
+  "_id": "61c3f10f45d265f298467b10",
+  "daluu": 10,
   "dieukien": 200,
-  "daluu": 3
-},{
-  "_id": {
-    "$oid": "61920dbed688143f4c94ddc5"
-  },
-  "makm": "MPGH10",
-  "phantram": 10,
-  "loai": "miễn phí giao hàng",
-  "noidung": "siêu sale 12.12",
+  "img": "https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png",
+  "loai": "ưu đãi khách hàng",
+  "makm": "107",
+  "manhap": "VOUCHER007",
   "ngaybd": {
-    "$date": "2021-12-11T17:00:00Z"
+    "$date": "2021-12-10T00:00:00Z"
   },
   "ngaykt": {
-    "$date": "2021-12-11T17:00:00Z"
+    "$date": "2021-12-31T00:00:00Z"
   },
-  "sl": 2,
-  "manhap": "MPGH10",
-  "dieukien": 100,
-  "daluu": 2
-},{
-  "_id": {
-    "$oid": "61920dbed688143f4c94ddc6"
-  },
-  "makm": "KHTT20",
+  "noidung": "Siêu sale cuối năm",
   "phantram": 20,
-  "loai": "ưu đãi khách hàng thân thiết",
-  "noidung": "sinh nhật Dabook",
-  "ngaybd": {
-    "$date": "2021-01-11T17:00:00Z"
-  },
-  "ngaykt": {
-    "$date": "2021-02-11T17:00:00Z"
-  },
-  "sl": 5,
-  "manhap": "KHTT20",
-  "dieukien": 250,
-  "daluu": 0
-},{
-  "_id": {
-    "$oid": "6197d80a98339f07e4881461"
-  },
-  "makm": "MGG104",
-  "phantram": 20,
-  "loai": "mã giảm giá",
-  "noidung": "nhà giáo Việt Nam",
-  "ngaybd": {
-    "$date": "2021-11-20T00:00:00Z"
-  },
-  "ngaykt": {
-    "$date": "2021-11-20T00:00:00Z"
-  },
-  "sl": 0,
-  "manhap": "MGG104",
-  "dieukien": 200,
-  "daluu": 1
-},{
-  "_id": {
-    "$oid": "6197d80a98339f07e4881462"
-  },
-  "makm": "MPGH105",
-  "phantram": 10,
-  "loai": "miễn phí giao hàng",
-  "noidung": "siêu sale 12.12",
-  "ngaybd": {
-    "$date": "2021-12-11T17:00:00Z"
-  },
-  "ngaykt": {
-    "$date": "2021-12-11T17:00:00Z"
-  },
-  "sl": 4,
-  "manhap": "MPGH105",
-  "dieukien": 100,
-  "daluu": 0
-},{
-  "_id": {
-    "$oid": "6197d80a98339f07e4881463"
-  },
-  "makm": "KHTT106",
-  "phantram": 20,
-  "loai": "ưu đãi khách hàng thân thiết",
-  "noidung": "sinh nhật Dabook",
-  "ngaybd": {
-    "$date": "2021-01-11T17:00:00Z"
-  },
-  "ngaykt": {
-    "$date": "2021-02-11T17:00:00Z"
-  },
-  "sl": 5,
-  "manhap": "KHTT106",
-  "dieukien": 250,
-  "daluu": 0
+  "sl": 11
 }]
