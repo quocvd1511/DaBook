@@ -637,22 +637,23 @@ class Client_Control
     }
 
     //lưu khuyến mãi
-    luukhuyenmai(req,res,next){
-        if(req.session.isAuth){
-        client_login.updateOne({"matk": req.session.username}, 
-            { $push: { "danhsach_km": {"makm": req.params.value} }
-        })
-        .then(() => 
-        {
-            khuyenmai.updateOne({"makm": req.params.value},
-            { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
-                res.redirect('/khuyenmai');
-            })    
-        })
+    
+        luukhuyenmai(req,res,next){
+            if(req.session.isAuth){
+            client_login.updateOne({"matk": req.session.username}, 
+                { $push: { "danhsach_km": req.params.value }
+            })
+            .then(() => 
+            {
+                khuyenmai.updateOne({"makm": req.params.value},
+                { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
+                    res.redirect('/khuyenmai');
+                })    
+            })
         }else{
             res.redirect('/khuyenmai');
         }
-    }
+        }
 
     //xem chi tiết tài khoản
     // chitiettk(req,res,next){
@@ -698,6 +699,7 @@ class Client_Control
 
     // thêm vào giỏ hàng
     themgiohang(req,res,next){
+    console.log(req.query.soluong)
         client_account.updateOne({"matk": req.session.username},
             { $push: { "giohang": {"tensach": req.query.tensach, "giaban": req.query.giaban, "hinhanh": req.query.hinhanh, "soluong": req.query.soluong}}, 
             $inc: {"sl_giohang": +1}

@@ -114,7 +114,7 @@
                 </div>
                 <div class="list-card">
                     {{#each khuyenmai}}
-                    {{#ifCond this.loai '==' 'miễn phí giao hàng'}}
+                    {{#ifCond this.loai '==' 'Free Ship'}}
                         <div class="sale__card">
                             <div class="sale__card-img">
                                 <img src="/client_styles/assets/img/logo.png" class="sale__voucher-logo">
@@ -145,7 +145,7 @@
                 {{!-- <div class="card-group sale__voucher-container"> --}}
                 <div class="list-card">
                     {{#each khuyenmai}}
-                    {{#ifCond this.loai '==' 'ưu đãi khách hàng thân thiết'}}
+                    {{#ifCond this.loai '==' 'ưu đãi khách hàng'}}
                     <div class="sale__card">
                             <div class="sale__card-img">
                                 <img src="/client_styles/assets/img/logo.png" class="sale__voucher-logo">
@@ -174,7 +174,7 @@
 
     {{!-- Lưu mã khuyến mãi cho tài khoản --}}
     <script>
-    var list = document.querySelectorAll('.btn__save');
+    var list = document.querySelectorAll('.btn__save--primary');
     Array.prototype.forEach.call(list, function (element,index) {
         var value = element.name;
             element.href = "/luukhuyenmai/" + value;
