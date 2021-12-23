@@ -58,9 +58,6 @@
                     <a href="" class="category-item__link">Kinh dị</a>
                   </li>
                   <li class="category-item">
-                    <a href="" class="category-item__link">Trinh thám</a>
-                  </li>
-                  <li class="category-item">
                     <a href="" class="category-item__link">Tâm linh</a>
                   </li>
                   <li class="category-item">
@@ -68,9 +65,6 @@
                   </li>
                   <li class="category-item">
                     <a href="" class="category-item__link">Du ký</a>
-                  </li>
-                  <li class="category-item">
-                    <a href="" class="category-item__link">Nấu ăn</a>
                   </li>
                   <li class="category-item">
                     <a href="" class="category-item__link">Tuổi teen</a>
@@ -85,19 +79,10 @@
                     <a href="" class="category-item__link">Động lực</a>
                   </li>
                   <li class="category-item">
-                    <a href="" class="category-item__link">Sức khỏe</a>
-                  </li>
-                  <li class="category-item">
                     <a href="" class="category-item__link">Lịch sử</a>
                   </li>
                   <li class="category-item">
                     <a href="" class="category-item__link">Du lịch</a>
-                  </li>
-                  <li class="category-item">
-                    <a href="" class="category-item__link">Sách hướng dẫn</a>
-                  </li>
-                  <li class="category-item">
-                    <a href="" class="category-item__link">Gia đình và xã hội</a>
                   </li>
                   <li class="category-item">
                     <a href="" class="category-item__link">Hài hước</a>
@@ -273,17 +258,7 @@
                             NXB Giáo dục
                           </span>
                         </label>
-                        <label class="form-check">
-                          <input
-                            name="nxb[]"
-                            class="form-check-input"
-                            type="checkbox"
-                            value="NXB Hà Nội"
-                          />
-                          <span class="form-check-label">
-                            NXB Hà Nội
-                          </span>
-                        </label>
+                        
                         <label class="form-check">
                           <input
                             name="nxb[]"
@@ -306,7 +281,7 @@
                 id="btn-timkiem-boloc"
                 type="submit"
                 class="btn btn-primary"
-                style="width: 188px; margin-top: 10px;"
+                style="width: 188px; margin-top: 6px; padding: -4px 0px"
               >Tìm kiếm</button>
             </form>
             </div>
@@ -320,7 +295,14 @@
                       class="carousel__banner-img"
                       alt=""
                     />
-                  <div class="carousel-item active" data-interval="10000">
+                  <div class="carousel-item" data-interval="10000">
+                    <img
+                      src="/client_styles/assets/img/banner9.png"
+                      class="carousel__banner-img"
+                      alt=""
+                    />
+                  </div>
+                  <div class="carousel-item active">
                     <img
                       src="/client_styles/assets/img/banner1.png"
                       class="carousel__banner-img"
@@ -373,38 +355,7 @@
                 </a>
               </div>
 
-              {{!-- featured section --}}
-              <div class="featured" id="featured">
-
-                  <h1 class="heading"> <span>FLASH SALE</span> </h1>
-
-                  <div class="swiper featured-slider">             
-                      <div class="swiper-wrapper" style="height: auto; width: 100%">
-                        {{#each flash_sales}}
-                          <div class="swiper-slide box">
-                              <div class="icons">
-                                  <a href="#" class="fas fa-search"></a>
-                                  <a href="#" class="fas fa-heart"></a>
-                                  <a href="/chitietsach/{{this.tensach}}" class="fas fa-eye"></a>
-                              </div>
-                              <a class="image" href="/chitietsach/{{this.tensach}}">
-                                  <img src="{{this.hinhanh}}"
-                                      alt="">
-                              </a>
-                              <div class="content">
-                                  <h3>{{this.tensach}}</h3>
-                                  <div class="price">{{format_price this.giaban}}<span>{{format_price this.giagoc}}</span></div>
-                                  <a href="/themgiohang?tensach={{this.tensach}}&giaban={{this.giaban}}&hinhanh={{this.hinhanh}}&soluong=1" class="btn btn--primary">Thêm vào giỏ</a>
-                              </div>
-                          </div>
-                     {{/each}}
-                      </div>                   
-                      <div class="swiper-button-next"></div>
-                      <div class="swiper-button-prev"></div>
-                  </div>
-              </div>
-
-                <div class="discount__banner">
+              <div class="discount__banner">
                   <div class="discount-title">
                       <div class="title mt-64">
                         <h2>Ưu đãi độc quyền
@@ -424,54 +375,118 @@
                       </a>
                   </div>
                 </div>
+
+              {{!-- featured section --}}
+              <div class="featured" id="featured">
+
+                  <h1 class="heading"> <span>FLASH SALE</span> </h1>
+
+                  <div class="swiper featured-slider">             
+                      <div class="swiper-wrapper" style="height: auto; width: 100%">
+                        {{#each flash_sales}}
+                          <div class="swiper-slide box">
+                              <div class="icons">
+                                  <a href="#" class="fas fa-search"></a>
+                                  <a href="#" class="fas fa-heart"></a>
+                                  <a href="/chitietsach/{{this.tensach}}" class="fas fa-eye"></a>
+                              </div>
+                              <a class="image" href="/chitietsach/{{this.tensach}}">
+                                  <img src="{{this.hinhanh}}"
+                                      alt="">
+                              </a>
+                              
+                              <div class="content">
+                                  <h3>{{this.tensach}}</h3>
+                                  <div class="price">{{format_price this.giaban}}<span>{{format_price this.giagoc}}</span></div>
+                                  <a href="/themgiohang?tensach={{this.tensach}}&giaban={{this.giaban}}&hinhanh={{this.hinhanh}}&soluong=1" class="btn btn--primary">Thêm vào giỏ</a>
+                              </div>
+                          </div>
+                     {{/each}}
+                      </div>                   
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                  </div>
+              </div>
                 
               <!-- Home-filter -->
               <div class="home-filter">
-                <span class="home-filter__label">Sắp xếp theo</span>
-                <button class="home-filter__btn btn">Xu hướng</button>
-                <button class="home-filter__btn btn">Mới nhất</button>
-                <button class="home-filter__btn btn">Bán chạy</button>
-                <button class="home-filter__btn btn">Bảng xếp hạng</button>
-
-                <!-- <div class="select-input">
-                                <span class="select-input__label">Giá</span>
-                                <i class="select-input__icon fas fa-angle-down"></i> -->
-                <!-- List option -->
-                <!-- <ul class="select-input__list">
-                                    <li class="select-input__item">
-                                        <a href="" class="select-input__link">Giá: Thấp đến cao</a>
-                                    </li>
-                                    <li class="select-input__item">
-                                        <a href="" class="select-input__link">Giá: Cao đến thấp</a>
-                                    </li>
-                                </ul>
-                            </div> -->
 
                 <div class="home-filter__page">
-                  <span class="home-filter__page-num">
-                    <span class="home-filter__page-current">1</span>/14
-                  </span>
 
                   <div class="home-filter__page-control">
-                    <a
-                      href=""
-                      class="home-filter__page-btn home-filter__page-btn--disable"
-                    >
-                      <i class="home-filter__page-icon fas fa-angle-left"></i>
+                    <a href="">
+                      <img src="/client_styles/assets/img/flashsale.png" alt="" class="page-control-img" />
                     </a>
-                    <a href="" class="home-filter__page-btn">
-                      <i class="home-filter__page-icon fas fa-angle-right"></i>
+                    <p for="" class="page-control__name">Flash sale</p>
+                  </div>
+                  <div class="home-filter__page-control">
+                    <a href="">
+                      <img src="/client_styles/assets/img/icon_12_12.png" alt="" class="page-control-img" />
                     </a>
+                    <p for="" class="page-control__name">Siêu sale tháng 12</p>
+                  </div>
+                  <div class="home-filter__page-control">
+                    <a href="">
+                      <img src="/client_styles/assets/img/ico_PCSC.png" alt="" class="page-control-img" />
+                    </a>
+                    <p for="" class="page-control__name">Sách sắp xuất bản</p>
+                  </div>
+                  <div class="home-filter__page-control">
+                    <a href="">
+                      <img src="/client_styles/assets/img/magg.png" alt="" class="page-control-img" />
+                    </a>
+                    <p for="" class="page-control__name">Mã giảm giá</p>
+                  </div>
+                  <div class="home-filter__page-control">
+                    <a href="">
+                      <img src="/client_styles/assets/img/xuhuong.png" alt="" class="page-control-img" />
+                    </a>
+                    <p for="" class="page-control__name">Xu hướng</p>
+                  </div>
+                  <div class="home-filter__page-control">
+                    <a href="">
+                      <img src="/client_styles/assets/img/miễn_phí_vận_chuyển.png" alt="" class="page-control-img" />
+                    </a>
+                    <p for="" class="page-control__name">Mã freeship</p>
                   </div>
                 </div>
               </div>
 
+            </div>
+
+            <div class="grid__row future">
+              <span class="future_sale-name">Bộ sách "Cảm hứng sống" siêu hot sắp xuất bản vào đầu năm 2022!!!</span>
+              <div class="row align-items-start future_sale">
+                <div class="col-sm">
+                  <img src="/client_styles/assets/img/dammouoc.jpg" alt="" class="future_sale-img" />
+                </div>
+                <div class="col-sm">
+                  <img src="/client_styles/assets/img/dungcuidau.jpg" alt="" class="future_sale-img" />
+                </div>
+                <div class="col-sm">
+                  <img src="/client_styles/assets/img/noluc.jpg" alt="" class="future_sale-img" />
+                </div>
+              </div>
+              <div class="row align-items-start future_sale">
+                <div class="col-sm">
+                  <img src="/client_styles/assets/img/buongtay.jpg" alt="" class="future_sale-img" />
+                </div>
+                <div class="col-sm">
+                  <img src="/client_styles/assets/img/diudang.jpg" alt="" class="future_sale-img" />
+                </div>
+                <div class="col-sm">
+                  <img src="/client_styles/assets/img/tq.jpg" alt="" class="future_sale-img" />
+                </div>
+              </div>
+            </div>
+
+            <div>
               <div class="home-product">
                 <!-- Grid -> row -> column -->
                 <div class="grid__row">
                   <!-- Product item -->
                   {{#each books}}
-                    <div class="grid__column-2-4">
+                    <div class="grid__column-2">
 
                       <a class="home-product-item" href="/chitietsach/{{this.tensach}}">
                         <div
@@ -541,26 +556,6 @@
 
               <div class="content_detail__pagination cdp" actpage="1">
                 <a href="#!-1" class="cdp_i">prev</a>
-                {{!-- <a href="?page=1" class="cdp_i">1</a> --}}
-                {{!-- <a href="?page=2" class="cdp_i">2</a>
-                <a href="?page=3" class="cdp_i">3</a>
-                <a href="?page=4" class="cdp_i">4</a>
-                <a href="?page=5" class="cdp_i">5</a>
-                <a href="?page=6" class="cdp_i">6</a>
-                <a href="?page=7" class="cdp_i">7</a>
-                <a href="?page=8" class="cdp_i">8</a>
-                <a href="?page=9" class="cdp_i">9</a>
-                <a href="?page=10" class="cdp_i">10</a>
-                <a href="?page=11" class="cdp_i">11</a>
-                <a href="?page=12" class="cdp_i">12</a>
-                <a href="?page=13" class="cdp_i">13</a>
-                <a href="?page=14" class="cdp_i">14</a>
-                <a href="?page=15" class="cdp_i">15</a>
-                <a href="?page=16" class="cdp_i">16</a>
-                <a href="?page=17" class="cdp_i">17</a>
-                <a href="?page=18" class="cdp_i">18</a>
-                <a href="?page=19" class="cdp_i">19</a>
-                <a href="#!+1" class="cdp_i">next</a> --}}
               </div>
             </div>
           </div>
@@ -588,7 +583,7 @@
                 li[0].classList.remove('header__search-option-item--active')
         }    
 
-    </script>
+    </script>     
 
     <script>
       window.onload = function()
