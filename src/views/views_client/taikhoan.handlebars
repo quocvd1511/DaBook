@@ -245,24 +245,36 @@
                   <div class="account__content-container">
                     <form> 
                       <div class="account__profile-info-content">
-                        <div class="account__content-profile-row">
+                        <div class="account__content-password-row">
                           <label class="account__content-password-label">Mật khẩu hiện tại</label>
-                          <input class="check-text test" type="password" value="" id="matkhauht" onkeyup="check()">
+                          <input class="check-text test" type="password" value="" id="matkhauht">
                           <a class="account__content-profile-link" href="#">Quên mật khẩu</a> 
                         </div>
                         <div class="account__content-profile-row">
+                          <label class="account__content-password-label"></label>
+                          <small class="text-error-password hide-message" id ="error-pw">Xác nhận mật khẩu không để trống</small>
+                        </div>  
+                        <div class="account__content-password-row">
                           <label class="account__content-password-label">Mật khẩu mới</label>
-                          <input class="check-text test" type="password" value="" id="matkhaumoi" onkeyup="check()">
+                          <input class="check-text test" type="password" value="" id="matkhaumoi">
                         </div>
                         <div class="account__content-profile-row">
+                          <label class="account__content-password-label"></label>
+                          <small class="text-error-password hide-message" id ="error-pw1">Mật khẩu mới không để trống</small>
+                        </div>  
+                        <div class="account__content-password-row">
                           <label class="account__content-password-label">Xác nhận mật khẩu</label>
-                          <input class="check-text test" type="password" value="" id="xacnhanmk" onkeyup="check()">
+                          <input class="check-text test" type="password" value="" id="xacnhanmk">
+                        </div>  
+                        <div class="account__content-profile-row">
+                          <label class="account__content-password-label"></label>
+                          <small class="text-error-password hide-message" id ="error-pw2">Xác nhận mật khẩu không để trống</small>
                         </div>  
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-password-label"></label>
                         <div class="account__content-profile-text">
-                          <button class="account-btn account-btn--disable" id="btn_xacnhan">Xác nhận</button>
+                          <button class="account-btn account-btn--primary" id="btn_xacnhan">Xác nhận</button>
                         </div>
                       </div>
                     </form>
@@ -491,7 +503,7 @@
           </div>
         </div>
 
-        <div class="modal-message hide-message" id="message">
+        <div class="modal-message hide-message" id="message_xacnhan">
           <div class="modal__inner-message">
             <div class="modal__body-message">
               <h2>Bạn đã đổi mật khẩu thành công</h2>
@@ -814,29 +826,34 @@
 
     <!--Button Xác nhận đổi mật khẩu-->
     <script>
-      
-      function validatePassword(input){   
-        if( input != "")
-        {
-          return true;
-        }else {
-          return false;
-        }
-      }
-      
-      function check(){
-      let x = $('#matkhauht').val();
-      let y = $('matkhaumoi').val();
-      let z = $('xacnhanmk').val();
-        if(validatePassword(x) && validatePassword(y) && validatePassword(z) && y==z)
-        {
-          $('#btn_xacnhan').removeClass('account-btn--disable');
-          $('#btn_xacnhan').addClass('account-btn--primary');
-        }else
-        {
-          alert('Thông tin không đầy đủ')
-        }
-      })
+      $(document).ready(function(){
+        $('#btn_xacnhan').click(function(){
+          let password = $('#matkhauht').val()
+          let password1 = $('#matkhaumoi').val()
+          let password2 = $('#xacnhanmk').val()
+          if((password.length > 0)&&(password1.length > 0)&&(password2.length > 0))
+          {
+            
+            $('#message_xacnhan').removeClass('hide-message')
+            
+          }else{
+            if(password.length < 1)
+            {
+              $('#error-pw').removeClass('hide-message')
+            }
+
+            if(password1.length < 1)
+            {
+              $('#error-pw1').removeClass('hide-message')
+            }
+
+            if(password2.length < 1)
+            {
+              $('#error-pw2').removeClass('hide-message')
+            }
+          }
+        })
+      });
     </script>
 
     <!--JS Đánh dấu đã đọc-->

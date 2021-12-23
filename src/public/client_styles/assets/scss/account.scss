@@ -424,6 +424,10 @@
 }
 
 /*Mật khẩu*/
+.account__content-password-row{
+  margin-bottom: 5px;
+}
+
 .account__content-password-label{
 font-size: 1.6rem;
 font-weight: 400;
@@ -743,9 +747,8 @@ tbody{
 }
 
 .modal-message{
-  position: absolute;
+  position: fixed;
   top: 0;
-  bottom:240px;
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
@@ -774,4 +777,10 @@ tbody{
 .modal__body-message h2 {
   color: var(--black-color);
   margin-bottom: 10px;
+}
+
+.text-error-password{
+  color:red;
+  font-size: 1.3rem;
+  margin-left: 10px;
 }

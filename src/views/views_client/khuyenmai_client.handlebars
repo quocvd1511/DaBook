@@ -35,27 +35,25 @@
 <body>
   <!-- container -->
     <div class="sale">
-        <div class="text-center sale__banner" >
-            <img src="/client_styles/assets/img/Banner_sale.png"  alt="">
+        <div class="text-center" >
+            <img src="/client_styles/assets/img/SIÊU KHUYẾN MÃI.png"  alt="">
         </div>
-        <div class="text-center sale__myvoucher">
-            <a href="">
-                <img src="/client_styles/assets/img/My_voucher.png" alt="" >
-            </a>
+        <div class="text-center sale__voucher">
+            <div class="myvoucher">
+                <span>MÃ GIẢM GIÁ CỦA TÔI</span>
+                <i class="fas fa-angle-right"></i>
+            </div>
         </div>
-        <div class="justify-content-between sale__list">
-            <div class="col-3"></div>
-            <div class="col-2">
+        <div class="grid">
+            <div class="justify-content-around sale__list">
                 <a href="#magiamgia"  style ="text-decoration: none;">
                     <div class="sale__list-container">
                         <div class="sale__list-item">
-                            <img src="/client_styles/assets/img/mã_giảm_giá_logo.png" alt="" width="130px" height="130px">
+                            
                         </div>
                         <div class="sale__list-text">Mã giảm giá</div>
                     </div>
                 </a>
-            </div>
-            <div class="col-2 ">
                 <a href="#mienphivanchuyen" style ="text-decoration: none;">
                     <div class="sale__list-container">
                         <div class="sale__list-item">
@@ -64,8 +62,6 @@
                         <div class="sale__list-text">Miễn phí vận chuyển</div>
                     </div>
                 </a>
-            </div>
-            <div class="col-2 ">
                 <a href="#uudaikhachhang"  style ="text-decoration: none;">
                     <div class="sale__list-container">
                         <div class="sale__list-item">
@@ -75,9 +71,6 @@
                     </div>
                 </a>
             </div>
-            <div class="col-3"></div>
-        </div>
-        <div class="grid">
             <div class="sale__voucher" id="magiamgia">
                 <div class="sale__voucher-title">
                     <img src="/client_styles/assets/img/3.png" alt="">
@@ -114,7 +107,7 @@
                 </div>
                 <div class="list-card">
                     {{#each khuyenmai}}
-                    {{#ifCond this.loai '==' 'miễn phí giao hàng'}}
+                    {{#ifCond this.loai '==' 'Free Ship'}}
                         <div class="sale__card">
                             <div class="sale__card-img">
                                 <img src="/client_styles/assets/img/logo.png" class="sale__voucher-logo">
@@ -145,7 +138,7 @@
                 {{!-- <div class="card-group sale__voucher-container"> --}}
                 <div class="list-card">
                     {{#each khuyenmai}}
-                    {{#ifCond this.loai '==' 'ưu đãi khách hàng thân thiết'}}
+                    {{#ifCond this.loai '==' 'ưu đãi khách hàng'}}
                     <div class="sale__card">
                             <div class="sale__card-img">
                                 <img src="/client_styles/assets/img/logo.png" class="sale__voucher-logo">

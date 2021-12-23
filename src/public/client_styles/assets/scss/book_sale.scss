@@ -3,31 +3,62 @@
 background-color:  #F5F5F5;
 }
 
-.sale__banner{
-border: 2px solid var(--white-color) ;
+.sale__voucher{
+  margin: 20px;
+  display: flex;
+  justify-content: center;
 }
 
-.sale__myvoucher {
-padding-top: 16px;
+.myvoucher{
+  width: 500px;
+  padding: 20px;
+  display: flex;
+  border-radius: 5px;
+  border: 2px solid var(--blue-color);
+  align-items: center;
+  background-color: var(--white-color);
+}
+
+.myvoucher span{
+  font-size: 2rem;
+  font-weight: 500;
+  flex: 1;
+  text-align: left;
+}
+
+.myvoucher i{
+  float: right;
+  font-size: 2rem;
+}
+
+.myvoucher:hover{
+  border-color: #f60 ;
+  cursor: pointer;
+  transform: translateY(-3px);
 }
 
 .sale__list {
-display: flex;
-text-align: center;
-justify-content: center;
-}
-
-.sale__myvoucher, .sale__list {
-background-color: var(--white-color);
+  display: flex;
+  text-align: center;
+  padding: 0 50px;
 }
 
 .sale__list-container {
-padding: 12px;
-opacity: 0.7;
+  padding: 12px;
+  opacity: 0.7;
+  margin: 10px 15px;
 }
 
 .sale__list-item {
-box-sizing: border-box;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  border-radius: 5px;
+  border: 5px solid var(--blue-color);
+  align-items: center;
+  background-color: var(--white-color);
+  text-align: center;
+  align-items: center;
 }
 
 .sale__list-text {
