@@ -44,7 +44,7 @@
 			<div class="col-md-6">
 				<div id="slider" class="owl-carousel product-slider">
 					<div class="item">
-						<img src="{{books.hinhanh}}" />
+						<img class="hinhanh" src="{{books.hinhanh}}" />
 					</div>
 					<div class="item">
 						<img src="https://vcdn1-giaitri.vnecdn.net/2007/10/15/harry-7n-1348828782.jpg?w=480&h=0&q=100&dpr=1&fit=crop&s=txbVYg7pv4wkH1wgforq6A" />
@@ -95,7 +95,7 @@
 				<div class="product-dtl">
 					<div class="product-info">
 						<div class="product-name" name="tensach">
-							<h1><b>{{books.tensach}}</b></h1>
+							<h1><b class="tensach">{{books.tensach}}</b></h1>
 						</div>
 						<div class="reviews-counter">
 							<div class="rate">
@@ -112,7 +112,7 @@
 								</div>
 							<span>{{books.sodanhgia}}</span>
 						</div>
-						<div class="product-price-discount"><span name="giaban">{{format_price books.giaban}}</span><span class="line-through">{{format_price books.giagoc}}</span></div>
+						<div class="product-price-discount"><span class="giaban" name="giaban">{{format_price books.giaban}}</span><span class="line-through">{{format_price books.giagoc}}</span></div>
 					</div>
 					<p>Tác giả: <span>{{books.tacgia}}</span> </p>
 					<p>Thể loại: <span>{{books.theloai}}</span> </p>
@@ -122,7 +122,7 @@
 						<label for="size">Số lượng</label>
 						<form class="display-flex">
 							<div class="qtyminus">-</div>
-							<input type="text" name="soluong" value="1" class="qty">
+							<input type="text" name="soluong" value="1" class="soluong qty">
 							<div class="qtyplus">+</div>
 						</form>
 						<a href="" class="add-to-cart round-black-btn">Thêm vào giỏ hàng</a>
@@ -486,9 +486,38 @@
             });
 
 			// Thêm giỏ hàng
-			$('.add-to-cart').on("click", function(){
-		   var now = $(".qty").val();
-		   this.href = "/themgiohang?tensach={{books.tensach}}&giaban={{books.giaban}}&hinhanh={{books.hinhanh}}&soluong=" + now;
+			$('.add-to-cart').on("click", function()
+			{
+				event.preventDefault()
+				var now = $(".qty").val();
+				//this.href = "/themgiohang?tensach={{books.tensach}}&giaban={{books.giaban}}&hinhanh={{books.hinhanh}}&soluong=" + now;
+				var tensach = $('.tensach').text()
+				var hinhanh = $('.hinhanh').attr('src')
+				var giaban = parseInt($('.giaban').text())*1000
+				var soluong = parseInt($('.soluong').val())
+				var matk=$('.ten-dang-nhap').text()
+				console.log(matk)
+				$.ajax({
+					url: '/themgiohang',
+					method: 'POST',
+					data: JSON.stringify({
+						matk: matk,
+						tensach: tensach,
+						giaban: giaban,
+						hinhanh: hinhanh,
+						soluong: soluong
+					}),
+					contentType: 'application/json',
+					success: function(msg)
+					{
+						if(msg==="Add")
+						{
+							var sl_giohang=$('.so-luong-gio-hang').text()
+							sl_giohang=(parseInt(sl_giohang)+1).toString()
+							$('.so-luong-gio-hang').text(sl_giohang)
+						}
+					}
+				})
 			})
 
 			// Submit review
