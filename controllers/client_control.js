@@ -639,13 +639,14 @@ class Client_Control
     //lưu khuyến mãi
     
         luukhuyenmai(req,res,next){
-            if(req.session.isAuth){
+                if(req.session.isAuth){
             client_login.updateOne({"matk": req.session.username}, 
-                { $push: { "danhsach_km": req.params.value }
+                { $push: { "danhsach_km":  {"manhap": req.query.manhap, "phantram": req.query.phantram, "ngaykt": req.query.ngaykt}}
+                //{"manhap": req.params.manhap, "ngaykt": req.params.ngaykt, "phantram": req.params.phantram}
             })
             .then(() => 
             {
-                khuyenmai.updateOne({"makm": req.params.value},
+                khuyenmai.updateOne({"manhap": req.query.manhap},
                 { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
                     res.redirect('/khuyenmai');
                 })    
@@ -656,45 +657,30 @@ class Client_Control
         }
 
     //xem chi tiết tài khoản
-    // chitiettk(req,res,next){
-    //     client_login.findOne({'matk': req.session.username})
-    //     .then(thongtintk => 
-    //         {
-    //             thongtintk=mongooseToObject(thongtintk);
-    //             client_login('danhsach_makm').aggregate([
-    //                 { $lookup:
-    //                    {
-    //                      from: 'khuyenmai',
-    //                      localField: 'makh_id',
-    //                      foreignField: 'makm',
-    //                      as: 'chitietkm'
-    //                    }
-    //                  }
-    //                 ]).toArray(function(err, res) {
-    //                 if (err) throw err;
-    //                 console(res);
-    //                 res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk})
-    //                 client_login.close();
-    //               });
-    //         })
-    //     .catch(next)
-    // }
     chitiettk(req,res,next){
 
+        // client_login.findOne({'matk': req.session.username})
+
+        // .then(thongtintk =>
+        //     {
+        //         thongtintk=mongooseToObject(thongtintk)
+        //         khuyenmai.find({'makm': {$in: thongtintk.danhsach_km }})
+        //         .then(khuyenmai => 
+        //         {
+        //             khuyenmai=khuyenmai.map(course => course.toObject())
+        //             // 'taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, khuyenmai: khuyenmai}
+        //         })
+        //     })
+
+        // .catch(next)
         client_login.findOne({'matk': req.session.username})
-
         .then(thongtintk =>
-
-            {
-
-                thongtintk=mongooseToObject(thongtintk);
-
-                res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk})
+            {   
+                thongtintk=mongooseToObject(thongtintk)
+                res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk})
 
             })
-
         .catch(next)
-
     }
 
     // thêm vào giỏ hàng
@@ -706,33 +692,7 @@ class Client_Control
         })
         .then(() => 
         {
-        const tongtien = req.query.giaban * req.query.soluong;
-
-        giohang.find({"matk": req.session.username}).exec(function(err, docs) {
-            if (docs.length){
-                giohang.updateOne({"matk": req.session.username},
-                { $push: { "ds_sach": {"tensach": req.query.tensach, "giaban": req.query.giaban, "hinhanh": req.query.hinhanh, "soluong": req.query.soluong}}, 
-                $inc: {"sl_sach": +1, "tongtien": + tongtien}
-                })
-                .then(() => 
-                {
-                    res.redirect('/chitietsach/' + req.query.tensach);
-                }).catch(next)
-            } else {
-                const newgiohang = new giohang({
-                    matk: req.session.username,
-                    sl_sach: 1,
-                    tongtien: tongtien,
-                    $push: {"ds_sach": {"tensach": req.query.tensach, "giaban": req.query.giaban, "hinhanh": req.query.hinhanh, "soluong": req.query.soluong}},
-                    diachigh: req.query.diachigh,
-                });
-                
-                newgiohang.save(function (err, gh) {
-                    if (err) return console.error(err);
-                    res.redirect('/chitietsach/' + req.query.tensach)
-                  });
-              }
-            });
+        res.redirect('/chitietsach/' + req.query.tensach)
         });
     }
 
@@ -893,11 +853,26 @@ class Client_Control
 
     capnhattk(req,res,next)
     {
+        console.log(req.body.email, req.body.phone, req.body.sex)
+        const ngaysinh = req.body.day + "/" + req.body.month + "/" + req.body.year
         client_account.updateOne({"matk": req.session.username},
-            { "email": req.query.email,
-              "sodt": req.query.phone,
-              "gioitinh": req.query.gioitinh,
-              "ngaysinh": req.query.day + "/" + req.query.month + "/" + req.query.year,
+            { "email": req.body.email,
+              "sodt": req.body.phone,
+              "gioitinh": req.body.sex,
+              "ngaysinh": ngaysinh,
+        })
+        .then(() => 
+        {
+            res.redirect('/chitiettk')
+        });
+        // console.log(req.query.email)
+        // res.json(req.query.email)
+    }
+
+    themdiachi(req,res,next){
+        console.log(req.body.hoten, req.body.sodt, req.body.diachi)
+        client_account.updateOne({"matk": req.session.username},
+        { $push: { "diachigh": {"hoten": req.body.hoten, "sdt": req.body.sodt, "diachi": req.body.diachi}}
         })
         .then(() => 
         {
@@ -905,10 +880,11 @@ class Client_Control
         });
     }
 
-    themdiachi(req,res,next){
-        console.log(req.query.hoten, req.query.sodt, req.query.diachi)
+    capnhatmatkhau(req,res,next)
+    {
+        console.log(req.body.matkhau)
         client_account.updateOne({"matk": req.session.username},
-        { $push: { "diachigh": {"hoten": req.query.hoten, "sdt": req.query.sodt, "diachi": req.query.diachi}}
+            { "matkhau": req.body.matkhau,
         })
         .then(() => 
         {

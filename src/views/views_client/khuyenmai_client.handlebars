@@ -97,7 +97,7 @@
                                 </div> 
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
-                                    <a href="" class="btn__save btn__save--primary" name="{{this.makm}}">Lưu</a>
+                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary">Lưu</a>
                                 {{else}}  
                                     <a class="btn__save btn__save--disable" name="{{this.makm}}"><b>Đã hết</b></a>
                                 {{/ifCond}}     
@@ -112,7 +112,7 @@
                 <div class="sale__voucher-title">
                     <img src="/client_styles/assets/img/1.png" alt="">
                 </div>
-                <div class="list-card">
+                <div class="list-card" method="get" action="/luukhuyenmai?makm={{this.makm}}&manhap={{this.manhap}}&phantram={{this.phantram}}&ngaykt={{this.ngaykt}}">
                     {{#each khuyenmai}}
                     {{#ifCond this.loai '==' 'Free Ship'}}
                         <div class="sale__card">
@@ -127,7 +127,7 @@
                                 </div> 
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
-                                    <a href="" class="btn__save btn__save--primary" name="{{this.makm}}">Lưu</a>
+                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary">Lưu</a>
                                 {{else}}  
                                     <a class="btn__save btn__save--disable" name="{{this.makm}}"><b>Đã hết</b></a>
                                 {{/ifCond}}     
@@ -150,19 +150,19 @@
                             <div class="sale__card-img">
                                 <img src="/client_styles/assets/img/logo.png" class="sale__voucher-logo">
                             </div>
-                            <div class="sale__card-content">
+                            <div class="sale__card-content" method="get" action="/luukhuyenmai">
                                 <div class="card-container">
-                                <h3 class="card-title khachhang" name="{{this.makm}}">Giảm {{this.phantram}}%</h3>      
-                                <p class="card-text sale__card-text">Nhập mã {{this.manhap}}</p>                                       
-                                <p class="card-text sale__card-text"><small class="text-muted">HSD: {{this.ngaykt}}</small></p>
-                                </div> 
+                                <h3 class="card-title" name="phantram" value="8746347">Giảm {{this.phantram}}%</h3>      
+                                <p class="card-text sale__card-text card-manhap" name="manhap" value="{{this.manhap}}">Nhập mã {{this.manhap}}</p>                                       
+                                <p class="card-text sale__card-text card-ngakt"><small class="text-muted" name="ngaykt" value="{{this.ngaykt}}">HSD: {{this.ngaykt}}</small></p>
+                                </div>
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
-                                    <a href="" class="btn__save btn__save--primary" name="{{this.makm}}">Lưu</a>
-                                {{else}}  
-                                    <a class="btn__save btn__save--disable" name="{{this.makm}}"><b>Đã hết</b></a>
+                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary">Lưu</a>
+                                {{else}}
+                                    <button class="btn__save btn__save--disable"><b>Đã hết</b></button>
                                 {{/ifCond}}     
-                                </div> 
+                            </div> 
                             </div>
                         </div>
                     {{/ifCond}}
@@ -171,15 +171,6 @@
             </div>
         </div>
     </div>
-
-    {{!-- Lưu mã khuyến mãi cho tài khoản --}}
-    <script>
-    var list = document.querySelectorAll('.btn__save--primary');
-    Array.prototype.forEach.call(list, function (element,index) {
-        var value = element.name;
-            element.href = "/luukhuyenmai/" + value;
-    });
-    </script>
 
     <script>
         var stk=0; //số lượng tài khoản lưu khuyến mãi ban đầu là 0

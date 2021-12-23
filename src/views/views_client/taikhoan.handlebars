@@ -129,27 +129,27 @@
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Email</label>
                         <p class="account__content-profile-text" id="default_email">{{client_accounts.email}}</p>
-                        <input class="check-text hide-text" type="text" value="" id="new_email">
+                        <input class="check-text hide-text" type="text" name="email" value="" id="new_email">
                         <a class="account__content-profile-link" href="#" id="change_email" >Thay đổi</a>
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Số điện thoại</label>
                         <p class="account__content-profile-text" id="default_phone">{{client_accounts.sodt}}</p>
-                        <input class="check-text hide-text" type="text" value="" id="new_phone">
+                        <input class="check-text hide-text" type="text" name="phone" value="" id="new_phone">
                         <a  class="account__content-profile-link" href="#" id="change_phone">Thay đổi</a>
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label">Giới tính</label>
                         <p class="account__content-profile-text">
-                          <input class="check-input" type="radio" name="gioitinh" id = "Nam">
+                          <input class="check-input" type="radio" name="gioitinh" value="Nam" id = "Nam">
                           <label for="Nam">
                             Nam &nbsp;&nbsp;&nbsp;
                           </label>
-                          <input class="check-input" type="radio" name="gioitinh" value="1" id ="Nu" checked>
+                          <input class="check-input" type="radio" name="gioitinh" value="Nữ" id ="Nu" checked>
                           <label for="Nu">
                             Nữ &nbsp;&nbsp;&nbsp;
                           </label>
-                          <input class="check-input" type="radio" name="gioitinh" value="0" id ="Khac">
+                          <input class="check-input" type="radio" name="gioitinh" value="Khác" id ="Khac">
                           <label for="Khac">
                             Khác 
                           </label>
@@ -185,7 +185,7 @@
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label"></label>
                         <div class="account__content-profile-text">
-                          <a href="" class="account-btn account-btn--primary" id="btn_save">Lưu thay đổi</a>
+                          <a href=""><button class="account-btn account-btn--primary btn_save" type="button" id="btn_save">Lưu thay đổi</button></a>
                         </div>
                       </div>
                     </form>
@@ -235,7 +235,7 @@
               </div>
             </div>
 
-            <div class="tab-content account__content">
+       <div class="tab-content account__content">
               <div class="tab-pane" id="doimatkhau" role="tabpanel" aria-labelledby="doimatkhau-tab">
                 <div class="account__profile-form">
                   <div class="account__profile-heading">
@@ -245,24 +245,36 @@
                   <div class="account__content-container">
                     <form> 
                       <div class="account__profile-info-content">
-                        <div class="account__content-profile-row">
+                        <div class="account__content-password-row">
                           <label class="account__content-password-label">Mật khẩu hiện tại</label>
-                          <input class="check-text test" type="password" value="" id="matkhauht" onkeyup="check()">
+                          <input class="check-text test" type="password" value="" id="matkhauht">
                           <a class="account__content-profile-link" href="#">Quên mật khẩu</a> 
                         </div>
                         <div class="account__content-profile-row">
+                          <label class="account__content-password-label"></label>
+                          <small class="text-error-password hide-message" id ="error-pw">Xác nhận mật khẩu không để trống</small>
+                        </div>  
+                        <div class="account__content-password-row">
                           <label class="account__content-password-label">Mật khẩu mới</label>
-                          <input class="check-text test" type="password" value="" id="matkhaumoi" onkeyup="check()">
+                          <input class="check-text test" type="password" value="" id="matkhaumoi">
                         </div>
                         <div class="account__content-profile-row">
+                          <label class="account__content-password-label"></label>
+                          <small class="text-error-password hide-message" id ="error-pw1">Mật khẩu mới không để trống</small>
+                        </div>  
+                        <div class="account__content-password-row">
                           <label class="account__content-password-label">Xác nhận mật khẩu</label>
-                          <input class="check-text test" type="password" value="" id="xacnhanmk" onkeyup="check()">
+                          <input class="check-text test" type="password" value="" id="xacnhanmk">
+                        </div>  
+                        <div class="account__content-profile-row">
+                          <label class="account__content-password-label"></label>
+                          <small class="text-error-password hide-message" id ="error-pw2">Xác nhận mật khẩu không để trống</small>
                         </div>  
                       </div>
                       <div class="account__content-profile-row">
                         <label class="account__content-password-label"></label>
                         <div class="account__content-profile-text">
-                          <button class="account-btn account-btn--disable" id="btn_xacnhan">Xác nhận</button>
+                          <button class="account-btn account-btn--primary" id="btn_xacnhan">Xác nhận</button>
                         </div>
                       </div>
                     </form>
@@ -373,19 +385,18 @@
                     <div class="tab-pane" id="all_voucher" role="tabpanel" aria-labelledby="all_voucher-tab">
                       <div class="list-card">
                        {{#each client_accounts.danhsach_km}}
-                     
                         <div class="account__card">
                           <div class="account__card-img">
                             <img src="/client_styles/assets/img/logo.png" class="account__voucher-logo">
                           </div>
                           <div class="account__card-content">
                             <div class="card-container">
-                              <h3 class="card-title khachhang" name="{{this.makm}}">Giảm {{this.phantram}}%</h3>
-                              <p class="card-text account__card-text">Mã nhập {{this.makm}}</p>                                       
-                              <p class="card-text account__card-text"><small class="text-muted">HSD: {{this.ngaybd}}</small></p>
+                              <h3 class="card-title khachhang" name="{{this.manhap}}">Giảm {{this.phantram}}%</h3>
+                              <p class="card-text account__card-text">Mã nhập {{this.manhap}}</p>                                       
+                              <p class="card-text account__card-text"><small class="text-muted">HSD: {{this.ngaykt}}</small></p>
                             </div> 
                             <div>
-                              <a href="" class="card-link" name="{{this.makm}}">
+                              <a href="" class="card-link" name="{{this.manhap}}">
                                 <span>Dùng ngay</span> 
                                 <i class="fas fa-chevron-right"></i>
                               </a>
@@ -467,27 +478,25 @@
           </div>
         </div>
         
-        <div class="modal-address hide-address" id="new__address" method="post" action="/themdiachi">
+        <div class="modal-address hide-address" id="new__address">
           <div class="modal__inner-address">
             <div class="modal__body-address">
               <h2>Địa chỉ mới</h2> 
               <div class="address-form__group">
                 <label class="address-form__label">Họ và tên</label>
-                <input name="hoten" type="text" class="address-form__input" placeholder="Nhập họ tên" value="" id ="hotenmoi"/>
+                <input name="" type="text" class="address-form__input" placeholder="Nhập họ tên" id = "hotenmoi"/>
               </div>
               <div class="address-form__group">
                 <label class="address-form__label">Số điện thoại</label>
-                <input name="sodt" type="text" class="address-form__input" placeholder="Nhập số điện thoại" value="" id ="sdtmoi"/>
+                <input name="" type="text" class="address-form__input" placeholder="Nhập số điện thoại" id = "sdtmoi"/>
               </div>
               <div class="address-form__group">
                 <label class="address-form__label">Địa chỉ</label>
-                <input name="diachi" type="text" class="address-form__input" placeholder="Nhập địa chỉ" value="" id ="diachimoi"/>
+                <input name="" type="text" class="address-form__input" placeholder="Nhập địa chỉ" id = "diachimoi"/>
               </div>
               <div class="address-form__controls">
-                <button class="account-btn account-btn--disable" id="cancel-newaddress">Hủy</button>
-               <a id="save-btn" href="">
+                <button class="account-btn account-btn--disable" id="cancel-newaddress" type="submit">Hủy</button>
                 <button class="account-btn account-btn--primary" id="save-newaddress" type="submit">Lưu</button>
-               </a>
               </div>
             </div>
           </div>
@@ -507,54 +516,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- JS nav user account -->
-
-    {{!-- Lưu thông tin thay đổi --}}
-    <script>
-       $('#btn_save').click(function(){
-         var phone = $('#new_phone').val();
-         var email =  $('#new_email').val();
-
-         var radios = document.getElementsByName('gioitinh');
-         for (var i = 0, length = radios.length; i < length; i++) {
-            if (radios[i].checked) {
-            var gioitinh = (radios[i].value);
-          break;
-        }
-        console.log(day,month, year)
-        	this.href = "/capnhattaikhoan?day=" + day + "&month="+ month + "&year=" + year + "&phone=" + phone + "&email=" + email + "&gioitinh=" + gioitinh;
-      }
-      })
-    </script>
-
-     <script>
-       $('#save-btn').click(function(){
-         var hoten = $('#hotenmoi').val();
-         var sdt =  $('#sdtmoi').val();
-         var diachi =  $('#diachimoi').val();
-
-        console.log(hoten,sdt, diachi)
-        	this.href = "/themdiachia?hoten=" + hoten + "&sdt="+ sdt + "&diachi=" + diachi;
-      }
-      })
-    </script>
-
-    <script>
-       $('#bhotenmoi').click(function(){
-         var phone = $('#new_phone').val();
-         var email =  $('#new_email').val();
-
-         var radios = document.getElementsByName('gioitinh');
-         for (var i = 0, length = radios.length; i < length; i++) {
-            if (radios[i].checked) {
-            var gioitinh = (radios[i].value);
-          break;
-        }
-        console.log(day,month, year)
-        	this.href = "/capnhattaikhoan?day=" + day + "&month="+ month + "&year=" + year + "&phone=" + phone + "&email=" + email + "&gioitinh=" + gioitinh;
-      }
-      })
-    </script>
-
     <script>
       /*Tài khoản của tôi*/
       $('#user_account').click(function(){
@@ -740,30 +701,48 @@
       })
       $(document).ready(function(){
         $('#btn_save').click(function(){
-          let a = $('#new_phone').val();
+          event.preventDefault()
+
+          var a = $('#new_phone').val();
           if(a!=""){
             $('#default_phone').replaceWith(`<p class="account__content-profile-text" id="phone">  ${a}  </p> `);
           }
-          let b = $('#new_email').val();
+          var b = $('#new_email').val();
           if(b!=""){
             $('#default_email').replaceWith(`<p class="account__content-profile-text" id="email">  ${b}  </p> `);
           }
+
+         var c = $('input[name="gioitinh"]:checked').val();
+         var day = $('#default_day').text();
+         var month = $('#default_month').text();
+         var year = $('#default_year').text();
+          console.log(a, b, c, day, month, year, old_pw)
+         $.ajax({
+
+                    url: '/capnhattaikhoan',
+
+                    method: 'POST',
+
+                    data: JSON.stringify({
+
+                        email: b,
+                        phone: a,
+                        sex: c,
+                        day: day,
+                        month: month,
+                        year: year,
+                    }),
+
+                    contentType: 'application/json',
+
+                })
+                
+
           $('#new_phone').hide();
           $('#new_email').hide();
           $('#change_phone').show();
           $('#change_email').show();
-
         })
-
-        $('#save-btn').click(function(){
-         var hoten = $('#hotenmoi').val();
-         var sdt =  $('#sdtmoi').val();
-         var diachi =  $('#diachimoi').val();
-
-        console.log(hoten,sdt, diachi)
-        	this.href = "/themdiachia?hoten=" + hoten + "&sdt="+ sdt + "&diachi=" + diachi;
-      }
-      })
       })
     </script>
 
@@ -795,7 +774,6 @@
         $('#default_month').replaceWith(`<label id="default_month">${id}</label>`);
         $('#list_month').hide();
       }
-
       </script>
       <script>
       $('#input_year').click(function(){
@@ -849,35 +827,75 @@
                         </div>
                       </div>
                     </div> `;
+          console.log(a, b, c)
+         $.ajax({
+
+                    url: '/themdiachi',
+
+                    method: 'POST',
+
+                    data: JSON.stringify({
+
+                        hoten: a,
+                        sodt: b,
+                        diachi: c,
+                    }),
+
+                    contentType: 'application/json',
+
+                })
         $('#ds_diachi').append(add_address);
       })
     </script>
 
     <!--Button Xác nhận đổi mật khẩu-->
     <script>
-      
-      function validatePassword(input){   
-        if( input != "")
-        {
-          return true;
-        }else {
-          return false;
-        }
-      }
-      
-      function check(){
-      let x = $('#matkhauht').val();
-      let y = $('matkhaumoi').val();
-      let z = $('xacnhanmk').val();
-        if(validatePassword(x) && validatePassword(y) && validatePassword(z) && y==z)
-        {
-          $('#btn_xacnhan').removeClass('account-btn--disable');
-          $('#btn_xacnhan').addClass('account-btn--primary');
-        }else
-        {
-          alert('Thông tin không đầy đủ')
-        }
-      })
+        $('#btn_xacnhan').click(function(){
+          event.preventDefault()
+          let password = $('#matkhauht').val()
+          let old_pw = {{client_accounts.matkhau}}    
+          let password1 = $('#matkhaumoi').val()
+          let password2 = $('#xacnhanmk').val()
+          console.log(old_pw)
+           if(password != old_pw)
+            {
+              alert("Mật khẩu hiện tại sai rồi kìa! Nhập lại đi")
+            }else{
+              $.ajax({
+
+                    url: '/capnhatmatkhau',
+                    method: 'POST',
+                    data: JSON.stringify({
+                        matkhau: password1,
+                    }),
+                    contentType: 'application/json',
+
+                })
+            alert('Cập nhật thành công rồi nha')
+            }
+          if((password.length > 0)&&(password1.length > 0)&&(password2.length > 0))
+          {
+             $('#btn_xacnhan').removeClass('account-btn--disable');
+              $('#btn_xacnhan').addClass('account-btn--primary');
+            $('#message_xacnhan').removeClass('hide-message')
+            
+          }else{
+            if(password.length < 1)
+            {
+              $('#error-pw').removeClass('hide-message')
+            }
+
+            if(password1.length < 1)
+            {
+              $('#error-pw1').removeClass('hide-message')
+            }
+
+            if(password2.length < 1)
+            {
+              $('#error-pw2').removeClass('hide-message')
+            }
+          }
+        })
     </script>
 
     <!--JS Đánh dấu đã đọc-->
