@@ -397,7 +397,7 @@
                               
                               <div class="content">
                                   <h3>{{this.tensach}}</h3>
-                                  <div class="price">{{this.giaban}}<span>{{this.giagoc}}</span></div>
+                                  <div class="price">{{format_price this.giaban}}<span>{{format_price this.giagoc}}</span></div>
                                   <a href="/themgiohang?tensach={{this.tensach}}&giaban={{this.giaban}}&hinhanh={{this.hinhanh}}&soluong=1" class="btn btn--primary">Thêm vào giỏ</a>
                               </div>
                           </div>
@@ -499,10 +499,10 @@
                         <div class="home-product-item__price">
                           <span
                             class="home-product-item__price-old"
-                          >{{this.giagoc}}</span>
+                          >{{format_price this.giagoc}}</span>
                           <span
                             class="home-product-item__price-current"
-                          >{{this.giaban}}</span>
+                          >{{format_price this.giaban}}</span>
                         </div>
                         <div class="home-product-item__action">
                           <span

@@ -30,62 +30,67 @@
                    
                     {{#each client_accounts.giohang}}
                     {{#chanle @index}}
-                    <div class="layout-inline row">
-                        <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
-                        <div class="col-4 col-pro layout-inline">
-                            <img class="cart__img" src="{{this.hinhanh}}"alt="">
-                            <p class="item__name">{{this.tensach}}</p>
-                        </div>
+                        <div class="san_pham layout-inline row">              
+                            <div class="col-auto col__checkbox">
+                                <input class="checkbuy" id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/>
+                            </div>
+                            <div class="col-4 col-pro layout-inline">
+                                <img class="cart__img" src="{{this.hinhanh}}"alt="">
+                                <p class="item__name">{{this.tensach}}</p>
+                            </div>
+                            <div class="col col-price col-numeric align-center" id="giaban">
+                                    <span class="col-price" id="id_giaban">{{this.giaban}}</span>
+                            </div>
                         
-                        <div class="col col-price col-numeric align-center ">
-                            <span class="col-price">{{this.giaban}}000 </span>
+                            <div class="col-auto col-qty layout-inline">
+                                <a href="#" class="qty qty-minus"><span>-</span></a>
+                                <input class="input__qty" id="id_soluong" type="numeric" value="{{this.soluong}}" />
+                                <a href="#" class="qty qty-plus"><span>+</span></a>
+                            </div>
+                                
+                            <div class="col col-vat col-numeric" id="thanhtien">
+                                <p class="price__item" id="id_thanhtien" value="{{tinhtien this.giaban '*' this.soluong}}">{{tinhtien this.giaban '*' this.soluong}}</p>
+                            </div>
+                                    
+                            <div class="col-auto col__bin">               
+                                <i class="far fa-trash-alt"></i>
+                            </div>
                         </div>
-                
-                        <div class="col-auto col-qty layout-inline">
-                            <a href="#" class="qty qty-minus"><span>-</span></a>
-                            <input class="input__qty" type="numeric" value="{{this.soluong}}" />
-                            <a href="#" class="qty qty-plus"><span>+</span></a>
-                        </div>
-                        
-                        <div class="col col-vat col-numeric">
-                            <p class="price__item" value="{{tinhtien this.giaban '*' this.soluong}}.000">{{tinhtien this.giaban '*' this.soluong}}.000 đ</p>
-                        </div>
-                            
-                        <div class="col-auto col__bin">               
-                            <i class="far fa-trash-alt trash-icon"></i>
-                        </div>
-                    </div>
+
                     {{else}}
-                    <div class="layout-inline row row-bg2">
-                        <div class="col-auto col__checkbox"><input id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/></div>
-                        <div class="col-4 col-pro layout-inline">
-                            <img class="cart__img" src="{{this.hinhanh}}"alt="">
-                            <p class="item__name">{{this.tensach}}</p>
-                        </div>
+                        <div class="san_pham layout-inline row row-bg2">
+                            <div class="col-auto col__checkbox">
+                                <input class="checkbuy" id="input_loai" class="checkbox" name="loai" type="checkbox" value="Web"/>
+                            </div>
+                            <div class="col-4 col-pro layout-inline">
+                                <img class="cart__img" src="{{this.hinhanh}}"alt="">
+                                <p class="item__name">{{this.tensach}}</p>
+                            </div>
+
+                            <div class="col col-price col-numeric align-center" id="giaban">
+                                    <span class="col-price" id="id_giaban">{{this.giaban}}</span>
+                            </div>
                         
-                        <div class="col col-price col-numeric align-center ">
-                            <span class="col-price">{{this.giaban}}000 </span>
+                            <div class="col-auto col-qty layout-inline">
+                                <a href="#" class="qty qty-minus"><span>-</span></a>
+                                <input class="input__qty" id="id_soluong" type="numeric" value="{{this.soluong}}" />
+                                <a href="#" class="qty qty-plus"><span>+</span></a>
+                            </div>
+                                
+                            <div class="col col-vat col-numeric" id="thanhtien">
+                                <p class="price__item" id="id_thanhtien" value="{{tinhtien this.giaban '*' this.soluong}}.000">{{tinhtien this.giaban '*' this.soluong}}</p>
+                            </div>
+                                    
+                            <div class="col-auto col__bin">               
+                                <i class="far fa-trash-alt"></i>
+                            </div>
                         </div>
-                
-                        <div class="col-auto col-qty layout-inline">
-                            <a href="#" class="qty qty-minus"><span>-</span></a>
-                            <input class="input__qty" type="numeric" value="{{this.soluong}}" />
-                            <a href="#" class="qty qty-plus"><span>+</span></a>
-                        </div>
-                        
-                        <div class="col col-vat col-numeric">
-                            <p>{{tinhtien this.soluong '*' this.giaban}}.000 đ</p>
-                        </div>
-                            
-                        <div class="col-auto col__bin">               
-                            <i class="far fa-trash-alt trash-icon"></i>
-                        </div>             
-                    </div>
                     {{/chanle}}
                 {{/each}}
                     <div class="tf">
                     </div>         
-                </div>     
+                </div>
+            
                 <div class="col-3 border" style="padding-top:80px;">
                     <div class="cart-store">
                         <img class="cart-logo-img" src="/client_styles/assets/img/logo.png" alt="">
@@ -110,7 +115,7 @@
                         </div>
                         <div class="cart-delivery" style="padding: 2px 0;">
                             <span style="color: #666;">Tạm tính </span>
-                            <span style="color: #666;">(0) sản phẩm </span>
+                            <span style="color: #666;" id="id_soluong_sanpham">(0) sản phẩm </span>
                         </div>
                         <div class="cart-delivery" style="padding: 6px 0 14px;">
                             <span style="color: #666;">Phí giao hàng</span>
@@ -151,9 +156,9 @@
                                 </div>
                                 <div class="cart__total">
                                     <span>Tổng tiền:</span>
-                                    {{#each client_accounts.giohang}}
-                                    <span>{{total this.giaban}} đ</span>
-                                    {{/each}}
+                                    {{!-- {{#each client_accounts.giohang}} --}}
+                                    <span id="tongtien">0</span>
+                                    {{!-- {{/each}} --}}
                                 </div>
                             </li>
 
@@ -161,77 +166,167 @@
                     </div>
                     
                 </div> 
-                <a href="/payment">
-                    <button type="submit" class="btn__buy-book" id="buy" >Xác nhận đặt sách</button>
-                </a>
-                
+                <form method="post" action='/temppayment'>
+                    <input class='data-send' name="data" value="Hello" hidden/>
+                    <button type="submit" class="confirm-buy btn__buy-book" id="buy" >Xác nhận đặt sách</button>
+                </form>
         </div>
-        <div class="modal-delete hide-delete" id="confirm_del">
-            <div class="modal__inner-delete">
-                <div class="modal__body-delete">
-                    <p>Bạn muốn xóa sản phẩm này?</p>
-                </div>
-                <div class="modal__footer-button">
-                    <button class="btn__confirm btn--no">Không</button>
-                    <button class="btn__confirm btn--delete">Xóa</button>
-                </div>
-            </div>
-        </div>  
     </div>
 
     <script>
-        $('.visibility-cart').on('click',function(){
+        var TongTien=0
+        var TienShip=parseInt($('#cart-shipping').text())
+        var TongSoLuong=0
+        //---------------------------------
+
+        $('.checkbuy').on('click', function()
+        {
+            var $this=$(this)
+            var soluong=$this.parent().parent().find('#id_soluong').val()
+            var giaban=$this.parent().parent().find('#id_giaban').text()
+            var thanhtien=$this.parent().parent().find('#id_thanhtien').text()
+            //console.log('Hellooooo'+thanhtien)
+            if($this.prop('checked')===true)
+            {
+                //console.log('Hello')
+                TongTien+=parseInt(thanhtien)
+                TongSoLuong+=parseInt(soluong)
+                $('#tongtien').text(TongTien.toString())
+                $('#id_soluong_sanpham').text('('+TongSoLuong.toString()+') Sản phẩm')
+
+            } else
+            {
+                TongTien-=parseInt(thanhtien)
+                TongSoLuong-=parseInt(soluong)
+                $('#tongtien').text(TongTien.toString())
+                $('#id_soluong_sanpham').text('('+TongSoLuong.toString()+') Sản phẩm')
+            }
+        })
+        
+        //--------------------------------------------------
+        $('.confirm-buy').on('click', function(){
+            var sanpham=$('.san_pham')
+            var ListBuyed=[]
+            sanpham.each(function(e)
+            {
+                if($(this).find('.checkbuy').prop('checked')===true)
+                {
+                    const Sach={
+                        tensach: $(this).find('.item__name').text(),
+                        giaban: $(this).find('#id_giaban').text(),
+                        SoLuong: $(this).find('#id_soluong').val(),
+                        TongTien: $(this).find('#id_thanhtien').text(),
+                        hinhanh: $(this).find('.cart__img').attr('src')
+                        }
+                    ListBuyed.push(Sach)
+                }
+            })
+            //console.log(ListBuyed[0])
+            var DATA = JSON.stringify(ListBuyed)
+            $(this).parent().find('.data-send').val(DATA)
+
+        })
+        //---------------------------------------------
+        $('.col__checkbox').on('click',function(){
+            
+        })
+        //
+        $('.visibility-cart').on('click',function()
+        {
        
-       var $btn =  $(this);
-       var $cart = $('.cart');
-       console.log($btn);
-       
-       if ($btn.hasClass('is-open')) {
-          $btn.removeClass('is-open');
-          $btn.text('O')
-          $cart.removeClass('is-open');     
-          $cart.addClass('is-closed');
-          $btn.addClass('is-closed');
-       } else {
-          $btn.addClass('is-open');
-          $btn.text('X')
-          $cart.addClass('is-open');     
-          $cart.removeClass('is-closed');
-          $btn.removeClass('is-closed');
-       }
+            var $btn =  $(this);
+            var $cart = $('.cart');
+            //console.log($btn);
+            
+            if ($btn.hasClass('is-open')) {
+                $btn.removeClass('is-open');
+                $btn.text('O')
+                $cart.removeClass('is-open');     
+                $cart.addClass('is-closed');
+                $btn.addClass('is-closed');
+            } else {
+                $btn.addClass('is-open');
+                $btn.text('X')
+                $cart.addClass('is-open');     
+                $cart.removeClass('is-closed');
+                $btn.removeClass('is-closed');
+            }
      
                        
-     });
+        });
      
        // SHOPPING CART PLUS OR MINUS
-       $('a.qty-minus').on('click', function(e) {
+       $('a.qty-minus').on('click', function(e) 
+       {
          e.preventDefault();
+         //console.log('a.col-price') 
          var $this = $(this);
-         var $input = $this.closest('div').find('input');
+         var $input = $this.parent().find('#id_soluong');
+         var gia_ban=$this.parent().parent().find('#id_giaban')
+         var thanh_tien=$this.parent().parent().find("#id_thanhtien")
          var value = parseInt($input.val());
-         
-         if (value > 2) {
+         var checkbox =$this.parent().parent().find('.checkbuy')
+         //$('.input__qty').value=6
+        
+        // console.log($input)
+
+         if (value > 1) {
            value = value - 1;
-         } else {
-           value = 0;
-         }
-         $input.val(value);    
+           var sum=value*(parseInt(gia_ban.text()))
+
+            $input.val(value.toString());
+            var temp=sum.toString()
+            thanh_tien.text(temp)
+            
+            if(checkbox.prop('checked')===true)
+            {
+                TongTien-=(parseInt(gia_ban.text()))
+                $('#tongtien').text(TongTien.toString())
+                TongSoLuong-=1;
+                $('#id_soluong_sanpham').text('('+TongSoLuong.toString()+') Sản phẩm')
+            }
+         }   
        });
-     
+
+       
        $('a.qty-plus').on('click', function(e) {
          e.preventDefault();
          var $this = $(this);
-         var $input = $this.closest('div').find('input');
+         var $input = $this.closest('div').find('input')
+         var gia_ban=$this.parent().parent().find('#id_giaban')
+         var thanh_tien=$this.parent().parent().find("#id_thanhtien") 
+         var checkbox =$this.parent().parent().find('.checkbuy')
          var value = parseInt($input.val());
-     
+
          if (value < 100) {
-         value = value + 1;
-         } else {
-           value =100;
+            value = value + 1;
+            var sum=value*(parseInt(gia_ban.text()))
+            $input.val(value.toString());
+            var temp=sum.toString()
+            thanh_tien.text(temp)
+
+            if(checkbox.prop('checked')===true)
+            {
+                TongTien+=(parseInt(gia_ban.text()))
+                $('#tongtien').text(TongTien.toString())
+                TongSoLuong+=1
+                $('#id_soluong_sanpham').text('('+TongSoLuong.toString()+') Sản phẩm')
+            }
          }
-     
-         $input.val(value);
+
+
+         //var tong_gia=$this.parent().parent().parent().parent().parent().find('.list-cart-item').find('.cart__total').find('#tongtien').html()
+         //console.log(tong_gia)
+
+
        });
+
+
+        //$("#id_soluong").change(function()
+       // {
+        //    console.log("Change")
+       // })
+
      
      // RESTRICT INPUTS TO NUMBERS ONLY WITH A MIN OF 0 AND A MAX 100
      {{!-- $('input').on('blur', function(){
@@ -260,77 +355,92 @@
     </script>
 
     <script>
-
-        var shippingRate = 40000; 
-        var fadeTime = 300;
-
-        /* Assign actions */
-        $('.col-qty input').change( function() {
-        updateQuantity(this);
-        });
-
-        function recalculateCart()
+        window.onload = function()
         {
-        var subtotal = 0;
-        
-        /* Sum up row totals */
-        $('.layout-inline').each(function () {
-            subtotal += parseInt($(this).children('.col-vat').text());
-        });
+            var list = document.querySelectorAll('.row'); 
 
-        console.log(subtotal);
-        
-        /* Calculate totals */
-        var sale = 0;  // Để tạm
-        var shipping = (subtotal > 0 ? shippingRate : 0);
-        var total = subtotal - sale + shipping;
-        console.log(total);
-        
-        /* Update totals display */
-        $('.totals-value').fadeOut(fadeTime, function() {
-            $('#cart-subtotal').html(subtotal.toFixed(2));
-            $('#cart-sale').html(sale.toFixed(2));
-            $('#cart-shipping').html(shipping.toFixed(2));
-            $('#cart-total').html(total.toFixed(2));
-            console.log(total);
-            if(total == 0){
-            $('.btn__buy-book').fadeOut(fadeTime);
-            }else{
-            $('.btn__buy-book').fadeIn(fadeTime);
+            for(var i=0; i<list.length;i++) 
+            {
+               // console.log("ngoài" + list[i])
             }
-            $('.totals-value').fadeIn(fadeTime);
-        });
-        }
 
-        function updateQuantity(quantityInput)
-        {
-        /* Calculate line price */
-        var productRow = $(quantityInput).parent().parent();
-        var price = parseFloat(productRow.children('.col-price').text());
-        var quantity = $(quantityInput).val();
-        var linePrice = price * quantity;
-        
-        /* Update line price display and recalc cart totals */
-        productRow.children('.col-vat').each(function () {
-            $(this).fadeOut(fadeTime, function() {
-            $(this).text(linePrice.toFixed(2));
-            recalculateCart();
-            $(this).fadeIn(fadeTime);
+            var a = document.querySelectorAll('.col-price');
+
+           // console.log(a);
+            for (var j = 0; j < a.length; j++ ){
+               // console.log("trong" + a[j]);
+            }
+
+            $('.qty-plus').on('click', function(){
+                $(".qty-plus").selectedIndex;
+               // console.log("hehehe " + $('.qty-plus').selectedIndex);
+            })
+
+            var shippingRate = 40000; 
+            var fadeTime = 300;
+
+            /* Assign actions */
+            $('.col-qty input').change( function() {
+            updateQuantity(this);
             });
-        });  
-        }
-    </script>
 
-    <script>
-        $('.trash-icon').click(function(){
-            $('#confirm_del').removeClass('hide-delete');
-        })
-        $('.btn--no').click(function(){
-            $('#confirm_del').addClass('hide-delete');
-        })
-        $('.btn--delete').click(function(){
-            $('#confirm_del').addClass('hide-delete');
-        })
+           // console.log("His");
+            recalculateCart();
+            updateQuantity(quantityInput);
+        }
+
+            function recalculateCart()
+            {
+            var subtotal = 0;
+            
+            /* Sum up row totals */
+            $('.layout-inline').each(function () {
+                subtotal += parseInt($(this).children('.col-vat').text());
+               // console.log(this);
+               // console.log(subtotal);
+            });
+
+            /* Calculate totals */
+            var sale = 0;  // Để tạm
+            var shipping = (subtotal > 0 ? shippingRate : 0);
+            var total = subtotal - sale + shipping;
+          //  console.log(total);
+            
+            /* Update totals display */
+            $('.totals-value').fadeOut(fadeTime, function() {
+                $('#cart-subtotal').html(subtotal.toFixed(2));
+                $('#cart-sale').html(sale.toFixed(2));
+                $('#cart-shipping').html(shipping.toFixed(2));
+                $('#cart-total').html(total.toFixed(2));
+             //   console.log(total);
+                if(total == 0){
+                $('.btn__buy-book').fadeOut(fadeTime);
+                }else{
+                $('.btn__buy-book').fadeIn(fadeTime);
+                }
+                $('.totals-value').fadeIn(fadeTime);
+            });
+            }
+
+            function updateQuantity(quantityInput)
+            {
+            /* Calculate line price */
+            var productRow = $(quantityInput).parent().parent();
+         //   console.log(productRow);
+            var price = parseFloat(productRow.children('.col-price').text());
+            var quantity = $(quantityInput).val();
+            var linePrice = price * quantity;
+            
+            /* Update line price display and recalc cart totals */
+            productRow.children('.col-vat').each(function () {
+                $(this).fadeOut(fadeTime, function() {
+                $(this).text(linePrice.toFixed(2));
+                recalculateCart();
+                $(this).fadeIn(fadeTime);
+                });
+            });  
+        
+        }
     </script>
 
     <script

@@ -13,7 +13,14 @@ const donhang = new Schema({
     thongtinnguoinhan: String,
     tinhtrangthanhtoan: String,
     tinhtrangdonhang: String,
-    ds_sach: Array
+    ds_sach: [{
+      masach: String,
+      tensach: String,
+      giaban: Number,
+      giagiam: Number,
+      hinhanh: String,
+      soluong: Number,
+    }],
   });
   
 module.exports = mogoose.model('donhangs',donhang)

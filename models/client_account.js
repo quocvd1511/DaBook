@@ -9,8 +9,14 @@ const client_account = new Schema({
     ngaytao: {type: Date, default: Date.now,  transform: v => v.getDate() + "/" + v.getMonth() + "/" + v.getFullYear()},
     diem: Number,
     tinhtrang: String,
-    danhsach_km: Array,
+    danhsach_km: [{
+      phantram: String,
+      manhap: String,
+      ngaykt: String,
+    }],
     diachigh: {
+      hoten: String,
+      sdt: String,
       diachi: String,
     },
     diachigoc:{
@@ -23,10 +29,11 @@ const client_account = new Schema({
       tensach: String,
       giaban: Number,
       hinhanh: String,
-      SoLuong: Number,
+      soluong: Number,
     }],
     sl_giohang: Number,
-    diachi: {type: String, default: ""}
+    diachi: {type: String, default: ""},
+    ngaysinh: String,
   });
   
 module.exports = mogoose.model('client_accounts',client_account)

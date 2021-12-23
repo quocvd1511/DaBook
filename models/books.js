@@ -20,6 +20,11 @@ const Book = new Schema({
   soluongton:String,
   soluongdaban: String,
   giagoc:String,
+  review: [{
+    matk: String,
+    noidung: String,
+    sosao: Number,
+  }],
   });
 
 module.exports = mogoose.model('Book',Book)
