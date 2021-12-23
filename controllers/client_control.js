@@ -1011,6 +1011,26 @@ class Client_Control
                 
             })
     }
+
+    xoagiohang(req,res,next)
+    {
+        req.session.username=req.body.matk
+        req.session.isAuth=true
+        client_account.findOne({'matk': req.body.matk})
+            .then(thongtintk =>
+            {
+                //console.log(thongtintk)
+                var cart = thongtintk.giohang
+                for(var i=0;i<cart.length;i++)
+                if(cart[i].tensach===req.body.tensach)
+                {
+                    cart.splice(i,1)
+                    break
+                }
+                client_account.updateOne({'matk': req.body.matk},{giohang: cart, $inc: {sl_giohang: -1}})
+                .then(res.send('OK'))
+            })
+    }
 }
 
 module.exports = new Client_Control

@@ -27,6 +27,7 @@ route.get('/', client_Control.main)
 route.post('/payment', client_Control.taohoadon)
 route.post('/temppayment', client_Control.thanhtoan)
 route.post('/updategiohang', client_Control.capnhatgiohang)
+route.post('/xoagiohang', client_Control.xoagiohang)
 
 route.get('/',client_Control.get_client)
 route.post('/',client_Control.post_client)
