@@ -101,12 +101,12 @@
                 <ul class="list-cart">
                     <li class="list-cart-item">
                         <div class="input__sale">
-                            <input class="form__code-sale" id="input__code-sale" type="input" placeholder="Nhập mã khuyến mãi">
-                            <button type="submit" class="btn__apply" id="apply" >Áp dụng</button>
+                            <input class="makm form__code-sale" id="input__code-sale" type="input" placeholder="Nhập mã khuyến mãi">
+                            <button class="apdung btn__apply" id="apply" >Áp dụng</button>
                         </div>
                         <div class="cart__sale">
                             <span>Giảm giá:</span>
-                            <span>0 đ</span>
+                            <span class="giamgia">0</span>
                         </div>
                         <div class="cart__total">
                             <span>Tổng tiền:</span>
@@ -124,6 +124,85 @@
         </div>  
     </div>
     <script>
+        var khuyenmaidanhap=[]
+        var danhsachkhuyenmai=[]
+        var matk = $('.ten-dang-nhap').text()
+         $.ajax({
+                    url: "/vouchernguoidung",
+                    method: "POST",
+                    data: JSON.stringify({
+                        matk: matk
+                    }),
+                    success: function(status)
+                    {
+                        danhsachkhuyenmai=status.danhsach_km
+                    },
+                    contentType: 'application/json',
+                })
+
+        $('.apdung').on('click', function()
+        {
+            
+            //console.log(khuyenmaidanhap)
+            var madanhap = $('.makm').val()
+            var matk = $('.ten-dang-nhap').text()
+            var flag=false
+            for(var i=0;i<khuyenmaidanhap.length;i++)
+            {
+                if(madanhap===khuyenmaidanhap[i]) flag=true
+            }
+            if(flag)
+            {
+                alert('Mã đã được bạn áp dụng')
+            }
+            else
+            {   
+                //console.log(matk)
+                $.ajax({
+                    url: "/xacnhankhuyenmai",
+                    method: "POST",
+                    data: JSON.stringify({
+                        madanhap: madanhap,
+                        matk: matk
+                    }),
+                    success: function(status)
+                    {
+                        if(status.flag==='Fail')
+                        {
+                            alert(status.msg)
+                        } else
+                        {
+                            var today = new Date()
+                            var vouday = new Date(status.msg.ngaykt)
+                            console.log(today)
+                            console.log(status.msg.ngaykt)
+                            if(vouday<today)
+                            {
+                                alert("Voucher đã quá hạn sử dụng")
+                            }
+                            else
+                            {
+                                var thanhtien = $('.thanhtien').text()
+                                var thanhtien_int = parseInt(thanhtien)
+                                //console.log(danhsachkhuyenmai)
+                                if(thanhtien>=parseInt(status.msg.dieukien))
+                                {
+                                    $('.thanhtien').text(thanhtien-thanhtien*(parseInt(status.msg.phantram)/100))
+                                    var giamgia = parseInt($('.giamgia').text())
+                                    $('.giamgia').text(giamgia+thanhtien*(parseInt(status.msg.phantram)/100))
+                                    khuyenmaidanhap.push(madanhap)
+                                }
+                            }
+                        }
+                    },
+                    contentType: 'application/json',
+                })
+                }
+            $('.makm').val('')
+
+        })
+
+
         $('.mua').on('click', function()
         {
             var listhoadon = $('.hoadon')
@@ -132,7 +211,7 @@
             var checkMomo = $('.thanhtoanmomo')
             var checkTienMat = $('.thanhtoantienmat')
             var loaithanhtoan =''
-            var thanhtien =parseInt($('.thanhtien').text())
+            var thanhtien=parseInt($('.thanhtien').text())
             var tinhtrangthanhtoan=''
             console.log(username)
             listhoadon.each(function(e)
@@ -156,10 +235,32 @@
                 }
                 listProduct.push(Sach)
            })
-           console.log(listProduct)
-           console.log(username)
-           console.log(loaithanhtoan)
-           console.log(thanhtien)
+
+           var khuyenmaicon=[]
+           var soluongcon=0
+           for(var i=0;i<danhsachkhuyenmai.length;i++)
+           {
+               var flag=true
+               for(var k=0;k<khuyenmaidanhap.length;k++)
+               {
+                   if(danhsachkhuyenmai[i].manhap===khuyenmaidanhap[k])
+                   {
+                       flag=false
+                   }
+               }
+               if(flag===true)
+               {
+                   khuyenmaicon[soluongcon]=danhsachkhuyenmai[i]
+                   soluongcon++
+               }
+           }
+           console.log('Khuyen mai con')
+           console.log(khuyenmaicon)
+           //console.log(listProduct)
+           //console.log(username)
+          // console.log(loaithanhtoan)
+           //console.log(thanhtien)
+
            var donhang ={
                matk: username,
                hinhthucthanhtoan: loaithanhtoan,
@@ -168,8 +269,19 @@
                tinhtrangdonhang: "chờ xác nhận",
                ds_sach: listProduct,
            }
+           console.log(donhang)
             var donhang = JSON.stringify(donhang)
             $('.linktott').attr('href','/payment?donhang='+donhang)
+
+            $.ajax({
+                url: '/updanhsachkm',
+                method: 'POST',
+                data: JSON.stringify({
+                    matk: username,
+                    danhsach_km: khuyenmaicon
+                }),
+                contentType: 'application/json'
+            })
 
         })
     </script>

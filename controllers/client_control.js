@@ -1046,6 +1046,57 @@ class Client_Control
                 .then(res.send('OK'))
             })
     }
+
+    xacnhankhuyenmai(req,res,next)
+    {
+        req.session.isAuth=true
+        req.session.username=req.body.matk
+        //console.log(req.body)
+        client_account.findOne({matk: req.body.matk})
+            .then(thongtintk =>{
+                //console.log(thongtintk)
+                var arrayvoucher = thongtintk.danhsach_km
+                //console.log(arrayvoucher)
+                var flag=false
+                for(var i=0;i<arrayvoucher.length;i++)
+                {
+                    if(arrayvoucher[i].manhap===req.body.madanhap)
+                    {
+                        flag=true
+                        break
+                    }
+                }
+                if(flag===false) 
+                {
+                    res.send({flag: 'Fail',msg: 'Voucher không tồn tại hoặc không sở hữu'})
+                }
+                else
+                {
+                    khuyenmai.findOne({manhap: req.body.madanhap})
+                        .then(khuyenmais =>
+                        {
+                            //console.log(khuyenmais)
+                            res.send({flag: 'Success', msg: khuyenmais, danhsach_km: thongtintk.danhsach_km})
+                        })
+                }
+            })
+    }
+
+    updanhsachkm(req,res,next)
+    {
+        //console.log(req.body.danhsach_km)
+        client_account.updateOne({matk: req.body.matk},{danhsach_km: req.body.danhsach_km})
+            .then(res.send('OKKKKK'))
+    }
+
+    vouchernguoidung(req,res,next)
+    {
+        //console.log(req.body)
+        client_account.findOne({matk: req.body.matk})
+            .then(thongtintk =>{
+                res.send({danhsach_km: thongtintk.danhsach_km})
+            })
+    }
 }
 
 module.exports = new Client_Control
