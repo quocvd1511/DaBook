@@ -27,6 +27,20 @@ File: Main Css File
 /* ==============
   General
 ===================*/
+
+.rounded-circle{
+  margin-top: 16px;
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+}
+
+.name-icon{
+  margin-top: 26px;
+  color: white;
+  margin-right: 10px;
+}
+
 body {
   background: #2a323c;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

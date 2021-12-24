@@ -12,6 +12,23 @@ const theloais = require('../models/theloai')
 class Admin_Control{
     login(req,res,next)
     {
+        // admin_login.findOne( {$and: [{matk: req.body.username},{matkhau: req.body.matkhau}]}, 
+        //     function (err,admin_account){
+        //         if(!err)
+        //         {
+        //             if(Boolean(admin_account)==false) {
+        //                 res.redirect('/')
+        //             }
+        //             else 
+        //             {    
+        //                 req.session.username=admin_account.matk;
+        //                 req.session.isAuth=true;
+        //                 res.render('login', {layout: 'admin_login.handlebars'})                  
+        //             }
+        //         } else {
+        //             next(err)
+        //         }
+        //     })
         //console.log(req.session)
         res.render('login', {layout: 'admin_login.handlebars'})  
         //console.log(req.session)
@@ -34,7 +51,12 @@ class Admin_Control{
                     {
                         req.session.username=req.body.username
                         req.session.isAuth=true;
-                        res.render('admin_home',{layout: 'admin.handlebars',admin_account: req.session.username})
+                        books.find({})
+                        .then(books => 
+                        {
+                        books=books.map(course => course.toObject())
+                        res.render('xemds_sach',{layout: 'admin.handlebars',admin_account: req.session.username, books: books})
+                        })
                     }
                 } else {
                     next(err)
@@ -60,15 +82,30 @@ class Admin_Control{
                 .then(books => 
                     {
                         books=books.map(course => course.toObject())
-                        res.render('xemds_sach',{layout: 'admin.handlebars', books})
+                        res.render('xemds_sach',{layout: 'admin.handlebars',admin_account: req.session.username, books: books})
                     })
     }
 
     Them_Sach(req,res,next)
     {
-        res.render('themsach',{layout: 'admin.handlebars'})
+        res.render('themsach',{layout: 'admin.handlebars', admin_account: req.session.username})
     }
 
+<<<<<<< HEAD
+=======
+    chitietSach(req,res,next)
+    {
+        books.findOne({masach: req.params.slug})
+            .then(books =>
+                {
+                    books=mongooseToObject(books)
+                    //res.json(books)
+                    res.render('admin_chitietSach',{layout:'admin.handlebars',admin_account: req.session.username, books})
+                })
+        
+    }
+
+>>>>>>> 930bbe15a4531cb742ffa284c028980fda91aa24
 
     chitietSach_update(req,res,next)
     {
@@ -121,7 +158,7 @@ class Admin_Control{
                     books=books.map(course => course.toObject())
                     //console.log(books)
                     //res.send(books)
-                    res.render('capnhat_sach',{layout: 'admin.handlebars', books: books})
+                    res.render('capnhat_sach',{layout: 'admin.handlebars',admin_account: req.session.username, books: books})
                 })
     }
 
@@ -175,7 +212,7 @@ class Admin_Control{
         .then(khuyenmais => {
             console.log(khuyenmais)
             khuyenmais=khuyenmais.map(course => course.toObject())
-            res.render('DS_khuyenmai',{layout: 'admin.handlebars', khuyenmais: khuyenmais})
+            res.render('DS_khuyenmai',{layout: 'admin.handlebars',  admin_account: req.session.username, khuyenmais: khuyenmais})
         })
     }
 
@@ -189,7 +226,7 @@ class Admin_Control{
         donhang.find({})
             .then(donhang => {
                 donhang = donhang.map(course => course.toObject())
-                res.render('DS_donhang',{layout: 'admin.handlebars',donhang: donhang})
+                res.render('DS_donhang',{layout: 'admin.handlebars', admin_account: req.session.username, donhang: donhang})
             })
     }
 
@@ -198,7 +235,7 @@ class Admin_Control{
         khuyenmais.find({makm: req.params.slug})
             .then(khuyenmais =>{
                 khuyenmais = khuyenmais.map(course => course.toObject())
-                res.render('capnhat_km', {layout: 'admin.handlebars',khuyenmais: khuyenmais})
+                res.render('capnhat_km', {layout: 'admin.handlebars', admin_account: req.session.username,khuyenmais: khuyenmais})
             })
         
     }
@@ -306,7 +343,7 @@ class Admin_Control{
 
                                     //console.log(dulieuthongke)
                                     //console.log(theloai)
-                                    res.render('thongke',{layout: 'admin.handlebars',dulieuthongke: dulieuthongke, theloai: theloai})
+                                    res.render('thongke',{layout: 'admin.handlebars',dulieuthongke: dulieuthongke, admin_account: req.session.username, theloai: theloai})
                                 })
                             
                         })
@@ -379,7 +416,7 @@ class Admin_Control{
                                 }
                                 tinhtien.tongtien-=tinhtien.sotiengiam
                                 console.log(tinhtien)
-                                res.render('vanchuyen',{layout: 'admin.handlebars',khachhang: client_account,donhang: donhang, ds_sach: donhang[0].ds_sach, tinhtien: tinhtien})
+                                res.render('vanchuyen',{layout: 'admin.handlebars',khachhang: client_account,donhang: donhang, ds_sach: donhang[0].ds_sach, tinhtien: tinhtien,  admin_account: req.session.username})
                             })
 
                         //console.log(tinhtien)
