@@ -319,7 +319,15 @@
   max-width: 500px;
 }
 
-#address-mode{
+.address-mode{
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding-left: 15px;
+  display: inline-block;
+  text-transform: none;
+  margin: 0;
+  line-height: 2rem;
+  max-width: 500px;
   color:#FF6600;
   font-size: 1.5rem;
 }
@@ -749,6 +757,16 @@ tbody{
 .modal-message{
   position: fixed;
   top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-address{
+  position: fixed;
+  top: 0;
+  bottom:0;
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
@@ -787,4 +805,8 @@ tbody{
   color:red;
   font-size: 1.3rem;
   margin-left: 10px;
+}
+
+.cancel-edit-address:hover{
+  cursor: pointer;
 }

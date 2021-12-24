@@ -98,7 +98,6 @@
                     </div>                       
                 </div>
             </div>
-
             <div class="sale__list-voucher" id="magiamgia">
                 <div class="sale__voucher-title">
                     <img src="/client_styles/assets/img/3.png" alt="">
@@ -119,7 +118,7 @@
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
                                     <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" 
-                                    class="btn__save btn__save--primary" onclick="luukhuyenmai()">Lưu</a>
+                                    class="btn__save btn__save--primary">Lưu</a>
                                 {{else}}  
                                     <a class="btn__save btn__save--disable" name="{{this.makm}}"><b>Đã hết</b></a>
                                 {{/ifCond}}     
@@ -150,7 +149,7 @@
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
                                     <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" 
-                                    class="btn__save btn__save--primary"  onclick="luukhuyenmai()">Lưu</a>
+                                    class="btn__save btn__save--primary">Lưu</a>
                                 {{else}}  
                                     <a class="btn__save btn__save--disable" name="{{this.makm}}"><b>Đã hết</b></a>
                                 {{/ifCond}}     
@@ -181,8 +180,9 @@
                                 </div>
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
-                                   {{!-- <a><button class="btn__save btn__save--primary">Lưu</button></a> --}}
-                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary">Lưu</a> 
+                                {{!-- <a><button class="btn__save btn__save--primary">Lưu</button></a> --}}
+                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" 
+                                    class="btn__save btn__save--primary">Lưu</a> 
                                 {{else}}
                                     <button class="btn__save btn__save--disable"><b>Đã hết</b></button>
                                 {{/ifCond}}     
@@ -197,7 +197,6 @@
     </div>
 
     <script>
-        var stk=0; //số lượng tài khoản lưu khuyến mãi ban đầu là 0
         $('.btn__save').on('click', function(){ 
             var $this = $(this);
             var phantram = $this.parent().parent().find('.card-title').val();
@@ -230,12 +229,9 @@
 				}),
 				contentType: 'application/json',
             })       
-            if(stt > 3) // nếu số lượng vượt quá số lượng khuyến mãi cho phép
-            {
-                $('btn__save').removeClass('btn__save--primary');
-                $('btn__save').addClass('btn__save--disable');
-            }
-            stt++;
+            //$('btn__save').removeClass('btn__save--primary');
+            //$('btn__save').addClass('btn__save--disable');
+            $(this).replaceWith(`<a class="btn__save btn__save--disable" name="{{this.makm}}"><b>Đã lưu</b></a>`)
         })
 </body>
 </html> 
