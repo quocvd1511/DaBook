@@ -27,21 +27,21 @@
 
                 <div class="card-body">
                     <h3 class="text-center m-t-0 m-b-15">
-                        <a href="/thongke.html" class="logo"><img src="/admin_styles/assets/images/logo.png" alt="logo-img"></a>
+                        <a href="/admin/quan-ly-sach" class="logo"><img src="/admin_styles/assets/images/logo.png" alt="logo-img"></a>
                     </h3>
                     <h4 class="text-muted text-center m-t-0"><b>Đăng nhập</b></h4>
 
-                    <form class="form-horizontal m-t-20" action="index.html">
+                    <form class="form-horizontal m-t-20" method="POST" action="admin/quan-ly-sach">
 
                         <div class="form-group">
                             <div class="col-12">
-                                <input class="form-control" type="text" required="" placeholder="Username">
+                                <input class="form-control" type="text" required="" name="username" placeholder="Username">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-12">
-                                <input class="form-control" type="password" required="" placeholder="Password">
+                                <input class="form-control" type="password" required="" name="password" placeholder="Password">
                             </div>
                         </div>
 
@@ -72,7 +72,6 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
 

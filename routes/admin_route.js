@@ -32,8 +32,8 @@ route.get('/quan-ly-van-chuyen', admin_Control.Ql_VanChuyen)
 route.get('/thong-ke', admin_Control.Ql_ThongKe)
 
 
-route.post('/home',admin_Control.post_home)
-route.get('/home',admin_Control.get_home)
+route.post('/quan-ly-sach',admin_Control.post_home)
+route.get('/quah-ly-sach',admin_Control.get_home)
 
 
 
