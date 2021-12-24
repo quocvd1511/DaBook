@@ -185,7 +185,11 @@
                       <div class="account__content-profile-row">
                         <label class="account__content-profile-label"></label>
                         <div class="account__content-profile-text">
-                          <a href=""><button class="account-btn account-btn--primary btn_save" type="button" id="btn_save">Lưu thay đổi</button></a>
+                          <a href="">
+                            <button class="account-btn account-btn--primary btn_save" type="button" id="btn_save">
+                              Lưu thay đổi
+                            </button>
+                          </a>
                         </div>
                       </div>
                     </form>
@@ -199,59 +203,60 @@
                 <div class="account__address-form">
                   <div class="account__address-heading">
                     <h1 class="account__address-heading-title">Địa chỉ của tôi</h1>
-                    <button class="account-btn account-btn--primary" id="btn-new__address">
+                    {{!-- <button class="account-btn account-btn--primary" id="btn-new__address">
                       <i class="fas fa-plus" style="margin-right: 3px;"></i>
                       Thêm địa chỉ mới
-                    </button>
+                    </button> --}}
                   </div>
                   <form id="ds_diachi"> 
                     <div class="account__address-info">
                       <div class="account__address-info-content">
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Họ và tên</label>
-                          <p class="account__content-address-text">{{client_accounts.hoten}}</p>  
-                          <p class=" account__content-address-text" id="address-mode">Địa chỉ mặc định</p> 
+                          <p class="account__content-address-text hoten">{{client_accounts.hoten}}</p>  
+                          {{!-- <p class="address-mode ">Địa chỉ mặc định</p>  --}}
                         </div>
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Số điện thoại</label>
-                          <p class="account__content-address-text">{{client_accounts.sodt}}</p>  
+                          <p class="account__content-address-text sdt">{{client_accounts.sodt}}</p>  
                         </div>
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Địa chỉ</label>
-                          <p class="account__content-address-text">{{client_accounts.diachigoc}}</p>  
+                          <p class="account__content-address-text diachi">{{client_accounts.diachigoc}}</p>  
                         </div>
                       </div>
                       <div class="account__address-info-btn">
                         <div class="account__btn-edit">
-                          <a href="" style="text-decoration:none">Sửa</a>
+                          <a href="#edit__address" target="_self" style="text-decoration:none" class="btn_edit">Sửa</a>
                         </div>
-                        <div class="account__btn-default account__btn-default--disable">
+                        {{!-- <div class="account__btn-default account__btn-default--disable default">
                           <span>Thiết lập mặc định</span>
-                        </div>
+                        </div> --}}
                       </div>
-                       </div>
+                    </div>
                       {{#if client_accounts.diachigh}}
                       {{#each client_accounts.diachigh}}
-                      <div class="account__address-info">
+                    <div class="account__address-info">
                       <div class="account__address-info-content">
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Họ và tên</label>
-                          <p class="account__content-address-text">{{this.hoten}}</p>  
+                          <p class="account__content-address-text hoten">{{this.hoten}}</p> 
+                          <p class="address-mode hide-message">Địa chỉ mặc định</p>  
                         </div>
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Số điện thoại</label>
-                          <p class="account__content-address-text">{{this.sdt}}</p>  
+                          <p class="account__content-address-text sdt">{{this.sdt}}</p>  
                         </div>
                         <div class="account__content-address-row">
                           <label class="account__content-address-label">Địa chỉ</label>
-                          <p class="account__content-address-text">{{this.diachi}}</p>  
+                          <p class="account__content-address-text diachi">{{this.diachi}}</p>  
                         </div>
                       </div>
                       <div class="account__address-info-btn">
                         <div class="account__btn-edit">
-                          <a href="" style="text-decoration:none">Sửa</a>
+                          <a href="#edit__address"  target="_self" style="text-decoration:none" class="btn_edit">Sửa</a>
                         </div>
-                        <div class="account__btn-default account__btn-default--primary">
+                        <div class="account__btn-default account__btn-default--primary no-default">
                           <span>Thiết lập mặc định</span>
                         </div>
                       </div>
@@ -263,7 +268,7 @@
               </div>
             </div>
 
-       <div class="tab-content account__content">
+            <div class="tab-content account__content">
               <div class="tab-pane" id="doimatkhau" role="tabpanel" aria-labelledby="doimatkhau-tab">
                 <div class="account__profile-form">
                   <div class="account__profile-heading">
@@ -280,7 +285,7 @@
                         </div>
                         <div class="account__content-profile-row">
                           <label class="account__content-password-label"></label>
-                          <small class="text-error-password hide-message" id ="error-pw">Xác nhận mật khẩu không để trống</small>
+                          <small class="text-error-password hide-message" id ="error-pw">Mật khẩu hiện tại không để trống</small>
                         </div>  
                         <div class="account__content-password-row">
                           <label class="account__content-password-label">Mật khẩu mới</label>
@@ -571,6 +576,30 @@
           </div>
         </div>
         
+          <div class="modal-address hide-message" id="edit__address">
+            <div class="modal__inner-address">
+              <div class="modal__body-address">
+                <h2>Sửa địa chỉ</h2> 
+                <div class="address-form__group">
+                  <label class="address-form__label">Họ và tên</label>
+                  <input name="" type="text" class="address-form__input hoten_edit"/>
+                </div>
+                <div class="address-form__group">
+                  <label class="address-form__label">Số điện thoại</label>
+                  <input name="" type="text" class="address-form__input sdt_edit" />
+                </div>
+                <div class="address-form__group">
+                  <label class="address-form__label">Địa chỉ</label>
+                  <input name="" type="text" class="address-form__input diachi_edit"/>
+                </div>
+                <div class="address-form__controls">
+                  <button class="account-btn account-btn--disable cancel-edit-address" type="submit">Hủy</button>
+                  <button class="account-btn account-btn--primary save-edit-address" type="submit">Lưu</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <div class="modal-message hide-message" id="message">
           <div class="modal__inner-message">
             <div class="modal__body-message">
@@ -913,6 +942,30 @@
         $('#ds_diachi').append(add_address);
       })
     </script>
+    <!--Sửa địa chỉ-->
+    <script>
+
+        $('.btn_edit').on('click',function(){
+          
+          $('#edit__address').removeClass('hide-message')
+        
+          $('.cancel-edit-address').click(function(){
+            $('#edit__address').addClass('hide-message')
+          })
+          
+          $('.save-edit-address').click(function(){
+            var a = $('.hoten_edit').val();
+            var b = $('.sdt_edit').val();
+            var c = $('.diachi_edit').val();
+            $('.hoten').text(a.toString());
+            $('sdt').text(b.toString());
+            $('.diachi').text(c.toString());
+
+            $('#edit__address').addClass('hide-message')
+          })
+        
+      })
+    </script>
 
     <!--Button Xác nhận đổi mật khẩu-->
     <script>
@@ -962,10 +1015,6 @@
             }
           }
         })
-<<<<<<< HEAD
-      });
-=======
->>>>>>> ccb6b8b9377c42ace62eefd51bc15c8fb2e1dd55
     </script>
 
     <!--JS Đánh dấu đã đọc-->

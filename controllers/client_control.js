@@ -957,15 +957,22 @@ class Client_Control
     {
         if(req.session.isAuth)
         {
+            const ngay = new Date().getDate();
+            const thang = new Date().getMonth();
+            const nam = new Date().getFullYear();
+            const ngaybl = ngay + "-" + thang + "-" + nam; 
+            console.log(ngaybl, req.query.star)
             books.updateOne({"tensach": req.query.tensach},
-                { $push: { "review": {"matk": req.query.matk, "noidung": req.query.review}}
+                { $push: { "review": {"matk": req.session.username, "noidung": req.query.review, "sosao": req.query.star, "ngaybl": ngaybl}},
+                $inc: {"danhgia": +1}
             })
             .then(() => 
             {
-            const tongtien = req.query.giaban * req.query.soluong;
                 res.redirect('/chitietsach/' + req.query.tensach)
             });
-        } else redirect('/')
+        } else {
+            res.redirect('/chitietsach/' + req.query.tensach)
+        }
     }
 
     capnhattk(req,res,next)

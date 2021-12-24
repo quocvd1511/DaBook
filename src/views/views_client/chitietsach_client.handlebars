@@ -236,7 +236,7 @@
 					<a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Mô tả</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Đánh giá (0)</a>
+					<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Đánh giá</a>
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
@@ -372,37 +372,38 @@
 								</h1>
 							</div>
 							<div class="review-area" style="display:none;">
-								<form>
+								<form >
 									<input type="hidden" name="stars" id="star_input" value="0">
-									<textarea class="form-control" rows="3" style="resize: none"></textarea>
+									<textarea class="form-control" rows="3" style="resize: none" id="review-text"></textarea>
 									<span class="float-right" style="margin-top:15px;line-height:35px;">
 										<span id="stars_confirm">
 										</span>
-										<button class="btn btn-success float-right" type="submit" style="margin-left:20px;  font-size: 18">Submit</button>
+										<a href="" class="btn btn-success float-right review-btn" style="margin-left:20px; font-size: 18">Submit</a>
 									</span>
 								</form>
 							</div>
 						</div>
 					</div>
 					
+					{{#each books.review}}
 					<div class="reviews">
 						<div class="row blockquote review-item">
 							<div class="col-md-3 text-center">
 							<img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
 							<div class="caption">
-								<small>by <a href="#joe">Joe</a></small>
+								{{!-- <small>by <a href="#joe">{{this.matk}}</a></small> --}}
 							</div>
-
 							</div>
 							<div class="col-md-9">
-							<h4>Tần Thùy Trang</h4>
+							<h4>{{this.matk}}</h4>
 							<div class="ratebox text-center" data-id="0" data-rating="5"></div>
-							<p class="review-text">Giao hàng nhanh, gói hàng đẹp. Sản phẩm rất tốt nhưng tôi rất tiếc vì tôi thích đọc truyện tranh </p>
+							<p class="review-text">{{this.noidung}}</p>
 
-							<small class="review-date">March 26, 2017</small>
+							<small class="review-date">{{this.ngaybl}}</small>
 							</div>                          
-						</div>  
+						</div> 
 					</div>
+					{{/each}} 
 					
 				</div>
 			</div>
@@ -410,11 +411,20 @@
 	</div>
 	
 
+	
 	<script>
-		$('.add-to-cart').on("click", function(){
-		   var now = $(".qty").val();
-		   this.href = "/themgiohang?tensach={{books.tensach}}&giaban={{books.giaban}}&hinhanh={{books.hinhanh}}&soluong=" + now;
-			})
+		$(document).on("click", function(e)
+			{
+		$('.review-btn').on("click", function(){
+		 	var now = $('#review-text').val();
+			this.href = "/binhluan?review="+ now + "&tensach={{books.tensach}}";
+	  	   })
+			 {{!-- var star = 0;
+		var list = document.querySelectorAll('#star_review');
+        Array.prototype.forEach.call(list, function (element,index) {
+        	star = element.attr('data-number');
+        }); --}}
+		});
 
 	</script>
 
@@ -630,10 +640,6 @@
 			})
 
 			// Submit review
-		   	$('.review-btn').on("click", function(){
-		   var now = $('#review-text').val();
-		   this.href = "/binhluan?tensach={{books.tensach}}&review=" + now + "&matk={{client_accounts.matk}}";
-	  })
 		});
     </script>
 
