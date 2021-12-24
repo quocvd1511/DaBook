@@ -375,7 +375,7 @@
                   </div>
                 </div>
               </div>
-              <div class="modal-message fade hide-message toast" data-autohide="true" data-delay="3000" tabindex="0" role="dialog" id="message">
+              <div class="modal-message fade hide-message" tabindex="0" role="dialog" id="message">
                 <div class="modal__inner-message">
                   <div class="modal__body-message">
                     <h2>Đăng ký thành công</h2>
@@ -500,49 +500,6 @@
           modals.classList.remove('open')
 
           modal.classList.add('open')
-
-        });
-    </script>
-
-   {{/if}}
-
-     <script>
-        $(document).ready(function() {
-        var li=document.getElementsByClassName('header__search-option-item')
-
-        li[0].addEventListener('click',l0_click)
-
-        li[1].addEventListener('click',l1_click)
-
-        function l0_click(){
-                li[0].classList.add('header__search-option-item--active')
-                li[1].classList.remove('header__search-option-item--active')
-        }      
-
-        function l1_click(){
-                li[1].classList.add('header__search-option-item--active')
-                li[0].classList.remove('header__search-option-item--active')
-        }    
-
-    </script>
-
-    <!-- Js tm kiếm  theo -->
-    <script>
-
-        var li=document.getElementsByClassName('header__search-option-item')
-
-        li[0].addEventListener('click',l0_click)
-
-        li[1].addEventListener('click',l1_click)
-
-        function l0_click(){
-                li[0].classList.add('header__search-option-item--active')
-                li[1].classList.remove('header__search-option-item--active')
-        }      
-        function l1_click(){
-                li[1].classList.add('header__search-option-item--active')
-                li[0].classList.remove('header__search-option-item--active')
-        }    
         });
     </script>
 
@@ -574,11 +531,13 @@
            document.getElementById('message').classList.remove('hide-message')
           }
           else{
-            document.getElementById('message').classList.show('hide-message')
+            document.getElementById('message').classList.remove('hide-message')
           }
         }
       });
     </script>
+
+    {{/if}}
 
     <!-- Js tm kiếm  theo -->
 
@@ -591,7 +550,6 @@
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
     ></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
       integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"

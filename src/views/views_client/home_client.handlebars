@@ -304,7 +304,7 @@
                   </div>
                   <div class="carousel-item active">
                     <img
-                      src="/client_styles/assets/img/banner1.png"
+                      src="/client_styles/assets/img/banner10.gif"
                       class="carousel__banner-img"
                       alt=""
                     />
@@ -378,10 +378,32 @@
 
               {{!-- featured section --}}
               <div class="featured" id="featured">
-
-                  <h1 class="heading"> <span>FLASH SALE</span> </h1>
-
-                  <div class="swiper featured-slider">             
+                
+                    <div class="swiper featured-slider"> 
+                      <div class="row">
+                          <div class="col-12 flash__sale">
+                            <h1 style="color: #333; background: #fff; "> <span> FLASH SALE</span>
+                            <div class="timer ">
+                                <div style="width: 33px; height: 33px">
+                                  <span class="days" id="day"></span> 
+                                </div>
+                                <span style="color: #333; font-size: 30px">:</span>
+                                <div style="width: 33px; height: 33px">
+                                  <span class="hours" id="hour"></span> 
+                                </div>
+                                <span style="color: #333; font-size: 30px">:</span>
+                                <div style="width: 33px; height: 33px">
+                                  <span class="minutes" id="minute"></span> 
+                                </div>
+                                <span style="color: #333; font-size: 30px">:</span>
+                                <div style="width: 33px; height: 33px">
+                                  <span class="seconds" id="second"></span> 
+                                </div>
+                                <p id="time-up"></p>
+                            </div>
+                            </h1>
+                          </div>
+                      </div>            
                       <div class="swiper-wrapper" style="height: auto; width: 100%">
                         {{#each flash_sales}}
                           <div class="swiper-slide box">
@@ -691,7 +713,30 @@
     </script>
 
 
-    {{!-- Phân trang --}}
+    {{!-- countdown --}}
+    <script>
+      var deadline = new Date("december 26, 2021 16:00:00").getTime();             
+      var x = setInterval(function() {
+        var currentTime = new Date().getTime();                
+        var t = deadline - currentTime; 
+        var days = Math.floor(t / (1000 * 60 * 60 * 24)); 
+        var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
+        var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
+        var seconds = Math.floor((t % (1000 * 60)) / 1000); 
+        document.getElementById("day").innerHTML =days ; 
+        document.getElementById("hour").innerHTML =hours; 
+        document.getElementById("minute").innerHTML = minutes; 
+        document.getElementById("second").innerHTML =seconds; 
+        if (t < 0) {
+            clearInterval(x); 
+            document.getElementById("time-up").innerHTML = "TIME UP"; 
+            document.getElementById("day").innerHTML ='0'; 
+            document.getElementById("hour").innerHTML ='0'; 
+            document.getElementById("minute").innerHTML ='0' ; 
+            document.getElementById("second").innerHTML = '0'; 
+        } 
+      }, 1000);
+    </script>
     
 
     <!-- Bootstrap js -->
