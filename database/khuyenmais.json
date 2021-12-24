@@ -1,6 +1,6 @@
 [{
   "_id": "61bab255ded11dd7a67b9886",
-  "daluu": 10,
+  "daluu": 14,
   "dieukien": 200,
   "img": "https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png",
   "loai": "Free Ship",
@@ -14,10 +14,10 @@
   },
   "noidung": "Siêu to bự",
   "phantram": 10,
-  "sl": 11
+  "sl": 7
 },{
   "_id": "61c165c8170cdcb453ed7e97",
-  "daluu": 10,
+  "daluu": 11,
   "dieukien": 200,
   "img": "https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png",
   "loai": "Free Ship",
@@ -31,10 +31,10 @@
   },
   "noidung": "Vip vip vip",
   "phantram": 10,
-  "sl": 11
+  "sl": 10
 },{
   "_id": "61c165ca170cdcb453ed7e98",
-  "daluu": 10,
+  "daluu": 13,
   "dieukien": 200,
   "img": "https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png",
   "loai": "Free Ship",
@@ -48,7 +48,7 @@
   },
   "noidung": "Nghỉ lễ siêu vip",
   "phantram": 10,
-  "sl": 11
+  "sl": 8
 },{
   "_id": "61c165ce170cdcb453ed7e99",
   "daluu": 11,
@@ -85,7 +85,7 @@
   "sl": 11
 },{
   "_id": "61c3f0f545d265f298467b0f",
-  "daluu": 10,
+  "daluu": 12,
   "dieukien": 200,
   "img": "https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png",
   "loai": "ưu đãi khách hàng",
@@ -99,10 +99,10 @@
   },
   "noidung": "Siêu sale cuối năm",
   "phantram": 15,
-  "sl": 11
+  "sl": 9
 },{
   "_id": "61c3f10f45d265f298467b10",
-  "daluu": 10,
+  "daluu": 11,
   "dieukien": 200,
   "img": "https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png",
   "loai": "ưu đãi khách hàng",
@@ -116,5 +116,5 @@
   },
   "noidung": "Siêu sale cuối năm",
   "phantram": 20,
-  "sl": 11
+  "sl": 10
 }]

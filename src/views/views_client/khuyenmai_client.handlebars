@@ -91,7 +91,7 @@
                             </div>
                             <div class="sale__card-content">
                                 <div class="card-container">
-                                <h3 class="card-title khachhang" name="{{this.makm}}">Giảm {{this.phantram}}%</h3>      
+                                <h3 class="card-title khachhang" value="{{this.makm}}">Giảm {{this.phantram}}%</h3>      
                                 <p class="card-text sale__card-text">Nhập mã {{this.manhap}}</p>                                       
                                 <p class="card-text sale__card-text"><small class="text-muted">HSD: {{this.ngaykt}}</small></p>
                                 </div> 
@@ -112,7 +112,7 @@
                 <div class="sale__voucher-title">
                     <img src="/client_styles/assets/img/1.png" alt="">
                 </div>
-                <div class="list-card" method="get" action="/luukhuyenmai?makm={{this.makm}}&manhap={{this.manhap}}&phantram={{this.phantram}}&ngaykt={{this.ngaykt}}">
+                <div class="list-card">
                     {{#each khuyenmai}}
                     {{#ifCond this.loai '==' 'Free Ship'}}
                         <div class="sale__card">
@@ -150,15 +150,16 @@
                             <div class="sale__card-img">
                                 <img src="/client_styles/assets/img/logo.png" class="sale__voucher-logo">
                             </div>
-                            <div class="sale__card-content" method="get" action="/luukhuyenmai">
+                            <div class="sale__card-content">
                                 <div class="card-container">
-                                <h3 class="card-title" name="phantram" value="8746347">Giảm {{this.phantram}}%</h3>      
-                                <p class="card-text sale__card-text card-manhap" name="manhap" value="{{this.manhap}}">Nhập mã {{this.manhap}}</p>                                       
+                                <h3 class="card-title" name="phantram" value="{{this.phantram}}">Giảm {{this.phantram}}%</h3>      
+                                <p class="card-text sale__card-text card-manhap" name="{{this.manhap}}" value="{{this.manhap}}">Nhập mã {{this.manhap}}</p>                                       
                                 <p class="card-text sale__card-text card-ngakt"><small class="text-muted" name="ngaykt" value="{{this.ngaykt}}">HSD: {{this.ngaykt}}</small></p>
                                 </div>
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
-                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary">Lưu</a>
+                                   {{!-- <a><button class="btn__save btn__save--primary">Lưu</button></a> --}}
+                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary">Lưu</a> 
                                 {{else}}
                                     <button class="btn__save btn__save--disable"><b>Đã hết</b></button>
                                 {{/ifCond}}     
@@ -174,7 +175,38 @@
 
     <script>
         var stk=0; //số lượng tài khoản lưu khuyến mãi ban đầu là 0
-        $('.btn__save').click(function(){         
+        $('.btn__save').on('click', function(){ 
+            var $this = $(this);
+            var phantram = $this.parent().parent().find('.card-title').val();
+            var manhap = $this.parent().parent().find('card-manhap').val();
+            var ngaykt = $this.parent().parent().find('.card-ngakt').val();
+             
+             {{!-- phantram = '10%';
+                    manhap = 'Voucher002';
+                    ngaykt = '31-12-2021'; --}}
+
+            {{!-- var khuyenmai=$('.sale__card')
+
+            khuyenmai.each(function(e)
+            {
+                if($(this).find('.btn__save--primary').data('clicked')==true)
+                {
+                        phantram = $(this).find('.card-title').prop('aria-valuetext'),
+                        manhap = $(this).find('.card-manhap').val(),
+                        ngaykt = $(this).find('.card-ngakt').val(),
+                }
+            }) --}}
+             console.log(phantram, manhap, ngaykt)
+             $.ajax({
+                url: '/luukhuyenmai',
+				method: 'POST',
+				data: JSON.stringify({
+                    phantram: phantram,
+					manhap: manhap,
+					ngaykt: ngaykt,
+				}),
+				contentType: 'application/json',
+            })       
             if(stt > 3) // nếu số lượng vượt quá số lượng khuyến mãi cho phép
             {
                 $('btn__save').removeClass('btn__save--primary');
