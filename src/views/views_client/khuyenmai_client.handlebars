@@ -39,10 +39,10 @@
             <img src="/client_styles/assets/img/SIÊU KHUYẾN MÃI.png" style="min-width: 50%; min-height:50%;">
         </div>
         <div class="text-center sale__voucher">
-            <div class="myvoucher">
+            <a href="/chitiettk#khovoucher" class="myvoucher">
                 <span>MÃ GIẢM GIÁ CỦA TÔI</span>
                 <i class="fas fa-angle-right"></i>
-            </div>
+            </a>
         </div>
         <div class="grid">
             <div class="justify-content-around sale__list">
@@ -118,11 +118,12 @@
                                 </div> 
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
-                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" 
-                                    class="btn__save btn__save--primary" onclick="luukhuyenmai()">Lưu</a>
-                                {{else}}  
-                                    <a class="btn__save btn__save--disable" name="{{this.makm}}"><b>Đã hết</b></a>
-                                {{/ifCond}}     
+                                   {{!-- <a><button class="btn__save btn__save--primary">Lưu</button></a> --}}
+                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary">Lưu</a> 
+                              
+                                {{else}}
+                                    <button class="btn__save btn__save--disable" ><b>Đã hết</b></button>
+                                {{/ifCond}}    
                                 </div> 
                             </div>
                         </div>
@@ -148,12 +149,13 @@
                                 <p class="card-text sale__card-text"><small class="text-muted">HSD: {{this.ngaykt}}</small></p>
                                 </div> 
                                 <div class="card-button">
-                                {{#ifCond this.sl '!=' 0}}
-                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" 
-                                    class="btn__save btn__save--primary"  onclick="luukhuyenmai()">Lưu</a>
-                                {{else}}  
-                                    <a class="btn__save btn__save--disable" name="{{this.makm}}"><b>Đã hết</b></a>
-                                {{/ifCond}}     
+                                 {{#ifCond this.sl '!=' 0}}
+                                   {{!-- <a><button class="btn__save btn__save--primary">Lưu</button></a> --}}
+                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary">Lưu</a> 
+                               
+                                {{else}}
+                                    <button class="btn__save btn__save--disable" ><b>Đã hết</b></button>
+                                {{/ifCond}}       
                                 </div> 
                             </div>
                         </div>
@@ -182,9 +184,10 @@
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
                                    {{!-- <a><button class="btn__save btn__save--primary">Lưu</button></a> --}}
-                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary">Lưu</a> 
+                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary voucher-btn">Lưu</a>                                 
+                               
                                 {{else}}
-                                    <button class="btn__save btn__save--disable"><b>Đã hết</b></button>
+                                    <button class="btn__save btn__save--disable" ><b>Đã hết</b></button>
                                 {{/ifCond}}     
                             </div> 
                             </div>
@@ -194,12 +197,101 @@
                 </div>
             </div>
         </div>
+
+           <footer class="footer">
+            <div class="container bottom_border">
+                <div class="row">
+                    <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+                        <h5 class="headin5_amrc col_white_amrc pt2">CHĂM SÓC KHÁCH HÀNG</h5>
+                        <!--headin5_amrc-->
+                        <ul class="footer_ul_amrc">
+                            <li><a href="http://webenlance.com">Các câu hỏi thường gặp</a></li>
+                            <li><a href="http://webenlance.com">Gửi yêu cầu hỗ trợ</a></li>
+                            <li><a href="http://webenlance.com">Hướng dẫn đặt hàng</a></li>
+                            <li><a href="http://webenlance.com">Phương thức vận chuyển</a></li>
+                            <li><a href="http://webenlance.com">Chính sách đổi trả</a></li>
+                        </ul>
+                        <p><i class="fa fa-phone"></i> +1900 1529 </p>
+                        <p><i class="fa fa fa-envelope"></i> dabook@book.com </p>
+                    </div>
+
+
+                    <div class=" col-sm-4 col-md  col-6 col">
+                        <h5 class="headin5_amrc col_white_amrc pt2">GIỚI THIỆU</h5>
+                        <!--headin5_amrc-->
+                        <ul class="footer_ul_amrc">
+                            <li><a href="http://webenlance.com">Điều khoản sử dụng</a></li>
+                            <li><a href="http://webenlance.com">Chính sách bảo mật thanh toán</a></li>
+                            <li><a href="http://webenlance.com">Chính sách bảo mật thông tin</a></li>
+                            <li><a href="http://webenlance.com">Chính sách giải quyết khiếu nại</a></li>
+                            <li><a href="http://webenlance.com">Giới thiệu xu</a></li>
+                            <li><a href="http://webenlance.com">Chính sách bán hàng</a></li>
+                        </ul>
+                        <!--footer_ul_amrc ends here-->
+                    </div>
+
+
+                    <div class=" col-sm-4 col-md  col-6 col">
+                        <h5 class="headin5_amrc col_white_amrc pt2">TÀI KHOẢN CỦA TÔI</h5>
+                        <!--headin5_amrc-->
+                        <ul class="footer_ul_amrc">
+                            <li><a href="http://webenlance.com">Đăng nhập</a></li>
+                            <li><a href="http://webenlance.com">Đăng ký</a></li>
+                            <li><a href="http://webenlance.com">Thay đổi địa chỉ giao hàng</a></li>
+                            <li><a href="http://webenlance.com">Chi tiết tài khoản</a></li>
+                            <li><a href="http://webenlance.com">Lịch sử mua hàng</a></li>
+                            <li><a href="http://webenlance.com">Điểm tích lũy</a></li>
+                        </ul>
+                        <!--footer_ul_amrc ends here-->
+                    </div>
+
+
+                    <div class=" col-sm-4 col-md  col-12 col">
+                        <h5 class="headin5_amrc col_white_amrc pt2">THEO DÕI CHÚNG TÔI</h5>
+                        <!--headin5_amrc ends here-->
+
+                        <ul class="footer_ul2_amrc">
+                            <li><a href="#"><i class="fab fa-facebook fleft padding-right"></i></a>
+                                <p>Theo dõi chúng tôi tại địa chỉ: <a href="#">https://www.facebook.com/</a></p>
+                            </li>
+                            <li><a href="#"><i class="fab fa-linkedin fleft padding-right"></i></a>
+                                <p>Theo dõi chúng tôi tại địa chỉ: <a href="#">https://www.linkedin.com/</a></p>
+                            </li>
+                            <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i></a>
+                                <p>Theo dõi chúng tôi tại địa chỉ: <a href="#">https://www.twitter.com/</a></p>
+                            </li>
+                            <li><a href="#"><i class="fab fa-instagram fleft padding-right"></i></a>
+                                <p>Theo dõi chúng tôi tại địa chỉ: <a href="#">https://www.instagram.com/</a></p>
+                            </li>
+                        </ul>
+                        <!--footer_ul2_amrc ends here-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <!--foote_bottom_ul_amrc ends here-->
+                <p class="text-center">2021 | Bản quyền thuộc về công ty <a href="#">DaBook - DaBook.com</a></p>
+
+                <ul class="social_footer_ul">
+                    <li><a href="http://webenlance.com"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="http://webenlance.com"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="http://webenlance.com"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="http://webenlance.com"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+                <!--social_footer_ul ends here-->
+            </div>
+
+        </footer>
     </div>
+
 
     <script>
         var stk=0; //số lượng tài khoản lưu khuyến mãi ban đầu là 0
-        $('.btn__save').on('click', function(){ 
-            var $this = $(this);
+        $('.voucher-btn').on('click', function(e){
+            e.preventDefault(); 
+            alert("được rồi nha")
+            {{!-- var $this = $(this);
             var phantram = $this.parent().parent().find('.card-title').val();
             var manhap = $this.parent().parent().find('card-manhap').val();
             var ngaykt = $this.parent().parent().find('.card-ngakt').val();
@@ -229,7 +321,7 @@
 					ngaykt: ngaykt,
 				}),
 				contentType: 'application/json',
-            })       
+            })        --}}
             if(stt > 3) // nếu số lượng vượt quá số lượng khuyến mãi cho phép
             {
                 $('btn__save').removeClass('btn__save--primary');
@@ -238,4 +330,6 @@
             stt++;
         })
 </body>
+
+
 </html> 
