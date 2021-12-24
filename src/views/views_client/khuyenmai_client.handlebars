@@ -112,7 +112,7 @@
                 <div class="sale__voucher-title">
                     <img src="/client_styles/assets/img/1.png" alt="">
                 </div>
-                <div class="list-card" method="get" action="/luukhuyenmai?makm={{this.makm}}&manhap={{this.manhap}}&phantram={{this.phantram}}&ngaykt={{this.ngaykt}}">
+                <div class="list-card">
                     {{#each khuyenmai}}
                     {{#ifCond this.loai '==' 'Free Ship'}}
                         <div class="sale__card">
@@ -150,7 +150,7 @@
                             <div class="sale__card-img">
                                 <img src="/client_styles/assets/img/logo.png" class="sale__voucher-logo">
                             </div>
-                            <div class="sale__card-content" method="get" action="/luukhuyenmai">
+                            <div class="sale__card-content">
                                 <div class="card-container">
                                 <h3 class="card-title" name="phantram" value="{{this.phantram}}">Giảm {{this.phantram}}%</h3>      
                                 <p class="card-text sale__card-text card-manhap" name="{{this.manhap}}" value="{{this.manhap}}">Nhập mã {{this.manhap}}</p>                                       
@@ -172,7 +172,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         var stk=0; //số lượng tài khoản lưu khuyến mãi ban đầu là 0
         $('.btn__save').on('click', function(){ 

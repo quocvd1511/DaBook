@@ -643,35 +643,35 @@ class Client_Control
 
     //lưu khuyến mãi
     luukhuyenmai(req,res,next){
-//         if(req.session.isAuth){
-//     client_login.updateOne({"matk": req.session.username}, 
-//         { $push: { "danhsach_km":  {"manhap": req.query.manhap, "phantram": req.query.phantram, "ngaykt": req.query.ngaykt}}
-//         //{"manhap": req.params.manhap, "ngaykt": req.params.ngaykt, "phantram": req.params.phantram}
-//     })
-//     .then(() => 
-//     {
-//         khuyenmai.updateOne({"manhap": req.query.manhap},
-//         { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
-//             res.redirect('/khuyenmai');
-//         })    
-//     })
-// }else{
-//     res.redirect('/khuyenmai');
-// }
-            if(req.session.isAuth){
-                client_login.updateOne({"matk": req.session.username}, 
-                    { $push: { "danhsach_km":  {"manhap": req.body.manhap, "phantram": req.body.phantram, "ngaykt": req.body.ngaykt}}
-                })
-                .then(() => 
-                {
-                    khuyenmai.updateOne({"manhap": req.body.manhap},
-                    { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
-                        res.redirect('/khuyenmai');
-                    })    
-                })
-            }else{
-                res.redirect('/khuyenmai');
-            }
+        if(req.session.isAuth){
+        client_login.updateOne({"matk": req.session.username}, 
+        { $push: { "danhsach_km":  {"manhap": req.query.manhap, "phantram": req.query.phantram, "ngaykt": req.query.ngaykt}}
+        //{"manhap": req.params.manhap, "ngaykt": req.params.ngaykt, "phantram": req.params.phantram}
+            })
+            .then(() => 
+            {
+                khuyenmai.updateOne({"manhap": req.query.manhap},
+                { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
+                    res.redirect('/khuyenmai');
+                })    
+            })
+        }else{
+            res.redirect('/khuyenmai');
+        }
+            // if(req.session.isAuth){
+            //     client_login.updateOne({"matk": req.session.username}, 
+            //         { $push: { "danhsach_km":  {"manhap": req.body.manhap, "phantram": req.body.phantram, "ngaykt": req.body.ngaykt}}
+            //     })
+            //     .then(() => 
+            //     {
+            //         khuyenmai.updateOne({"manhap": req.body.manhap},
+            //         { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
+            //             res.redirect('/khuyenmai');
+            //         })    
+            //     })
+            // }else{
+            //     res.redirect('/khuyenmai');
+            // }
     }
 
 
