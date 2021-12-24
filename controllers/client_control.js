@@ -27,7 +27,7 @@ class Client_Control
                     {
                         temp_book=temp_book.map(course => course.toObject())
                         const page = parseInt(req.query.page)
-                        books.find({}).limit(20).skip(20*page)
+                        books.find({}).limit(36).skip(36*page)
                         .then(books => 
                             {
                                 books=books.map(course => course.toObject())
@@ -70,7 +70,7 @@ class Client_Control
     // Login account
     post_client(req,res,next)
     {
-        client_login.findOne({$or: [{matk: req.body.username},{email: req.body.username}], matkhau: req.body.password}, 
+        client_login.findOne( {$or: [{matk: req.body.username},{email: req.body.username}], matkhau: req.body.password}, 
             function (err,client_account){
                 if(!err)
                 {
@@ -643,59 +643,51 @@ class Client_Control
 
     //lưu khuyến mãi
     luukhuyenmai(req,res,next){
-        if(req.session.isAuth){
-    client_login.updateOne({"matk": req.session.username}, 
-        { $push: { "danhsach_km":  {"manhap": req.query.manhap, "phantram": req.query.phantram, "ngaykt": req.query.ngaykt}}
-        //{"manhap": req.params.manhap, "ngaykt": req.params.ngaykt, "phantram": req.params.phantram}
-    })
-    .then(() => 
-    {
-        khuyenmai.updateOne({"manhap": req.query.manhap},
-        { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
-            res.redirect('/khuyenmai');
-        })    
-    })
-}else{
-    res.redirect('/khuyenmai');
-}
-}
+//         if(req.session.isAuth){
+//     client_login.updateOne({"matk": req.session.username}, 
+//         { $push: { "danhsach_km":  {"manhap": req.query.manhap, "phantram": req.query.phantram, "ngaykt": req.query.ngaykt}}
+//         //{"manhap": req.params.manhap, "ngaykt": req.params.ngaykt, "phantram": req.params.phantram}
+//     })
+//     .then(() => 
+//     {
+//         khuyenmai.updateOne({"manhap": req.query.manhap},
+//         { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
+//             res.redirect('/khuyenmai');
+//         })    
+//     })
+// }else{
+//     res.redirect('/khuyenmai');
+// }
+            if(req.session.isAuth){
+                client_login.updateOne({"matk": req.session.username}, 
+                    { $push: { "danhsach_km":  {"manhap": req.body.manhap, "phantram": req.body.phantram, "ngaykt": req.body.ngaykt}}
+                })
+                .then(() => 
+                {
+                    khuyenmai.updateOne({"manhap": req.body.manhap},
+                    { $inc: {"sl": -1, "daluu": + 1}}).then(()=>{
+                        res.redirect('/khuyenmai');
+                    })    
+                })
+            }else{
+                res.redirect('/khuyenmai');
+            }
+    }
 
 
     //xem chi tiết tài khoản
-    // chitiettk(req,res,next){
-    //     client_login.findOne({'matk': req.session.username})
-    //     .then(thongtintk => 
-    //         {
-    //             thongtintk=mongooseToObject(thongtintk);
-    //             client_login('danhsach_makm').aggregate([
-    //                 { $lookup:
-    //                    {
-    //                      from: 'khuyenmai',
-    //                      localField: 'makh_id',
-    //                      foreignField: 'makm',
-    //                      as: 'chitietkm'
-    //                    }
-    //                  }
-    //                 ]).toArray(function(err, res) {
-    //                 if (err) throw err;
-    //                 console(res);
-    //                 res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk})
-    //                 client_login.close();
-    //               });
-    //         })
-    //     .catch(next)
-    // }
     chitiettk(req,res,next){
 
         client_login.findOne({'matk': req.session.username})
-
         .then(thongtintk =>
-
             {
-
                 thongtintk=mongooseToObject(thongtintk);
+                donhang.find({'matk': req.session.username})
+                .then(donhang => {
 
-                res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk})
+                    donhang=donhang.map(course => course.toObject())
+                res.render('taikhoan.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk, thongtin: thongtintk, donhang: donhang})
+                })
 
             })
 

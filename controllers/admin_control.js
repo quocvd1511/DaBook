@@ -12,6 +12,23 @@ const req = require('express/lib/request')
 class Admin_Control{
     login(req,res,next)
     {
+        // admin_login.findOne( {$and: [{matk: req.body.username},{matkhau: req.body.matkhau}]}, 
+        //     function (err,admin_account){
+        //         if(!err)
+        //         {
+        //             if(Boolean(admin_account)==false) {
+        //                 res.redirect('/')
+        //             }
+        //             else 
+        //             {    
+        //                 req.session.username=admin_account.matk;
+        //                 req.session.isAuth=true;
+        //                 res.render('login', {layout: 'admin_login.handlebars'})                  
+        //             }
+        //         } else {
+        //             next(err)
+        //         }
+        //     })
         //console.log(req.session)
         res.render('login', {layout: 'admin_login.handlebars'})  
         //console.log(req.session)

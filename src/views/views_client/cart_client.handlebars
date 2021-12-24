@@ -322,7 +322,7 @@
          var $input = $this.closest('div').find('input')
          var gia_ban=$this.parent().parent().find('#id_giaban')
          var thanh_tien=$this.parent().parent().find("#id_thanhtien") 
-         var checkbox =$this.parent().parent().find('.checkbuy')
+         var checkbox = $this.parent().parent().find('.checkbuy')
          var value = parseInt($input.val());
          var tensach =$this.parent().parent().find('.tensach').text()
          var soluong =parseInt($this.parent().find('.soluong').val())
@@ -354,12 +354,8 @@
 				}),
 				contentType: 'application/json',
             })
-
-
          //var tong_gia=$this.parent().parent().parent().parent().parent().find('.list-cart-item').find('.cart__total').find('#tongtien').html()
          //console.log(tong_gia)
-
-
        });
 
 

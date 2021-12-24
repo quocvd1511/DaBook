@@ -229,7 +229,35 @@
                           <span>Thiết lập mặc định</span>
                         </div>
                       </div>
-                    </div>  
+                       </div>
+                      {{#if client_accounts.diachigh}}
+                      {{#each client_accounts.diachigh}}
+                      <div class="account__address-info">
+                      <div class="account__address-info-content">
+                        <div class="account__content-address-row">
+                          <label class="account__content-address-label">Họ và tên</label>
+                          <p class="account__content-address-text">{{this.hoten}}</p>  
+                        </div>
+                        <div class="account__content-address-row">
+                          <label class="account__content-address-label">Số điện thoại</label>
+                          <p class="account__content-address-text">{{this.sdt}}</p>  
+                        </div>
+                        <div class="account__content-address-row">
+                          <label class="account__content-address-label">Địa chỉ</label>
+                          <p class="account__content-address-text">{{this.diachi}}</p>  
+                        </div>
+                      </div>
+                      <div class="account__address-info-btn">
+                        <div class="account__btn-edit">
+                          <a href="" style="text-decoration:none">Sửa</a>
+                        </div>
+                        <div class="account__btn-default account__btn-default--primary">
+                          <span>Thiết lập mặc định</span>
+                        </div>
+                      </div>
+                    </div>
+                    {{/each}}
+                    {{/if}}
                   </form>
                 </div>
               </div>
@@ -297,17 +325,31 @@
                             <th>Mã đơn hàng</th>
                             <th>Ngày đặt</th>
                             <th>Sản phẩm</th>
+                            <th>Voucher áp dụng</th>
                             <th>Tổng tiền</th>
                             <th>Trạng thái</th>
                           </tr>
                         </thead>
                         <tbody>
+                          {{#each donhang}}
+                          {{#ifCond this.tinhtrangdonhang '==' 'đã giao hàng'}}
                           <tr>
-                            <td class="plus">12345</td>
-                            <td>20:54 01/12/2021</td>
-                            <td>Sách Thất tịch không mưa</td>
-                            <td>100.000</td>
+                            <td class="plus">{{this.madh}}</td>
+                            <td>{{this.ngaylap}}</td>
+                            {{#each this.ds_sach}}
+                            <td>{{this.tensach}}</td>
+                            {{#if this.makm}}
+                            {{#each this.makm}}
+                            <td>{{this.manhap}}</td>
+                            {{/each}}
+                            {{else}}
+                             <td>Không có</td>
+                            {{/if}}
+                          {{/each}}
+                           <td>{{format_price this.tongtien}}</td>
                             <td>Giao hàng thành công</td>
+                          {{/ifCond}}
+                          {{/each}}
                           </tr>
                         </tbody>
                       </table>
@@ -327,32 +369,41 @@
                     </div>
                   </div>
                   <ul class="account__notify-list">
+                    {{#each donhang}}
+                    {{#ifCond this.tinhtrangdonhang '==' 'chờ xác nhận'}}
+                    {{#each this.ds_sach}}
                     <li class="account__notify-item account__notify-item--view">
                       <a href="" class="account__notify-link">
-                        <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="account__notify-img">
+                        <img src="{{this.hinhanh}}" alt="" class="account__notify-img">
                         <div class="account__notify-info">
-                          <span class="account__notify-name">Đơn hàng của bạn đang được vận chuyển</span>
-                          <span class="account__notify-description">Harry Potter và bảo bối tử thần</span>
-                          <span class="account__notify-time">12:30 11/11/2021</span>
+                          <span class="account__notify-name">Đơn hàng của bạn đang chờ xác nhận</span>
+                          <span class="account__notify-description">{{this.tensach}}</span>
+                          <span class="account__notify-time">Ngày đặt {{this.ngaylap}}</span>
                         </div>
                       </a>
                       <div class="account__btn-default account__btn-default--primary">
                         <span>Xem chi tiết</span>
                       </div>
                     </li>
-                    <li class="account__notify-item">
+                    {{/each}}
+                    {{else}}
+                    {{#each this.ds_sach}}
+                     <li class="account__notify-item account__notify-item--view">
                       <a href="" class="account__notify-link">
-                        <img src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg" alt="" class="account__notify-img">
+                        <img src="{{this.hinhanh}}" alt="" class="account__notify-img">
                         <div class="account__notify-info">
-                          <span class="account__notify-name">Đơn hàng của bạn đã được xác nhận</span>
-                          <span class="account__notify-description">Harry Potter và bảo bối tử thần</span>
-                          <span class="account__notify-time">12:30 11/11/2021</span>
+                          <span class="account__notify-name">Đơn hàng của bạn đang được lấy</span>
+                          <span class="account__notify-description">{{this.tensach}}</span>
+                          <span class="account__notify-time">Ngày đặt {{this.ngaylap}}</span>
                         </div>
                       </a>
                       <div class="account__btn-default account__btn-default--primary">
                         <span>Xem chi tiết</span>
                       </div>
                     </li>
+                    {{/each}}
+                     {{/ifCond}}
+                    {{/each}}
                   </ul>
                 </div>
               </div>
@@ -384,6 +435,7 @@
                   <form>
                     <div class="tab-pane" id="all_voucher" role="tabpanel" aria-labelledby="all_voucher-tab">
                       <div class="list-card">
+                      {{#if client_accounts.danhsach_km}}
                        {{#each client_accounts.danhsach_km}}
                         <div class="account__card">
                           <div class="account__card-img">
@@ -396,7 +448,7 @@
                               <p class="card-text account__card-text"><small class="text-muted">HSD: {{this.ngaykt}}</small></p>
                             </div> 
                             <div>
-                              <a href="" class="card-link" name="{{this.manhap}}">
+                              <a href="/" class="card-link" name="{{this.manhap}}">
                                 <span>Dùng ngay</span> 
                                 <i class="fas fa-chevron-right"></i>
                               </a>
@@ -404,9 +456,20 @@
                           </div>
                         </div>
                         {{/each}}
+                        {{else}}
+                          <div class="account__btn-default account__btn-default--primary" id="btn_danhdau">
+                            <span style="color: rgb(155, 155, 155);">Bạn chưa lưu voucher nào</span>
+                          </div>
+                          <a href="/khuyenmai" class="card-link" >
+                                <span>Đến trang khuyến mãi</span> 
+                                <i class="fas fa-chevron-right"></i>
+                              </a>
+                        {{/if}}
                       </div>
                     </div>
                     <div class="tab-pane" id="expired_voucher" role="tabpanel" aria-labelledby="expired_voucher-tab">
+                    {{#if donhang.makm}}
+                    {{#each donhang.makm}}
                       <div class="list-card">
                         <div class="account__card account__card--expired">
                           <div class="account__card-img">
@@ -414,13 +477,13 @@
                           </div>
                           <div class="account__card-content">
                             <div class="card-container">
-                              <h3 class="card-title khachhang" name="{{this.makm}}">Giảm {{this.phantram}}%</h3>      
-                              <p class="card-text account__card-text">Đơn hàng từ {{this.dieukien}}.000VNĐ</p>                                       
-                              <p class="card-text account__card-text"><small class="text-muted">HSD: 31/12/2021</small></p>
+                              <h3 class="card-title khachhang" name="{{this.manhap}}">Giảm {{this.phantram}}%</h3>      
+                              <p class="card-text account__card-text">Mã nhập{{this.manhap}}</p>                                       
+                              <p class="card-text account__card-text"><small class="text-muted">HSD: {{this.ngaykt}}</small></p>
                             </div> 
                             <div>
                               <a href="" class="card-link" name="{{this.makm}}">
-                                <span style="color: rgb(155, 155, 155);">Đã hết hạn</span> 
+                                <span style="color: rgb(155, 155, 155);">Đã sử dụng</span> 
                               </a>
                             </div> 
                             {{!-- <div>
@@ -431,6 +494,12 @@
                           </div>
                         </div>
                       </div>
+                    {{/each}}
+                    {{else}}
+                    <div class="account__btn-default account__btn-default--primary" id="btn_danhdau">
+                      <span style="color: rgb(155, 155, 155);">Bạn chưa sử dụng voucher nào</span>
+                    </div>
+                    {{/if}}
                     </div>
                   </form>
                 </div>
@@ -501,7 +570,7 @@
             </div>
           </div>
         </div>
-
+        
         <div class="modal-message hide-message" id="message">
           <div class="modal__inner-message">
             <div class="modal__body-message">
@@ -716,13 +785,11 @@
          var day = $('#default_day').text();
          var month = $('#default_month').text();
          var year = $('#default_year').text();
-          console.log(a, b, c, day, month, year, old_pw)
+          console.log(a, b, c, day, month, year)
          $.ajax({
 
                     url: '/capnhattaikhoan',
-
                     method: 'POST',
-
                     data: JSON.stringify({
 
                         email: b,
@@ -736,7 +803,6 @@
                     contentType: 'application/json',
 
                 })
-                
 
           $('#new_phone').hide();
           $('#new_email').hide();
@@ -859,7 +925,7 @@
           console.log(old_pw)
            if(password != old_pw)
             {
-              alert("Mật khẩu hiện tại sai rồi kìa! Nhập lại đi")
+              alert("Mật khẩu hiện tại sai rồi bạn ơi!")
             }else{
               $.ajax({
 
