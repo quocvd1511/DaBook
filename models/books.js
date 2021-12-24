@@ -24,7 +24,9 @@ const Book = new Schema({
     matk: String,
     noidung: String,
     sosao: Number,
+    ngaybl: String,
   }],
+  danhgia: Number,
   });
 
 module.exports = mogoose.model('Book',Book)
