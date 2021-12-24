@@ -529,3 +529,68 @@ a.qty-minus {
   border-radius: 3px;
   background-color: #ff3945;
 }
+
+.trash-icon:hover{
+  cursor: pointer;
+  }
+  
+  
+  
+  .modal-delete{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  
+  
+  .hide-delete{
+  display: none;
+  }
+  
+  
+  
+  .modal__inner-delete{
+  width: 400px;
+  min-height: 100px;
+  background-color: #fff;
+  border: 0.5px solid #dbdbdb;
+  border-radius: 3px;
+  animation: fadeIn linear 0.1s;
+  position: relative;
+  margin: 350px auto;
+  padding: 20px;
+  }
+  .modal__body-delete{
+  font-size: 1.3em;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  }
+  .modal__footer-button{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  }
+  .btn__confirm{
+  text-align: center;
+  padding: 10px 0;
+  width: 150px;
+  font-size: 1.3em;
+  }
+  .btn--no{
+  color: #1A94FF;
+  border: 1px solid #1A94FF;
+  border-radius: 3px;
+  background-color: #fff;
+  }
+  .btn--delete{
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  background-color: #ff3945;
+  }
+
