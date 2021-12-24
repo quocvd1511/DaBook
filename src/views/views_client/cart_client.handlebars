@@ -62,7 +62,7 @@
                             </div>
                                     
                             <div class="col-auto col__bin">               
-                                <i class="far fa-trash-alt"></i>
+                                <i class="delete trash-icon far fa-trash-alt" id="trash-icon"></i>
                             </div>
                         </div>
 
@@ -91,7 +91,7 @@
                             </div>
                                     
                             <div class="col-auto col__bin">               
-                                <i class="far fa-trash-alt"></i>
+                                <i class="delete trash-icon far fa-trash-alt"></i>
                             </div>
                         </div>
                     {{/chanle}}
@@ -112,10 +112,10 @@
                                 <span style="font-weight: 400;">{{client_accounts.matk}}</span>
                             </div>
                             <div>
-                                <span style="font-weight: 400;">Số điện thoại: 0{{client_accounts.sodt}}</span>
+                                <span style="font-weight: 400;">Số điện thoại: {{client_accounts.sodt}}</span>
                             </div>
                             <div class="cart_address">
-                                <span style="font-weight: 400;">Địa chỉ: {{client_accounts.diachigh}} </span>
+                                <span style="font-weight: 400;">Địa chỉ: {{client_accounts.diachigoc}} </span>
                             </div>
                             <a href="" style="text-decoration: none; justify-content: space-around;">Thay đổi</a>
                         </div>
@@ -180,6 +180,17 @@
                     <button type="submit" class="confirm-buy btn__buy-book" id="buy" >Xác nhận đặt sách</button>
                 </form>
         </div>
+        <div class="modal-delete hide-delete" id="confirm_del">
+            <div class="modal__inner-delete">
+                <div class="modal__body-delete">
+                <p>Bạn muốn xóa sản phẩm này?</p>
+            </div>
+            <div class="modal__footer-button">
+                <button class="btn__confirm btn--no">Không</button>
+                <button class="btn__confirm btn--delete">Xóa</button>
+            </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -188,6 +199,28 @@
         var TienShip=parseInt($('#cart-shipping').text())
         var TongSoLuong=0
         //---------------------------------
+
+        $('.trash-icon').on('click', function()
+        {
+                var $this=$(this)
+                var tensach =$this.parent().parent().find('.tensach').text()
+                var matk=$('.ten-dang-nhap').text()
+                $this.parent().parent().remove()
+                $.ajax({
+                    url: '/xoagiohang',
+                    method: 'POST',
+                    data:JSON.stringify({
+                        matk: matk,
+                        tensach: tensach,
+                    }),
+                    contentType: 'application/json',
+                })
+                var sl_giohang=$('.so-luong-gio-hang').text()
+                sl_giohang=(parseInt(sl_giohang)-1).toString()
+                $('.so-luong-gio-hang').text(sl_giohang)
+        })
+
+        //
 
         $('.checkbuy').on('click', function()
         {
@@ -328,7 +361,8 @@
          var soluong =parseInt($this.parent().find('.soluong').val())
          var matk=$('.ten-dang-nhap').text()
 
-         if (value < 100) {
+         if (value < 100) 
+         {
             value = value + 1;
             var sum=value*(parseInt(gia_ban.text()))
             $input.val(value.toString());
@@ -479,6 +513,22 @@
         
         }
     </script>
+
+        {{!-- <script>
+            $('.trash-icon').click(function(){
+            $('#confirm_del').removeClass('hide-delete');
+            })
+            $('.btn--no').click(function()
+            {
+                $('#confirm_del').addClass('hide-delete');
+            })
+            $('.btn--delete').click(function()
+            {
+            $('#confirm_del').addClass('hide-delete');
+            })
+        </script> --}}
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
