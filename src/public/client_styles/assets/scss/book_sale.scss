@@ -35,18 +35,19 @@ background-color:  #F5F5F5;
   border-color: #f60 ;
   cursor: pointer;
   transform: translateY(-3px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .sale__list {
   display: flex;
   text-align: center;
-  padding: 0 50px;
+  padding: 0 100px;
 }
 
 .sale__list-container {
   padding: 12px;
-  opacity: 0.7;
-  margin: 10px 15px;
+  opacity: 0.8;
+  margin: 0 15px;
 }
 
 .sale__list-item {
@@ -55,30 +56,54 @@ background-color:  #F5F5F5;
   display: flex;
   border-radius: 5px;
   border: 5px solid var(--blue-color);
+  background-color: var(--blue-color);
+  justify-content: center;
   align-items: center;
-  background-color: var(--white-color);
-  text-align: center;
-  align-items: center;
+  transition: width 0.2s, height 0.2;
+}
+
+.item-img{
+  height: 150px;
+  width: 150px;
+  border-radius: 5px;
 }
 
 .sale__list-text {
-padding: 12px 12px;
-font-size: 1.6rem;
-font-weight: 400;
-color: black;
+  padding: 12px 12px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: black;
+}
+
+.sale__list-item:hover{
+  border-color: #E72922;
+  background-color:#E72922;
+}
+
+.sale__list-item:hover .item-img{
+  cursor: pointer;
+  width: 190px;
+  height: 190px;
+  border-color: #E72922;
+  background-color:#E72922;
 }
 
 .sale__list-container:hover {
-cursor: pointer;
-opacity: 1;
+  cursor: pointer;
+  opacity: 1;
 }
 
 /* voucher */
-.sale__voucher-title {
-text-align: center;
-margin-top: 24px;
+.sale__list-voucher{
+  display: block;
+  text-align: center;
+  justify-content: center;
 }
 
+.sale__voucher-title {
+text-align: center;
+margin-top: 28px;
+}
 
 .list-card{
   display: flex;
@@ -89,11 +114,12 @@ margin-top: 24px;
 
 .sale__card {
   display: flex;
-  max-height: 110px;
-  border: 1px solid #d8d8d8;
+  border: 2px solid #F5F5F5;
   border-radius: 3px;
   margin: 20px 20px 0 20px;
   box-sizing: border-box;
+  background-color: var(--white-color);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .sale-img{
@@ -102,9 +128,9 @@ margin-top: 24px;
 }
 
 .sale__voucher-logo {
-  width: 110px;
-  padding: 8px;
-  background-color: var(--blue-color);
+  width: 120px;
+  padding: 10px;
+  border-right: 2px solid var(--blue-color);
   border-radius: 2px;
   margin-top: -1;
   margin-left: -1;
@@ -118,16 +144,13 @@ margin-top: 24px;
 .card-container{
   margin-left: 10px;
   width: 200px;
+  text-align: left;
 }
 
 .sale__card-text {
   font-size: 1.4rem;
   font-weight: 400;
   flex: 1;
-}
-
-.card-button{
-  width: 150px;
 }
 
 .btn__save {
@@ -170,3 +193,92 @@ margin-top: 24px;
   color: var(--black-color);
 } 
   
+.apply{
+  display: block;
+  text-align: center;
+  justify-content: center;
+}
+
+.apply__title{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.apply__title-content{
+  width: 1000px;
+  background-color: #f9d9e4;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 2px 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.apply__title-content-h1{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.apply__title-content-h1 h1{
+  font-size: 5rem;
+  color: var(--blue-color);
+
+  text-align: center;
+  margin: 0 10px;
+}
+
+.apply__title-content h6{
+  font-size: 3.5rem;
+  color: var(--text-color);
+  justify-content: center;
+  text-align: center;
+}
+
+.apply-step{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.apply__step-container{
+  width: 300px;
+  display: block;
+  border-radius: 10px;
+  border: 3px solid #f60;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.apply__list-img{
+  width: 290px;
+  height: 180px;
+  border-radius: 10px;
+  transition: width 0.3s, height 0.3s;
+}
+
+.apply__list-img:hover{
+  width: 50%;
+  height: 50%;
+  border: 1px solid var(--text-color);
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  transform: translate(-30%);
+}
+
+.apply__list-text{
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 10px 0;
+  color: var(--text-color);
+  background-color: #f9d9e4;
+  border-radius: 10px;
+  border: 5px solid #fff;
+}
+
+.apply-step i{
+  font-size: 6rem;
+  color: #f60;
+  margin-top: 100px;
+}

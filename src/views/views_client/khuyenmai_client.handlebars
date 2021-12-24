@@ -36,7 +36,7 @@
   <!-- container -->
     <div class="sale">
         <div class="text-center" >
-            <img src="/client_styles/assets/img/SIÊU KHUYẾN MÃI.png"  alt="">
+            <img src="/client_styles/assets/img/SIÊU KHUYẾN MÃI.png" style="min-width: 50%; min-height:50%;">
         </div>
         <div class="text-center sale__voucher">
             <div class="myvoucher">
@@ -49,7 +49,7 @@
                 <a href="#magiamgia"  style ="text-decoration: none;">
                     <div class="sale__list-container">
                         <div class="sale__list-item">
-                            
+                            <img src="/client_styles/assets/img/mã_giảm_giá.png" class="item-img">
                         </div>
                         <div class="sale__list-text">Mã giảm giá</div>
                     </div>
@@ -57,7 +57,7 @@
                 <a href="#mienphivanchuyen" style ="text-decoration: none;">
                     <div class="sale__list-container">
                         <div class="sale__list-item">
-                            <img src="/client_styles/assets/img/miễn_phí_vận_chuyển.png" width="130px" height="130px">
+                            <img src="/client_styles/assets/img/miễn_phí_vận_chuyển(1).png" class="item-img">
                         </div>
                         <div class="sale__list-text">Miễn phí vận chuyển</div>
                     </div>
@@ -65,13 +65,41 @@
                 <a href="#uudaikhachhang"  style ="text-decoration: none;">
                     <div class="sale__list-container">
                         <div class="sale__list-item">
-                            <img src="/client_styles/assets/img/ưu_đãi.png" alt="" width="130px" height="130px">
+                            <img src="/client_styles/assets/img/ưu_đãi.png" class="item-img">
                         </div>
                         <div class="sale__list-text">Ưu đãi khách hàng<br>thân thiết</div>
                     </div>
                 </a>
             </div>
-            <div class="sale__voucher" id="magiamgia">
+
+            <div class="apply">
+                <div class="apply__title">
+                    <div class="apply__title-content">
+                        <div class="apply__title-content-h1">
+                            <h1>Áp mã nhanh chóng</h1>
+                        </div>
+                        <h6>Các bước thực hiện</h6>
+                    </div>
+                </div>
+                <div class="apply-step">
+                    <div class="apply__step-container"> 
+                        <div class="apply__list-text">Lưu mã</div>
+                        <img src="/client_styles/assets/img/Lưu_mã.png" class="apply__list-img">
+                    </div>  
+                    <i style="vertical-align: middle;" class="fas fa-angle-double-right"></i>
+                    <div class="apply__step-container">
+                        <div class="apply__list-text">Nhập mã</div>
+                        <img src="/client_styles/assets/img/Nhập_mã.png" class="apply__list-img">
+                    </div>   
+                    <i class="fas fa-angle-double-right"></i>
+                    <div class="apply__step-container">
+                        <div class="apply__list-text">Áp dụng</div>
+                        <img src="/client_styles/assets/img/Áp_dụng.png" class="apply__list-img">
+                    </div>                       
+                </div>
+            </div>
+
+            <div class="sale__list-voucher" id="magiamgia">
                 <div class="sale__voucher-title">
                     <img src="/client_styles/assets/img/3.png" alt="">
                 </div>
@@ -80,7 +108,7 @@
                     {{#ifCond this.loai '==' 'mã giảm giá'}}
                     <div class="sale__card">
                             <div class="sale__card-img">
-                                <img src="/client_styles/assets/img/logo.png" class="sale__voucher-logo">
+                                <img src="/client_styles/assets/img/logo_mgg.png" class="sale__voucher-logo">
                             </div>
                             <div class="sale__card-content">
                                 <div class="card-container">
@@ -90,7 +118,8 @@
                                 </div> 
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
-                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary">Lưu</a>
+                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" 
+                                    class="btn__save btn__save--primary" onclick="luukhuyenmai()">Lưu</a>
                                 {{else}}  
                                     <a class="btn__save btn__save--disable" name="{{this.makm}}"><b>Đã hết</b></a>
                                 {{/ifCond}}     
@@ -101,7 +130,7 @@
                     {{/each}}
                 </div>
             </div>
-            <div class="sale__voucher" id="mienphivanchuyen">
+            <div class="sale__list-voucher" id="mienphivanchuyen">
                 <div class="sale__voucher-title">
                     <img src="/client_styles/assets/img/1.png" alt="">
                 </div>
@@ -110,7 +139,7 @@
                     {{#ifCond this.loai '==' 'Free Ship'}}
                         <div class="sale__card">
                             <div class="sale__card-img">
-                                <img src="/client_styles/assets/img/logo.png" class="sale__voucher-logo">
+                                <img src="/client_styles/assets/img/logo_mpvc.png" class="sale__voucher-logo">
                             </div>
                             <div class="sale__card-content">
                                 <div class="card-container">
@@ -120,7 +149,8 @@
                                 </div> 
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
-                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary">Lưu</a>
+                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" 
+                                    class="btn__save btn__save--primary"  onclick="luukhuyenmai()">Lưu</a>
                                 {{else}}  
                                     <a class="btn__save btn__save--disable" name="{{this.makm}}"><b>Đã hết</b></a>
                                 {{/ifCond}}     
@@ -131,7 +161,7 @@
                     {{/each}}
                 </div>
             </div>
-            <div class="sale__voucher" id="uudaikhachhang">
+            <div class="sale__list-voucher" id="uudaikhachhang">
                 <div class="sale__voucher-title">
                     <img src="/client_styles/assets/img/2.png" alt="">
                 </div>
@@ -141,7 +171,7 @@
                     {{#ifCond this.loai '==' 'ưu đãi khách hàng'}}
                     <div class="sale__card">
                             <div class="sale__card-img">
-                                <img src="/client_styles/assets/img/logo.png" class="sale__voucher-logo">
+                                <img src="/client_styles/assets/img/logo_khtt.png" class="sale__voucher-logo">
                             </div>
                             <div class="sale__card-content" method="get" action="/luukhuyenmai">
                                 <div class="card-container">
@@ -151,7 +181,8 @@
                                 </div>
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
-                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary">Lưu</a>
+                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" 
+                                    class="btn__save btn__save--primary" click="luukhuyenmai()">Lưu</a>
                                 {{else}}
                                     <button class="btn__save btn__save--disable"><b>Đã hết</b></button>
                                 {{/ifCond}}     
@@ -166,15 +197,9 @@
     </div>
 
     <script>
-        var stk=0; //số lượng tài khoản lưu khuyến mãi ban đầu là 0
-        $('.btn__save').click(function(){         
-            if(stt > 3) // nếu số lượng vượt quá số lượng khuyến mãi cho phép
-            {
-                $('btn__save').removeClass('btn__save--primary');
-                $('btn__save').addClass('btn__save--disable');
-            }
-            stt++;
-        })
+        function luukhuyenmai(){
+            $(this).replaceWith(`<button class="btn__save btn__save--disable"><b>Đã lưu</b></button>`)
+        }
     </script>
 </body>
 </html> 
