@@ -98,7 +98,6 @@
                     </div>                       
                 </div>
             </div>
-
             <div class="sale__list-voucher" id="magiamgia">
                 <div class="sale__voucher-title">
                     <img src="/client_styles/assets/img/3.png" alt="">
@@ -183,9 +182,15 @@
                                 </div>
                                 <div class="card-button">
                                 {{#ifCond this.sl '!=' 0}}
+<<<<<<< HEAD
+                                {{!-- <a><button class="btn__save btn__save--primary">Lưu</button></a> --}}
+                                    <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" 
+                                    class="btn__save btn__save--primary">Lưu</a> 
+=======
                                    {{!-- <a><button class="btn__save btn__save--primary">Lưu</button></a> --}}
                                     <a href="/luukhuyenmai?phantram={{this.phantram}}&manhap={{this.manhap}}&ngaykt={{this.ngaykt}}" class="btn__save btn__save--primary voucher-btn">Lưu</a>                                 
                                
+>>>>>>> 2316d9e671f6cb99fbb87a0f57278b98d7397aaa
                                 {{else}}
                                     <button class="btn__save btn__save--disable" ><b>Đã hết</b></button>
                                 {{/ifCond}}     
@@ -287,11 +292,16 @@
 
 
     <script>
+<<<<<<< HEAD
+        $('.btn__save').on('click', function(){ 
+            var $this = $(this);
+=======
         var stk=0; //số lượng tài khoản lưu khuyến mãi ban đầu là 0
         $('.voucher-btn').on('click', function(e){
             e.preventDefault(); 
             alert("được rồi nha")
             {{!-- var $this = $(this);
+>>>>>>> 2316d9e671f6cb99fbb87a0f57278b98d7397aaa
             var phantram = $this.parent().parent().find('.card-title').val();
             var manhap = $this.parent().parent().find('card-manhap').val();
             var ngaykt = $this.parent().parent().find('.card-ngakt').val();
@@ -321,6 +331,12 @@
 					ngaykt: ngaykt,
 				}),
 				contentType: 'application/json',
+<<<<<<< HEAD
+            })       
+            //$('btn__save').removeClass('btn__save--primary');
+            //$('btn__save').addClass('btn__save--disable');
+            $(this).replaceWith(`<a class="btn__save btn__save--disable" name="{{this.makm}}"><b>Đã lưu</b></a>`)
+=======
             })        --}}
             if(stt > 3) // nếu số lượng vượt quá số lượng khuyến mãi cho phép
             {
@@ -328,6 +344,7 @@
                 $('btn__save').addClass('btn__save--disable');
             }
             stt++;
+>>>>>>> 2316d9e671f6cb99fbb87a0f57278b98d7397aaa
         })
 </body>
 

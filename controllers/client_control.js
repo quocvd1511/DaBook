@@ -8,6 +8,8 @@ const giohang = require('../models/giohang')
 const donhang = require('../models/donhang')
 const { json } = require('express')
 const { redirect } = require('express/lib/response')
+const theloais = require('../models/theloai')
+
 
 
 
@@ -725,7 +727,7 @@ class Client_Control
                 else
                 {
                     client_account.updateOne({"matk": req.session.username},
-                    { $push: { "giohang": {"tensach": req.body.tensach, "giaban": req.body.giaban, "hinhanh": req.body.hinhanh, "soluong": req.body.soluong}}, 
+                    { $push: { "giohang": {"tensach": req.body.tensach, "giaban": req.body.giaban, "hinhanh": req.body.hinhanh, "soluong": req.body.soluong, "theloai": req.body.theloai}}, 
                     $inc: {"sl_giohang": +1}
                     })
                         .then(res.send('Add'))
@@ -817,88 +819,108 @@ class Client_Control
     // thanh toán đơn hàng
     taohoadon(req,res,next)
     {
+        req.session.isAuth = true
+        donhang.count({})
+            .then(count =>
+                {
+                    var bill= JSON.parse(req.query.donhang)
+                    bill.madh = "DH00"+ count.toString()
+                    bill = new donhang(bill)
+                    req.session.user=bill.matk
+                    //res.send(bill)
+                    bill.save()
+                    //console.log(bill.matk)
+                    client_account.updateOne({matk: bill.matk},{$inc: {sl_donhang: + 1}})
+                        .then(
+                            client_account.findOne({matk: bill.matk})
+                            .then
+                            (
+                                res.render('thankyou',{layout: 'client.handlebars', madh: bill.madh, client_accounts: client_account})
+                            )
+                            )
+                })
         // client_login.findOne({'matk': req.session.username})
         // .then(thongtintk => 
         //     {
         //         thongtintk=mongooseToObject(thongtintk);
         //         res.render('payment.handlebars',{layout: 'client.handlebars', client_accounts: thongtintk})            })
         //     .catch(next)
-        donhang.find({})
-            .then(donhang_x =>{
-                //console.log(donhang)
-                var MangTien = JSON.parse(req.body.data)
-                //console.log(MangTien)
-                var TongTien=0
-                for(var i=0;i<MangTien.length;i++)
-                {
-                    TongTien+=parseInt(MangTien[i].TongTien)
-                }
-                 var n = donhang_x.length
-                 if(n!=0)
-                 {
-                    var code = donhang_x[n-1].madh
-                    code = code.substring(2,5)
-                    var madh="dh00"+(parseInt(code)+1).toString()
-                    var ThanhToan = ''
-                    var TinhTrangThanhToan =''
-                    if(req.body.value==='first')
-                    {
-                        ThanhToan = "Trực tiếp"
-                        TinhTrangThanhToan = "Chưa thanh toán"
-                    } 
-                    else
-                    {
-                        ThanhToan = "Trực tuyến"
-                        TinhTrangThanhToan = "Đã thanh toán"
-                    }
-                    var FormData=
-                    {
-                        ds_sach: MangTien,
-                        matk: req.session.username,
-                        madh: madh,
-                        hinhthucthanhtoan: 'Trực tiếp',
-                        tinhtrangthanhtoan: 'Chưa thanh toán',
-                        tinhtrangdonhang: 'chờ xác nhận',
-                        tongtien: TongTien
-                    }
-                    //console.log(FormData)
-                    FormData = new donhang(FormData)
-                    FormData.save()
-                 } else
-                 {
-                    var madh="dh00"+(1).toString()
-                    var ThanhToan = ''
-                    var TinhTrangThanhToan =''
-                    if(req.body.value==='first')
-                    {
-                        ThanhToan = "Trực tiếp"
-                        TinhTrangThanhToan = "Chưa thanh toán"
-                    } 
-                    else
-                    {
-                        ThanhToan = "Trực tuyến"
-                        TinhTrangThanhToan = "Đã thanh toán"
-                    }
-                    var FormData={
-                        ds_sach: MangTien,
-                        matk: req.session.username,
-                        madh: madh,
-                        hinhthucthanhtoan: 'Trực tiếp',
-                        tinhtrangthanhtoan: 'Chưa thanh toán',
-                        tinhtrangdonhang: 'chờ xác nhận',
-                        tongtien: TongTien
-                    }
+        // donhang.find({})
+        //     .then(donhang_x =>{
+        //         //console.log(donhang)
+        //         var MangTien = JSON.parse(req.body.data)
+        //         //console.log(MangTien)
+        //         var TongTien=0
+        //         for(var i=0;i<MangTien.length;i++)
+        //         {
+        //             TongTien+=parseInt(MangTien[i].TongTien)
+        //         }
+        //          var n = donhang_x.length
+        //          if(n!=0)
+        //          {
+        //             var code = donhang_x[n-1].madh
+        //             code = code.substring(2,5)
+        //             var madh="dh00"+(parseInt(code)+1).toString()
+        //             var ThanhToan = ''
+        //             var TinhTrangThanhToan =''
+        //             if(req.body.value==='first')
+        //             {
+        //                 ThanhToan = "Trực tiếp"
+        //                 TinhTrangThanhToan = "Chưa thanh toán"
+        //             } 
+        //             else
+        //             {
+        //                 ThanhToan = "Trực tuyến"
+        //                 TinhTrangThanhToan = "Đã thanh toán"
+        //             }
+        //             var FormData=
+        //             {
+        //                 ds_sach: MangTien,
+        //                 matk: req.session.username,
+        //                 madh: madh,
+        //                 hinhthucthanhtoan: 'Trực tiếp',
+        //                 tinhtrangthanhtoan: 'Chưa thanh toán',
+        //                 tinhtrangdonhang: 'chờ xác nhận',
+        //                 tongtien: TongTien
+        //             }
+        //             //console.log(FormData)
+        //             FormData = new donhang(FormData)
+        //             FormData.save()
+        //          } else
+        //          {
+        //             var madh="dh00"+(1).toString()
+        //             var ThanhToan = ''
+        //             var TinhTrangThanhToan =''
+        //             if(req.body.value==='first')
+        //             {
+        //                 ThanhToan = "Trực tiếp"
+        //                 TinhTrangThanhToan = "Chưa thanh toán"
+        //             } 
+        //             else
+        //             {
+        //                 ThanhToan = "Trực tuyến"
+        //                 TinhTrangThanhToan = "Đã thanh toán"
+        //             }
+        //             var FormData={
+        //                 ds_sach: MangTien,
+        //                 matk: req.session.username,
+        //                 madh: madh,
+        //                 hinhthucthanhtoan: 'Trực tiếp',
+        //                 tinhtrangthanhtoan: 'Chưa thanh toán',
+        //                 tinhtrangdonhang: 'chờ xác nhận',
+        //                 tongtien: TongTien
+        //             }
 
-                    FormData = new donhang(FormData)
-                    FormData.save()
+        //             FormData = new donhang(FormData)
+        //             FormData.save()
 
-                 }
+        //          }
 
-                 client_account.find({'matk': req.session.username})
-                    .then(client_account =>{
-                        res.render('payment.handlebars',{layout: 'client.handlebars',client_accounts: client_account, sach: MangTien})
-                    })
-            })
+        //          client_account.find({'matk': req.session.username})
+        //             .then(client_account =>{
+        //                 res.render('payment.handlebars',{layout: 'client.handlebars',client_accounts: client_account, sach: MangTien})
+        //             })
+        //     })
 
         
     }
@@ -911,6 +933,7 @@ class Client_Control
                 .then(client_account => 
                 {
                     var MangSach = JSON.parse(req.body.data)
+                    //console.log(MangSach)
                     var SoLuong =0
                     var ThanhTien=0
                     for(var i=0;i<MangSach.length;i++)

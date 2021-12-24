@@ -11,6 +11,7 @@
     <link
       rel="stylesheet"
       href="/client_styles/assets/fonts/fontawesome-free-5.15.4/fontawesome-free-5.15.4-web/css/all.min.css"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 
@@ -34,23 +35,24 @@
                 <span style="font-size: 1.6rem;">Được giao bởi <i style="color: rgb(0, 132, 255);">DaBookStore</i> </span>
             </div>
             {{#each sach}}
-            <div class="bill__info--product">
+            <div class="hoadon bill__info--product">
                 <div class="col-6 col-pro layout-inline">
-                    <img class="cart__img" src="{{this.hinhanh}}"alt="">
-                    <p class="item__name">{{this.tensach}}</p>
+                    <img class="hinhanh cart__img" src="{{this.hinhanh}}"alt="">
+                    <p class="tensach item__name">{{this.tensach}}</p>
                 </div>
-
+                <div class="theloai" hidden>{{this.theloai}}</div>
+                <div class="giaban" hidden>{{this.giaban}}</div>
                 <div class="col col-price ">
-                    <span>Số lượng: {{this.SoLuong}}</span>
+                    <span>Số lượng: <span class="soluong">{{this.SoLuong}}</span></span>
                 </div>
                 
                 <div class="col col-price  ">
-                    <span>{{this.TongTien}}</span>
+                    <span class="tongtien">{{this.TongTien}}</span>
                 </div>
             </div>
             {{/each}}
             <div class="bill__info--time">
-                <span>Giao vào: {{shipday}}</span>
+                <span class="ngayship">Giao vào: {{shipday}}</span>
                 <span style="color: #333; padding: 0 10px">Được giao bởi <img class="delivery__logo" src="/client_styles/assets/img/delivery.png" alt=""></span>
             </div>
         </div>
@@ -60,7 +62,7 @@
                 <h2>Chọn hình thức thanh toán</h2>
             </div>
             <div class="payment__info--selection">
-                <input name="pay" type="radio" value="live"/> <img class="pay__img" src="/client_styles/assets/img/pay.png" alt=""> Thanh toán bằng tiền mặt khi nhận hàng
+                <input class="thanhtoantienmat" name="pay" type="radio" value="live"/> <img class="pay__img" src="/client_styles/assets/img/pay.png" alt=""> Thanh toán bằng tiền mặt khi nhận hàng
             </div>
             {{!-- <label class="payment__info--selection">
                 <input name="pay" type="radio" value="live"/>
@@ -73,7 +75,7 @@
                 <span class="">Thanh toán trực tuyến qua ví Momo</span>
             </label> --}}
             <div class="payment__info--selection">
-                <input name="pay" type="radio" value="momo"/> <img class="pay__img" src="/client_styles/assets/img/MoMo_Logo.png" alt=""> Thanh toán trực tuyến qua ví Momo
+                <input class="thanhtoanmomo" name="pay" type="radio" value="momo"/> <img class="pay__img" src="/client_styles/assets/img/MoMo_Logo.png" alt=""> Thanh toán trực tuyến qua ví Momo
             </div>
         </div>
 
@@ -108,21 +110,72 @@
                         </div>
                         <div class="cart__total">
                             <span>Tổng tiền:</span>
-                            <span>{{tongtien}}</span>
+                            <span class="thanhtien">{{tongtien}}</span>
                         </div>
                     </li>
 
                 </ul>
             </div>
 
-            <a href="">
-                <button type="submit" class="btn__buy-book" id="buy" >Đặt sách</button>
+            <a class="linktott" href="/payment">
+                <button type="submit" class="mua btn__buy-book" id="buy" >Đặt sách</button>
             </a>
             
         </div>  
     </div>
+    <script>
+        $('.mua').on('click', function()
+        {
+            var listhoadon = $('.hoadon')
+            var listProduct = []
+            var username=$('.ten-dang-nhap').text()
+            var checkMomo = $('.thanhtoanmomo')
+            var checkTienMat = $('.thanhtoantienmat')
+            var loaithanhtoan =''
+            var thanhtien =parseInt($('.thanhtien').text())
+            var tinhtrangthanhtoan=''
+            console.log(username)
+            listhoadon.each(function(e)
+           {
+                const Sach={
+                    tensach: $(this).find('.tensach').text(),
+                    hinhanh: $(this).find('.hinhanh').text(),
+                    theloai: $(this).find('.theloai').text(),
+                    soluong: parseInt($(this).find('.soluong').text()),
+                    tongtien: parseInt($(this).find('.tongtien').text()),
+                    giaban: parseInt($(this).find('.giaban').text())
+                }
+                if(checkMomo.prop('checked')===true)
+                {
+                    tinhtrangthanhtoan="Đã thanh toán"
+                    loaithanhtoan='Trực tuyến'
+                } else 
+                {
+                    tinhtrangthanhtoan="Chưa thanh toán"
+                    loaithanhtoan='Trực tiếp'
+                }
+                listProduct.push(Sach)
+           })
+           console.log(listProduct)
+           console.log(username)
+           console.log(loaithanhtoan)
+           console.log(thanhtien)
+           var donhang ={
+               matk: username,
+               hinhthucthanhtoan: loaithanhtoan,
+               tongtien: thanhtien,
+               tinhtrangthanhtoan: tinhtrangthanhtoan,
+               tinhtrangdonhang: "chờ xác nhận",
+               ds_sach: listProduct,
+           }
+            var donhang = JSON.stringify(donhang)
+            $('.linktott').attr('href','/payment?donhang='+donhang)
 
-
+        })
+    </script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
 

@@ -50,7 +50,7 @@
                             <div class="col col-price col-numeric align-center" id="giaban">
                                     <span class="col-price" id="id_giaban">{{this.giaban}}</span>
                             </div>
-                        
+                            <div class="theloai" hidden>{{this.theloai}}</div>
                             <div class="col-auto col-qty layout-inline">
                                 <a href="#" class="qty qty-minus"><span>-</span></a>
                                 <input class="soluong input__qty" id="id_soluong" type="numeric" value="{{this.soluong}}" />
@@ -75,7 +75,7 @@
                                 <img class="cart__img" src="{{this.hinhanh}}"alt="">
                                 <p class="tensach item__name">{{this.tensach}}</p>
                             </div>
-
+                            <div class="theloai" hidden>{{this.theloai}}</div>
                             <div class="col col-price col-numeric align-center" id="giaban">
                                     <span class="col-price" id="id_giaban">{{this.giaban}}</span>
                             </div>
@@ -259,7 +259,8 @@
                         giaban: $(this).find('#id_giaban').text(),
                         SoLuong: $(this).find('#id_soluong').val(),
                         TongTien: $(this).find('#id_thanhtien').text(),
-                        hinhanh: $(this).find('.cart__img').attr('src')
+                        hinhanh: $(this).find('.cart__img').attr('src'),
+                        theloai: $(this).find('.theloai').text()
                         }
                     ListBuyed.push(Sach)
                 }

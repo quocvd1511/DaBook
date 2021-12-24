@@ -30,8 +30,10 @@ const client_account = new Schema({
       giaban: Number,
       hinhanh: String,
       soluong: Number,
+      theloai: String,
     }],
-    sl_giohang: Number,
+    sl_giohang:{type: Number, default: 0},
+    sl_donhang:{type: Number, default: 0},
     diachi: {type: String, default: ""},
     ngaysinh: String,
   });

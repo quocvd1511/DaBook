@@ -7,7 +7,7 @@ const donhang = require('../models/donhang')
 const {multipleMongooseToObject} = require('../util/mongoose.js')
 const {mongooseToObject} = require('../util/mongoose.js')
 const req = require('express/lib/request')
-
+const theloais = require('../models/theloai')
 
 class Admin_Control{
     login(req,res,next)
@@ -78,14 +78,12 @@ class Admin_Control{
     Ql_Sach(req,res,next)
     {
        // console.log(req.session.username)
-       {
            books.find({})
                 .then(books => 
                     {
                         books=books.map(course => course.toObject())
                         res.render('xemds_sach',{layout: 'admin.handlebars',admin_account: req.session.username, books: books})
                     })
-        }
     }
 
     Them_Sach(req,res,next)
@@ -93,23 +91,13 @@ class Admin_Control{
         res.render('themsach',{layout: 'admin.handlebars', admin_account: req.session.username})
     }
 
-    chitietSach(req,res,next)
-    {
-        books.findOne({masach: req.params.slug})
-            .then(books =>
-                {
-                    books=mongooseToObject(books)
-                    //res.json(books)
-                    res.render('admin_chitietSach',{layout:'admin.handlebars',admin_account: req.session.username, books})
-                })
-        
-    }
-
 
     chitietSach_update(req,res,next)
     {
-        books.updateOne({_id:req.body._id},
+        console.log(req.body)
+        books.updateOne({masach:req.body.masach},
             {
+            masach: req.body.masach,
             hinhanh:req.body.hinhanh,
             tensach:req.body.tensach,
             theloai:req.body.theloai,
@@ -124,17 +112,21 @@ class Admin_Control{
             )
             .then(() => 
             {
-                res.redirect('/admin/quan-ly-sach/cap-nhat-sach/'+req.body._id)
+                res.redirect('/admin/quan-ly-sach/cap-nhat-sach/'+req.body.masach)
             })
     }
 
     chitietSach_save(req,res,next)
     {
-        const book=books(req.body)
+        var book=books(req.body)
         //console.log(req.body)
-        console.log(book)
-        book.save()
-        res.redirect('/admin/quan-ly-sach')
+        books.count({})
+            .then(count =>{
+                var newmasach="BOOK"+count.toString()
+                book.masach=newmasach
+                book.save()
+                res.redirect('/admin/quan-ly-sach')
+            })
     }
     
     chitietSach_delete(req,res,next)
@@ -145,11 +137,11 @@ class Admin_Control{
 
     CapNhatSach(req,res,next)
     {
-        books.find({_id: req.params.slug})
+        books.find({masach: req.params.slug})
             .then(books =>
                 {
                     books=books.map(course => course.toObject())
-                    console.log(books)
+                    //console.log(books)
                     //res.send(books)
                     res.render('capnhat_sach',{layout: 'admin.handlebars',admin_account: req.session.username, books: books})
                 })
@@ -164,7 +156,22 @@ class Admin_Control{
             client_account.find({})
             .then(client_account => 
                 {
+                    var thongtint
+                    for(var i=0;i<client_account.length;i++)
+                    {
+                        var danhsach_km = client_account[i].danhsach_km
+                        var danhsanh_ma =''
+                        var soluongma=0
+                        for(var k=0;k<danhsach_km.length;k++)
+                        {
+                            danhsanh_ma+= " " + danhsach_km[k].manhap
+                        }
+                        client_account[i].danhsach_ma = danhsanh_ma
+                        // console.log(client_account[i])
+                    }
+                    //console.log(client_account[0].danhsach_ma)
                     client_account=client_account.map(course => course.toObject())
+                    //console.log(client_account)
                     //console.log(client_account)
                     res.render('QLtaikhoan',{layout: 'admin.handlebars', admin_account: req.session.username, client_account: client_account})
                 })
@@ -179,6 +186,18 @@ class Admin_Control{
                 //console.log(client_account)
                 res.render('admin_chitietTaiKhoan',{layout: 'admin.handlebars', admin_account: req.session.username, client_account})
             })
+    }
+
+    khoataikhoan(req,res,next)
+    {
+        client_account.updateOne({matk: req.query.matk},{tinhtrang:'Khóa'})
+            .then(res.redirect('/admin/quan-ly-tai-khoan'))
+    }
+
+    mokhoataikhoan(req,res,next)
+    {
+        client_account.updateOne({matk: req.query.matk},{tinhtrang:'Đang sử dụng'})
+            .then(res.redirect('/admin/quan-ly-tai-khoan'))
     }
 
     //--------------------------------------------------------------
@@ -210,7 +229,7 @@ class Admin_Control{
 
     CapNhatKhuyenMai(req,res,next)
     {
-        khuyenmais.find({_id: req.params.slug})
+        khuyenmais.find({makm: req.params.slug})
             .then(khuyenmais =>{
                 khuyenmais = khuyenmais.map(course => course.toObject())
                 res.render('capnhat_km', {layout: 'admin.handlebars', admin_account: req.session.username,khuyenmais: khuyenmais})
@@ -220,36 +239,68 @@ class Admin_Control{
 
     ThemKhuyenMai_save(req,res,next)
     {
-        var khuyenmai = {
-            makm: req.body.makm,
-            noidung: req.body.noidung,
-            tinhtrang: req.body.tinhtrang,
-            phantram: req.body.demo1,
-            dieukien: req.body.demo3,
-            ngaybd: req.body.ngaybd,
-            ngaykt: req.body.ngaykt,
-        }
-
-        khuyenmai = new khuyenmais(khuyenmai)
-        khuyenmai.save()
-        res.redirect('/admin/quan-ly-khuyen-mai')
+        //res.send(req.body)
+        khuyenmais.count({})
+            .then(count =>{
+                var ngaybd = new Date(req.body.ngaydb)
+                var ngaykt = new Date(req.body.ngaykt)
+                var phantram = parseInt(req.body.demo1)
+                var dieukien = parseInt(req.body.demo3)
+                var soluong = parseInt(req.body.sl)
+                var makm = "V00"+ (count+1).toString()
+                var khuyenmai = 
+                {
+                    makm: makm,
+                    manhap: req.body.manhap+makm,
+                    noidung: req.body.noidung,
+                    trangthai: req.body.trangthai,
+                    phantram: phantram,
+                    dieukien: dieukien,
+                    ngaybd: ngaybd,
+                    ngaykt: ngaykt,
+                    sl: soluong,
+                }
+                
+                
+                khuyenmai = new khuyenmais(khuyenmai)
+                khuyenmai.save()
+                 .then(
+                    res.redirect('/admin/quan-ly-khuyen-mai')
+                 )
+                //console.log(khuyenmai)
+            })
     }
 
     CapNhatKhuyenMai_save(req,res,next)
     {
-        khuyenmais.updateOne({_id: req.body._id},{
+        //res.send(req.body)
+        var ngaybd = new Date(req.body.ngaybd)
+        var ngaykt = new Date(req.body.ngaykt)
+        var soluong = parseInt(req.body.sl)
+        var phantram = parseInt(req.body.demo1)
+        var dieukien = parseInt(req.body.demo3)
+        var trangthai = req.body.trangthai
+
+        khuyenmais.updateOne({makm: req.body.makm},{
             makm: req.body.makm,
+            manhap: req.body.manhap+req.body.makm,
             noidung: req.body.noidung,
-            tinhtrang: req.body.tinhtrang,
-            phantram: req.body.demo1,
-            dieukien: req.body.demo3,
-            ngaybd: req.body.ngaybd,
-            ngaykt: req.body.ngaykt,
+            trangthai: trangthai,
+            phantram: phantram,
+            dieukien: dieukien,
+            ngaybd: ngaybd,
+            ngaykt: ngaykt,
+            sl: soluong,
         })
         .then(khuyenmais =>{
-            const id=req.body._id
-            res.redirect('/admin/quan-ly-khuyen-mai/cap-nhat-khuyen-mai/' + id)
+            res.redirect('/admin/quan-ly-khuyen-mai/cap-nhat-khuyen-mai/' + req.body.makm)
         })
+    }
+
+    xoakhuyenmai(req,res,next)
+    {
+        khuyenmais.deleteOne({makm: req.query.makm})
+            .then(res.redirect('/admin/quan-ly-khuyen-mai'))
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -258,44 +309,66 @@ class Admin_Control{
     //---Quan ly thong ke----
     Ql_ThongKe(req,res,next)
     {
-        books.find({})
-            .then(books => 
-            {
-                var dulieuthongke=[{
-                    sosachdaban: 0,
-                    sodondathang: 0,
-                    soluongtaikhoan: 0,
-                    doanhthu: 0,
-                }]
-                for(var i=0;i<books.length;i++)
+                client_account.count({}, function(err,count)
                 {
-                    var temp = parseInt(books[i].soluongdaban)
-                    dulieuthongke[0].sosachdaban+=temp
-                }
+                    var dulieuthongke=[{
+                        sosachdaban: 0,
+                        sodondathang: 0,
+                        soluongtaikhoan: 0,
+                        doanhthu: 0,}]
 
-                client_account.count({}, function(err,count){
                     dulieuthongke[0].soluongtaikhoan = count
-                    theloai.find({})
-                        .then(theloai =>{
-                            theloai = theloai.map(course => course.toObject())
 
                             donhang.find({})
-                                .then(donhang =>{
+                                .then(donhang =>
+                                {
                                     for(var i=0;i<donhang.length;i++)
                                     {
-                                        dulieuthongke[0].doanhthu+=parseInt(donhang[i].tongtien)
+                                        if(donhang[i].tinhtrangthanhtoan==="Đã thanh toán")
+                                        {
+                                            dulieuthongke[0].doanhthu+=parseInt(donhang[i].tongtien)
+                                        }
+                                        var listbook = donhang[i].ds_sach
+                                        for(var k=0;k<listbook.length;k++)
+                                        {
+                                            dulieuthongke[0].sosachdaban+=listbook[k].soluong
+                                        }
                                     }
-
                                     dulieuthongke[0].sodondathang=donhang.length
-                                    console.log(dulieuthongke)
-                                    //console.log(theloai)
-                                    res.render('thongke',{layout: 'admin.handlebars',dulieuthongke: dulieuthongke, admin_account: req.session.username, theloai: theloai})
+
+
+                                    books.find().distinct('theloai')
+                                        .then(theloais =>
+                                        {
+                                            var arraySoluong=[]
+                                            for(var i=0;i<theloais.length;i++)
+                                            {
+                                                arraySoluong[i] = new Object()
+                                                arraySoluong[i].theloai=theloais[i]
+                                                arraySoluong[i].soluong=0
+                                            }
+
+                                            for(var i=0;i<donhang.length;i++)
+                                            {
+                                                var listbook = donhang[i].ds_sach
+                                                for(var k=0;k<listbook.length;k++)
+                                                {
+                                                    var temp=listbook[k].theloai
+                                                    for(var h=0;h<arraySoluong.length;h++)
+                                                    {
+                                                        if(arraySoluong[h].theloai===temp)
+                                                        {
+                                                            arraySoluong[h].soluong+=listbook[k].soluong
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            res.render('thongke',{layout: 'admin.handlebars',dulieuthongke: dulieuthongke, admin_account: req.session.username, theloai: arraySoluong})
+                                        })
                                 })
                             
                         })
 
-                })
-            })
     }
 
 

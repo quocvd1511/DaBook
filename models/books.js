@@ -27,6 +27,7 @@ const Book = new Schema({
     ngaybl: String,
   }],
   danhgia: Number,
+  trangthai:{type: String, default: 'open'}
   });
 
 module.exports = mogoose.model('Book',Book)

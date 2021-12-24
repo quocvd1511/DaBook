@@ -178,7 +178,7 @@
                                                 <tbody>
                                                 {{#each books}}
                                                 <tr>
-                                                    <td>SA01</td>
+                                                    <td>{{this.masach}}</td>
                                                     <td class="name__list-book">{{this.tensach}}</td>
                                                     <td><img class="img__list-book" src={{this.hinhanh}} alt=""></td>
                                                     <td>{{this.theloai}}</td>
@@ -191,7 +191,7 @@
                                                     <td>Việt Nam</td>
                                                     <td>Tiếng Việt</td>
                                                     <td style="display: flex;">
-                                                        <a href="/admin/quan-ly-sach/cap-nhat-sach/{{this._id}}"><span class="btn btn-primary" style=" justify-content: center;">Sửa</span></a>
+                                                        <a href="/admin/quan-ly-sach/cap-nhat-sach/{{this.masach}}"><span class="btn btn-primary" style=" justify-content: center;">Sửa</span></a>
                                                         <span class="btn btn-danger" style=" justify-content: center;">Xóa</span>
                                                     </td>
                                                 </tr>
