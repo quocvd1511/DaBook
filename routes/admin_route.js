@@ -6,6 +6,8 @@ const admin_Control = require('../controllers/admin_control')
 route.get('/quan-ly-tai-khoan/:slug',admin_Control.chitietTaiKhoan)
 
 
+
+route.post('/cap-nhat-van-chuyen',admin_Control.capnhatvc)
 route.post('/quan-ly-sach/them-sach/save', admin_Control.chitietSach_save)
 route.post('/quan-ly-sach/cap-nhat-sach/update', admin_Control.chitietSach_update)
 route.get('/quan-ly-sach/cap-nhat-sach/:slug',admin_Control.CapNhatSach)

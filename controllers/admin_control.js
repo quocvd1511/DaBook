@@ -303,8 +303,40 @@ class Admin_Control{
     //---Quan lu van chuyen-----
     Ql_VanChuyen(req,res,next)
     {
-        res.render('vanchuyen',{layout: 'admin.handlebars'})
+        donhang.find({})
+        .then(donhang => {
+            donhang = donhang.map(course => course.toObject())
+            res.render('vanchuyen',{layout: 'admin.handlebars', admin_account: req.session.username, donhang: donhang})
+        })
     }
+
+    capnhatvc(req,res,next)
+    {
+       
+        const ngaycn = new Date().getTime();
+        var list_review = req.body.review;
+        var list_madh = req.body.madh;
+        var index =  0, review = '', madh = '';
+        for(var i=0; i < list_review.length; i++)
+            {
+               if(list_review[i] != ''){
+                    review = list_review[i];
+                    index = i;
+               }
+            }
+        
+            madh = list_madh[index];
+
+        console.log(list_review, review, index, madh)
+        donhang.updateOne({"madh": madh},
+            {"tinhtrangdonhang": req.body.tinhtrang, "phanhoi": review, "ngaycapnhat": ngaycn
+        })
+        .then(() => 
+        {
+            res.redirect('/admin/quan-ly-van-chuyen')
+        });
+    }
+
 
     chitietdonhang(req,res,next)
     {
