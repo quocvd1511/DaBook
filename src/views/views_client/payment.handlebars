@@ -36,7 +36,7 @@
             {{#each sach}}
             <div class="bill__info--product">
                 <div class="col-6 col-pro layout-inline">
-                    <img class="cart__img" src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"alt="">
+                    <img class="cart__img" src="{{this.hinhanh}}"alt="">
                     <p class="item__name">{{this.tensach}}</p>
                 </div>
 
@@ -62,8 +62,18 @@
             <div class="payment__info--selection">
                 <input name="pay" type="radio" value="live"/> <img class="pay__img" src="/client_styles/assets/img/pay.png" alt=""> Thanh toán bằng tiền mặt khi nhận hàng
             </div>
+            {{!-- <label class="payment__info--selection">
+                <input name="pay" type="radio" value="live"/>
+                <img class="pay__img" src="/client_styles/assets/img/pay.png" alt="">
+                <span class="">Thanh toán bằng tiền mặt khi nhận hàng</span>
+            </label>
+            <label class="payment__info--selection">
+                <input name="pay" type="radio" value="momo"/>
+                <img class="pay__img" src="/client_styles/assets/img/MoMo_Logo.png" alt="">
+                <span class="">Thanh toán trực tuyến qua ví Momo</span>
+            </label> --}}
             <div class="payment__info--selection">
-                <input name="momo" type="radio" value="momo"/> <img class="pay__img" src="/client_styles/assets/img/MoMo_Logo.png" alt=""> Thanh toán trực tuyến qua ví Momo
+                <input name="pay" type="radio" value="momo"/> <img class="pay__img" src="/client_styles/assets/img/MoMo_Logo.png" alt=""> Thanh toán trực tuyến qua ví Momo
             </div>
         </div>
 
@@ -111,6 +121,8 @@
             
         </div>  
     </div>
+
+
 </body>
 </html>
 
