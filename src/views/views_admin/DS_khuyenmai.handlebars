@@ -155,6 +155,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th>Mã KM</th>
+                                                    <th>Mã nhập</th>
                                                     <th>Nội dung khuyến mãi</th>
                                                     <th>% KM</th>
                                                     <th>Mức giá áp dụng</th>
@@ -168,14 +169,15 @@
                                                 {{#each khuyenmais}}
                                                 <tr>
                                                     <td>{{this.makm}}</td>
+                                                    <td>{{this.manhap}}</td>
                                                     <td>{{this.noidung}}</td>
                                                     <td>{{this.phantram}}%</td>
                                                     <td>{{this.dieukien}}.000đ</td>
                                                     <td>{{this.ngaybd}}</td>
                                                     <td>{{this.ngaykt}}</td>
-                                                    <td>Đã kết thúc</td>
+                                                    <td>{{this.trangthai}}</td>
                                                     <td style="display: flex;">
-                                                        <a href="/admin/quan-ly-khuyen-mai/cap-nhat-khuyen-mai/{{this._id}}"><span class="btn btn-primary" style=" justify-content: center;">Sửa</span></a>
+                                                        <a href="/admin/quan-ly-khuyen-mai/cap-nhat-khuyen-mai/{{this.makm}}"><span class="btn btn-primary" style=" justify-content: center;">Sửa</span></a>
                                                         <span class="btn btn-danger" style=" justify-content: center;">Xóa</span>
                                                     </td>
                                                 </tr>

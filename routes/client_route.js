@@ -2,11 +2,6 @@ const express = require('express')
 const route = express.Router()
 
 const client_Control = require('../controllers/client_control')
-
-
-
-
-
 route.post('/capnhatmatkhau', client_Control.capnhatmatkhau)
 route.post('/themdiachi', client_Control.themdiachi)
 route.post('/capnhattaikhoan', client_Control.capnhattk)
@@ -24,7 +19,7 @@ route.get('/search', client_Control.search)
 route.get('/theloai/:value', client_Control.searchTL)
 route.get('/logout', client_Control.logout)
 route.get('/', client_Control.main)
-route.post('/payment', client_Control.taohoadon)
+route.get('/payment', client_Control.taohoadon)
 route.post('/temppayment', client_Control.thanhtoan)
 route.post('/updategiohang', client_Control.capnhatgiohang)
 route.post('/xoagiohang', client_Control.xoagiohang)

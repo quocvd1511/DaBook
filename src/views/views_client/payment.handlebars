@@ -11,6 +11,7 @@
     <link
       rel="stylesheet"
       href="/client_styles/assets/fonts/fontawesome-free-5.15.4/fontawesome-free-5.15.4-web/css/all.min.css"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 
@@ -34,12 +35,12 @@
                 <span style="font-size: 1.6rem;">Được giao bởi <i style="color: rgb(0, 132, 255);">DaBookStore</i> </span>
             </div>
             {{#each sach}}
-            <div class="bill__info--product">
+            <div class="hoadon bill__info--product">
                 <div class="col-6 col-pro layout-inline">
                     <img class="cart__img" src="https://rigo.vn/wp-content/uploads/2018/06/74_HarryPottertap7HarryPottervaBaoboiTuthan_rigo.jpg"alt="">
                     <p class="item__name">{{this.tensach}}</p>
                 </div>
-
+                <div class="theloai" hidden>{{this.theloai}}</div>
                 <div class="col col-price ">
                     <span>Số lượng: {{this.SoLuong}}</span>
                 </div>
@@ -105,12 +106,25 @@
                 </ul>
             </div>
 
-            <a href="">
-                <button type="submit" class="btn__buy-book" id="buy" >Đặt sách</button>
-            </a>
+            {{!-- <a href="/payment"> --}}
+                <button type="submit" class="mua btn__buy-book" id="buy" >Đặt sách</button>
+            {{!-- </a> --}}
             
         </div>  
     </div>
+    <script>
+        $('.mua').on('click', function()
+        {
+            var listhoadon = $('.hoadon')
+            var listProduct = []
+            var username=$('.ten-dang-nhap').text()
+            console.log(username)
+            listhoadon.each(function(e)
+           {
+                
+           })
+        })
+    </script>
 </body>
 </html>
 

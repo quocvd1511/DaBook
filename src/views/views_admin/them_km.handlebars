@@ -151,10 +151,24 @@
                                             <h4 class="m-b-30 m-t-0">Nhập thông tin khuyến mãi</h4>
                                             <div class="demo-box">
                                                 <p class="text-muted m-b-15 font-13">
-                                                    Nhập mã khuyến mãi
+                                                    Mã nhập
                                                 </p>
-                                                <input type="text" class="form-control" maxlength="25" name="makm" id="placement" placeholder="Mã khuyến mãi">
-        
+                                                <input style="margin-bottom: 15px;" type="text" class="form-control" maxlength="25" name="manhap" id="placement" placeholder="Mã nhập áp dụng">
+
+                                                 <div class="form-group ">
+                                                    <label>Loại khuyến mãi</label>
+                                                        <select class="form-control" name="loai">
+                                                            <option>Sale</option>
+                                                            <option>FreeShip</option>
+                                                        </select>
+                                                </div>
+
+                                                
+                                                 <p class="text-muted m-b-15 font-13">
+                                                    Số lượng
+                                                </p>
+                                                <input type="text" class="form-control" maxlength="25" name="sl" id="placement" placeholder="Số lượng">
+
                                                 <div class="m-t-20">
                                                     <p class="text-muted m-b-15 font-13">
                                                         Nhập nội dung khuyến mãi
@@ -163,7 +177,7 @@
                                                 </div>
                                                 <div class="form-group ">
                                                     <label>Chọn tình trạng khuyến mãi</label>
-                                                        <select class="form-control" name="tinhtrang">
+                                                        <select class="form-control" name="trangthai">
                                                             <option>Đã kết thúc</option>
                                                             <option>Đang mở</option>
                                                             <option>Chưa bắt đầu</option>

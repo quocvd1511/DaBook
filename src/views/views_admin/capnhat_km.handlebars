@@ -151,13 +151,13 @@
                                             {{#each khuyenmais}}
                                             <div class="demo-box">
                                                 <p class="text-muted m-b-15 font-13">
-                                                    ID
-                                                </p>
-                                                <input type="text" class="form-control" maxlength="25" name="_id" id="placement" placeholder="Mã khuyến mãi" value={{this._id}}>
-                                                <p class="text-muted m-b-15 font-13">
                                                     Mã khuyến mãi
                                                 </p>
                                                 <input type="text" class="form-control" maxlength="25" name="makm" id="placement" placeholder="Mã khuyến mãi" value={{this.makm}}>
+                                                <p class="text-muted m-b-15 font-13">
+                                                    Mã nhập
+                                                </p>
+                                                <input type="text" class="form-control" maxlength="25" name="manhap" id="placement" placeholder="Mã khuyến mãi" value={{this.manhap}}>
         
                                                 <div class="m-t-20">
                                                     <p class="text-muted m-b-15 font-13">
@@ -165,15 +165,41 @@
                                                     </p>
                                                     <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="Nội dung khuyến mãi" style="margin-bottom: 18px;" name="noidung">{{this.noidung}}</textarea>
                                                 </div>
+                                                {{#ifCond this.trangthai '==' 'Đã kết thúc'}}
+                                                <div class="form-group ">
+                                                    <label>Chọn tình trạng khuyến mãi</label>
+                                                        <select class="form-control" name="tinhtrang">
+                                                            <option selected>Đã kết thúc</option>
+                                                            <option>Đang mở</option>
+                                                            <option>Chưa bắt đầu</option>
+                                                        </select>
+                                                </div>
+                                                {{else ifCond this.trangthai '==' 'Đang mở'}}
+                                                <div class="form-group ">
+                                                    <label>Chọn tình trạng khuyến mãi</label>
+                                                        <select class="form-control" name="tinhtrang">
+                                                            <option>Đã kết thúc</option>
+                                                            <option selected>Đang mở</option>
+                                                            <option>Chưa bắt đầu</option>
+                                                        </select>
+                                                </div>
+                                                {{else}}
                                                 <div class="form-group ">
                                                     <label>Chọn tình trạng khuyến mãi</label>
                                                         <select class="form-control" name="tinhtrang">
                                                             <option>Đã kết thúc</option>
                                                             <option>Đang mở</option>
-                                                            <option>Chưa bắt đầu</option>
+                                                            <option selected>Chưa bắt đầu</option>
                                                         </select>
                                                 </div>
-                                                <div class="form-group">
+                                                {{/ifCond}}
+                                                
+                                                 <p class="text-muted m-b-15 font-13">
+                                                    Số lượng
+                                                </p>
+                                                <input type="text" class="form-control" maxlength="25" name="sl" id="placement" placeholder="Số lượng" value={{this.sl}}>
+
+                                                <div style="margin-top: 10px;" class="form-group">
                                                     <label class="control-label">Phần trăm khuyến mãi</label>
                                                     <input id="demo1" type="text" value={{this.phantram}} name="demo1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary">
                                                 </div>

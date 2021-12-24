@@ -10,7 +10,6 @@ route.post('/quan-ly-sach/them-sach/save', admin_Control.chitietSach_save)
 route.post('/quan-ly-sach/cap-nhat-sach/update', admin_Control.chitietSach_update)
 route.get('/quan-ly-sach/cap-nhat-sach/:slug',admin_Control.CapNhatSach)
 route.post('/quan-ly-sach/:slug/delete', admin_Control.chitietSach_delete)
-route.get('/quan-ly-sach/:slug', admin_Control.chitietSach)
 route.get('/them-sach',admin_Control.Them_Sach)
 
 route.get('/them-khuyen-mai',admin_Control.ThemKhuyenMai)

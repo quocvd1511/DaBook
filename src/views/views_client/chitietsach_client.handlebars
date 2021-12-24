@@ -217,7 +217,7 @@
 				<dt class="col-sm-3">Tác giả</dt>
 				<dd class="col-sm-9">{{books.tacgia}}</dd>
 				<dt class="col-sm-3">Thể loại</dt>
-				<dd class="col-sm-9">{{books.theloai}}</dd>
+				<dd class="theloai col-sm-9">{{books.theloai}}</dd>
 				<dt class="col-sm-3">Nhà xuất bản</dt>
 				<dd class="col-sm-9">{{books.nxb}}</dd>
 				<dt class="col-sm-3">Năm xuất bản</dt>
@@ -504,7 +504,9 @@
 				var giaban = parseInt($('.giaban').text())*1000
 				var soluong = parseInt($('.soluong').val())
 				var matk=$('.ten-dang-nhap').text()
-				console.log(matk)
+				var theloai = $('.theloai').text()
+				//console.log(theloai)
+				//console.log(matk)
 				$.ajax({
 					url: '/themgiohang',
 					method: 'POST',
@@ -513,7 +515,8 @@
 						tensach: tensach,
 						giaban: giaban,
 						hinhanh: hinhanh,
-						soluong: soluong
+						soluong: soluong,
+						theloai: theloai,
 					}),
 					contentType: 'application/json',
 					success: function(msg)
