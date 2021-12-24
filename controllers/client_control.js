@@ -819,7 +819,26 @@ class Client_Control
     // thanh toán đơn hàng
     taohoadon(req,res,next)
     {
-        //res.send(req.query)
+        req.session.isAuth = true
+        donhang.count({})
+            .then(count =>
+                {
+                    var bill= JSON.parse(req.query.donhang)
+                    bill.madh = "DH00"+ count.toString()
+                    bill = new donhang(bill)
+                    req.session.user=bill.matk
+                    //res.send(bill)
+                    bill.save()
+                    //console.log(bill.matk)
+                    client_account.updateOne({matk: bill.matk},{$inc: {sl_donhang: + 1}})
+                        .then(
+                            client_account.findOne({matk: bill.matk})
+                            .then
+                            (
+                                res.render('thankyou',{layout: 'client.handlebars', madh: bill.madh, client_accounts: client_account})
+                            )
+                            )
+                })
         // client_login.findOne({'matk': req.session.username})
         // .then(thongtintk => 
         //     {

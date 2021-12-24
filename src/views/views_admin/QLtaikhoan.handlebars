@@ -191,8 +191,11 @@
                                                     <td>{{this.email}}</td>
                                                     <td>{{this.tinhtrang}}</td>
                                                     <td>
-                                                        <span class="btn btn-danger" style="display: flex; justify-content: center;">Khóa</span>
+                                                        <a href="/admin/khoataikhoan?matk={{this.matk}}"><span class="btn btn-danger" style="display: flex; justify-content: center;">Khóa</span></a>
+                                                        <a href="/admin/mokhoataikhoan?matk={{this.matk}}"><span class="btn" style="display: flex; justify-content: center;">Mở khóa</span></a>
                                                     </td>
+                                                        
+
                                                 </tr>
                                                 {{/each}}
                                                 </tbody>

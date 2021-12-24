@@ -91,21 +91,6 @@ class Admin_Control{
         res.render('themsach',{layout: 'admin.handlebars', admin_account: req.session.username})
     }
 
-<<<<<<< HEAD
-=======
-    chitietSach(req,res,next)
-    {
-        books.findOne({masach: req.params.slug})
-            .then(books =>
-                {
-                    books=mongooseToObject(books)
-                    //res.json(books)
-                    res.render('admin_chitietSach',{layout:'admin.handlebars',admin_account: req.session.username, books})
-                })
-        
-    }
-
->>>>>>> 930bbe15a4531cb742ffa284c028980fda91aa24
 
     chitietSach_update(req,res,next)
     {
@@ -175,7 +160,7 @@ class Admin_Control{
                     for(var i=0;i<client_account.length;i++)
                     {
                         var danhsach_km = client_account[i].danhsach_km
-                        var danhsanh_ma =' '
+                        var danhsanh_ma =''
                         var soluongma=0
                         for(var k=0;k<danhsach_km.length;k++)
                         {
@@ -201,6 +186,18 @@ class Admin_Control{
                 //console.log(client_account)
                 res.render('admin_chitietTaiKhoan',{layout: 'admin.handlebars', admin_account: req.session.username, client_account})
             })
+    }
+
+    khoataikhoan(req,res,next)
+    {
+        client_account.updateOne({matk: req.query.matk},{tinhtrang:'Khóa'})
+            .then(res.redirect('/admin/quan-ly-tai-khoan'))
+    }
+
+    mokhoataikhoan(req,res,next)
+    {
+        client_account.updateOne({matk: req.query.matk},{tinhtrang:'Đang sử dụng'})
+            .then(res.redirect('/admin/quan-ly-tai-khoan'))
     }
 
     //--------------------------------------------------------------
@@ -300,56 +297,78 @@ class Admin_Control{
         })
     }
 
+    xoakhuyenmai(req,res,next)
+    {
+        khuyenmais.deleteOne({makm: req.query.makm})
+            .then(res.redirect('/admin/quan-ly-khuyen-mai'))
+    }
+
     //---------------------------------------------------------------------------------------------------------------------------------------------------
 
     
     //---Quan ly thong ke----
     Ql_ThongKe(req,res,next)
     {
-        books.find({})
-            .then(books => 
-            {
-                var dulieuthongke=[{
-                    sosachdaban: 0,
-                    sodondathang: 0,
-                    soluongtaikhoan: 0,
-                    doanhthu: 0,
-                }]
-                for(var i=0;i<books.length;i++)
+                client_account.count({}, function(err,count)
                 {
-                    var temp = parseInt(books[i].soluongdaban)
-                    dulieuthongke[0].sosachdaban+=temp
-                }
+                    var dulieuthongke=[{
+                        sosachdaban: 0,
+                        sodondathang: 0,
+                        soluongtaikhoan: 0,
+                        doanhthu: 0,}]
 
-                client_account.count({}, function(err,count){
                     dulieuthongke[0].soluongtaikhoan = count
-                    theloai.find({})
-                        .then(theloai =>{
-                            theloai = theloai.map(course => course.toObject())
 
                             donhang.find({})
                                 .then(donhang =>
                                 {
                                     for(var i=0;i<donhang.length;i++)
                                     {
-                                        dulieuthongke[0].doanhthu+=parseInt(donhang[i].tongtien)
+                                        if(donhang[i].tinhtrangthanhtoan==="Đã thanh toán")
+                                        {
+                                            dulieuthongke[0].doanhthu+=parseInt(donhang[i].tongtien)
+                                        }
+                                        var listbook = donhang[i].ds_sach
+                                        for(var k=0;k<listbook.length;k++)
+                                        {
+                                            dulieuthongke[0].sosachdaban+=listbook[k].soluong
+                                        }
                                     }
                                     dulieuthongke[0].sodondathang=donhang.length
 
-                                    theloai.find({})
-                                        .then(theloais =>{
 
+                                    books.find().distinct('theloai')
+                                        .then(theloais =>
+                                        {
+                                            var arraySoluong=[]
+                                            for(var i=0;i<theloais.length;i++)
+                                            {
+                                                arraySoluong[i] = new Object()
+                                                arraySoluong[i].theloai=theloais[i]
+                                                arraySoluong[i].soluong=0
+                                            }
+
+                                            for(var i=0;i<donhang.length;i++)
+                                            {
+                                                var listbook = donhang[i].ds_sach
+                                                for(var k=0;k<listbook.length;k++)
+                                                {
+                                                    var temp=listbook[k].theloai
+                                                    for(var h=0;h<arraySoluong.length;h++)
+                                                    {
+                                                        if(arraySoluong[h].theloai===temp)
+                                                        {
+                                                            arraySoluong[h].soluong+=listbook[k].soluong
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            res.render('thongke',{layout: 'admin.handlebars',dulieuthongke: dulieuthongke, admin_account: req.session.username, theloai: arraySoluong})
                                         })
-
-                                    //console.log(dulieuthongke)
-                                    //console.log(theloai)
-                                    res.render('thongke',{layout: 'admin.handlebars',dulieuthongke: dulieuthongke, admin_account: req.session.username, theloai: theloai})
                                 })
                             
                         })
 
-                })
-            })
     }
 
 

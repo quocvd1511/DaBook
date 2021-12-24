@@ -180,13 +180,13 @@
                                                     <td>{{this.manhap}}</td>
                                                     <td>{{this.noidung}}</td>
                                                     <td>{{this.phantram}}%</td>
-                                                    <td>{{this.dieukien}}.000đ</td>
+                                                    <td>{{this.dieukien}}</td>
                                                     <td>{{this.ngaybd}}</td>
                                                     <td>{{this.ngaykt}}</td>
                                                     <td>{{this.trangthai}}</td>
                                                     <td style="display: flex;">
                                                         <a href="/admin/quan-ly-khuyen-mai/cap-nhat-khuyen-mai/{{this.makm}}"><span class="btn btn-primary" style=" justify-content: center;">Sửa</span></a>
-                                                        <span class="btn btn-danger" style=" justify-content: center;">Xóa</span>
+                                                        <a href="/admin/xoakhuyenmai?makm={{this.makm}}"><span class="btn btn-danger" style=" justify-content: center;">Xóa</span></a>
                                                     </td>
                                                 </tr>
                                                 {{/each}}
