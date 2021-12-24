@@ -9,11 +9,13 @@ const khuyenmai = new Schema({
     ngaykt:{type: Date,
       transform: v => v.getDate() + "-" + v.getMonth() + "-" + v.getFullYear()
     },
-    ngaybd: Date,
+    ngaybd: {type: Date, 
+      transform: v => v.getDate() + "-" + v.getMonth() + "-" + v.getFullYear()},
     sl:Number,
     manhap:String,
     dieukien:Number,
     daluu:Number,
+    trangthai: {type: String, default: 'Đang mở'},
     img: {type: String, default: 'https://cdn2.iconfinder.com/data/icons/solid-black-labels/128/sale_copy-512.png'}
   });
   

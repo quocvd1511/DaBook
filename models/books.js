@@ -25,6 +25,7 @@ const Book = new Schema({
     noidung: String,
     sosao: Number,
   }],
+  trangthai:{type: String, default: 'open'}
   });
 
 module.exports = mogoose.model('Book',Book)

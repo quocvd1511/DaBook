@@ -156,7 +156,7 @@
                                                         <div class="m-t-20">
                                                                 <div class="form-group">
                                                                     <label>Mã sách</label>
-                                                                    <input type="text" class="form-control" required="" placeholder="Mã sách" name="_id" value={{this._id}}>
+                                                                    <input type="text" class="form-control" required="" placeholder="Mã sách" name="masach" value={{this.masach}}>
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -171,6 +171,547 @@
                                                                         <input type="text" class="form-control" required="" placeholder="Tên sách" name="tensach" value={{this.tensach}}>
                                                                     </div>
                                                                 </div>
+                                                                {{#ifCond this.theloai '==' 'Giả tưởng'}}
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option selected>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                	{{else ifCond this.theloai '==' 'Ngôn tình'}}
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option selected>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Huyền bí'}}
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option selected>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Kinh dị'}}
+                                                                  <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option selected>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Trinh thám'}}
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option selected>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Tâm linh'}}
+                                                                  <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option selected>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Khoa học viễn tưởng'}}
+                                                                  <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option selected>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Du ký'}}
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option selected>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Nấu ăn'}}
+                                                                 <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option selected>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Tuổi teen'}}
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option selected>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Nghệ thuật'}}
+                                                                 <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option selected>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Phát triển bản thân'}}
+                                                                 <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option selected>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Động lực'}}
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option selected>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Sức khỏe'}}
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option selected>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Lịch sử'}}
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option selected>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Du Lịch'}}
+                                                                 <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option selected>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Sách hướng dẫn'}}
+                                                                 <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option selected>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Gia đình và xã hội'}}
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option selected >Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Hài hước'}}
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option selected>Hài hước</option>
+                                                                            <option>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else ifCond this.theloai '==' 'Sách thiếu nhi'}}
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                        <select class="form-control" name="theloai">
+                                                                            <option>Giả tưởng</option>
+                                                                            <option>Ngôn tình</option>
+                                                                            <option>Huyền bí</option>
+                                                                            <option>Kinh dị</option>
+                                                                            <option>Trinh thám</option>
+                                                                            <option>Tâm linh</option>
+                                                                            <option>Khoa học viễn tưởng</option>
+                                                                            <option>Du ký</option>
+                                                                            <option>Nấu ăn</option>
+                                                                            <option>Tuổi teen</option>
+                                                                            <option>Nghệ thuật</option>
+                                                                            <option>Phát triển bản thân</option>
+                                                                            <option>Động lực</option>
+                                                                            <option>Sức khỏe</option>
+                                                                            <option>Lịch sử</option>
+                                                                            <option>Du lịch</option>
+                                                                            <option>Sách hướng dẫn</option>
+                                                                            <option>Gia đình và xã hội</option>
+                                                                            <option>Hài hước</option>
+                                                                            <option selected>Sách thiếu nhi</option>
+                                                                            <option>Tác phẩm kinh điển</option>
+                                                                        </select>
+                                                                </div>
+                                                                {{else}}
                                                                 <div class="form-group ">
                                                                     <label>Thể loại</label>
                                                                         <select class="form-control" name="theloai">
@@ -194,8 +735,11 @@
                                                                             <option>Gia đình và xã hội</option>
                                                                             <option>Hài hước</option>
                                                                             <option>Sách thiếu nhi</option>
+                                                                            <option selected>Tác phẩm kinh điển</option>
                                                                         </select>
                                                                 </div>
+                                                                {{/ifCond }}
+                                                                
                                                                 
                                                                 <div class="form-group">
                                                                     <label>Tác giả</label>

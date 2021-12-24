@@ -165,11 +165,12 @@
                                                 <thead>
                                                 <tr>
                                                     <th>Mã tài khoản</th>
-                                                    <th>Tên tài khoản</th>
+                                                    <th>Họ và Tên</th>
                                                     <th>Địa chỉ</th>
-                                                    <th>Mã khuyến mãi</th>
                                                     <th>Số điện thoại</th>
                                                     <th>Ngày tạo</th>
+                                                    <th>Số lượng đơn hàng</th>
+                                                    <th>Số lượng hàng trong giỏ</th>
                                                     <th>Điểm</th>
                                                     <th>E-mail</th>
                                                     <th>Tình trạng</th>
@@ -179,18 +180,22 @@
                                                 <tbody>
                                                 {{#each client_account}}
                                                 <tr>
-                                                    <td>KH01</td>
+                                                    <td>{{this.matk}}</td>
                                                     <td>{{this.hoten}}</td>
                                                     <td>{{this.diachigoc}}</td>
-                                                    <td>101, 103, 104</td>
                                                     <td>{{this.sodt}}</td>
                                                     <td>{{this.ngaytao}}</td>
+                                                    <td>{{this.sl_donhang}}</td>
+                                                    <td>{{this.sl_giohang}}</td>
                                                     <td>{{this.diem}}</td>
                                                     <td>{{this.email}}</td>
                                                     <td>{{this.tinhtrang}}</td>
                                                     <td>
-                                                        <span class="btn btn-danger" style="display: flex; justify-content: center;">Khóa</span>
+                                                        <a href="/admin/khoataikhoan?matk={{this.matk}}"><span class="btn btn-danger" style="display: flex; justify-content: center;">Khóa</span></a>
+                                                        <a href="/admin/mokhoataikhoan?matk={{this.matk}}"><span class="btn" style="display: flex; justify-content: center;">Mở khóa</span></a>
                                                     </td>
+                                                        
+
                                                 </tr>
                                                 {{/each}}
                                                 </tbody>

@@ -24,7 +24,10 @@ const donhang = new Schema({
       giagiam: Number,
       hinhanh: String,
       soluong: Number,
+      theloai: String,
     }],
+    phanhoi: Array,
+    ngaycapnhat: Date,
   });
   
 module.exports = mogoose.model('donhangs',donhang)

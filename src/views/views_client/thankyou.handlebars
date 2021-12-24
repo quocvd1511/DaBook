@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DaBook Shop</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/client_styles/assets/css/payment.css">
+    <link
+      rel="stylesheet"
+      href="/client_styles/assets/fonts/themify-icons/themify-icons.css"/>
+    <link
+      rel="stylesheet"
+      href="/client_styles/assets/fonts/fontawesome-free-5.15.4/fontawesome-free-5.15.4-web/css/all.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+
+</style>
+<body>
+    <div class="container">
+        <div class="col-12 receipt__info">
+            <div class="receipt__info">
+                <div class="receipt__thank">
+                    <h1>Đặt hàng thành công!</h1>
+                    <img src="/client_styles/assets/img/thank.png" alt="" class="thank_img" />
+                </div>
+                <p class="thanking">Cảm ơn bạn đã mua sách tại DaBook!</p>
+            </div>
+            <div class="receipt_pay">
+                <p class="receipt_noti">Mã đơn hàng của bạn là: </p>
+                <div class="receipt__code">
+                    <p>{{madh}}</p>
+                </div>
+            </div>
+            <div class="receipt__success">
+                <p>Bạn có thể xem lại đơn hàng tại:</p>
+                <a href="">Đơn hàng của tôi</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+
