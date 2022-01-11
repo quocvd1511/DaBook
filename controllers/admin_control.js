@@ -399,7 +399,15 @@ class Admin_Control{
             }
         
             madh = list_madh[index];
+        if(req.body.tinhtrang==="đang lấy hàng")
+        {
+            req.body.tinhtrang='đang đóng gói'
+        } else if(req.body.tinhtrang==="đang giao hàng")
+        {
+            req.body.tinhtrang='vận chuyển'
+        }
 
+        console.log(req.body.tinhtrang)
         console.log(list_review, review, index, madh)
         donhang.updateOne({"madh": madh},
             {"tinhtrangdonhang": req.body.tinhtrang, "phanhoi": review, "ngaycapnhat": ngaycn

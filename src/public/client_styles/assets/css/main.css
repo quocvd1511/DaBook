@@ -5278,4 +5278,25 @@ footer p {
   letter-spacing: 1px;
 }
 
+.auth-form__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.auth-form__footer span {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.auth-form__footer a {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.auth-form__footer a:hover {
+  text-decoration: none;
+}
+
 /*# sourceMappingURL=main.css.map */
